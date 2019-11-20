@@ -1,0 +1,58 @@
+﻿@inherits Kesco.Persons.Controls.SiteViewPage<int?>
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.ComponentModel
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+
+	if (!metaData.AdditionalValues.ContainsKey(IncorporationFormSelectAttribute.AdditionalValuesKey)) {
+		throw new Exception(String.Format(
+				"Неверное использование шаблона IncorporationFormSelectAttribute. Атрибут-дескриптор {1} не найден для свойства {0}",
+				metaData.PropertyName,
+				typeof(IncorporationFormSelectAttribute)
+			));
+	}
+
+	var descriptor = metaData.AdditionalValues[IncorporationFormSelectAttribute.AdditionalValuesKey]
+		as IncorporationFormSelectAttribute;
+
+	if (descriptor == null) {
+		throw new Exception(String.Format(
+			"Неверное использование шаблона EmployeeSelect. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+				metaData.PropertyName,
+				metaData.AdditionalValues[IncorporationFormSelectAttribute.AdditionalValuesKey].GetType()
+		));
+	}
+
+	// Получим начальные значения
+	string value = "";
+	string label = Model.HasValue ? "" : metaData.NullDisplayText;
+
+	if (Model.HasValue && descriptor.EntityAccessorType != null) {
+		value = Model.ToString();
+		label = String.Format("#{0}", value);
+		Kesco.DataAccess.IAccessor accessor = BLToolkit.Reflection.TypeAccessor.CreateInstanceEx(
+				descriptor.EntityAccessorType
+			) as Kesco.DataAccess.IAccessor;
+		if (accessor != null) {
+			object entry = accessor.GetInstance(value);
+			if (entry != null) {
+				if (accessor is Kesco.Web.Mvc.UI.Controls.DataAccess.IKescoSelectAccessor) {
+					label = ((IKescoSelectAccessor)accessor).GetInstanceDisplayName(entry);
+				} else if (entry is Kesco.ObjectModel.IFriendlyNamed) {
+					label = ((Kesco.ObjectModel.IFriendlyNamed)entry).GetInstanceFriendlyName();
+				}
+			}
+		}
+	}
+}
+<span id="@(id)__Link" class="IncorporationFormControl" href="javascript: void(0)" title="@(label)" alt="@(label)" 
+	data-actual="true"
+	data-bind="
+		dynamicLink: { 
+			value: @(name), 
+			source: '@(Url.Action("GetItem", "IncorporationFormSelect"))'
+		}
+	">@(label)</span>

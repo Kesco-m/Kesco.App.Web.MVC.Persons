@@ -1,0 +1,13 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.ObjectModel.ITrackableEntity>
+@using Kesco.ObjectModel
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+}
+
+	<div style="text-align: right; color: #AA2222; padding: 2px;" data-bind="
+		visible: @(name).ChangedBy
+		"
+		>&nbsp;<small class="ui-widget-content no-border">
+		@Html.Label("ChangedBy") @Html.Display("ChangedBy") | @Html.Display("ChangedDate")</small>&nbsp;</div> 

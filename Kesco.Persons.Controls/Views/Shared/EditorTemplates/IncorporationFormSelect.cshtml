@@ -1,0 +1,58 @@
+﻿@inherits Kesco.Persons.Controls.SiteViewPage<int?>
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.ComponentModel
+@using Kesco.Persons.Controls.Localization
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+
+	if (!metaData.AdditionalValues.ContainsKey(IncorporationFormSelectAttribute.AdditionalValuesKey)) {
+		throw new Exception(String.Format(
+				"Неверное использование шаблона IncorporationFormSelectAttribute. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+				metaData.PropertyName,
+				typeof(IncorporationFormSelectAttribute)
+			));
+	}
+
+	var descriptor = metaData.AdditionalValues[IncorporationFormSelectAttribute.AdditionalValuesKey]
+		as IncorporationFormSelectAttribute;
+
+	if (descriptor == null) {
+		throw new Exception(String.Format(
+			"Неверное использование шаблона IncorporationFormSelectAttribute. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+				metaData.PropertyName,
+				metaData.AdditionalValues[IncorporationFormSelectAttribute.AdditionalValuesKey].GetType()
+		));
+	}
+
+	// Получим начальные значения
+	string value = "";
+	string label = Model.HasValue ? "" : metaData.NullDisplayText;
+
+	var options = descriptor.GetOptions();
+
+}
+@* Выполним отрисовку основного KescoSelect *@
+<select id="@(id)" name="@(name)" style="width: 400px;" data-bind="
+		value: @(name), 
+		jqOptions: @(id)__Options, 
+		optionsValue: 'ID',
+		optionsText: function(item) { 
+				if (item.ShortName)
+					return item.Name + ' [' + item.ShortName + ']'; 
+				else return item.Name;
+			}
+	">
+</select>
+@{
+	Html.RegisterScript(String.Format(@"
+		var options = {2};
+		options.unshift({{ID:null, Name:'{3}'}});
+		window.ViewModel.{0}__Options = options;
+		", id, name,
+		Kesco.Web.Mvc.Json.Serialize(options, true),
+		Resources.Select_OptionsCaption_NotSpecified
+	));
+}

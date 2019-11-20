@@ -1,0 +1,90 @@
+﻿@inherits Kesco.Territories.Controls.SiteViewPage<Kesco.Territories.Controls.Controllers.TerritorySelectUsageController.ViewModel>
+@using Kesco.Web.Mvc			  
+@{
+    ViewBag.Title = "Использование элемента управления 'Выбор территории'";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="container" style="overflow: auto;">
+<table width="100%">
+<tr>
+    <td>
+        <span style="float: left;">
+        <pre>
+            // Модель данных
+	        public class DataModel
+	        {
+
+
+				[Display(Name = "Страна")]
+				[TerritorySelect(CLID = 62)]
+				public int CountryID { get; set; }
+
+	        }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            // Модель представления
+	        public class ViewModel : ViewModel&lt;DataModel&gt; { }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Форма редактирования *@@
+            @@using (var form = Html.BeginForm())
+            {
+                @@Html.EditorForModel();
+            }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Просмотр *@@
+            @@Html.EditorForModel();
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Состояние модели *@@
+        </pre>
+        <pre data-bind="text: ko.toJSON(ko.mapping.toJS(ViewModel.Model))">
+            @@* Состояние модели *@@
+        </pre>
+        </span>
+    </td>
+</tr>
+<tr valign="top">
+    <td>
+        <hr />
+        <h3>Форма редактирования</h3>
+        @using (var form = Html.BeginForm())
+        {
+            @Html.EditorFor(m => m.Model);
+        }
+        <hr />
+        <h3>Просмотр</h3>
+        @Html.DisplayFor(m => m.Model)
+    </td>
+</tr>
+</table>
+</div>
+
+<script type="text/javascript" language="javascript">
+	$(function () {
+
+		@* Обработчик события изменения размера окна *@
+		$(window).resize(function() {
+			var $parent = $("#dialogContentPane");
+			$("#container").width($parent.width())
+			$("#container").height($parent.height())
+		});
+
+	});
+</script>
+@{
+	Html.RegisterScript(@"
+		ViewModel.Model.CountryID.__SearchParameters.AreaIDs.push(2); // поиск стран
+		ViewModel.Model.CountryID.__SearchParameters.HowSearch(1); // искать начинающие с
+	");
+}

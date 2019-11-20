@@ -1,0 +1,39 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage
+@using Kesco.ObjectModel
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+
+@if (Model == null) { 
+    @(ViewData.ModelMetadata.NullDisplayText)
+} /*else if (ViewData.TemplateInfo.TemplateDepth > 1) {
+    @(ViewData.ModelMetadata.SimpleDisplayText)
+} */else { 
+	object vb = new {
+		parentModel = Model
+	};
+    <table cellpadding="3" cellspacing="0" border="0" width="100%">
+    @foreach (ModelMetadata prop in ViewData.ModelMetadata.Properties.Where(pm => pm.ShowForEdit && !ViewData.TemplateInfo.Visited(pm))) { 
+        if (prop.HideSurroundingHtml) { 
+            @Html.Editor(prop.PropertyName)
+        } else {
+			   string description = prop.Description;
+            <tr valign="top">
+                <td style="width: 250px; padding-top: 4px;">
+                    <div class="editor-label">
+                        @(Html.LabelEx(prop.PropertyName)):
+                    </div>
+                </td>
+                <td style="padding-top: 4px;">
+                    <div class="editor-field">
+			@try {
+                @Html.Display(prop.PropertyName)
+			} catch (Exception ex) { 
+				Response.Write(String.Format("{0}:{1}", prop.PropertyName, ex.Message));
+			} 
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+    </table>
+}

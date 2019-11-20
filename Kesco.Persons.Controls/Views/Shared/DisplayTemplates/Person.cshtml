@@ -1,0 +1,43 @@
+﻿@inherits Kesco.Persons.Controls.SiteViewPage<int?>
+@using Kesco.Web
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+	if (ViewData["ID"] != null) id = ViewData["ID"].ToString();
+	bool actual = false;
+	if (ViewData["Actual"] != null) actual = ViewData["Actual"].ToString().ToLower() == "true";
+	bool useViewModelBinding = false;
+	if (ViewData["UseViewModelBinding"] != null) useViewModelBinding = ViewData["UseViewModelBinding"].ToString().ToLower() == "true";
+	string initialLabel = ((string)ViewData["InitialLabel"]) ?? String.Empty;
+	string tooltipPositionMy = ((string)ViewData["TooltipPositionMy"]) ?? String.Empty;
+	string tooltipPositionAt = ((string)ViewData["TooltipPositionAt"]) ?? String.Empty;
+	string cssClass = ((string) ViewData["CssClass"]) ?? String.Empty;
+	string value = Model.HasValue ? Model.ToString() : String.Empty;
+
+	if (!useViewModelBinding) cssClass = "personControl " + cssClass;
+
+	Html.RegisterCommonScriptCode("personControl", @"
+		$(document).ready(function (){
+			setTimeout(function() {
+				if (window.console) console.log('personControl starting...'+new Date());
+				$('.personControl').each(function(index, item) {
+					$(this).person({
+							container: $(document.body),
+							value: $(this).data('person-id')
+						});
+				});
+				if (window.console) console.log('personControl stopped. '+new Date());
+			}, 10);
+		});
+	");	
+}
+<a id="@(id)__Link" class="@(cssClass)" href="#" data-tip-pos-my="@(tooltipPositionMy)"	data-tip-pos-at="@(tooltipPositionAt)" onclick="return false;"
+	data-person-id="@(value)" data-actual="@(actual.ToString().ToLower())" 
+		@if (useViewModelBinding) {
+		@: data-bind="personControl: { value: @(name) }" 
+		}		
+		>@(initialLabel)</a>

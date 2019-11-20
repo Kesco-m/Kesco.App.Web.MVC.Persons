@@ -1,0 +1,115 @@
+﻿@inherits Kesco.Persons.Controls.SiteViewPage<Kesco.Persons.Controls.Controllers.PersonSelectUsageController.ViewModel>
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.Models
+@using Kesco.Persons.Controls.Views
+			  
+@{
+    ViewBag.Title = "Использование элемента управления 'Выбор лица'";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header { 
+<h2>Пример использования PersonSelect</h2>
+}
+
+<div id="container" style="overflow: auto;">
+<table width="100%">
+<tr>
+    <td>
+        <span style="float: left;">
+        <pre>
+            // Модель данных
+	        public class DataModel
+	        {
+
+			[Display(Name="Поставщик")]
+			[PersonSelect(CLID = 62)]
+			public int ShipperID { get; set; }
+
+			[Display(Name = "Клиент")]
+			[PersonSelect(CLID = 62)]
+			public int ClientID { get; set; }
+
+	        }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            // Модель представления
+	        public class ViewModel : ViewModel&lt;DataModel&gt; { }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Форма редактирования *@@
+            @@using (var form = Html.BeginForm())
+            {
+                @@Html.EditorForModel();
+            }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Просмотр *@@
+            @@Html.EditorForModel();
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Состояние модели *@@
+        </pre>
+        <pre data-bind="text: ko.toJSON(ko.mapping.toJS(ViewModel.Model))">
+            @@* Состояние модели *@@
+        </pre>
+        </span>
+    </td>
+</tr>
+<tr valign="top">
+    <td>
+        <hr />
+        <h3>Просмотр</h3>
+        @Html.DisplayFor(m => m.Model)
+        <hr />
+        <h3>Форма редактирования</h3>
+        @using (var form = Html.BeginForm())
+        {
+            @Html.EditorFor(m => m.Model);
+        }
+    </td>
+</tr>
+</table>
+</div>
+
+@Html.CommonScriptCode("PersonControls_Usage",
+@<script>
+	$(function () {
+		@* 
+			Обработчик события изменения размера окна 
+		*@
+		$(window).resize(function() {
+			var $parent = $("#dialogContentPane");
+			$("#container").width($parent.width())
+			$("#container").height($parent.height())
+		});
+
+
+	});
+</script>)
+@{
+	
+	Html.RegisterScript(@"
+		
+		;(function(scope, $) {{
+			scope.ViewModel.Model.ShipperID.__SearchParameters.PersonHowSearch(1); // начинается с
+			scope.ViewModel.Model.ShipperID.__SearchParameters.PersonType(1); // является юр лицом
+//			scope.ViewModel.Model.ShipperID.__SearchParameters.IsBank(false); // не является банком
+//			scope.ViewModel.Model.ResponsibleID.__SearchParameters.HowSearch(1); // начинается с
+//			scope.ViewModel.Model.ResponsibleID.__SearchParameters.PersonTypes.push(2); // является физ лицом
+//			scope.ViewModel.Model.BankID.__SearchParameters.HowSearch(1); // начинается с
+//			scope.ViewModel.Model.BankID.__SearchParameters.IsBank(true); // является банком
+		}})(window, jQuery);
+		
+	".FormatWith(""));
+}

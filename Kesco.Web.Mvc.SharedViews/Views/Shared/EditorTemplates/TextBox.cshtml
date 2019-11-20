@@ -1,0 +1,14 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	ModelMetadata meta = ViewData.ModelMetadata;
+
+	List<string> databindings = new List<string>();
+	databindings.Add("decoration: true");
+	databindings.Add((meta.IsRequired ? "valueEx: " : "value: ") + name);
+
+	if (ViewData["Databinding"] != null)
+		databindings.Add(ViewData["Databinding"].ToString());
+}
+@Html.KescoTextBoxFor(m => m, new { style = "width: 100%;", data_bind = String.Join(", ", databindings) })

@@ -1,0 +1,17 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+
+	var width = ViewData["width"] != null ? ViewData["width"].ToString() + "px" : "100px";
+
+	string maskOptions = "options: {}";
+	if (ViewData["maskOptions"] != null) {
+		maskOptions = String.Format("options: {{{0}}}", ViewData["maskOptions"].ToString());
+	}
+}
+<span style="width: @(width);">
+@Html.KescoTextBoxFor(Model => Model, new { 
+		data_bind = "decoration: { width: '"+width+"'}, masked: { value: " + name + ", " + maskOptions + "}"
+	})
+</span>

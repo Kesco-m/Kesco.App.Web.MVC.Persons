@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.Web.Mvc.UI&#xD;&#xA;Пространство имён: Kesco.Web.Mvc.UI">
+    <Position X="0.5" Y="0.5" Height="0.75" Width="11.943" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.Filtering&#xD;&#xA;Классы для параметров фильтраии, которые передаются через строку запроса (QueryString)">
+    <Position X="0.512" Y="1.496" Height="0.448" Width="11.891" />
+  </Comment>
+  <Class Name="Kesco.Web.Mvc.Filtering.ArrayQSFilterSetting">
+    <Position X="7.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\ArrayQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.UniqueIdQSFilterSetting">
+    <Position X="7" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\UniqueIdQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.BooleanQSFilterSetting">
+    <Position X="10" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\BooleanQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.ConstantFilterSetting" Collapsed="true">
+    <Position X="3" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\ConstantFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.FilterSetting&lt;T&gt;">
+    <Position X="0.5" Y="2.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAgAAAAAASAAAQABAAAAAAAAiABAAAAA=</HashCode>
+      <FileName>Filtering\FilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.HiddenFilterSetting" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\HiddenFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.IntQSFilterSetting&lt;T&gt;">
+    <Position X="9.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAIAAAAAAAAAKAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\IntQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.ListQSFilterSetting&lt;T, TElement&gt;">
+    <Position X="10.25" Y="7.75" Width="2" />
+    <NestedTypes>
+      <Delegate Name="Kesco.Web.Mvc.Filtering.ListQSFilterSetting&lt;T, TElement&gt;.ListAccessor" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Filtering\ListQSFilterSetting.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAABAAAAAAAAAAAAgAAAAAAAABAAAAI=</HashCode>
+      <FileName>Filtering\ListQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.QSFilterSetting&lt;T&gt;">
+    <Position X="5" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\QSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.StringQSFilterSetting">
+    <Position X="4.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\StringQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

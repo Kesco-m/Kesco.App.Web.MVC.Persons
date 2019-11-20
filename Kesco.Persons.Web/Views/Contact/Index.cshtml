@@ -1,0 +1,571 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Contact.ViewModel>
+@using Resources
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.UI.Controls
+@using Kesco.Web.Mvc.SharedViews
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models
+
+
+
+
+@{
+	Model
+		.GetScriptCapabilities()
+			.DisableGridScript()
+			.DisableTreeScript();
+	ViewBag.Title = Resources.Kesco_Persons_Web_VW_2000;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+
+<div id="dialogContentPaneContainer" style="overflow: auto;">
+@Html.CommonScriptCode("Contact_Init",
+@<script>
+		function setContactTextCaption() {
+			var caption = "Contact Text";
+			var contactType = parseInt(window.ViewModel.Model.Contact.ContactTypeID());
+			switch(contactType) {
+				case 40: caption = '@(Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Email)'; break;
+				case 41: caption = '@(Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_YahooIM)'; break;
+				case 50: caption = '@(Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Http)'; break;
+				case 51: caption = '@(Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Telex)'; break;
+				case 52: caption = '@(Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Teletype)'; break;
+				case 53: caption = '@(Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Pager)'; break;
+			}
+			$("#Model_Contact_ContactText").text(caption).attr({
+					title: caption,
+					alt: caption
+				});
+		}
+		
+		// http://titan.kescom.com/persons/contact.aspx?id=0&personContactCategor=3&personContactType=30&personContactText=2214&PersonsListContact=58846,19602&docview=yes
+
+		@* Расширим модель представления *@
+		(function(window, undefined) {
+
+			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
+			var value = url.substring(0, url.lastIndexOf('/') + 1);
+
+			ViewModel.prevVersionUrl = value + "contact.aspx?id=@(Html.Raw(Model.Model.Contact.ID + Request.Url.Query.Replace("?", "&")))";
+
+			ViewModel.ContactIsAddressBased = ko.computed(function () {
+				var contactType = parseInt(window.ViewModel.Model.Contact.ContactTypeID());
+				return !isNaN(contactType) && contactType < 20;
+			}, ViewModel);
+
+			ViewModel.ContactIsTelephoneBased = ko.computed(function () {
+				var contactType = parseInt(window.ViewModel.Model.Contact.ContactTypeID());
+				return !isNaN(contactType) && contactType >= 20 && contactType < 40;
+			}, ViewModel);
+
+			ViewModel.ContactIsContactText = ko.computed(function () {
+				var contactType = parseInt(window.ViewModel.Model.Contact.ContactTypeID());
+				return !isNaN(contactType) && contactType >= 40 && contactType < 54;
+			}, ViewModel);
+
+			ViewModel.ContactIsOther = ko.computed(function () {
+				var contactType = parseInt(window.ViewModel.Model.Contact.ContactTypeID());
+				return !isNaN(contactType) && contactType == 54;
+			}, ViewModel);
+
+			ViewModel.Save = function () {
+				var $form = $("#ContactForm");
+				//if (!$form.valid()) return;
+				$.ajax({
+					url: '@(Url.Action("Save"))',
+					type: 'POST',
+					data: window.ko.toJSON({
+						docview: '@((Request["docview"] != null)?Request["docview"]:"")',
+						control: null,
+						model: ko.mapping.toJS(ViewModel.Model)
+					}),
+					contentType: "application/json; charset=utf-8",
+					complete: function() {
+					    
+					}
+				});
+			};
+
+			ViewModel.Delete = function () {
+				if(ViewModel.Model.Contact.ID()==0) return;
+				confirmAction('@Resources.Persons_Delete_Confirm_Title', '@Html.Raw(Resources.Persons_Contact_Delete_Confirm_Text)', '@Resources.GUI_Button_Confirm', function(){ 
+						$.ajax({
+							url: '@(Url.Action("Delete"))',
+							type: 'POST',
+							data: window.ko.toJSON({
+								model: ko.mapping.toJS(ViewModel.Model)
+							}),
+							contentType: "application/json; charset=utf-8",
+							complete: function() {
+							}
+						});
+					}, '@Resources.GUI_Button_Cancel', null, null);
+			};
+		})(this);
+
+		function contactTypeChanged() {
+			setContactTextCaption();
+			updateContactText();
+		    setCountryFildEmpty();
+		}
+
+		function adjustPhone() {
+			//ViewModel.Model.AreaID(null);
+			ViewModel.dispatchModelCommand('AdjustPhone');
+		}
+
+		function updateContactText() {
+			ViewModel.dispatchModelCommand('UpdateContactText');
+		}
+
+		function setCountryFildEmpty() {
+             var countryField = document.getElementById('Model_Contact_CountryID___Autocomplete');
+            if(countryField == null) return;
+                countryField.onfocusout = function() {
+                    if(countryField.value == null || countryField.value == "") {
+                        ViewModel.Model.Contact.CountryID('');
+                    }
+                };
+        }
+      
+
+       function setMaskedFieldsCLickAction(fieldName) {
+        var field = document.getElementById(fieldName);
+        if(field != null && field != "" && field != undefined) {
+            field.onclick = function () {
+                setTimeout(function () {
+                    if(field.value[0] == ' ') {
+                        field.select();
+                    }
+                }, 450);
+            }
+        }
+    }
+
+        $(document).ready(function () {
+
+            
+           
+            @* При фокусе на поле с кодом города текст в поле выделяется*@
+            setMaskedFieldsCLickAction('Model_Contact_CityPhoneCode');
+
+
+		    			@* подписываемся на изменения свойств для обновления текста контакта *@
+			//ViewModel.Model.Contact.ContactTypeID.subscribe(updateContactText);
+			$("#Model_Contact_ContactTypeID")
+				.change(function() {
+					contactTypeChanged();
+				});
+			setContactTextCaption();
+
+			ViewModel.Model.Contact.Zip.subscribe(updateContactText);
+			ViewModel.Model.Contact.CountryID.subscribe(updateContactText);
+			ViewModel.Model.Contact.Region.subscribe(updateContactText);
+			ViewModel.Model.Contact.CityName.subscribe(updateContactText);
+			ViewModel.Model.Contact.CityNameRus.subscribe(updateContactText);
+			ViewModel.Model.Contact.Address.subscribe(updateContactText);
+			ViewModel.Model.Contact.PersonID.subscribe(function(newValue) {
+				$.ajax({ 
+						url: '@(Url.Action("GetPersonAccessLevel"))',
+						data: { personID: newValue }
+					});
+			});
+			
+			$("#Model_Contact_CountryPhoneCode, #Model_Contact_CityPhoneCode, #Model_Contact_PhoneNumber")
+				.change(function() {
+					setTimeout(function() { adjustPhone(); }, 300);
+				});
+			//ViewModel.Model.Contact.CountryPhoneCode.subscribe(updateContactText);
+			//ViewModel.Model.Contact.CityPhoneCode.subscribe(updateContactText);
+			//ViewModel.Model.Contact.PhoneNumber.subscribe(updateContactText);
+			ViewModel.Model.Contact.PhoneNumberAdd.subscribe(updateContactText);
+
+			ViewModel.Model.Contact.OtherContact.subscribe(updateContactText);
+
+			$(window).resize(function () {
+				$("#dialogContentPaneContainer").height($("#dialogContentPane").height());
+				$("#dialogContentPaneContainer").width($("#dialogContentPane").width());
+			});
+
+			$("#ContactForm").submit(function () {
+				// this - DOM element - form
+				var $form = $(this);
+				if ($form.valid()) {
+					window.ViewModel.Save();
+				}
+				return false;
+			});
+             @*При потере фокуса поле страна проверяется на наличие текста и обновляет модель *@
+            setCountryFildEmpty();
+		});
+</script>)
+@{ Html.EnableClientValidation(); }
+
+@using (Html.BeginForm("Save", "Contact", FormMethod.Post, new { id = "ContactForm", name = "ContactForm", onsubmit = "return false;" }))
+{
+	@Html.ValidationSummary(true)
+
+	@Html.HiddenFor(m => m.Model.Contact.ID)
+	<br />
+	<div data-bind="visible: !Model.Contact.PersonID()" style="color: Red;"><small>@(Kesco.Persons.Web.Localization.Resources.Persons_Contact_PleaseSpecifyPerson)</small></div>
+	<table class="formTable" cellspacing="0" cellpadding="4" border="0" style="min-width: 600px;">
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.Contact.PersonID, new { @for = "Model_Contact_PersonID___Autocomplete" }):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.PersonID)
+				@Html.ValidationMessageFor(m => m.Model.Contact.PersonID)
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.ContactTypeID):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.ContactTypeID, new { EnableExpr = "AccessLevel()>=2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.ContactTypeID)
+			</div>
+		</td>
+	</tr>
+	<tr data-bind="visible: ViewModel.LinksCount()>0">
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr valign="top" data-bind="visible: ViewModel.LinksCount()>0">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.Contact.PersonLinkID
+					,(Model.Model.Person == null || Model.Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Juridical)
+						? Kesco.Persons.Web.Localization.Resources.Views_Contact_PersonLinkID_Label_ByEmployee
+							: Kesco.Persons.Web.Localization.Resources.Views_Contact_PersonLinkID_Label_ByWorkPlace
+					, new { id = "Model_Contact_PersonLinkID_Label",
+							alt = (Model.Model.Person == null || Model.Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Juridical)
+								? Kesco.Persons.Web.Localization.Resources.Views_Contact_PersonLinkID_Label_ByEmployee
+								: Kesco.Persons.Web.Localization.Resources.Views_Contact_PersonLinkID_Label_ByWorkPlace,
+							title = (Model.Model.Person == null || Model.Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Juridical)
+								? Kesco.Persons.Web.Localization.Resources.Views_Contact_PersonLinkID_Label_ByEmployee
+								: Kesco.Persons.Web.Localization.Resources.Views_Contact_PersonLinkID_Label_ByWorkPlace,
+							@for = "Model_Contact_PersonLinkID___Autocomplete"
+					}
+				):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.PersonLinkID,
+						new { HtmlAttributes = new { data_bind = "selectBoxEnabled: AccessLevel()>=2" } })
+				@Html.ValidationMessageFor(m => m.Model.Contact.PersonLinkID)
+			</div>
+		</td>
+	</tr>
+	<tr data-bind="visible: ContactIsAddressBased">
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsAddressBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.Zip):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.Zip, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.Zip)
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsAddressBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.Contact.CountryID, new { @for = "Model_Contact_CountryID___Autocomplete" }):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.CountryID,
+						new { HtmlAttributes = new { data_bind = "selectBoxEnabled: AccessLevel()>=2" } })
+				@Html.ValidationMessageFor(m => m.Model.Contact.CountryID)
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsAddressBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.Region):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.Region, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.Region)
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsAddressBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.CityName):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.CityName, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.CityName)
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsAddressBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.Address):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.Address, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.Address)
+			</div>
+		</td>
+	</tr>
+
+	<tr data-bind="visible: ContactIsTelephoneBased">
+		<td colspan="2" style="border-bottom: 1px solid; height: 2px;"></td>
+	</tr>
+	<tr data-bind="visible: ContactIsTelephoneBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.CountryPhoneCode):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.CountryPhoneCode, new { Databinding = "enable: AccessLevel() >= 2", width = 80, maskOptions = "mask: '99999999', placeholder: ''"  })
+				<a href="#" onclick="setTimeout(function(){ViewModel.dispatchModelCommand('ChooseCountryPhoneCode','Model_Contact_CountryPhoneCode')},200);" data-bind="visible: ViewModel.AccessLevel()">...</a>
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsTelephoneBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.CityPhoneCode):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.CityPhoneCode, new { Databinding = "enable: AccessLevel() >= 2", width = 80, maskOptions = "mask: '99999999', placeholder: ' '" })
+				<a href="#" onclick="setTimeout(function(){ViewModel.dispatchModelCommand('ChooseCityPhoneCode', 'Model_Contact_CityPhoneCode')},200);" data-bind="visible: ViewModel.AccessLevel()">...</a>
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsTelephoneBased">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.PhoneNumber):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.PhoneNumber, new { width = "150", Databinding = "enable: AccessLevel() >= 2" })
+				@Html.LabelForEx(m => m.Model.Contact.PhoneNumberAdd):
+				@Html.EditorFor(m => m.Model.Contact.PhoneNumberAdd, new { width = "50", Databinding = "enable: AccessLevel() >= 2" })
+			</div>
+		</td>
+	</tr>
+	<tr valign="top" data-bind="visible: ContactIsTelephoneBased">
+		<td style="width: 150px; padding-top: 4px;">&nbsp;</td>
+		<td>
+			<div class="editor-field" data-bind="html: Model.Direction">
+			</div>
+		</td>
+	</tr>
+
+	<tr data-bind="visible: ContactIsContactText()">
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr data-bind="visible: ContactIsContactText()">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.Contact.ContactText,
+						new { id = "Model_Contact_ContactText" }):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.ContactText, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.ContactText)
+			</div>
+		</td>
+	</tr>
+
+	<tr data-bind="visible: ContactIsOther">
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr data-bind="visible: ContactIsOther">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.OtherContact):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.OtherContact, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.OtherContact)
+			</div>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.Contact.Comment):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Contact.Comment, new { Databinding = "enable: AccessLevel() >= 2" })
+				@Html.ValidationMessageFor(m => m.Model.Contact.Comment)
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" style="border-top: 1px solid;"></td>
+	</tr>
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">&nbsp;</div>
+		</td>
+		<td>
+			<div style="float:left;" data-bind="text: Model.Contact.PhoneNumberCorporative()+' (', visible: Model.Contact.PhoneNumberCorporative"></div>
+			<div style="float:left;" data-bind="text: Model.Contact.ContactText"></div>
+			<div style="float:left;" data-bind="visible: Model.Contact.PhoneNumberCorporative">)</div>
+			<div style="clear:both" />
+		</td>
+	</tr>
+	</table>
+}
+</div>
+
+
+@section Header {
+<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar" style="padding: 2px;" data-bind="visible: PageLoaded">
+	<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr>
+			<td>
+				<button type="button" data-bind="
+						click: function() { ViewModel.Save(); $('#SubmitButton').click(); },
+						jqueryui: { widget: 'button', options: { disabled: Processing() || AccessLevel() < 2, icons: { primary: 'ui-icon-check' } } }
+					">@Resources.GUI_Button_Save</button>
+				<button type="button" data-bind="
+						click: Delete,
+						jqueryui: { widget: 'button', options: { disabled: Processing() || !Model.Contact.ID() || AccessLevel() < 2, icons: { primary: 'ui-icon-trash' } } }
+					">@Resources.GUI_Button_Delete</button>
+				<button type="button" data-bind="
+						click: closeDialog,
+						jqueryui: { widget: 'button', options: { disabled: Processing(), icons: { primary: 'ui-icon-cancel' } } }
+					">@Resources.GUI_Button_Cancel</button>
+			</td>
+			<td nowrap="nowrap" style="width: 30px;">
+				<button type="button" style="display: none;"
+					data-bind="jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, visible: PageLoaded, click: showHelp"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+			</td>
+            
+            
+
+           
+
+			
+		</tr>
+	</table>
+</div>
+}
+
+@section Footer { 
+@Html.CommonScriptCode("Contact_Footer",
+@<script>
+     function chooseCountry(x) {
+         var _title = '';
+         switch (x) {
+             case 4: _title = 'Выбор населенного пункта'; break;
+             case 2: _title = 'Выбор страны'; break;
+         }
+         doSrvCmd("ChooseArea", x, _title);
+     }
+</script>)
+@{
+	string parentIDs = String.Empty;
+	string childIDs = String.Empty;
+	string fieldToShow = "FriendlyName";
+	if (Model.Model.Person == null) {
+		parentIDs = "";
+		fieldToShow = "Child";
+	} else {
+		if (Model.Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Juridical) {
+			parentIDs = Model.Model.Person.ID.ToString();
+			fieldToShow = "Child";
+		} else {
+			childIDs = Model.Model.Person.ID.ToString();
+			fieldToShow = "Parent";
+		}
+	}
+	Html.RegisterScript(@String.Format(@"
+		;(function() {{
+
+			ViewModel.{0}_ParentIDs = ko.observable('{1}');
+			ViewModel.{0}_ChildIDs = ko.observable('{2}');
+			var $control = $('#{0}');
+            
+			var onCommand = $control.selectBox('option','command');
+			$control.selectBox('option', {{ 
+				command: function(event, ui) {{
+					ui.item.parameters = $.extend(ui.item.parameters || {{}}, {{
+						LinkTypeIDs: '1',
+						ParentIDs: ViewModel.{0}_ParentIDs(),
+						ChildIDs: ViewModel.{0}_ChildIDs() 
+					}});
+
+					onCommand.apply(this, arguments);
+				}}
+			}});
+
+			window.PersonLink_HandleFormatItem = function (item) {{
+				var comment = (item.data.Description) ? item.data.Description : '';
+				var s = '';
+				s += "" <span style='width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display:inline-block;'>"" + item.data.{3} + ""</span>"";
+				s += "" <span style='overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display:inline-block;'><small><i>"" + comment + ""</i></small></span>"";
+				return s;
+			}}
+
+			$control.selectBox('option', 'displayField', '{3}');
+		}})();
+	", "Model_Contact_PersonLinkID", parentIDs, childIDs, fieldToShow));
+}
+@Html.DisplayFor(m => m.Model.Contact, "ChangedByInfo")
+}

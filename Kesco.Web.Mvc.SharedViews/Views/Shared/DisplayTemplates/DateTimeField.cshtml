@@ -1,0 +1,3 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<DateTime?>
+@using Kesco.Web.Mvc.UI
+<span data-bind="text: Globalize.format(@(ViewData.TemplateInfo.HtmlFieldPrefix)(), 'F', 'kesco')"></span>

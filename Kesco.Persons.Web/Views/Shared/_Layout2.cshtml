@@ -1,0 +1,64 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Web.Mvc.DialogViewModel>
+
+@using Kesco.Web.Mvc
+
+<!DOCTYPE html>
+<html>
+<head >
+    <title>@ViewBag.Title</title>
+	<link rel="icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" />
+	<link rel="shortcut icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" /> 
+	
+	@* Определим скрипты и CSS стили *@
+	@Html.Partial("PageHeadSection")
+
+	<style type="text/css">
+		body {
+			overflow: hidden;	
+		}
+		.field-validation-error {
+			display: block !important;
+		}
+
+	</style>
+
+<body>
+	<span id="wndSize" style="background-color: transparent; position: absolute; right: 42px; top: 3px;"></span>
+
+	@* Определим дополнительные настроичные скрипты *@
+	@Html.Partial("PageScriptsAndSetup")
+
+	@* Определим модель представления на стороне клиента *@
+	@Html.Partial("ClientSideViewModel", (object) Model)
+	
+	@* Выводим форму возврата результата *@
+	@Html.Partial("DialogResultForm")
+
+	@* Определим секцию для верхней части страницы *@
+	<div id="dialogHeader" style="display: none; border: 1px dashed silver;" data-bind="visible: PageLoaded">
+		@RenderSection("Header", required: false)
+	</div>
+
+	@* Основная область страницы *@
+	<div id="dialogContentPane" class="ui-widget-content" style="overflow: hidden; padding: 2px; display: none;"
+		data-bind="visible: PageLoaded">
+		@RenderBody()
+	</div>
+
+	@* Определим секцию для нижней части страницы *@
+	<div id="dialogFooter" class="ui-widget" style="padding: 5px 5px 0px 5px; text-align: center; display: none;"
+		data-bind="visible: PageLoaded">
+		@RenderSection("Footer", required: false)
+	</div>
+
+	@* Инициализация модели представления и отрисовка страницы *@
+	<script language="javascript" type="text/javascript">
+		$(document).ready(function() {
+			ViewModel.PageLoaded(true);
+			ko.applyBindings(ViewModel);
+			var $window = $(window);
+			$window.resize();
+		});
+	</script>
+</body>
+</html>

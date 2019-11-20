@@ -1,0 +1,88 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Resources
+@using Kesco.Web.Mvc;
+@using Kesco.Persons.Web.Models.Dossier
+@{
+	int personID = Model.ViewModel.Model.PersonID;
+	string url = Model.Section.GetURL(Model.ViewModel.Model.PersonID);
+	int accessLevel = (int)Model.ViewModel.AccessLevel;
+	var sectionID = Model.Section.ID.ToString();
+	var currentAccess = Model.AccessGranted;
+	var items = Model.ViewModel.LinkedUsersUnder;
+
+	if (items.Count == 0) {Html.DossierClientSideScript_HideSection(Model.Section.ID);}
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+	Html.DossierClientSideScript_EditLink(sectionID.ToString(), url);
+}
+
+@foreach (var item in items) {
+	<tr class="hoverable dsl@(sectionID)">
+		<td colspan="2" style="padding-left: 20px;">
+			@if (currentAccess>0) {
+			<a href="javascript: void(0);"
+				onclick="dossierEditLink_@(sectionID)(@(item.ID), @(sectionID), @(hideOldVer));"
+				title="@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Edit_Edit)"
+				><span class="ui-icon ui-icon-pencil text-ui-icon"></span>
+			</a>
+			}
+			@Html.DisplayFor(m => item.LinkID, "PersonStatic", new {
+				TooltipPositionMy = "middle left", TooltipPositionAt = "middle right",
+				InitialLabel = HL(item.LinkText)
+			}) 
+			@Html.Raw(HL(item.Label))
+			@if (item.Order == 200) {
+				<div class="error" style="font-size: .8em;">@Resources.Persons_Dossier_NoEmployee</div>
+			}
+			else if (item.Order == 300) {
+				<div class="error" style="font-size: .8em;">@Resources.Persons_Dossier_EmployeeHasNoPost</div>
+			}
+		</td>
+		<td class="changed">
+			@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new {
+				TooltipPositionMy = "middle right", TooltipPositionAt = "middle left",
+				InitialLabel = HL(item.ChangedByFIO) }) 
+			<span>@(item.ChangedDate)</span>
+		</td>
+	</tr>
+	foreach (var contactGroup in item.Contacts) {
+		int i = 0;
+		foreach (var contact in contactGroup.Items) {
+		<tr class="hoverable contact dsl@(sectionID)">
+			<td style="padding-left: 20px; width:140px;">@if (i++ == 0){@(contactGroup.Caption + ":")} else{@Html.Raw("&nbsp;")}</td>
+			<td>
+				@if (accessLevel >= 2 && currentAccess > 0) {
+				<a href="javascript: void(0);"
+					onclick="editContact(@(contact.ID), @(sectionID), @(hideOldVer));"
+					title="@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Edit_Edit)"
+					><span class="ui-icon ui-icon-pencil text-ui-icon"></span></a>
+				}
+				@Html.DisplayFor(m => contact.ContactText, GetControlNameByContactType(contact.ContactTypeID), new {
+					PhoneNumber = contact.PhoneNumber
+				})
+				@if(contact.Comment.Length > 0){@Html.Raw("(") @(contact.Comment) @Html.Raw(")")}
+				@if(contact.LinkedPersonText.Length > 0){
+					<span class='clGray'> @(contact.LinkedPersonText) </span>
+				}
+			</td>
+			<td class="changed">
+				@Html.DisplayFor(m => contact.ChangedBy, "EmployeeStatic", new {
+					TooltipPositionMy = "middle right", TooltipPositionAt = "middle left",
+					InitialLabel = contact.ChangedByFIO }) 
+				<span>@(contact.ChangedDate)</span>
+			</td>
+		</tr>
+		}
+	}
+}

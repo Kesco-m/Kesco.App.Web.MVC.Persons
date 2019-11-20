@@ -1,0 +1,69 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Synchronize.ViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Web.Models.Synchronize
+@{
+	Model
+		.GetScriptCapabilities()
+			.DisableTreeScript()
+			.DisableGridScript();
+	ViewBag.Title = Request["title"] ?? Kesco.Persons.Web.Localization.Resources.Persons_Synchronize_PageTitle;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.differences { padding: 5px; }
+	.differences .caption { padding: 3px; }
+	.difference { border-bottom: 1px solid gray; padding: 3px 0; }
+	.difference .field { width: 180px; padding-right: 20px; display: inline-block; }
+	.difference .insteadof { width: 180px; padding-right: 20px; display: inline-block; text-align: right; color: Gray; }
+	.difference .source { }
+	.difference .target { color: Gray;}
+</style>
+@if (Model.Differences.HasDiffences) {
+	<div>@(global::Resources.Resources.Persons_Synchronize_DifferencesHeader):</div>
+	@if (Model.Differences.Data.Count > 0) {
+	<div class="differences">
+		<div class="caption ui-widget-header">@(global::Resources.Resources.Persons_Synchronize_Differences_Requisites):</div>
+		@foreach (Difference diff in Model.Differences.Data) {
+		<div class="difference">
+			<span class="field">@diff.Field</span> 
+			<span class="source">@diff.Source</span><br />
+			<span class="insteadof">вместо</span> 
+			<span class="target">@diff.Target</span>
+		</div>
+		}
+	</div>
+	}
+	
+	@if (Model.Differences.WorkPlaces.Count > 0) {
+	<div class="differences">
+		<div class="caption ui-widget-header">Места работы:</div>
+		@foreach (WorkPlaceDifference diff in Model.Differences.WorkPlaces) {
+		<div class="difference">
+			<span class="field">@diff.PersonNickname</span> 
+			<span class="source">@diff.Position</span><br />
+		</div>
+		}
+	</div>
+	}
+}
+
+@section Header{
+	<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar"
+		style="padding: 2px;"
+		data-bind="visible: PageLoaded">
+		<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr valign="middle">
+			<td >&nbsp;
+				<button type="button" data-bind=" 
+						click: function() { ViewModel.Model.Confirmed(false); $('#SubmitButton').click(); },
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-transferthick-e-w' } } }
+					">@(global::Resources.Resources.GUI_Button_Synchronize)</button>
+				<button type="button" id="btnCancel" data-bind=" 
+						click: closeDialog, 
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-cancel' } } }
+					">@(global::Resources.Resources.GUI_Button_Cancel)</button>
+			</td>
+		</tr>
+		</table>
+	</div>
+}

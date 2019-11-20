@@ -1,0 +1,1005 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.SearchViewModel>
+@using Resources
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models
+@using System.Text.RegularExpressions
+@{
+	Model
+		.GetScriptCapabilities()
+			.DisableTreeScript();
+	ViewBag.Title = Resources.Persons_Search_PageTitle;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+	SearchResultViewModel gridModel = new SearchResultViewModel();
+
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+@section Header {
+	<style>
+		#searchResultGrid { cursor: pointer !important; }
+	</style>
+	<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar"
+		style="padding: 2px;"
+		data-bind="visible: PageLoaded">
+		<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr valign="middle">
+			<td >&nbsp;
+				<button type="button" data-bind="
+						enabled: !Processing,
+						jqueryui: { widget: 'button', options : { icons: { primary: 'ui-icon-cancel' } } },
+						click: closeDialog,
+						visible: ViewModel.showReturnButton"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.KescoTreeView_DialogButton_Cancel)</button>
+				<button type="button" data-bind="
+						enabled: !Processing,
+						jqueryui: { widget: 'button', options : { icons: { primary: 'ui-icon-home' } } },
+						click: newJuridical"
+					>@(Resources.Kesco_Persons_Web_VW_140)</button>
+				<button type="button" data-bind="
+						enabled: !Processing,
+						jqueryui: { widget: 'button', options : { icons: { primary: 'ui-icon-person' } } },
+						click: newIndividual"
+					>@(Resources.Kesco_Persons_Web_VW_134)</button>
+			</td>
+			<td nowrap="nowrap" style="width: 60px;">
+				@Html.Partial("ThemeRoller")
+			</td>
+			<td nowrap="nowrap" style="width: 30px;">
+				<button type="button" style="display: none;"
+						data-bind="jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, click: showHelp"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+			</td>
+
+		</tr>
+		</table>
+	</div>
+}
+
+
+<div id="container" style="overflow: auto;">
+
+@Html.CommonScriptCode("Persons_Search1",
+@<script>
+		function joinIntArray(arr) {
+			var result = 0;
+		
+			for (var i = 0; i < arr.length; i++)
+				result += parseInt(arr[i]);
+
+			return result;
+		}
+
+		function getLinkType(typeId)
+		{
+			var ret = "@(Resources.Kesco_Persons_Search_1004)";
+			switch(typeId)
+			{
+			case "1":   ret = "@(Resources.Kesco_Persons_Search_1005)"; break;
+			case "2":   ret = "@(Resources.Kesco_Persons_Search_1006)"; break;
+			case "21":	ret = "@(Resources.Kesco_Persons_Search_1007)"; break;
+			case "22":	ret = "@(Resources.Kesco_Persons_Search_1008)"; break;
+			case "31":	ret = "@(Resources.Kesco_Persons_Search_1009)"; break;
+			case "32":	ret = "@(Resources.Kesco_Persons_Search_1010)"; break;
+			case "41":	ret = "@(Resources.Kesco_Persons_Search_1011)"; break;
+			case "42":	ret = "@(Resources.Kesco_Persons_Search_1012)"; break;
+			}
+			return ret;
+		}
+
+		function extractPropertyAsArray(objectArray, property) {
+			var arr = [];
+			if ($.isArray(objectArray)) {
+				for (var i = 0; i < objectArray.length; i++) {
+					arr.push(objectArray[i][property]);
+				}
+			}
+			return arr;
+		}
+
+		function prepareParams() {
+			var filterSettings = ko.mapping.toJS(ViewModel.filterSettings);
+
+			ViewModel.Params.PersonWhereSearch(joinIntArray(ko.toJS(filterSettings.PersonWhereSearch.Value)));
+			ViewModel.Params.PersonHowSearch(filterSettings.PersonHowSearch.Value);
+			ViewModel.Params.PersonType(joinIntArray(ko.toJS(filterSettings.PersonType.Value)));
+			ViewModel.Params.PersonCheck(joinIntArray(ko.toJS(filterSettings.Veracity.Value)));
+			ViewModel.Params.PersonOPForma(filterSettings.PersonOPForma.Value);
+			ViewModel.Params.PersonArea(filterSettings.PersonArea.Value == 0 ? "" : filterSettings.PersonArea.Value);
+				
+			if (filterSettings.BusinessProject.Enable) {
+				ViewModel.Params.PersonBProject(filterSettings.BusinessProject.Value == 0 ? "" : filterSettings.BusinessProject.Value);
+				ViewModel.Params.PersonSubBProject(filterSettings.BusinessProject.SubBProject ? 1 : 0);
+				ViewModel.Params.PersonAllBProject(filterSettings.BusinessProject.AllBProject ? 1 : 0);
+			} else {
+				ViewModel.Params.PersonBProject("");
+			    ViewModel.Params.PersonSubBProject(0);
+			    ViewModel.Params.PersonAllBProject(0);
+			}
+
+			var users = extractPropertyAsArray(filterSettings.PersonUsers.List, "ID");
+			var themes = extractPropertyAsArray(filterSettings.PersonThemes.List, "ID");
+
+			ViewModel.Params.PersonUsers(users.join(","));
+			ViewModel.Params.PersonThemes(themes.join(","));
+			ViewModel.Params.PersonSubThemes(filterSettings.PersonThemes.Subthemes ? 1 : 0);
+		}
+
+		function DoSearch() {
+			var $form = $("#SearchForm");
+			//if ($form.valid()) {
+				@* Подготовка параметров для запроса поиска Kesco.DALC.Persons.Repository.SearchPersonParameters *@
+				var searchParameters = {};
+				searchParameters.execute = 1;
+
+				var filterSettings = ko.mapping.toJS(ViewModel.filterSettings);
+				var users = extractPropertyAsArray(filterSettings.PersonUsers.List, "ID");
+				var themes = extractPropertyAsArray(filterSettings.PersonThemes.List, "ID");
+				
+				searchParameters.PersonWhereSearch = (filterSettings.PersonWhereSearch.Enable) ? joinIntArray(ko.toJS(filterSettings.PersonWhereSearch.Value)) : null;
+				searchParameters.PersonHowSearch = (filterSettings.PersonHowSearch.Enable) ? ko.toJS(filterSettings.PersonHowSearch.Value) : null;
+				searchParameters.Search = ko.toJS(filterSettings.Search.Value);
+
+				searchParameters.PersonType = (filterSettings.PersonType.Enable) ? joinIntArray(ko.toJS(filterSettings.PersonType.Value)) : null;
+				searchParameters.PersonCheck = (filterSettings.Veracity.Enable) ? joinIntArray(ko.toJS(filterSettings.Veracity.Value)) : null;
+				
+				searchParameters.PersonOPForma = (filterSettings.PersonOPForma.Enable) ? (filterSettings.PersonOPForma.Value ? filterSettings.PersonOPForma.Value : 0) : null;
+				searchParameters.PersonArea = (filterSettings.PersonArea.Enable) ? ko.toJS((filterSettings.PersonArea.Value == '' || filterSettings.PersonArea.Value == null)? '0' : filterSettings.PersonArea.Value) : null;
+
+				if (filterSettings.PersonTUnion.Value.length > 0)
+					searchParameters.PersonTUnion = (filterSettings.PersonTUnion.Value == "0" ? 0 : 1);
+				
+				if (filterSettings.PersonLink.Value.length > 0) {
+					searchParameters.PersonLink = filterSettings.PersonLink.Value;
+				}
+				
+				if (filterSettings.PersonLinkType.Value.length > 0) {
+					searchParameters.PersonLinkType = filterSettings.PersonLinkType.Value;
+				}
+				
+				if (filterSettings.BusinessProject.Enable) {
+					searchParameters.PersonBProject = ko.toJS(filterSettings.BusinessProject.Value);
+					searchParameters.PersonSubBProject = (filterSettings.BusinessProject.SubBProject ? 1 : 0);
+					searchParameters.PersonAllBProject = (filterSettings.BusinessProject.AllBProject ? 1 : 0);
+				} else {
+				    searchParameters.PersonBProject = "";
+			        searchParameters.PersonSubBProject = 0;
+			        searchParameters.PersonAllBProject = "";
+				}
+
+				searchParameters.PersonUsers = (filterSettings.PersonUsers.Enable) ? (users.join(",") == '' ? ' ' : users.join(",")) : '';
+				//alert("'" + searchParameters.PersonUsers + "'");
+
+				searchParameters.PersonThemes = (filterSettings.PersonThemes.Enable) ? (themes.join(",") == '' ? ' ' : themes.join(",")) : '';
+				searchParameters.PersonSubThemes = (filterSettings.PersonThemes.Enable) ? (filterSettings.PersonThemes.Subthemes ? 1 : 0) : null;
+				
+				if (filterSettings.PersonForSend.Value.length > 0) {
+					searchParameters.PersonForSend = filterSettings.PersonForSend.Value;
+				}
+				
+				if (filterSettings.PersonAdvSearch.Value.length > 0) {
+					searchParameters.PersonAdvSearch = filterSettings.PersonAdvSearch.Value;
+				}
+
+				//searchParameters.PersonSelectTop = filterSettings.PersonSelectTop.Value
+
+				@* + сохранение настроек пользователя *@
+				//prepareParams();
+				@* - сохранение настроек пользователя *@
+
+				$("#searchResultGrid")
+					.jqGrid('setGridParam', { postData: searchParameters })
+					.trigger('reloadGrid', [{ page: 1}]);
+			//}
+			return false;
+		}
+
+		$(document).ready(function () {
+			var $container = $("#container");
+			var resizeContainer = function () {
+				var $parent = $container.parent();
+				$container.height($parent.height() - 2);
+				$container.width($parent.width() - 2);
+			};
+			$(window).resize(resizeContainer);
+
+
+			$(document).on("jqGridLoadComplete", function() {
+				if(window.console) console.log("Event: jqGridLoadComplete. Args", arguments);
+			});
+			$("#SearchForm").submit(DoSearch);
+
+			@* Пустое значение при поиске ОП формы *@
+			ViewModel.IncorporationForms.unshift({ID:null, Name:'@(Resources.Kesco_Persons_Web_VW_125)'});
+
+
+
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+            var PersonAllBProject = getParameterByName('PersonAllBProject');
+		    
+
+		    if(PersonAllBProject != null && PersonAllBProject != "") {
+		        $('#BusinessProject_checkBox').enable(false);
+		        $('#AllBProject_checkBox').enable(false);
+		        window.ViewModel.filterSettings.BusinessProject.Editable(false);
+		    }
+		    
+            //window.ViewModel.filterSettings.BusinessProject.AllBProject.subscribe
+
+		});
+</script>)
+	@{ Html.EnableClientValidation(); }
+	@using (Html.BeginForm("Execute", "Search", FormMethod.Post, new { id = "SearchForm" }))
+	{
+		<div id="searchQuery">
+			<table cellspacing="0" cellpadding="0" width="100%" border="0">
+				<tr>
+					<td style="WIDTH: 5px">
+						<fieldset data-bind="disable: !filterSettings.PersonWhereSearch.Editable()">
+							<table cellspacing="0" cellpadding="0">
+								<tr><td nowrap="nowrap">
+										<input id="WhereSearch1" type="checkbox" value="1" data-bind="
+									checked: filterSettings.PersonWhereSearch.Value"/>
+										@(Resources.Kesco_Persons_Web_VW_103)
+									</td></tr>
+								<tr><td nowrap="nowrap">
+										<input id="WhereSearch2" type="checkbox" value="2" data-bind="
+									checked: filterSettings.PersonWhereSearch.Value"/>
+										@(Resources.Kesco_Persons_Web_VW_104)
+									</td></tr>
+								<tr><td nowrap="nowrap">
+										<input id="WhereSearch3" type="checkbox" value="4" data-bind="
+									checked: filterSettings.PersonWhereSearch.Value"/>
+										@(Resources.Kesco_Persons_Web_VW_105)
+									</td></tr>
+							</table>
+						</fieldset>
+					</td>
+					<td style="BORDER-RIGHT: darkgray 1px solid; WIDTH: 1px">&nbsp;</td>
+					<td style="WIDTH: 5px">
+						<fieldset data-bind="disable: !filterSettings.PersonHowSearch.Editable()">
+							<table cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
+								<tr><td nowrap="nowrap">
+										<input id="HowSearch0" type="radio" name="HowSearch" data-bind="
+									checkedValue:1, checked:filterSettings.PersonHowSearch.Value"/>
+										<label for="HowSearch0">@(Resources.Kesco_Persons_Web_VW_106)</label>
+									</td></tr>
+								<tr><td nowrap="nowrap">
+										<input id="HowSearch1" type="radio" name="HowSearch" data-bind="
+									checkedValue:2, checked: filterSettings.PersonHowSearch.Value"/>
+										<label for="HowSearch1">@(Resources.Kesco_Persons_Web_VW_107)</label>
+									</td></tr>
+							</table>
+						</fieldset>
+					</td>
+					<td style="BORDER-RIGHT: darkgray 1px solid; WIDTH: 1px">&nbsp;</td>
+					<td style="WIDTH: 220px" nowrap="nowrap">
+						<input name="filterSettingsSearchValue" id="filterSettingsSearchValue" data-bind="value: filterSettings.Search.Value, decoration: true" />
+					</td>
+					<td nowrap="nowrap">&nbsp;&nbsp;<button type="submit" data-bind="
+						click: function() { DoSearch(); },
+						enabled: !Processing, 
+						jqueryui: {widget: 'button', options: { icons: {primary: 'ui-icon-search'}}}
+					">@(Resources.Kesco_Persons_Web_VW_108)</button></td>
+				</tr>
+			</table>
+			@Html.ValidationSummary()
+			<hr/>
+		</div>
+		@Html.CommonScriptCode("Persons_Search2",
+		@<script>
+			@* Расширим модель представления *@
+			(function(window, undefined) {
+				ViewModel.disableFilterSettings = function() {
+					if(this.filterSettings.PersonWhereSearch.Editable())	this.filterSettings.PersonWhereSearch.Value(["1"]);
+					if(this.filterSettings.PersonHowSearch.Editable())		this.filterSettings.PersonHowSearch.Value(1);
+					if(this.filterSettings.Search.Editable())				this.filterSettings.Search.Value("");
+					if(this.filterSettings.PersonType.Editable())			this.filterSettings.PersonType.Enable(false);
+					if(this.filterSettings.Veracity.Editable())				this.filterSettings.Veracity.Enable(false);
+					if(this.filterSettings.BusinessProject.Editable())		this.filterSettings.BusinessProject.Enable(false);
+					if(this.filterSettings.PersonArea.Editable())			this.filterSettings.PersonArea.Enable(false);
+					if(this.filterSettings.PersonOPForma.Editable())		this.filterSettings.PersonOPForma.Enable(false);
+					if(this.filterSettings.PersonUsers.Editable())			this.filterSettings.PersonUsers.Enable(false);
+					if(this.filterSettings.PersonThemes.Editable())			this.filterSettings.PersonThemes.Enable(false);
+
+					//DoSearch();
+				};
+
+				@* Вычисление ссылки на старую версию приложения *@
+				@{
+					string url = Configuration.AppSettings.URI_person_search_old + Request.Url.Query;
+					url = Regex.Replace( Regex.Replace(url, "[?]search=[^&]*(&|$)", "?", RegexOptions.IgnoreCase), "&search=[^&]*(&|$)", "&", RegexOptions.IgnoreCase);
+				}
+				ViewModel.prevVersionUrl =  window.ko.computed(function () {
+					return "@(Html.Raw(url))" + (window.ViewModel.filterSettings.Search.Value() == "" ? "" : "@(Html.Raw(Request.Url.Query!="" ? "&" : "?"))search=" + window.ViewModel.filterSettings.Search.Value());
+				}, window.ViewModel);
+
+				ViewModel.hasRolesForBProject = ViewModel.HasRolesForBProject().length > 0 ? true : false;
+
+				ViewModel.pValidAt = window.ko.computed(function () {
+					var str0 = this.filterSettings.PersonValidAt.Value().toString();
+
+					if (str0.length) {
+						var d = new Date();
+						
+						var rex = /\d{4}-\d{2}-\d{2}/;
+						var rex2 = /\d{4}\d{2}\d{2}/;
+						var rex3 = /\d{2}.\d{2}.\d{4}/;
+					
+						if (str0.match(rex)) { // 1999-12-31
+							d.setYear(str0.substr(0, 4));
+							d.setUTCMonth(str0.substr(5, 2));
+							d.setUTCMonth(d.getUTCMonth()-1);
+							d.setUTCDate(str0.substr(8, 2));
+						} else if (str0.match(rex2)) {// 19991231
+							d.setYear(str0.substr(0, 4));
+							d.setUTCMonth(str0.substr(4, 2));
+							d.setUTCMonth(d.getUTCMonth()-1);
+							d.setUTCDate(str0.substr(6, 2));
+						} else if (str0.match(rex3)) {// 31.12.1999
+							d.setYear(str0.substr(6, 4));
+							d.setUTCMonth(str0.substr(3, 2));
+							d.setUTCMonth(d.getUTCMonth()-1);
+							d.setUTCDate(str0.substr(0, 2));
+						} else if (str0.substr(2, 1) == "/" && str0.substr(3, 1) == "/" && str0.substr(0, 2).match(/\d{2}/) && str0.substr(3, 2).match(/\d{2}/) && str0.substr(6, 4).match(/\d{4}/)) { // 31/12/1999
+							d.setYear(str0.substr(6, 4));
+							d.setUTCMonth(str0.substr(3, 2));
+							d.setUTCMonth(d.getUTCMonth()-1);
+							d.setUTCDate(str0.substr(0, 2));
+						} else
+							return "";
+
+						return d.toLocaleDateString();
+					}
+					return "";
+				}, window.ViewModel);
+
+				ViewModel.removeResponsibleEmployee = function() {
+					ViewModel.filterSettings.PersonUsers.List.remove(this);
+				};
+
+				ViewModel.removeThemes = function() {
+					ViewModel.filterSettings.PersonThemes.List.remove(this);
+				};
+
+				ViewModel.openChooseEmployeesDialog = function() {
+					var selected = [];
+					var list = ko.toJS(ViewModel.filterSettings.PersonUsers.List());
+					for(var i=0; i<list.length; i++) {
+						selected[i] = list[i].ID.toString();
+					}
+					selected = selected.join(",");
+					var callbackUrl = encodeURIComponent('@(Url.FullPathAction("DialogResult", "Default"))');
+					var title = encodeURIComponent('@(Resources.Kesco_Persons_Web_VW_1000)');
+					var url;
+					url = '@(Configuration.AppSettings.URI_user_search)?@(Configuration.URI_user_search_QS ?? "t=1")&selectedid='+selected;
+					url = $.validator.format(url, callbackUrl, title);
+
+					openPopupWindow(url, {
+							type: 'GET'
+						}, function(result) {
+						if ($.isArray(result)) {
+							ViewModel.filterSettings.PersonUsers.List.removeAll();
+							for(var i=0; i<result.length; i++)
+								ViewModel.filterSettings.PersonUsers.List.push({
+									ID: ko.observable(result[i].value), 
+									FullName: ko.observable(result[i].label)
+								});
+						}
+					}, "wnd_ChooseEmployees", 800, 600);
+				};
+
+				ViewModel.openChooseThemesDialog = function() {
+					var selected = [];
+					var list = ko.toJS(ViewModel.filterSettings.PersonThemes.List());
+					for(var i=0; i<list.length; i++) {
+						selected[i] = list[i].ID.toString();
+					}
+					selected = selected.join(",");
+					var callbackUrl = encodeURIComponent('@(Url.FullPathAction("DialogResult", "Default"))');
+					var title = encodeURIComponent('@(Resources.Kesco_Persons_Web_VW_1004)');
+					var url;
+					url = '@(Configuration.AppSettings.URI_theme_search)?@(Configuration.URI_theme_search_QS ?? "t=1")&selectedid='+selected;
+					url = $.validator.format(url, callbackUrl, title);
+
+					openPopupWindow(url, {
+							type: 'GET'
+						}
+						, function(result) {
+						if ($.isArray(result)) {
+							ViewModel.filterSettings.PersonThemes.List.removeAll();
+							for(var i=0; i<result.length; i++)
+								ViewModel.filterSettings.PersonThemes.List.push({
+									ID: ko.observable(result[i].value), 
+									Name: ko.observable(result[i].label)
+								});
+						}
+					}, "wnd_ChooseThemes", 800, 600);
+				};
+
+				var params = '@(Request["return"]=="1"?"?return=1":"?t=1")';
+
+				
+				ViewModel.newIndividual = function() {
+					var callbackUrl = encodeURIComponent('@Url.FullPathAction("DialogResult", "Default")');
+					var url = '@Url.Action("Index", "Natural")' 
+						+ params 
+						+ "&text=" + encodeURIComponent(ViewModel.filterSettings.Search.Value())
+						+ "&callbackUrl=" + callbackUrl
+					    + "&hideOldVer=" + '@(hideOldVer)';
+					openPopupWindow(url, null, function (result) {
+						var dialogResult = "";
+						var record = null;
+						if ($.isArray(result)) {
+							record = result[0];
+
+							dialogResult = [];
+							dialogResult.push(record);
+							dialogResult = JSON.stringify(dialogResult);
+						}
+						@if (Request["return"]=="1") {
+							if (Request["control"] != null) { 
+								@: closeDialogAndReturnValue(dialogResult);
+							} else {
+								@: var retVal = (record == null)?"":(record.value + String.fromCharCode(31) + record.label);
+								@: DialogPageReturn(retVal, 0);
+							}
+						} else
+                        {
+							@: if (record != null) ViewModel.showPerson(record.value);
+						}
+					}, "wnd_NewIndividual", 740, 700);
+				};
+				
+				ViewModel.newJuridical = function() {
+					openPopupWindow('@Url.Action("Index", "Juridical")' + params 
+					    + "&text=" + encodeURIComponent(ViewModel.filterSettings.Search.Value())
+					    + "&hideOldVer=" + '@(hideOldVer)', null, function (result) {
+						var dialogResult = "";
+						var record = "";
+						if (result) {
+							record = result[0];
+							dialogResult = [];
+							dialogResult.push(record);
+							dialogResult = JSON.stringify(dialogResult);
+						}
+						@if (Request["return"]=="1") {
+							if (Request["control"] != null) { 
+								@: closeDialogAndReturnValue(dialogResult);
+							} else {
+								@: var retVal = (record == null)?"":(record.value + String.fromCharCode(31) + record.label);
+								@: DialogPageReturn(retVal, 0);
+							}
+						} else {
+							@: if (record != null) ViewModel.showPerson(record.value);
+						}
+					}, "wnd_NewJuridical", 800, 600);
+				};
+
+				ViewModel.showReturnButton = @(Request["return"]=="1"?"true":"false");
+
+			})(this);
+		</script>)
+		<table style="width: 100%; height: 100%; border: 1px solid silver;">
+			<tr valign="top">
+				<td style="width: 300px;"> 
+					<div id="filter" style="width:290px; overflow: auto;display: inline-block;">
+					
+						<fieldset class="ui-widget" data-bind="
+						css: {'ui-state-highlight': filterSettings.PersonType.Enable}, visible: filterSettings.PersonLink.Value().length > 0 || filterSettings.PersonTUnion.Value().length > 0 || ViewModel.pValidAt().length > 0">
+							<legend class="ui-widget-header">
+								@(Resources.Kesco_Persons_Search_1000)
+							</legend>
+							<table cellpadding="0" cellspacing="0">
+								<tr data-bind="visible: filterSettings.PersonValidAt.Value">
+									<td data-bind="text: '@(Resources.Kesco_Persons_Search_1001) ' + ViewModel.pValidAt() + ';'"></td>
+								</tr>
+								<tr data-bind="visible: filterSettings.PersonTUnion.Value() == '1'">
+									<td data-bind="text: '@(Resources.Kesco_Persons_Search_1002);'"></td>
+								</tr>
+								<tr data-bind="visible: filterSettings.PersonTUnion.Value() == '0'">
+									<td data-bind="text: '@(Resources.Kesco_Persons_Search_1003);'"></td>
+								</tr>
+								<tr data-bind="visible: filterSettings.PersonLink.Value().length > 0">
+									<td data-bind="text: getLinkType(filterSettings.PersonLinkType.Value()) + ' ' + filterSettings.PersonLinkNickname() + ';'"></td>
+								</tr>
+							</table>
+						</fieldset>
+
+						<fieldset class="ui-widget" data-bind="
+						css: {'ui-state-highlight': filterSettings.PersonType.Enable},
+						disable: !filterSettings.PersonType.Editable()">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td><input type="checkbox" title="@(Resources.Kesco_Persons_Web_VW_109)"
+												   data-bind="checked: filterSettings.PersonType.Enable, disable: !filterSettings.PersonType.Editable()"/></td>
+										<td>@(Resources.Kesco_Persons_Web_VW_110)</td>
+									</tr>
+								</table>
+							</legend>
+							<table cellpadding="0" cellspacing="0" data-bind="visible: filterSettings.PersonType.Enable()">
+								<tr>
+									<td><input id="filterSettingsPersonType1" name="filterSettingsPersonType1" type="checkbox" value="1" data-bind="
+									enable: filterSettings.PersonType.Enable,
+									checked: filterSettings.PersonType.Value" /></td>
+									<td>@(Resources.Kesco_Persons_Web_VW_111)</td>
+									<td><input id="filterSettingsPersonType2" name="filterSettingsPersonType2" type="checkbox" value="2" data-bind="
+									enable: filterSettings.PersonType.Enable,
+									checked: filterSettings.PersonType.Value" /></td>
+									<td>@(Resources.Kesco_Persons_Web_VW_113)</td>
+									<td><input id="filterSettingsPersonType3" name="filterSettingsPersonType3" type="checkbox" value="4" data-bind="
+									enable: filterSettings.PersonType.Enable,
+									checked: filterSettings.PersonType.Value" /></td>
+									<td>@(Resources.Kesco_Persons_Web_VW_112)</td>
+								</tr>
+							</table>
+						</fieldset>
+
+						<fieldset class="ui-widget" data-bind="css: {'ui-state-highlight': filterSettings.Veracity.Enable}, disable: !filterSettings.Veracity.Editable()">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td><input class="flag" type="checkbox" title="@(Resources.Kesco_Persons_Web_VW_114)"
+												   data-bind="checked: filterSettings.Veracity.Enable, disable: !filterSettings.Veracity.Editable()"/></td>
+										<td>@(Resources.Kesco_Persons_Web_VW_115)</td>
+									</tr>
+								</table>
+							</legend>
+							<table cellpadding="0" cellspacing="0" data-bind="visible: filterSettings.Veracity.Enable()">
+								<tr>
+									<td><input type="checkbox" value="1" data-bind="
+									enable: filterSettings.Veracity.Enable,
+									checked: filterSettings.Veracity.Value" /></td>
+									<td>@(Resources.Kesco_Persons_Web_VW_116)</td>
+									<td><input type="checkbox" value="2" data-bind="
+									enable: filterSettings.Veracity.Enable,
+									checked: filterSettings.Veracity.Value" /></td>
+									<td>@(Resources.Kesco_Persons_Web_VW_117)</td>
+								</tr>
+							</table>
+						</fieldset>
+
+						<fieldset class="ui-widget" data-bind="css: {'ui-state-highlight': filterSettings.BusinessProject.Enable}, disable: !filterSettings.BusinessProject.Editable(), visible: ViewModel.hasRolesForBProject">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td><input class="flag" type="checkbox" id="BusinessProject_checkBox" title="@(Resources.Kesco_Persons_Web_VW_119)"
+												   data-bind="checked: filterSettings.BusinessProject.Enable, disable: !filterSettings.BusinessProject.Editable()"/></td>
+										<td>@(Resources.Kesco_Persons_Web_VW_118)</td>
+									</tr>
+								</table>
+							</legend>
+							<table cellpadding="0" cellspacing="0" data-bind="visible: filterSettings.BusinessProject.Enable()">
+								<tr>
+									<td colspan="2"><input type="checkbox" id="AllBProject_checkBox" data-bind="
+									enable: filterSettings.BusinessProject.Enable,
+									checked: filterSettings.BusinessProject.AllBProject"/>
+										@(Resources.Kesco_Persons_Web_VW_120)</td>
+								</tr>
+								<tr>
+									<td nowrap="nowrap">@(Resources.Kesco_Persons_Web_VW_119):</td>
+									<td>
+										@Html.EditorFor(m => m.filterSettings.BusinessProject.Value,
+											new { HtmlAttributes = new {
+													 data_bind = "selectBoxEnabled: filterSettings.BusinessProject.Enable() && !filterSettings.BusinessProject.AllBProject()"
+												 }
+											})
+									</td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+									<td><input type="checkbox" data-bind="
+									enable: filterSettings.BusinessProject.Enable() && !filterSettings.BusinessProject.AllBProject(),
+									checked: filterSettings.BusinessProject.SubBProject"/>
+										@(Resources.Kesco_Persons_Web_VW_121)</td>
+								</tr>
+							</table>
+						</fieldset>
+						@* Страна регистрации *@
+						<fieldset data-bind="
+							css: {'ui-state-highlight': filterSettings.PersonArea.Enable},
+							disable: !filterSettings.PersonArea.Editable()">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td><input type="checkbox" title="@(Resources.Kesco_Persons_Web_VW_122_1)" data-bind="
+										checked: filterSettings.PersonArea.Enable,
+										disable: !filterSettings.PersonArea.Editable()"/>
+										</td>
+										<td>@(Resources.Kesco_Persons_Web_VW_122)</td>
+									</tr>
+								</table>
+							</legend>
+							<div data-bind="visible: filterSettings.PersonArea.Enable()">
+								@Html.EditorFor(m => m.filterSettings.PersonArea.Value, 
+									new { HtmlAttributes = new { data_bind = "selectBoxEnabled: filterSettings.PersonArea.Enable() && filterSettings.PersonArea.Editable()" } })
+							</div>
+						</fieldset>
+						@* Фильтр по организационно-правовой форме *@
+						<fieldset class="ui-widget" data-bind="
+						css: {'ui-state-highlight': filterSettings.PersonOPForma.Enable},
+						disable: !filterSettings.PersonOPForma.Editable()">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td><input type="checkbox" title="@(Resources.Kesco_Persons_Web_VW_123_1)" data-bind="
+											checked: filterSettings.PersonOPForma.Enable,
+											disable: !filterSettings.PersonOPForma.Editable(),
+											click2: function() { $('#idSelect').selectmenu('open'); }"/>
+										</td>
+										<td>@(Resources.Kesco_Persons_Web_VW_123)</td>
+									</tr>
+								</table>
+							</legend>
+							<div id="idSelectContainer" data-bind="visible: filterSettings.PersonOPForma.Enable()" style=""> 
+								@* В секции Footer обработчик resize для idSelect
+							TODO: не работает нажатие на список в IE, если делать select с помощью jQueryUI *@
+								<select style="width: 270px;" id="idSelect" data-bind="
+									enable: filterSettings.PersonOPForma.Editable(),
+									jqOptions: IncorporationForms,
+									value: filterSettings.PersonOPForma.Value,
+									optionsValue: 'ID',
+									optionsText: 'Name'"></select>
+							</div>
+						</fieldset>
+
+						@* Фильтр по ответственным сотрудникам *@
+						<fieldset class="ui-widget" data-bind="
+						css: {'ui-state-highlight': filterSettings.PersonUsers.Enable},
+						disable: !filterSettings.PersonUsers.Editable()">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0" style="width: 100%;">
+									<tr>
+										<td><input type="checkbox" title="@(Resources.Kesco_Persons_Web_VW_127)"
+												data-bind="
+													checked: filterSettings.PersonUsers.Enable,
+													disable: !filterSettings.PersonUsers.Editable()"/>
+										</td>
+										<td style="width: 100%;">@(Resources.Kesco_Persons_Web_VW_126)</td>
+										<td style="width: 30px;">
+											<button type="button" data-bind="
+										click: openChooseEmployeesDialog,
+										jqueryui: {widget: 'button', options: { disabled: !filterSettings.PersonUsers.Enable() || !filterSettings.PersonUsers.Editable(), text: false, icons: { primary: 'ui-icon-plus'} } }
+									" title="@(Resources.Kesco_Persons_Web_VW_1002)">&nbsp;</button>
+										</td>
+									</tr>
+								</table>
+							</legend>
+							<div class="ui-widget-content" data-bind="visible: filterSettings.PersonUsers.Enable()">
+								<table>
+									<tbody data-bind="foreach: filterSettings.PersonUsers.List">
+										<tr>
+											<td>
+												<a href="javascript: void(0);" data-bind="
+													visible: $root.filterSettings.PersonUsers.Editable,
+													click: $root.removeResponsibleEmployee
+												" title="@(Resources.Kesco_Persons_Web_VW_1001)">
+												<span class="ui-icon ui-icon-minus"></span></a>
+											</td>
+											<td >
+												<a class="employeeControl" href="javascript: void(0);" data-actual="true"
+													data-bind="
+														attr: { id: 'PersonUsers_'+$data.ID(), alt: $data.FullName, title: $data.FullName },
+														text: $data.FullName,
+														click: function() {ViewModel.showUser($data.ID()); },
+														dynamicLink: { 
+															value: $data.ID, 
+															source: '@(Url.Action("GetItem", "EmployeeSelect"))',
+															tooltipSource: '@(Configuration.AppSettings.URI_user_info)'
+														}
+												"></a></td>
+										</tr>
+									</tbody>
+									<tbody data-bind="visible: filterSettings.PersonUsers.List().length == 0">
+										<td style="width: 30px;">&nbsp;</td>
+										<td>@(Resources.Kesco_Persons_Web_VW_128)</td>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+						@* Фильтр: Темы лиц *@
+						<fieldset class="ui-widget" data-bind="
+						css: {'ui-state-highlight': filterSettings.PersonThemes.Enable},
+						disable: !filterSettings.PersonThemes.Editable()">
+							<legend class="ui-widget-header">
+								<table cellpadding="0" cellspacing="0" style="width: 100%;">
+									<tr>
+										<td><input type="checkbox" title="@(Resources.Kesco_Persons_Web_VW_131)" data-bind="
+												checked: filterSettings.PersonThemes.Enable,
+												disable: !filterSettings.PersonThemes.Editable()"/>
+										</td>
+										<td style="width: 100%;">@(Resources.Kesco_Persons_Web_VW_129)</td>
+										<td style="width: 30px;">
+											@* Кнопка выбора тем *@
+											<button type="button" data-bind="
+													click: openChooseThemesDialog,
+													jqueryui: {widget: 'button', options: { disabled: !filterSettings.PersonThemes.Enable() || !filterSettings.PersonThemes.Editable(), text: false, icons: { primary: 'ui-icon-plus'} } }"
+												title="@(Resources.Kesco_Persons_Web_VW_1003)">&nbsp;</button>
+										</td>
+									</tr>
+								</table>
+							</legend>
+							<div class="ui-widget-content" data-bind="visible: filterSettings.PersonThemes.Enable()">
+								<table>
+									<tbody data-bind="foreach: filterSettings.PersonThemes.List">
+										<tr>
+											<td style="width: 20px;">
+												@* Кнопка удаления из списка тем *@
+												<a href="javascript: void(0);" data-bind="
+													visible: $root.filterSettings.PersonThemes.Editable,
+													click: $root.removeThemes
+												"
+												title="@(Resources.Kesco_Persons_Web_VW_1001)"><span class="ui-icon ui-icon-minus"></span></a></td>
+											<td ><span data-bind="text: $data.Name"></span>
+											</td>
+										</tr>
+									</tbody>
+									<tbody data-bind="visible: filterSettings.PersonThemes.List().length == 0">
+										<tr>
+											<td style="width: 20px;">&nbsp;</td>
+											<td>@(Resources.Kesco_Persons_Web_VW_130)</td></tr>
+									</tbody>
+									<tbody>
+										<tr data-bind="visible: filterSettings.PersonThemes.List().length != 0">
+											<td style="width: 20px;">&nbsp;</td>
+											<td><input type="checkbox" data-bind="
+													enable: filterSettings.PersonThemes.Enable,
+													checked: filterSettings.PersonThemes.Subthemes"
+														/>@(Resources.Kesco_Persons_Web_VW_132)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+
+						<div style="text-align: right;">
+							<a href="javascript: void(0);" data-bind="
+							jqueryui: { widget: 'button', options : { icons: { primary: 'ui-icon-cancel' } } },
+							click: disableFilterSettings
+							">@(Resources.Kesco_Persons_Web_VW_147)</a>
+						</div>
+					</div>
+				</td>
+				<td>
+					<div id="searchResult" style="display: inline-block;overflow: auto;">
+						@* Настройка грида *@
+						@{
+			 
+			 gridModel.Grid.ID = "searchResultGrid";
+			 gridModel.Grid.Width = System.Web.UI.WebControls.Unit.Pixel(800);
+			 gridModel.Grid.DataUrl = Url.Action("SearchPersonGridDataRequested");
+			 gridModel.Grid.SortSettings.InitialSortColumn = "Nickname";
+			 gridModel.Grid.PostData = Model.filterSettings.ToSearchParameters();
+							@* После загрузки данных в гриде, необходимо обновить элементы управления лица *@
+			 gridModel.Grid.ClientSideEvents.AfterAjaxRequest = "searchResultGrid_UpdatePersonControls";
+			 gridModel.Grid.ClientSideEvents.LoadDataError = "searchResultGrid_LoadDataError";
+			 if (Request["return"] == "1") {
+				 gridModel.Grid.Columns
+					 .Where(c => c.DataField == "ID")
+					 .All(c => {
+						 c.HeaderText = "&nbsp;";
+						 c.Visible = true;
+						 c.TextAlign = Kesco.Web.Mvc.UI.Grid.TextAlign.Center;
+						 c.Width = 30;
+						 c.Formatter = new Kesco.Web.Mvc.UI.Grid.CustomFormatter {
+							 FormatFunction = "formatColumn_ReturnValue"
+						 };
+						 return false;
+					 });
+			 }
+						}
+						@* Вывод грида *@
+						@Html.KescoGrid(gridModel.Grid)
+
+					</div>
+				</td>
+			</tr>
+		</table>
+	}
+</div>
+
+@*	Бизнес-правила для элементов управления выбора *@
+@{
+	Html.RegisterScript(@"
+		;(function(scope, $) {{
+			// поиск страна регистрации 
+			scope.ViewModel.filterSettings.PersonArea.Value.__SearchParameters.HowSearch(1); // начинается с
+			scope.ViewModel.filterSettings.PersonArea.Value.__SearchParameters.AreaIDs.push(2); // является страной
+
+			// поиск бизнес-проекта 
+			scope.ViewModel.filterSettings.BusinessProject.Value.__SearchParameters.HowSearch(1); // начинается с
+			$('#filterSettingsSearchValue').focus();
+		
+		}})(window, jQuery);
+		
+	");
+}
+@section Footer {
+@Html.CommonScriptCode("Persons_Search_Footer1",
+	@<script>
+			@* Скрипты для настройки грида *@
+
+			@* Функция форматирования колонки для возврата значения приложению-клиенту *@
+			function formatColumn_ReturnValue(value, options, rowObj) {
+				var v = value;
+				v = $.validator.format(
+					"<a href='javascript: void(0);' class='returnValueLink' data-value='{0}' data-label='{1}'"
+					+" style='height: 20px !important; width: 20px !important;' title='{0}' ><span class='ui-icon ui-icon-circle-arrow-w ' ></span></a>"
+					, v, escape(rowObj[6]));
+				return v;
+			}
+
+			@* Функция форматирования колонки с кличкой лица как ссылки на досье *@
+			function formatSearchResultGridNicknameColumn(value, options, rowObj) {
+				var v = value;
+				var s = "";
+				if (v) {
+					s += "<a href='javascript: void(0);' class='personControl' style='cursor: pointer' data-tip-pos-my='middle left' data-tip-pos-at='middle right' data-person-id='{0}'>{1}</a>";
+					v = $.validator.format(s, rowObj[0], v);
+				}
+				return v;
+			}
+
+			@* Функция возврата значения приложению-клиенту *@
+			function returnRow(rowID, label) {
+				var dialogResult = "";
+				if (rowID) {
+					var record = $("#@(gridModel.Grid.ID)").getRowData(rowID);
+
+					dialogResult = [];
+					dialogResult.push({
+						value: rowID,
+						label: unescape(label)
+					});
+								
+					dialogResult = JSON.stringify(dialogResult);
+				}
+				@if (Request["control"] != null) { 
+					@: closeDialogAndReturnValue(dialogResult);
+				} else {
+					@: var retVal = rowID + String.fromCharCode(31) + unescape(label);
+					@: DialogPageReturn(retVal, 0);
+				}
+			}
+
+			function searchResultGrid_LoadDataError(xhr, status, err)
+			{
+				if (window.console) {
+					console.log("Grid Data Load Error: ", err);
+					console.log("\t\tresponse: ", xhr.responseText);
+
+				}
+			}
+
+			@* После загрузки данных в гриде, необходимо обновить элементы управления лица *@
+			function searchResultGrid_UpdatePersonControls(data) {
+				$("#searchResultGrid .personControl").each(function(index, item) {
+					$(this).person({
+						container: $(document.body),
+						value: $(this).data('person-id')
+					})
+					.bind("click", function(ev) {
+						ev.stopImmediatePropagation();
+						//return false;
+					})
+					.each(function() {
+						var id = $(this).data('person-id');
+						var self = this;
+						$(this)
+							.parent().parent().find("td")
+								.bind("click", function(ev) {
+									if (!ev.isImmediatePropagationStopped()) {
+										window.ViewModel.showPerson(id);
+									    
+									}
+								});
+					})
+				});
+				$("#searchResultGrid .returnValueLink")
+					.bind("click", function(ev) {
+						var $this = $(this);
+						setTimeout(function() { returnRow($this.data("value"), $this.data("label")); }, 100);
+						ev.stopImmediatePropagation();
+						//return false;
+					});
+			}
+
+			ko.extenders.integer2 = function(target, defaultValue) {
+				//create a writeable computed observable to intercept writes to our observable
+				var result = ko.computed({
+					read: target,  //always return the original observables value
+					write: function(newValue) {
+						var current = target(),
+							intVal = parseInt(newValue),
+							valueToWrite = isNaN(intVal) ? defaultValue : intVal;
+ 
+						//only write if it changed
+						if (valueToWrite != current) {
+							target(valueToWrite);
+						} else {
+							//if the rounded value is the same, but a different value was written, force a notification for the current field
+							if (newValue != current) {
+								target.notifySubscribers(valueToWrite);
+							}
+						}
+					}
+				});
+ 
+				//initialize with current value to make sure it is rounded appropriately
+				result(target());
+ 
+				//return the new computed observable
+				return result;
+			};
+
+			$(document).ready(function () {
+
+
+				var $grid = $("#@(gridModel.Grid.ID)");
+
+				var resizeContainer = function () {
+					$("#filter").height($("#container").height() - $("#searchQuery").height() - 20);
+					$("#searchResult")
+						.width($("#container").width() - $("#filter").width() - 20)
+						.height($("#container").height() - $("#searchQuery").height() - 20);
+					var $parent = $('#gbox_@(gridModel.Grid.ID)').parent();
+					$grid.setGridHeight($parent.height() - 60, true);
+					$grid.setGridWidth($parent.width() - 10, true);
+				};
+				$(window).resize(resizeContainer);
+			});
+	</script>)
+
+	@Html.ScriptCode(
+	@<script>
+		;(function($, undefined) { //closure
+
+            if(ViewModel.Params.PersonPageSize() == 0 || ViewModel.Params.PersonPageSize() == null || ViewModel.Params.PersonPageSize() == '')
+            {
+			    ViewModel.Params.PersonPageSize = ViewModel.Params.PersonPageSize.extend({ integer2: 30 });
+            }
+            $("#@(gridModel.Grid.ID)").setGridParam({ rowNum:ViewModel.Params.PersonPageSize(), rowList: [ViewModel.Params.PersonPageSize()] });
+			$("<input size='3' class='ui-pg-inpbox2' type='text' data-bind='value: Params.PersonPageSize' />")
+				.insertBefore($('#@(gridModel.Grid.ID)_pager .ui-pg-selbox').hide());
+						
+			ViewModel.Params.PersonPageSize.subscribe(function(newVal) {
+				$("#@(gridModel.Grid.ID)").setGridParam({ rowNum:newVal, rowList: [newVal] });
+			});
+
+		})(jQuery);
+
+		var resizeSelect = function () {
+		@* не срабатывает когда фильтр ОП формы не установлен - ссылка на выбор значения из выпадающего списка не успевает прорисоваться *@
+			$("#idSelect-button").width($("#idSelectContainer").width() - 10);
+		};
+
+		ViewModel.ResizeOPFormaSelect = resizeSelect;
+		$(window).resize(resizeSelect);
+	</script>)
+
+	@* подготовка данных для сохранения клиентских настроек перед событием закрытия страницы *@
+	@{Html.RegisterCommonScriptCode( "Dossier_beforeunload", @"
+		$(window).on('beforeunload', function(){
+			prepareParams();
+			return;
+		});
+	" );}
+}

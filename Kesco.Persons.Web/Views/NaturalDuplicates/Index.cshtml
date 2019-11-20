@@ -1,0 +1,153 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.NaturalDuplicates.ViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Localization
+@{
+	Model
+		.GetScriptCapabilities()
+			.DisableGridScript()
+			.DisableTreeScript();
+	ViewBag.Title = Model.PageTitle;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="formContainer" style="overflow: auto;" class="ui-widget">
+	@{ Html.EnableClientValidation(); }
+
+	@using (Html.BeginForm("PageForm", "Person", FormMethod.Post, new { id = "PageForm", name = "PageForm", onsubmit = "return false;" })) {
+		@Html.ValidationSummary(true)
+	<div id="DuplicatesDialog_List" style="padding: 10px;">
+		<div class="ui-corner-all ui-state-highlight" style="margin: 0 0 10px; padding: 10px;">
+		@Html.Raw(global::Resources.Resources.Kesco_Persons_CreateIndividual_DuplicatesDialog_Warning)
+		<p data-bind="visible: !AllowSave()">
+			<span class="ui-icon ui-icon-alert"></span>
+			@(global::Resources.Resources.Kesco_Persons_CreateIndividual_2113)</p>
+		</div>
+		<table style="width: 100%">
+		<tbody>
+		@foreach (var d in Model.Model.Duplicates.OrderBy(d => d.Nickname)) {
+		<tr>
+			<td colspan="2" style="border-bottom: 1px solid">&nbsp;</td>
+		</tr>
+		<tr valign="top">
+			<td>
+			<b>@Html.DisplayFor(m => d.PersonID, "PersonStaticLink", new
+ {
+					 ID = "Persons_" + d.PersonID,
+                     personid = d.PersonID,
+					 UseViewModelBinding = false,
+					 Actual = true,
+					 TooltipPositionMy = "middle left",
+					 TooltipPositionAt = "middle right",
+					 InitialLabel = d.Nickname
+				 })</b>
+				<table style="width: 100%" cellspacing="0">
+				<tbody>
+				@foreach (var issue in d.Issues) {
+					<tr class="hoverable">
+						<td width="20px" >&nbsp;</td>
+						<td width="160px" nowrap="nowrap">@(issue.Field)</td>
+						<td width="220px">@(issue.Value)</td>
+						<td><span style="color: @((issue.R < 1)?"green":"black")"
+							>@(issue.Equality)</span></td>
+					</tr>
+				}
+				</tbody>
+				</table>
+			</td>
+			<td style="width: 100px">
+				<button type="button" data-bind="
+					jqueryui: { widget: 'button', options: { icon: { primary: 'ui-icon-flag' } } }
+				"
+				onclick='window.ViewModel.itLooksLike(@(Html.Raw(Kesco.Web.Mvc.Json.Serialize(d, true))))';
+				>@(global::Resources.Resources.Kesco_Persons_CreateIndividual_2108)</button>
+			</td>
+		</tr>
+		}
+		</tbody>
+		</table>
+	</div>
+
+	}
+
+</div>
+
+@section Header {
+	<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar"
+		style="padding: 2px;"
+		data-bind="visible: PageLoaded">
+		<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr valign="middle">
+			<td >&nbsp;
+				<button type="button" data-bind=" 
+						click: closeDialog,
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-disk' } } }
+					">@(global::Resources.Resources.Kesco_Persons_CreateIndividual_DuplicatesDialog_ContinueEditingButton)</button>
+				<button type="button" data-bind="
+						visible: AllowSave, 
+						click: saveIt, 
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-cancel' } } }
+					"
+					>@(global::Resources.Resources.Kesco_Persons_CreateIndividual_DuplicatesDialog_ConfirmCreatingButton)</button>
+
+			</td>
+			<td nowrap="nowrap" style="width: 30px;">
+				<button type="button" style="" data-bind="
+							jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, 
+							click: showHelp
+						"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+			</td>
+		</tr>
+		</table>
+	</div>
+}
+
+
+@section Footer {
+@Html.CommonScriptCode("Natural_Footer",
+@<script>
+	$(document).ready(function () {
+		$("#PageForm").submit(function () {
+			// this - DOM element - form
+			var $form = $(this);
+			return false;
+		});
+
+
+		window.ViewModel.saveIt = function () {
+			window.ViewModel.Model.Confirmed(true);
+
+			var dialogResult = [];
+			dialogResult.push({
+				value: window.ViewModel.Model.PersonID(),
+				label: "Confirmed"
+			});
+			dialogResult = JSON.stringify(dialogResult);
+			closeDialogAndReturnValue(dialogResult);
+		};
+
+		window.ViewModel.itLooksLike = function(duplicate) {
+			//alert(this.PersonID);
+			//window.ViewModel.Model.PersonID(duplicate.PersonID);
+			//window.ViewModel.Model.Confirmed(false);
+
+			var dialogResult = [];
+			dialogResult.push({
+				value: duplicate.PersonID,
+				label: duplicate.Nickname
+			});
+			dialogResult = JSON.stringify(dialogResult);
+			closeDialogAndReturnValue(dialogResult);
+		};
+
+		$(window).resize(function () {
+			$("#formContainer").height($("#dialogContentPane").height());
+			$("#formContainer").width($("#dialogContentPane").outerWidth());
+		});
+
+	});
+
+</script>)
+}

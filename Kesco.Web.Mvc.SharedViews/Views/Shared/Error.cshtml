@@ -1,0 +1,25 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<System.Web.Mvc.HandleErrorInfo>
+
+@using Kesco.Web.Mvc.SharedViews.Localization;
+
+@{
+	ViewBag.Title =  Resources.Kesco_Web_Mvc_SharedApp_LBL_13112 ;
+	Layout = "~/Views/Shared/_ErrorLayout.cshtml";
+	Response.StatusCode = 500;
+}
+
+<div class="ui-state-error ui-corner-all" style="margin: .7em .7em; padding: 0 .7em;"> 
+	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+    <p>@Resources.Kesco_Web_Mvc_SharedApp_LBL_13112</p>
+	<p>@Model.Exception.Message</p>
+	<p>&raquo; <a href="javascript: void(0);" onclick="$('#errorDetails').toggle();">@Resources.Kesco_Web_Mvc_SharedApp_LBL_13113</a>
+	</p>	
+</div>	
+<pre id="errorDetails" style="font-size: 10px; display:none;"
+>@Model.Exception.ToString()</pre>
+
+
+@section Header {
+	<div class="ui-widget-header" style="text-transform:uppercase; height: 20px; "
+		>@Resources.Kesco_Web_Mvc_SharedApp_LBL_13112</div>
+}

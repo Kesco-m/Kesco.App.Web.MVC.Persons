@@ -1,0 +1,114 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<int?>
+@using Kesco
+@using Kesco.Web.Mvc.SharedViews.ComponentModel
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@using Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations
+@{
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    ModelMetadata metaData = ViewData.ModelMetadata;
+
+    if (!metaData.AdditionalValues.ContainsKey(KescoSelectAttribute.AdditionalValuesKey_SelectBox))
+    {
+        throw new Exception(String.Format(
+				"Неверное использование шаблона. Атрибут KescoSelect не найден для свойства {0}",
+                metaData.PropertyName
+            ));
+    }
+
+	KescoSelectAttribute descriptor = metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBox]
+		as KescoSelectAttribute;
+
+    if (descriptor == null)
+    {
+        throw new Exception(String.Format(
+            "Неверное использование шаблона. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+                metaData.PropertyName,
+				metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+        ));
+    }
+	
+	if (descriptor.SelectControllerType == null)
+	{
+		throw new Exception(String.Format(
+			"Неверное использование шаблона. Не указан тип контроллера для свойства '{0}'",
+				metaData.PropertyName,
+				metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+		));
+	}
+
+	var controller = descriptor.SelectControllerType.IsAssignableFrom(typeof(ControllerEx));
+	if (controller == null)
+	{
+		throw new Exception(String.Format(
+			"Неверное использование шаблона. Для свойства '{0}' в качестве контроллера указан тип {1}, который не является контроллером",
+				metaData.PropertyName,
+				descriptor.SelectControllerType
+		));
+	}
+	
+	// Получим начальные значения
+    string value = "";
+    string label = Model.HasValue ? String.Empty : metaData.NullDisplayText;
+	bool actual = false;
+
+    if (Model.HasValue && descriptor.EntityAccessorType != null)
+    {
+        value = Model.ToString();
+        label = String.Format("#{0}", value);
+        Kesco.DataAccess.IAccessor accessor = BLToolkit.Reflection.TypeAccessor.CreateInstanceEx(
+                descriptor.EntityAccessorType
+            ) as Kesco.DataAccess.IAccessor;
+        if (accessor != null)
+        {
+            object entry = accessor.GetInstance(value);
+            if (entry != null) {
+				metaData.AdditionalValues.Add(
+						KescoSelectAttribute.AdditionalValuesKey_SelectBox+"_EntityInstance",
+						entry
+					);
+                if (accessor is Kesco.Web.Mvc.UI.Controls.DataAccess.IKescoSelectAccessor)
+                {
+                    label = ((IKescoSelectAccessor)accessor).GetInstanceDisplayName(entry);
+					actual = true;
+                }
+                else if (entry is Kesco.ObjectModel.IFriendlyNamed)
+                {
+                    label = ((Kesco.ObjectModel.IFriendlyNamed)entry).GetInstanceFriendlyName();
+					actual = true;
+                }
+            }
+        }
+    }
+
+	var linkBuilder = new TagBuilder("A");
+	// Объединяем HTML атрибуты для элемента управления
+	var htmlAttributes = Html.MergeHtmlAttributes((object) ViewBag.HtmlAttributes);
+
+	htmlAttributes["id"] = "{0}__Link".FormatWith(id);
+	htmlAttributes["href"] = "javascript: void(0)";
+
+	htmlAttributes["data-actual"] = actual?"true":"false";
+	htmlAttributes["alt"] = label;
+	htmlAttributes["title"] = label;
+
+	// Укажим data-bind для библиотеки knockout
+	htmlAttributes.PrependInValue(
+			"data-bind", 
+			",", 
+			@"dynamicLink: {{ 
+				value: {0}, 
+				source: Env.URI_{1}_GetItem 
+			}} 
+			".FormatWith(name, descriptor.SelectControllerType.Name)
+		);
+	
+	linkBuilder.MergeAttributes(htmlAttributes, true);
+	linkBuilder.AddCssClass("selectControl");
+	linkBuilder.SetInnerText(label);
+}
+@(Html.Raw(linkBuilder))
+@Html.CommonScriptCode("selectControlCommon_{0}".FormatWith(descriptor.SelectControllerType.Name),
+@<script>
+		!(function() { var env = window.Env || {}; window.Env = env; env.URI_@(descriptor.SelectControllerType.Name)_GetItem = '@(Url.AbsoluteAction("GetItem", descriptor.SelectControllerType.Name.Replace("Controller", "")))'; })();
+</script>)

@@ -1,0 +1,34 @@
+﻿@inherits Kesco.Persons.Controls.SiteViewPage<int?>
+@using Kesco.Web
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	ModelMetadata metaData = ViewData.ModelMetadata;
+	string initialLabel = ((string)ViewData["InitialLabel"]) ?? String.Empty;
+	string tooltipPositionMy = ((string)ViewData["TooltipPositionMy"]) ?? String.Empty;
+	string tooltipPositionAt = ((string)ViewData["TooltipPositionAt"]) ?? String.Empty;
+	string cssClass = ((string) ViewData["CssClass"]) ?? String.Empty;
+	string value = Model.HasValue ? Model.ToString() : String.Empty;
+
+	cssClass = "personStatic " + cssClass;
+
+	Html.RegisterCommonScriptCode("PersonStatic", @"
+			$(document).on('click', 'a.personStatic', function() {
+				window.ViewModel.showPerson($(this).data('person-id'));
+			});
+
+			$(document).on('mouseenter', 'a.personStatic', function() {
+				var $this = $(this);
+				if (!$this.data('qtip')) {
+					$this.initToolTip(function() {
+						var uri = Env.URI_person_info;
+							uri = uri.replace('/0', '/' + $this.data('person-id'));
+						return uri;
+					}, $(document.body)).qtip('show');
+				}
+			});
+	");	
+}
+<a class="@(cssClass)" data-person-id="@(value)" href="javascript: void(0)" data-tip-pos-my="@(tooltipPositionMy)" data-tip-pos-at="@(tooltipPositionAt)"
+	>@Html.Raw(initialLabel)</a>

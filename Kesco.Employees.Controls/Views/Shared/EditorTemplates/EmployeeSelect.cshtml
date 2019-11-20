@@ -1,0 +1,64 @@
+﻿@* Generator: MvcView *@ 
+@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Employees.Controls
+@using Kesco.Employees.Controls.ComponentModel
+@{
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    ModelMetadata metaData = ViewData.ModelMetadata;
+
+	if (!metaData.AdditionalValues.ContainsKey(EmployeeSelectAttribute.AdditionalValuesKey_SelectBox))
+    {
+        throw new Exception(String.Format(
+                "Неверное использование шаблона PersonSelect. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+                metaData.PropertyName,
+				typeof(EmployeeSelectAttribute)
+            ));
+    }
+
+	var descriptor = metaData.AdditionalValues[EmployeeSelectAttribute.AdditionalValuesKey_SelectBox]
+		as EmployeeSelectAttribute;
+
+    if (descriptor == null)
+    {
+        throw new Exception(String.Format(
+            "Неверное использование шаблона PersonSelect. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+                metaData.PropertyName,
+				metaData.AdditionalValues[EmployeeSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+        ));
+    }
+
+	descriptor.DisplayField = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName == "ru"
+		? "FullName" : "FullNameEn";
+
+	Dictionary<string, object> htmlAttributes = new Dictionary<string, object>();
+	if (ViewBag.HtmlAttributes != null) {
+		if (ViewBag.HtmlAttributes is IDictionary<string, object>) {
+			htmlAttributes.Merge((IDictionary<string, object>)ViewBag.HtmlAttributes);
+		} else {
+			htmlAttributes.Merge((object)ViewBag.HtmlAttributes);
+		}
+	}
+
+	htmlAttributes.PrependInValue("class", " ", "employee");
+
+	ViewBag.HtmlAttributes = htmlAttributes;
+
+	@* Выполним отрисовку основного KescoSelect *@
+    base.Execute();
+}
+@{
+	
+	Html.RegisterScript(@"
+		
+		;(function(scope, $) {{
+			scope.ViewModel.{1}.__SearchParameters.MaxEntries({2}); // ограничим результат
+		}})(window, jQuery);
+
+		initSelectBoxToolTip('#{0}', '{3}');
+		
+	".FormatWith(id, name, descriptor.AutocompleteLimit + 1, Configuration.AppSettings.URI_user_info));
+}
+

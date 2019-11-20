@@ -1,0 +1,86 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<ViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.Validation
+@using Kesco.Web.Mvc.SharedViews.Models.Test
+@{
+    ViewBag.Title = "Страница для тестирования";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Html.PrepareValidationFor();
+
+    //Html.RegisterExternalScript("ScriptController_UserScriptHub", Url.Action("UserScriptHub", "Script"));  
+}
+
+@section Header {
+	@*<script>
+	    window.ViewModel.validate = function () {
+	        $.ajax({
+	            url: '@(Url.Action("Dispatch"))',
+	            type: 'POST',
+	            data: window.ko.toJSON({
+	                command : "validate",
+	                control : null,
+	                model : { Model: window.ko.mapping.toJS(window.ViewModel.Model) }
+	            }),
+	            contentType: "application/json; charset=utf-8"
+	        });
+	    };
+        
+
+	</script>  *@  
+}
+
+@section Footer {  
+
+}
+
+@using (Html.BeginForm("Test", null, FormMethod.Post, new { id = ViewData.TemplateInfo.HtmlFieldPrefix + "__Form" }))
+{
+	@*table>
+	<tr>
+		<td>@Html.LabelFor(m => m.HttpAddress)</td>
+		<td>@Html.DisplayFor(m => m.HttpAddress)</td>
+	</tr>
+	
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ResponsibleEmployeeID)</td>
+		<td>@Html.DisplayForEmployee("DocumentInstance.ResponsibleEmployeeID", EmployeeInfoTypes.FullName)</td>
+	</tr>
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ShipperID)</td>
+		<td>@Html.DisplayForPerson("DocumentInstance.ShipperID", PersonInfoTypes.Nickname)</td>
+	</tr>
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ConsigneeID)</td>
+		<td>@Html.DisplayForPerson("DocumentInstance.ConsigneeID", PersonInfoTypes.Nickname)</td>
+	</tr>
+	
+
+	</table>*@
+
+	
+    
+    
+
+	<table width="100%">
+		<tr><td></td><td>@Html.ValidationMessagesFor("ValidationResultsAll")</td></tr>
+		<tr>
+			<td width="135px;">@Html.LabelFor(m => m.Model.PersonID)</td>
+			<td>@Html.EditorFor(m => m.Model.PersonID)</td>
+		</tr>
+		<tr><td></td><td>@Html.ValidationMessagesFor("ValidationResults")</td></tr>
+    
+		<tr>
+			<td>@Html.LabelFor(m => m.Model.EmployeeID)</td>
+			<td>@Html.EditorFor(m => m.Model.EmployeeID)</td>
+		</tr>
+        <tr><td></td><td>@Html.ValidationMessagesFor("ValidationResultsNext")</td></tr>
+	</table>
+	<button id="@(ViewData.TemplateInfo.HtmlFieldPrefix)__Submit" onclick="window.ViewModel.validate(); return false;">Проверить</button>
+    @*foreach (var person in Model.PersonList)
+    {
+		<div>@person.Nickname</div>
+    }*@
+
+	
+}

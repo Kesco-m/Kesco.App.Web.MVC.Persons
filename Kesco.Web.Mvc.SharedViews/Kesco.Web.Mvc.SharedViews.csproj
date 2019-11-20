@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{202437B6-9919-4B9B-9351-7496DDCB280A}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kesco.Web.Mvc.SharedViews</RootNamespace>
+    <AssemblyName>Kesco.Web.Mvc.SharedViews</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\_Assemblies\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="BLToolkit.4, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b1d3f6ab3aadaca3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\BLToolkit.4.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentJson">
+      <HintPath>..\_Assemblies\FluentJson.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\RazorGenerator.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Templating, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\RazorGenerator.Templating.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="ComponentModel\EmployeeContactControlAttribute.cs" />
+    <Compile Include="ComponentModel\EmployeeControlAttribute.cs" />
+    <Compile Include="ComponentModel\PersonAddressAttribute.cs" />
+    <Compile Include="ComponentModel\PersonContactControlAttribute.cs" />
+    <Compile Include="ComponentModel\PersonEmailAttribute.cs" />
+    <Compile Include="ComponentModel\PersonMsnAttribute.cs" />
+    <Compile Include="ComponentModel\PersonPhoneAttribute.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ScriptController.cs" />
+    <Compile Include="Controls\ElementPosition.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlExtensions.cs" />
+    <Compile Include="Localization\Resources.Designer.cs" />
+    <Compile Include="Localization\Resources.et.Designer.cs" />
+    <Compile Include="Localization\Resources.ru.Designer.cs" />
+    <Compile Include="Models\DummyEntity.cs" />
+    <Compile Include="Models\Dump\ViewModel.cs" />
+    <Compile Include="Models\ErrorObjectNotFound.cs" />
+    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\SearchEntity\ViewModel.cs" />
+    <Compile Include="Models\TapiClient.cs" />
+    <Compile Include="Models\Test\Accessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedController.cs" />
+    <Compile Include="Views\Default\DumpAssemblies.generated.cs" />
+    <Compile Include="Views\Default\Edit.generated.cs" />
+    <Compile Include="Views\Default\Index.generated.cs" />
+    <Compile Include="Views\Default\SearchEntity.generated.cs" />
+    <Compile Include="Views\Default\Test.generated.cs" />
+    <Compile Include="Views\Script\AppCommon.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommon.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Script\AppEnv.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppEnv.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Script\AppThemeRoller.generated.cs" />
+    <Compile Include="Views\Shared\AppCommon.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommon.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\DialogResult.generated.cs" />
+    <Compile Include="Views\Shared\DialogResultForm.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\ChangedBy.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\ChangedByInfo1.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\ChangedDate.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\DateField.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\DateTimeField.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\Email.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\FixedLengthTextBox.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\Hyperlink.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\MaskedTextBox.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\MSN.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\Object.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\Phone.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Phone.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\DisplayTemplates\SelectBox.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\TableView.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\TextBox.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\TwoLinesTextBox.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\UniqueID.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\ValidationResults.generated.cs" />
+    <Compile Include="Views\Shared\DisplayTemplates\YahooIM.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\Bool.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\DateField.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\DateTimeField.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\Email.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\FixedLengthTextBox.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\MaskedTextBox.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\MSN.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\MultiLinesTextBox.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\Object.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\Phone.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\SelectBox.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\Sex.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\TextBox.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\TwoLinesTextBox.generated.cs" />
+    <Compile Include="Views\Shared\EditorTemplates\UniqueID.generated.cs" />
+    <Compile Include="Views\Shared\Error.generated.cs" />
+    <Compile Include="Views\Shared\ErrorAjax.generated.cs" />
+    <Compile Include="Views\Shared\ErrorObjectNotFound.generated.cs" />
+    <Compile Include="Views\Shared\ErrorObjectNotFoundPartial.generated.cs" />
+    <Compile Include="Views\Shared\PageHeadSection.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PageHeadSection.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Start.generated.cs" />
+    <Compile Include="Views\Shared\ThemeRoller1.generated.cs" />
+    <Compile Include="Views\Shared\ZvonilkaMarkup.generated.cs" />
+    <Compile Include="Views\Shared\_ErrorLayout.generated.cs" />
+    <Compile Include="Views\Shared\_Layout.generated.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ComponentModel\DataAnnotations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComponentModel\ClassDiagram.cd" />
+    <None Include="Models\Test\ValidationSupportedClassDiagram.cd" />
+    <Content Include="Views\Default\DumpAssemblies.cshtml" />
+    <Content Include="Views\Default\Edit.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\SearchEntity.cshtml" />
+    <Content Include="Views\Default\Test.cshtml" />
+    <Content Include="Views\Script\AppCommon.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AppCommon.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Script\AppEnv.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AppEnv.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Script\AppThemeRoller.cshtml" />
+    <Content Include="Views\Shared\AppCommon.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AppCommon.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\DialogResult.cshtml" />
+    <Content Include="Views\Shared\DialogResultForm.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ChangedBy.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ChangedByInfo.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ChangedDate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateField.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTimeField.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\FixedLengthTextBox.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Hyperlink.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MaskedTextBox.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MSN.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Phone.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Phone.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\DisplayTemplates\SelectBox.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TableView.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TextBox.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TwoLinesTextBox.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UniqueID.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ValidationResults.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\YahooIM.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Bool.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateField.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTimeField.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\FixedLengthTextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MaskedTextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MSN.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiLinesTextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Object.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Phone.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SelectBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Sex.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TwoLinesTextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UniqueID.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\ErrorAjax.cshtml" />
+    <Content Include="Views\Shared\ErrorObjectNotFound.cshtml" />
+    <Content Include="Views\Shared\ErrorObjectNotFoundPartial.cshtml" />
+    <Content Include="Views\Shared\PageHeadSection.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PageHeadSection.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\Start.cshtml" />
+    <Content Include="Views\Shared\ThemeRoller.cshtml" />
+    <Content Include="Views\Shared\ZvonilkaMarkup.cshtml" />
+    <Content Include="Views\Shared\_ErrorLayout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources.et.resx" />
+    <EmbeddedResource Include="Localization\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.ApplicationServices\Kesco.ApplicationServices.csproj">
+      <Project>{64c8f921-dbf3-490a-ab1f-385eb1c41d53}</Project>
+      <Name>Kesco.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.BaseExtensions\Kesco.BaseExtensions.csproj">
+      <Project>{0c4d6de0-daf5-49d7-bc56-f79287332045}</Project>
+      <Name>Kesco.BaseExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ClassExtensions\Kesco.ClassExtensions.csproj">
+      <Project>{BE40DC15-64E2-4861-9148-A891932C123C}</Project>
+      <Name>Kesco.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Project>{1170B0D6-2512-474E-9C69-DEBB7EF5904A}</Project>
+      <Name>Kesco.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.DataAccess\Kesco.DataAccess.csproj">
+      <Project>{9E72B472-D36D-496F-9FF7-EE2CAEB26003}</Project>
+      <Name>Kesco.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+      <Name>Kesco.Lib.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Linq.Dynamic\Kesco.Linq.Dynamic.csproj">
+      <Project>{9E29EF27-3F61-46D5-AF6C-8E07E6C3107C}</Project>
+      <Name>Kesco.Linq.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Project>{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}</Project>
+      <Name>Kesco.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Utilities\Kesco.Utilities.csproj">
+      <Project>{2EBA366E-5675-4C8D-BC2D-C3A2372508E4}</Project>
+      <Name>Kesco.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.Compression\Kesco.Web.Mvc.Compression.csproj">
+      <Project>{8BFCD8AD-127B-46C6-8EEC-14EB8C7B314F}</Project>
+      <Name>Kesco.Web.Mvc.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.UI.Controls\Kesco.Web.Mvc.UI.Controls.csproj">
+      <Project>{74f7678f-70a3-4441-bf17-e7b75b3f80e5}</Project>
+      <Name>Kesco.Web.Mvc.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.UI\Kesco.Web.Mvc.UI.csproj">
+      <Project>{76ad79c0-57d1-42a0-b6f6-716d894813cc}</Project>
+      <Name>Kesco.Web.Mvc.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>37742</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/mvc/SharedViews</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

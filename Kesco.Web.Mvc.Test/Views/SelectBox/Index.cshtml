@@ -1,0 +1,8 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.Test.Models.SelectBox.ViewModel>
+@{
+    ViewBag.Title = "Тестирование элемента управления KescoSelect";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.DisplayFor(m => m.Model.SupplierID, new { HtmlAttributes = new { @class = "supplier" } })
+@Html.EditorFor(m => m.Model)
+

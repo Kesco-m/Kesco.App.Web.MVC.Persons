@@ -1,0 +1,15 @@
+/*
+* jQuery UI Numeric Up/Down v1.2
+*
+* Copyright 2011, Tony Kramer
+* Dual licensed under the MIT or GPL Version 2 licenses.
+* https://github.com/flamewave/jquery-ui-numeric/raw/master/GPL-LICENSE.txt
+* https://github.com/flamewave/jquery-ui-numeric/raw/master/MIT-LICENSE.txt
+*
+* https://github.com/flamewave/jquery-ui-numeric
+*/
+.ui-numeric { display: inline-block; width: 155px; }
+.ui-numeric input[type=text] { text-align: right; margin: 2px; vertical-align: top; }
+.ui-numeric-currency { display: inline; padding: 0px 2px; vertical-align: top; }
+.ui-numeric-buttons { display: inline; padding: 2px; width: 45px; }
+.ui-numeric-buttons .ui-button { margin-top: 3px; width: 1.55em; height: 1.55em; }

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.ComponentModel.dll&#xD;&#xA;Пространство имён: Kesco.ComponentModel.DataAnnotations">
+    <Position X="0.5" Y="0.5" Height="0.593" Width="11.126" />
+  </Comment>
+  <Comment CommentText="Классы-атрибут для описания элементов модели данных, расширящие базовые классы с поддержкой локализации свойств и сообщений .">
+    <Position X="0.5" Y="1.271" Height="0.593" Width="5.221" />
+  </Comment>
+  <Comment CommentText="Классы-атрибуты для описания правил валидации элементов модели данных.">
+    <Position X="5.928" Y="1.291" Height="0.573" Width="5.692" />
+  </Comment>
+  <Comment CommentText="Класс-атрибут для указания типа, для которого данный тип предоставляет метаданные.">
+    <Position X="0.5" Y="6.02" Height="0.427" Width="4.713" />
+  </Comment>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.AnnotationAttribute">
+    <Position X="0.5" Y="2.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAEAMQACAAAgAAAEIACAQCQCAAAAAIAAABAAAAAQBAE=</HashCode>
+      <FileName>DataAnnotations\AnnotationAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.GreaterThanAttribute">
+    <Position X="9" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAgAAAAAAAAAAAAAAIAAACAAAAg=</HashCode>
+      <FileName>DataAnnotations\Validation\GreaterThanValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.LocalizableString">
+    <Position X="3.25" Y="2.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAAAAAAABAAQgAAAAAAAAAAAAAgCAAQAAA=</HashCode>
+      <FileName>DataAnnotations\LocalizableString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.MaxValueAttribute">
+    <Position X="6" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAIAgACAAAAg=</HashCode>
+      <FileName>DataAnnotations\Validation\MaxValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.MinValueAttribute">
+    <Position X="9" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAgAAAAAAAAAAAAAAIAAACAAAAg=</HashCode>
+      <FileName>DataAnnotations\Validation\MinValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.RemoteAttribute">
+    <Position X="6" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAABAQABAEAAAAAAA=</HashCode>
+      <FileName>DataAnnotations\Validation\RemoteAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.MetadataTypeForAttribute">
+    <Position X="0.5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAnnotations\Metadata\MetadataTypeForAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.MetadataProvider">
+    <Position X="3" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>DataAnnotations\Metadata\MetadataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

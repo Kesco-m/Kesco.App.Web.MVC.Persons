@@ -1,0 +1,1212 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage
+@{
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+@*	BEGIN ClientSideViewModel *@
+
+;(function (window, $, undefined) {
+    var kesco_ip = '@(Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? Request.ServerVariables["REMOTE_ADDR"])';
+	if (window.Env === undefined) {
+		// TODO: what to do???
+	}
+	var Env = window.Env;
+	if (window.console) console.log("ClientSideVM: запуск "+new Date());
+	var ViewModel = {
+		_garbage: ko.observable(0),
+		AppName: Env.AppName,
+		ClientHostAddress: Env.ClientHostAddress,
+		ClientName: '',
+		ControlNameToFocus: '',
+		PageLoaded: ko.observable(false),
+		Processing: ko.observable(false),
+		ScriptStartTime: new Date(),
+
+		EmployeePhones: ko.observableArray([]),
+		EmployeePhonesLoading: ko.observable(false),
+		CallStation: {
+			Mode: ko.observable(0),
+			Message: ko.observable(''),
+			Phone: ko.observable($.cookie("ep")),
+			PhoneInfo: ko.observable({}),
+			PhoneLocation: ko.observable(),
+			TargetPhone: ko.observable(''),
+			TargetPhoneDisplay: ko.observable(''),
+			Calling: ko.observable(false),
+			CallInfo: null,
+			MonitorID: ko.observable(),
+			SaveSettings: ko.observable($.cookie("eps")),
+			CallEstablishing: ko.observable(false)
+		},
+		DefaultEmployeePhone: ko.observable($.cookie("ep")),
+
+
+		closeDialog: function () { 
+			var opener = window.opener || window.parent;
+			if (opener && !opener.closed) {
+				opener.blur();
+				opener.focus();
+			} 
+			window.self.close();
+		},
+		refreshPage: function () { 
+			ViewModel.Processing(true);
+			if (window.top != window.self) {
+				// Перегрузим IFRAME
+				window.parent.document.getElementById(window.self.name).src = window.self.location + "&t=1";
+			} else {
+				window.location.reload();
+			}
+			ViewModel.Processing(false);
+		},
+
+		showUser: function (id) {
+			openPopupWindow(Env.URI_user_form+'?id='+id+'&hideOldVer='+@(hideOldVer), null, null, "wnd_ViewUser_"+id, 800, 600, { close: false, centerScreen:0 });
+		},
+
+		showPerson: function (id) {
+			openPopupWindow(Env.URI_person_form+'?id='+id+'&hideOldVer='+@(hideOldVer), null, null, "wnd_ViewPerson_"+id, 800, 600, { close: false, centerScreen:0 });
+		},
+
+		showResource: function (id) {
+			openPopupWindow(Env.URI_resource_form+'?id='+id, null, null, "wnd_ShowResource_"+id, 800, 600, { close: false, centerScreen:0 });
+        },
+
+        showDocument: function (id, newwindow, openImage, success, failure) {
+            $.srv4js.OpenDoc(id, newwindow, openImage, function(state) {
+	            if(!state.error)
+		            switch(state.value)
+		            {
+                        case '-1': alert($.validator.format('@(Html.Raw(Kesco.Web.Mvc.SharedViews.Localization.Resources.Documents_Controls_DocumentsArhiveErrorMessage)){0}', ':\n' + state.errorMsg));
+                        if (failure && $.isFunction(failure))
+                        {                        
+                            failure(state);
+                        }        
+                        break;
+			            case '0':
+                        default: 
+                        if (success && $.isFunction(success))
+                        {                        
+                            success(state);
+                        }        
+                        break;
+		            }
+            else {
+                        alert($.validator.format('@(Html.Raw(Kesco.Web.Mvc.SharedViews.Localization.Resources.Documents_Controls_DocumentsArhiveErrorMessage)){0}', ':\n' + state.errorMsg));
+                        if (failure && $.isFunction(failure))
+                        {                        
+                            failure(state);
+                        } 
+                }
+            });
+        },
+
+      
+        showPhoneList: function(path){
+            $.support.cors = true;
+            $.get(path, function (data) {
+                var resultHTML = data.replace(/<!--CSSBLOCK.+([^;])+ENDCSSBLOCK-->/, "");
+                $('#PhoneCalling_Dialog').html(resultHTML);
+            });
+            $('#PhoneCalling_Dialog').dialog('open');
+        },
+        sendMessage: function (id, signer, msg, empids, success, failure) {
+            $.srv4js.SendMessage(id, signer, msg, empids, function(state) {
+	            if(!state.error)
+		            switch(state.value)
+		            {
+                        case '-1': alert($.validator.format('@(Html.Raw(Kesco.Web.Mvc.SharedViews.Localization.Resources.Documents_Controls_DocumentsArhiveErrorMessage)){0}', ':\n' + state.errorMsg));
+                        if (failure && $.isFunction(failure))
+                        {                        
+                            failure(state);
+                        }        
+                        break;
+			            case '0':
+                        default: 
+                        if (success && $.isFunction(success))
+                        {                        
+                            success(state);
+                        }        
+                        break;
+		            }
+            else {
+                        alert($.validator.format('@(Html.Raw(Kesco.Web.Mvc.SharedViews.Localization.Resources.Documents_Controls_DocumentsArhiveErrorMessage)){0}', ':\n' + state.errorMsg));
+                        if (failure && $.isFunction(failure))
+                        {                        
+                            failure(state);
+                        } 
+                }
+            });
+        },
+
+        validateEmail: function (email) { return true; },
+
+		sendEmail: function (email)
+		{
+			if (!this.validateEmail(email)) {
+				alert(Env.Localization.ClientSideViewModel_IncorrectEmail);
+				return;
+			}
+			window.open('mailto:'+email);
+		},
+
+		openMessengerChat: function (contact)
+		{
+			try {
+				var obj = new ActiveXObject("Messenger.MessengerApp");
+				if(obj) obj.LaunchIMUI(contact);
+			} catch (e) {
+				postClientError(e.message, '', 'openMessengerChat');
+			}
+		},
+
+		showPersonInfo: function(personID, title, $target, positionMy, positionAt, showEvent, createSpan, options) {
+			if (!personID) return;
+			var url = Env.URI_person_info;
+			url = url.replace("/0", "/"+personID);
+			this.showTip(url, title, $target, positionMy, positionAt, showEvent, createSpan, options);
+		},
+
+		showEmployeeInfo: function(employeeID, title, $target, positionMy, positionAt, showEvent, createSpan, options) {
+			if (!employeeID) return;
+			var url = Env.URI_user_info;
+			url = url.replace("/0", "/"+employeeID);
+			this.showTip(url, title, $target, positionMy, positionAt, showEvent, createSpan, options);
+		},
+
+		showTip: function(url, title, $target, positionMy, positionAt, showEvent, createSpan, options) {
+			if (!$target.data("qtip")) {
+				this.createTip($target, url, title, positionMy, positionAt, showEvent, createSpan, options);
+				$target.qtip("show");
+				$("#ui-tooltip-"+$target.qtip("api").get('id')).resizable({
+					animate2: true, animateDuration2: "fast",
+					minWidth: 320, minHeight: 160,
+					start: function() {
+						$target.qtip("api").set({ 'hide.event': false});
+					},
+					end: function() {
+						$target.qtip("api").set({ 'hide.event': 'mouseleave'});
+					}
+				});
+			} else {
+				if (showEvent) return;
+				$target
+					.qtip("option","content.ajax.url", url)
+					.qtip("toggle");
+			}
+		},
+
+		createTip: function($target, url, title, positionMy, positionAt, showEvent, createSpan, options) {
+			createSpan = !! createSpan;
+			if ($target.data("qtip")) return;
+			var $span = false;
+			if (createSpan) {
+				$span = $("<span style='position: relative;'></span>"); 
+				$target.after($span);
+			}
+			options = options || {};
+			var position = $.extend({
+					container: $span,
+					my: positionMy, 
+					at: positionAt,
+					target: $target,
+					viewport: $("#dialogContentPane"),
+					adjust: { method: 'shift' } 
+				}, (options.position)?options.position:{});
+			options.position = position;
+			var o = $.extend({
+				content: {
+					text: '&nbsp;', 
+					ajax: {
+						url: url,
+						beforeSend: function() {
+							$target.css('cursor', "wait !important");
+							this.set('content.text', "&nbsp;");
+							this.set('content.title.text', "");
+						},
+						success: function(data){
+							var container = $("#dialogContentPane");
+							var width = Math.floor(container.width()/10)*6;
+							var height = Math.floor(container.height()/10)*8;
+							var content = "<div style='overflow: auto; max-height:"+height+"px;'>"+data+"</div>";
+							this.set('content.text', content);
+						},
+						error: function(xhr, status, errorThrown){
+							//do something with data
+							if (status == "parsererror") {
+								this.set('content.text', xhr.responseText);
+							}
+						},
+						complete: function() {
+							this.set('content.title.text', "");
+							$target.css('cursor', "cursor");
+						}
+					},
+					title: {
+						text: "&nbsp;", 
+						button: Env.Localization.GUI_Button_Close
+					}
+				},
+				position: position,
+				show: { event: showEvent,  solo: true, delay: 1000 },
+				hide: { delay: 200, fixed: true },
+				style: { classes: 'ui-tooltip-shadow', widget: true }
+			}, options || {});
+
+			$target.qtip(o);
+
+			$target.bind("keydown", function( ev ) {
+				var keyCodes = $.ui.keyCode;
+				var keyCode = ev.keyCode;
+
+				if (keyCodes.ESCAPE == keyCode ) {
+					if ($target.qtip("api").elements.tooltip.is(':visible')) {
+						ev.stopImmediatePropagation();
+						ev.preventDefault();
+						setTimeout(function() {
+							$target.qtip("hide");
+						}, 10);
+						return false;
+					}
+				} 
+			});
+
+			//$._data($target.get(0), 'events').keydown.reverse();
+
+		},
+
+		extractListItemPropertyAsArray: function (objectArray, property) {
+			var arr = [];
+			if ($.isArray(objectArray)) {
+				for (var i = 0; i < objectArray.length; i++) {
+					arr.push(objectArray[i][property]);
+				}
+			}
+			return arr;
+		},
+
+		request: function (url, model, replaceOptions) {
+			var requestOptions = $.extend({
+					url: url,
+					type: 'POST',
+					data: window.ko.toJSON({
+						model: model
+					}),
+					contentType: "application/json; charset=utf-8",
+					beforeSend: function () { ViewModel.Processing(true); },
+					complete: function () { ViewModel.Processing(false); }
+				},
+				replaceOptions || {}
+			);
+			@* jQuery возвращает Promise объект - можно использваоть callback-функции .done(), .fail(), .always() *@
+			return $.ajax(requestOptions);
+		},
+        
+        
+	    copyToClipboard: function (text) {
+	        text = text.substring(text.indexOf("(", 0), text.length);
+	        text = text.replace(RegExp('[^0-9]{1,}', 'ig'), '');
+	        //alert(text);
+	        window.clipboardData.setData("Text", text);
+	    },
+        
+        FromJS: function (from, to) {
+            var data = to || {};
+            return ko.mapping.fromJS(from, {}, data);
+        },
+
+        ToJS: function (from, to) {
+            var data = to || {};
+            data = ko.mapping.toJS(from);
+            return data;
+        },
+
+        ToJSON: function (from, to) {
+            var data = to || {};
+            data = ko.mapping.toJSON(from);
+            return data;
+        },
+
+        closePhoneDialog: function()
+        {
+            $("#PhoneCalling_Dialog").dialog("close");
+        },
+
+        makeCall: function (contact, intlPhoneNumber, lang)
+		{
+			var self = this;
+			if (!intlPhoneNumber) {
+				RegisterClientError("Неправильно указан телефон(КонтактRL)");
+				return;
+			}
+
+			function doMakeCall() {
+
+				@*self.CallStation.TargetPhone(intlPhoneNumber);
+				self.CallStation.TargetPhoneDisplay(contact);
+				self.CallStation.Message("");*@
+
+                var urlPhone = Env.URI_phones+'?number='+contact.replace(" ", "")+'&inter='+intlPhoneNumber.replace(" ", "") +'&computerName='+ViewModel.ClientName+'&lang='+lang;
+                ViewModel.showPhoneList(urlPhone);
+				@*$("#PhoneCalling_Dialog").dialog("open");*@
+			}
+
+			if (self.ClientName || (ViewModel.ClientName != "" && ViewModel.ClientName != null)) doMakeCall();
+			else 
+				$.srv4js("GETCLIENTNAME", {
+					callback: function(state) {
+                        if(ViewModel.ClientName == "" || ViewModel.ClientName == null){
+						    ViewModel.ClientName = state.value;
+						    doMakeCall();
+                        }
+					}			
+				});
+			return;
+		}
+
+	};
+
+	// Расширить глобальную модель
+	window.ViewModel = $.extend(window.ViewModel || {}, ViewModel);
+
+
+	@* 
+		Признак 'Cохранять настройки' диалога звонка сохраним в кукисах 
+			eps - сохранять или нет
+			ep - номер телефона по умолчанию.
+	*@
+	ViewModel.CallStation.SaveSettings.subscribe(function(newValue) {
+		if (newValue == "1") {
+			$.cookie('eps', newValue, { expires: 365 })
+			$.cookie('ep', ViewModel.CallStation.Phone(), { expires: 365 })
+		} else {
+			$.removeCookie('eps');
+			$.removeCookie('ep');
+		}
+
+	});
+
+	ViewModel.CallStation.Phone.subscribe(function(newValue) {
+		if (ViewModel.CallStation.SaveSettings()) {
+			$.cookie('ep', newValue, { expires: 365 })
+		}
+	});
+
+	ViewModel.DefaultEmployeePhone.subscribe(function(newValue) {
+		if (!ViewModel.CallStation.SaveSettings()) {
+			return;
+		}
+		if (newValue) {
+			$.cookie('ep', newValue, { expires: 365 })
+		} else {
+			$.removeCookie('ep');
+		}
+	});
+
+	ViewModel.CallStation.CallingPhoneStateImage = ko.computed(function() {
+		if (ViewModel.CallStation.Calling()) {
+			return Env.Assets.Image_PhoneOn;
+		}
+		return Env.Assets.Image_PhoneOff;
+	});
+
+	ViewModel.CallStation.CalledPhoneStateImage = ko.computed(function() {
+		if (ViewModel.CallStation.Calling()) {
+			if (ViewModel._garbage() && ViewModel.CallStation.CallInfo != null) {
+				if (0 == ViewModel.CallStation.CallInfo.ConnectionState) 
+					return Env.Assets.Image_PhoneIncome;
+				if (1 == ViewModel.CallStation.CallInfo.ConnectionState) 
+					return Env.Assets.Image_PhoneOn;
+			}
+		}
+		return Env.Assets.Image_PhoneOff;
+	});
+
+	function countdown(timeout) {
+		var d = $.Deferred();
+		var i = 0 + timeout;
+			
+		var intervalID = setInterval(function() {
+			if (d.state() == 'rejected') {
+				clearInterval(intervalID);
+				return;
+			}
+			d.notify(--i);
+			if (i <= 0) d.resolve(0);
+		}, 1000);
+		d.notify(i);
+		return d;
+	}
+
+
+
+	function getEmployeePhones() {
+		var xhr = $.ajax({
+				timeout: 15000,
+				url: Env.URI_Default_GetAvailablePhones,
+				data: { 
+					clientName: ViewModel.ClientName
+				},
+				type: 'POST',
+				beforeSend: function() {
+					ViewModel.EmployeePhonesLoading(true);
+					ViewModel.EmployeePhones.removeAll();
+				}
+			})
+			.success(function(response, status, xhr) { 
+				if (response.status == "ok") {
+					@* Добавим телефоны *@
+					var s = ViewModel.CallStation.Phone();
+					var phoneInfo = null;
+					$(response.model.phones).each(function(idx, item) {
+						item.PhoneID = ''+item.PhoneNumber
+							+"/"+item.EquipmentID;
+						if (item.PhoneID == s) phoneInfo = item;
+						ViewModel.EmployeePhones.push(item);
+					});
+						
+					if (response.model.phones.length == 1) {
+						phoneInfo = response.model.phones[0];
+					}
+
+					if (phoneInfo) {
+						ViewModel.CallStation.PhoneInfo(phoneInfo);
+						ViewModel.CallStation.Phone(phoneInfo.PhoneID);
+						ViewModel.CallStation.PhoneLocation(phoneInfo.Location);
+					} else {
+						ViewModel.CallStation.PhoneInfo({});
+						ViewModel.CallStation.Phone("");
+						ViewModel.CallStation.PhoneLocation("");
+					}
+						
+				} else if (response.status == "error") {
+					alert(response.error.Content || response.error);
+				}
+			})
+			.error(function(xhr, status, errorThrown) { 
+				if (status != "abort") {
+					alertMessage(Env.Localization.Ajax_Alert_Title_ApplicationError
+						, $.validator.format(Env.Localization.Ajax_Alert_Message_RequestError, status, errorThrown)
+						, Env.Localization.GUI_Button_OK);
+				}
+			})
+			.complete(function() {
+				ViewModel.EmployeePhonesLoading(false);
+			});
+
+		return xhr; 
+
+	}
+
+	function makeCall() {
+		if (window.console) console.log("makeCall", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+		var phone = ViewModel.CallStation.Phone().split("/");
+		var xhr = $.ajax({
+				timeout: 15000,
+				url: Env.URI_Default_MakeCall,
+				type: 'POST',
+				data: {
+					clientName: ViewModel.ClientName,
+					phone: phone[0],
+					equipmentID: phone[1],
+					targetPhone: ViewModel.CallStation.TargetPhone()
+				},
+				beforeSend: function() {
+					ViewModel.CallStation.Message(Env.Localization.PhoneCalling_Dialog_PhoneCallState_Connecting);
+					ViewModel.CallStation.Calling(true);
+					ViewModel.CallStation.CallInfo = null;
+					ViewModel.CallStation.CallEstablishing(true);
+				}
+
+			})
+			.success(function(response, status, xhr) { 
+				if (response.status == "ok") {
+					if (response.model.callInfo.CallID) {
+						ViewModel.CallStation.Message(Env.Localization.PhoneCalling_Dialog_PhoneCallState_Call);
+						ViewModel.CallStation.Calling(true);
+						ViewModel.CallStation.CallInfo = response.model.callInfo;
+					} else {
+						ViewModel.CallStation.Message(Env.Localization.MakeCall_CallCannotBeEstablished
+								+((ViewModel.EmployeePhones().length > 1)?('<br><br>'+Env.Localization.MakeCall_TryToCallFromAnotherPhone):'')
+							);
+						ViewModel.CallStation.Calling(false);
+					}
+				}
+				if (response.status == "error") {
+					ViewModel.CallStation.Message(response.error);
+					ViewModel.CallStation.Calling(false);
+					ViewModel.CallStation.CallInfo = null;
+				}
+			})
+			.error(function(xhr, status, errorThrown) { 
+				if (status != "abort") {
+					ViewModel.CallStation.Message($.validator.format(Env.Localization.Ajax_Alert_Message_RequestError, status, errorThrown));
+					ViewModel.CallStation.Calling(false);
+					ViewModel.CallStation.CallInfo = null;
+					alertMessage(Env.Localization.Ajax_Alert_Title_ApplicationError
+						, $.validator.format(Env.Localization.Ajax_Alert_Message_RequestError, status, errorThrown)
+						, Env.Localization.GUI_Button_OK);
+				}
+			})
+			.complete(function() {
+				ViewModel._garbage(new Date());
+				ViewModel.CallStation.CallEstablishing(false); 
+			});
+		return xhr;
+	}
+
+	function checkCall() {
+		if (window.console) console.log("checkCall", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+		var phone = ViewModel.CallStation.Phone().split("/");
+		var xhr = $.ajax({
+				timeout: 15000,
+				url: Env.URI_Default_CheckCall,
+				type: 'POST',
+				data: {
+					callID: (ViewModel.CallStation.CallInfo)?ViewModel.CallStation.CallInfo.CallID:0,
+					clientName: ViewModel.ClientName,
+					phone: phone[0],
+					equipmentID: phone[1],
+					targetPhone: ViewModel.CallStation.TargetPhone()
+				},
+				beforeSend: function() {
+				}
+
+			})
+			.success(function(response, status, xhr) { 
+				if (response.status == "ok") {
+					if (ViewModel.CallStation.Calling()) {
+						ViewModel.CallStation.Message(response.model.message);
+						ViewModel.CallStation.Calling(response.model.active);
+						ViewModel.CallStation.CallInfo = response.model.callInfo;
+					}
+				}
+				if (response.status == "error") {
+					ViewModel.CallStation.Message(response.error);
+					ViewModel.CallStation.Calling(false);
+				}
+			})
+			.error(function(xhr, status, errorThrown) { 
+				if (status != "abort") {
+					ViewModel.CallStation.Message(Env.Localization.CheckCall_Error);
+					ViewModel.CallStation.Calling(false);
+					alertMessage(Env.Localization.Ajax_Alert_Title_ApplicationError
+						, $.validator.format(Env.Localization.Ajax_Alert_Message_RequestError, status, errorThrown)
+						, Env.Localization.GUI_Button_OK);
+				}
+			})
+			.complete(function() {
+				ViewModel._garbage(new Date()); 
+			});
+		return xhr;
+	}
+
+	function cancelCall() {
+		if (window.console) console.log("cancelCall", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+		var phone = ViewModel.CallStation.Phone().split("/");
+		if (!ViewModel.CallStation.CallInfo) {
+			return;
+		}
+		var xhr = $.ajax({
+				timeout: 15000,
+				url: Env.URI_Default_CancelCall,
+				type: 'POST',
+				data: {
+					callID: (ViewModel.CallStation.CallInfo)?ViewModel.CallStation.CallInfo.CallID:0,
+					clientName: ViewModel.ClientName,
+					phone: phone[0],
+					equipmentID: phone[1],
+					targetPhone: ViewModel.CallStation.TargetPhone()
+				},
+				beforeSend: function() { }
+
+			})
+			.success(function(response, status, xhr) { 
+				if (response.status == "ok") {
+					ViewModel.CallStation.Message(response.model.message);
+					//ViewModel.CallStation.Calling(false);
+				}
+				if (response.status == "error") {
+					ViewModel.CallStation.Message(response.error);
+					ViewModel.CallStation.Calling(false);
+				}
+			})
+			.error(function(xhr, status, errorThrown) { 
+				if (status != "abort") {
+					ViewModel.CallStation.Message(Env.Localization.CheckCall_Error);
+					ViewModel.CallStation.Calling(false);
+					alertMessage(Env.Localization.Ajax_Alert_Title_ApplicationError
+						, $.validator.format(Env.Localization.Ajax_Alert_Message_RequestError, status, errorThrown)
+						, Env.Localization.GUI_Button_OK);
+				}
+			})
+			.complete(function() {
+				ViewModel._garbage(new Date()); 
+			});
+		return xhr;
+	}
+
+	function abortPhoneDialogTask() {
+		if ($phoneDialogTask && $phoneDialogTask.state() == "pending") {
+			if ($phoneDialogTask.abort) $phoneDialogTask.abort();
+			else $phoneDialogTask.reject();
+		}
+	}
+
+	var $phoneDialogTask = null;
+	var $phoneDialogButtons = null;
+	var $phoneDialog_BeforeOpenActiveElement = null;
+	var $phoneDialog = $("#PhoneCalling_Dialog").dialog({
+		autoOpen: false, 
+		width: $.cookie("epw") || 550, 
+		height: $.cookie("eph") || 230, 
+		closeOnEscape: false,
+		minHeight: 200, minWidth: 350, modal: true, dialogClass: 'ui-dialog-titlehidden',
+		resizeStop: function(ev, ui) {
+			$.cookie("epw", Math.floor($phoneDialog.dialog("option", "width")), { expires: 365 });
+			$.cookie("eph", Math.floor($phoneDialog.dialog("option", "height")), { expires: 365 });
+
+		},
+		create: function(ev, ui) {
+			var $widget = $($(this).dialog("widget"));
+			$widget.find('.ui-dialog-buttonpane')
+				.prepend("<div style='padding: 2px;' data-bind='style: { visibility: CallStation.Mode() == 1?\"visible\":\"hidden\" }'><table><tr><td><input type='checkbox' id='PhoneCalling_Dialog_SaveSetting' value='1' data-bind='checked: CallStation.SaveSettings' /></td><td><label for='PhoneCalling_Dialog_SaveSetting'>@(Kesco.Web.Mvc.SharedViews.Localization.Resources.PhoneCalling_Dialog_SaveAsMainWorkingPhoneAtThisLocation)</label></td></tr></table></div>");
+			@* Сохраним кнопки диалога *@
+			window.$phoneDialogButtons = $phoneDialogButtons = $widget.find('.ui-dialog-buttonset button'); 
+		},
+		open: function() {
+			$phoneDialog_BeforeOpenActiveElement = $( document.activeElement );
+			if (window.console) console.log($phoneDialog_BeforeOpenActiveElement);
+			var qtip = $('.qtip:visible');
+			if (qtip.length) qtip.qtip('hide');
+
+			ViewModel.CallStation.Phone($.cookie("ep") || "");
+			var targetPhone = ViewModel.CallStation.TargetPhone();
+			$(this).dialog("option", "title", "" /*$.validator.format(Env.Localization.PhoneCalling_Dialog_Title2, targetPhone)*/);
+			var phone = ViewModel.CallStation.Phone();
+			
+		},
+		close: function() {
+			ViewModel.CallStation.Calling(false);
+			ViewModel.CallStation.CallInfo = null;
+			ViewModel.CallStation.Mode(0);
+			ViewModel.DefaultEmployeePhone(ViewModel.CallStation.Phone());
+			if ($phoneDialog_BeforeOpenActiveElement && $phoneDialog_BeforeOpenActiveElement.length) {
+				$phoneDialog_BeforeOpenActiveElement = $phoneDialog_BeforeOpenActiveElement.find(':tabbable');
+				if ($phoneDialog_BeforeOpenActiveElement && $phoneDialog_BeforeOpenActiveElement.length)  $phoneDialog_BeforeOpenActiveElement.get(0).focus();
+			}
+		}
+	});
+
+	@* Функция перехода в состояние выбора телефона *@
+	function doChoosePhone() {
+		ViewModel.CallStation.Mode(1);
+		if (window.console) console.log("doChoosePhone", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+		@* Загрузить доступные телефоны *@
+		$.when($phoneDialogTask = getEmployeePhones())
+			.done(function () {
+				@* Телефоны загружены *@
+				//var links =  $phoneDialog.find('.radio-button-link:tabbable:first');
+				//if (links && links.length) links.get(0).click();
+			})
+	}
+		
+	function doExit() { 
+		if (window.console) console.log("doExit", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+		$phoneDialog.dialog("close");
+	}
+
+	function doCheckCall() {
+		var attempts = 0;
+		var attemptsLimit = 0;
+		if (!ViewModel.CallStation.Calling()) {
+			// Если не удалось позвонить и телефон один, отмена
+			if (ViewModel.EmployeePhones().length == 1) {
+				setTimeout(function() { $($phoneDialogButtons.get(2)).click(); }, 2000);
+			} else {
+				if ($.isFunction($phoneDialog.data("OnCallEndHandler"))) 
+					$phoneDialog.data("OnCallEndHandler").apply(this);
+			}
+			return;
+		}
+
+		function timeoutExceeded() {
+			ViewModel.CallStation.Calling(false);
+			var callInfo = ViewModel.CallStation.CallInfo;
+			ViewModel.CallStation.CallInfo = null;
+			postClientError(
+				[
+					Env.Localization.CheckCall_Error_CallCancellationFailed,
+					' [',
+					callInfo.CallingPhone, ' --> ',
+					callInfo.CalledPhone, ' ConnectionState: ',
+					callInfo.ConnectionState, ']',
+				].join(""),
+				'Kesco.Zvonilka',
+				'CheckCall'
+			);
+			$phoneDialog.dialog("close");
+		}
+
+		function intervalCheck() {
+			if (window.console) console.log("intervalCheck", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+			if (!ViewModel.CallStation.Calling()) {
+				ViewModel.CallStation.CallInfo = null; 
+				if ($.isFunction($phoneDialog.data("OnCallEndHandler"))) 
+					$phoneDialog.data("OnCallEndHandler").apply(this);
+				return;
+			}
+			attemptsLimit = $phoneDialog.data("AttemptsLimit") || 0;
+			if (attemptsLimit && attempts >= attemptsLimit) {
+				timeoutExceeded();
+				return;
+			}
+			$.when(countdown(2))
+				.done(function () {
+					$.when(checkCall())
+						.done(function () { 
+							if (attemptsLimit) ++attempts;
+							intervalCheck();
+						});
+				})
+				.fail(function () {
+					//cancelCall();
+				});
+		}
+
+		setTimeout(intervalCheck, 2000);
+	}
+
+	$phoneDialog.dialog("widget").keydown(function(ev) {
+		if ( ev.keyCode === $.ui.keyCode.ENTER || ev.keyCode === $.ui.keyCode.NUMPAD_ENTER) {
+			if (ViewModel.CallStation.Mode() == 1) {
+				$($phoneDialogButtons.get(1)).click();
+				ev.preventDefault();
+				return false;
+			}
+		}
+	});
+
+})(window, jQuery);
+
+@*	END ClientSideViewModel *@
+
+@*	BEGIN PageScriptAndInit *@
+
+	function adjustWindowSize() {
+		var width, height;
+
+		if (window.dialogWidth != null && window.dialogHeight != null) {
+			if (ViewModel.Params.Width() && ViewModel.Params.Height()) {
+				var width = ViewModel.Params.Width() + 'px';
+				var height = ViewModel.Params.Height() + 'px';
+				if (window.dialogWidth != width) window.dialogWidth = width;
+				if (window.dialogHeight != height) window.dialogHeight = height;
+			}
+		}
+	}
+
+	var $activeElement$ = null;
+
+	$(document).ready(function () {
+
+		adjustWindowSize();
+
+		var $window = $(window);
+		$window.resize(resizeContentPane);
+
+		var acceptLanguage = '';
+		Globalize.culture('kesco');
+
+		$.validator.methods.number = function (value, element) {
+			var culture = jQuery(element).attr("input-culture");
+			if (!culture)
+				culture = Globalize.culture().name;
+			var val = Globalize.parseFloat(value, 10, culture);
+			return this.optional(element) || (!isNaN(val));
+		}
+
+		// Коррекция установок datepicker для en, en-US
+		$.datepicker.setDefaults({ changeYear: true, changeMonth: true })
+		$.datepicker.regional["en"] = $.datepicker.regional[""];
+		$.datepicker.regional["en-US"] = $.datepicker.regional[""];
+		$.datepicker.regional["ru-RU"] = $.datepicker.regional["ru"];
+		$.datepicker.setDefaults($.datepicker.regional["ru"]);
+		// Установим локализацию datepicker
+		$.datepicker.regional[Env.Culture].dateFormat = $.datepicker.regional["ru"].dateFormat;
+		$.datepicker.setDefaults($.datepicker.regional[Env.Culture]);
+
+		$(".hoverable").on({
+			mouseenter: function () {
+				$(this).addClass("ui-state-hover");
+			},
+			mouseleave: function () {
+				$(this).removeClass("ui-state-hover");
+			}
+		});
+
+		$("input,button,select").focusin(function (e) {
+			$activeElement$ = e.target;
+			if (window.console) console.log("focusin: " + $activeElement$.id);
+			setActiveTreeUnfocused();
+		}).focusout(function (e) {
+			$activeElement$ = null;
+		})
+
+		$("input[type=text]").keydown(function (e) {
+			if (e.keyCode == $.ui.keyCode.ENTER || e.keyCode == $.ui.keyCode.NUMPAD_ENTER) {
+            if (this.className == "ui-spinner-input hasDatepicker valid" ||this.className == "ui-spinner-input hasDatepicker") {  e.keyCode = $.ui.keyCode.ESCAPE; }
+				if (!e.isPropagationStopped()){
+					$(e.currentTarget).focusNextInputField();}
+			}
+		});
+
+		// Регистрация клиентских ошибок
+		window.onerror = postClientError;
+		// Отмена справки по умолчанию.
+		window.onhelp = function () { return false; }
+		// Настройка установок Ajax-запросов по умолчанию
+		setupJqueryAjax();
+		setupJqueryUiDialog();
+		if (Env.scriptCapabilities.LoadGridScript) {
+			setupJqGrid();
+		}
+
+
+	}).keydown(function (e) {
+		if (e.keyCode == 27) { // Закрытие диалога по ESC
+			var qtip = $('.qtip:visible');
+			if (qtip.length) {
+				qtip.qtip('hide');
+				e.stopImmediatePropagation();
+				e.preventDefault();
+				return false;
+			}
+			/*if ((window.opener && window.opener != window.self) || window.dialogWidth) {
+			closeDialog();
+			}*/
+		}
+		if (e.keyCode == 112) { // Показ справки F1
+			if ($.isFunction(window.showHelp)) {
+				showHelp();
+			}
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		}
+	});
+
+	function postClientError(msg, url, line) {
+		var i;
+		var r = new RegExp("function[ ]{1,}([0-9a-z_]{1,})[^0-9a-z_]","i");
+		var obj=arguments.caller;
+		var s="";
+		var m;
+		var fbody = (obj!=null)?obj.callee:'';
+		while (obj!=null) {
+			args='';
+			for (i=0;i<obj.length;i++)
+				args+=(i>0?',':'')+obj[i];
+
+			m = r.exec(obj.callee);
+			s = (((m instanceof Array)&&(m.length>1))?m[1]:'?')+'('+args+')\n\t'+s
+
+			obj=obj.caller;
+		}
+
+        var appName = Env.AppName;
+		var errorMessage = ["Приложение: ", appName, "\nСообщение: ", msg, "\nURL: ", url, "\nСтрока: ", line, "\n\nСтек вызовов: ", s, "\n\n", fbody].join(""); 
+
+		$.post(Env.URI_Default_RegisterClientError, {
+			details: errorMessage
+		});
+		alertMessage(
+				Env.Localization.CheckCall_Error
+				, msg.replace(/\n/ig, "<br/>") 
+				, Env.Localization.GUI_Button_OK 
+			);
+		return true;
+	}
+    
+    function postSilverlightError(type, message)
+	{
+		var appName = Env.AppName;
+		var errorMessage = ["Приложение: ", appName, "\nСообщение: ", message].join(""); 
+		$.post(Env.URI_Default_RegisterSilverlightError, {
+			type: type,
+			msg: errorMessage
+		});
+		/*alertMessage(
+				Env.Localization.CheckCall_Error
+				, errorMessage.replace(/\n/ig, "<br/>") 
+				, Env.Localization.GUI_Button_OK 
+		);*/
+	}
+
+	function setupJqueryUiDialog() { }
+
+	function setupJqueryAjax() {
+		$.ajaxSetup({
+			cache: false,
+			traditional: true,
+			global: true,
+			contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+		});
+		$(document)
+			.ajaxStart(function () {
+				$("html").addClass('busy');
+				ViewModel.Processing(true);
+			})
+			.ajaxError(function (ev, xhr, settings, thrownError) {
+				if (thrownError == "abort") return;
+				var appName = Env.AppName;
+				var errorMessage = ["Приложение: ", appName, "\nСообщение: ", thrownError, "\nURL: ", settings.url].join(""); 
+				$.post(Env.URI_Default_RegisterClientError, {
+					details: errorMessage
+				});
+			})
+			.ajaxComplete(function () {
+				ViewModel.Processing(false);
+				$("html").removeClass('busy');
+			}); 
+	}
+
+	function setupJqGrid() {
+		jQuery.jgrid.del = $.extend(jQuery.jgrid.del, {
+			afterSubmit: function(xhr, postedData) {
+				//alert ('afterSubmit');
+				var ret = [true, ""];
+				var response = $.parseJSON(xhr.responseText);
+				if (response.status == "error") {
+					ret[0] = false;
+					ret[1] = response.error;
+				}
+				return ret;
+			}
+		});
+	}
+
+	var __contentPaneResizing = false;
+	var __contentPaneResizingReset = null;
+
+	function resizeContentPane() {
+		var $window = $(window);
+			
+		if (window.dialogWidth!=null && window.dialogHeight!=null) {
+			ViewModel.Params.Width = $window.width();
+			ViewModel.Params.Height = $window.height();
+		}
+
+		if (__contentPaneResizing) {
+			__contentPaneResizing = false;
+			return;
+		}
+		__contentPaneResizing = true;
+
+		var $header = $("#dialogHeader");
+		var $content = $("#dialogContentPane");
+		var $footer = $("#dialogFooter");
+
+		$content.width($header.outerWidth() - 6);
+		var height = $window.height() - $header.outerHeight() - $footer.outerHeight() - 15;
+		if (height > 0) {
+			$content.height(height);
+		}
+		$("#wndSize").html("width: " + $window.width() + " | height: " + $window.height() + " | header: " + $header.outerHeight() + " | footer: " + $footer.outerHeight() + " | content: " + ($content.outerHeight()));
+		clearTimeout(__contentPaneResizingReset);
+		__contentPaneResizingReset = setTimeout(function () {
+			__contentPaneResizing = false;
+		}, 50);
+	}
+
+	function saveSettings() {
+		// готовим JSON-данные для отправки на сервер и маппинга на Dictionary<string, string>
+		// {'settings[0].Key': "PersonBProject", 'settings[0].Value': "1", 'settings[1].Key': "PersonAllBProject", 'settings[1].Value': "0", ...}
+
+		var settings = {}, i = 0;
+		if (window.dialogWidth != null && window.dialogHeight != null) {
+			ViewModel.Params.Width = window.dialogWidth.replace('px', '');
+			ViewModel.Params.Height = window.dialogHeight.replace('px', '');
+		}
+
+		var params = {};
+		if (ViewModel.Params)
+			params = ko.mapping.toJS(ViewModel.Params);
+		for (var prop in params) {
+			settings['settings[' + i + '].Key'] = prop;
+			settings['settings[' + i + '].Value'] = (params[prop] == null) ? "" : params[prop];
+			i++;
+		}
+		var data = $.extend({}, settings, { clid: ViewModel.CLID() });
+
+		//alert(JSON.stringify(data));
+
+		return $.ajax({
+			async: false,
+			type: 'POST',
+			url: Env.URI_Default_SaveApplicationSettings,
+			traditional: false,
+			data: data,
+			beforeSend: function() { },
+			success: function( data ) {},
+			complete: function() {}
+		});
+	}
+
+	function openPopupWindow(url, context, callback, windowName, width, height, replaceOptions) {
+		var uri = ""+url;
+		var cxt = $.extend({ type: 'GET' }, context || {}, { url: url });
+		if (cxt.type == 'POST') {
+			@* Используем действие START только, если надо передать данные методом POST *@
+			uri = Env.URI_Default_Start;
+		}
+		var openOptions = $.extend({
+				url: uri,
+				centerScreen: 0,
+				resizable: 1,
+				location: 0,
+				width: width,
+				height: height,
+				callback: callback,
+				context: cxt,
+				close: true
+			},
+			replaceOptions || {}
+		);
+		return $.windowManager.openWindow(openOptions);
+	}
+
+	function closeDialogAndReturnValue(value) {
+		$("#dialogResultField_Value").val(value);
+		$("#dialogResultForm").submit();
+	}
+
+	function closeDialog() {
+		var opener = window.opener || window.parent;
+		if (opener && !opener.closed) {
+			opener.blur();
+			opener.focus();
+		}
+		window.self.close();
+	}
+
+	function refreshPage() {
+		window.location.reload();
+	}
+
+	function showHelp() {
+		var topic = (window.ViewModel.HelpTopic)?window.ViewModel.HelpTopic():'hlpIndex';
+		var url = Env.URI_WikiHelp;
+		url = url + '?page=' + topic;
+		openPopupWindow(url, null, null, 'wnd_Help', 800, 600, { scrollbars: 1, close: false });
+	}
+
+	$.cookie.defaults = {
+	    domain: Env.Domain,
+		path: '/'
+	};
+
+	var cookieDomain = Env.Domain;
+	var cookiePath = '/';
+
+	@* Установим в куки смещение временной зоны *@
+	$.cookie("tz", new Date().getTimezoneOffset());
+
+	function DialogPageOpen(url, params, callback) {
+		if (params == null) params = 'center:yes;status:no;help:no;resizable:yes;';
+
+		window.showModalDialog(url, null, params);
+
+		// сохраняем данные из cookie
+		var result = null;
+		var dlgRez = $.cookie("DlgRez");
+		if (dlgRez == 1) {
+			result = $.cookie("RetVal", {raw: true});
+			if (callback && $.isFunction(callback))
+				callback(result);
+		}
+
+		// очищаем данные в cookie
+		SetDlgRez(0);
+		$.removeCookie("RetVal");
+	}
+
+	function SetDlgRez(dlgRez)
+	{
+		document.cookie='DlgRez='+ dlgRez +';domain='+cookieDomain+';path='+cookiePath;
+	}
+
+	function setActiveTreeUnfocused() {
+		if (!jQuery.jstree) return;
+		var activeTree = jQuery.jstree._focused ();
+		if (activeTree) activeTree.unset_focus();
+	}
+
+	function SetParentAction(parentAction)
+	{
+		document.cookie='ParentAction='+ parentAction+';domain='+cookieDomain+';path='+cookiePath;
+	}
+
+	function SetRetVal(retVal)
+	{
+		var r = new RegExp("[^0-9a-z\\s"+ String.fromCharCode(160) +"]{1,}","ig"); 
+		retVal = retVal.replace(r,function($1) {return escape($1);});
+		document.cookie='RetVal='+ retVal +';domain='+cookieDomain+';path='+cookiePath;
+	}
+
+	function DialogPageReturn(retVal,parentAction)
+	{
+		SetDlgRez(1);
+		SetRetVal(retVal);
+		SetParentAction(parentAction==null?0:parentAction);
+
+		var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+		if (version<7)
+			window.opener=this;
+		else
+			window.open('','_parent','');
+
+		window.close();
+	}
+
+	function searchGrid(gridID) {
+		var $grid = $(gridID);
+		var options = $grid.getGridParam('searchDialogOptions');
+		options.left = 50;
+		options.top = 50;
+		options.overlay = false;
+		options.onClose = function () {
+			var ofilter = $grid.getGridParam("postData");
+			var hasValue = true;
+			var rules = null;
+			if (ofilter.filters) {
+				var filters = $.parseJSON(ofilter.filters);
+				if (filters)
+					rules = filters.rules;
+			}
+			if (rules && rules.length) {
+				for (var i = 0; i < rules.length; i++) {
+					hasValue = false;
+					if (rules[i].data) {
+						hasValue = true;
+						break;
+					}
+				}
+			}
+			return hasValue;
+		}
+		$rid.jqGrid('searchGrid', options);
+	}
+
+@*	END PageScriptAndInit *@

@@ -1,0 +1,115 @@
+﻿@inherits Kesco.Employees.Controls.SiteViewPage<Kesco.Employees.Controls.Controllers.EmployeeSelectUsageController.ViewModel>
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Employees.Controls
+			  
+@{
+    ViewBag.Title = "Использование элемента управления 'Выбор сотрудника'";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header { 
+<h2>Пример использования PersonSelect</h2>
+}
+
+<div id="container" style="overflow: auto;">
+<table width="100%">
+<tr>
+    <td>
+        <span style="float: left;">
+        <pre>
+            // Модель данных
+	        public class DataModel
+	        {
+
+
+			[Display(Name = "Разработчик")]
+			[EmployeeSelect(CLID = 62)]
+			public int DeveloperID { get; set; }
+
+			[Display(Name = "Тестировщик")]
+			[EmployeeSelect(CLID = 62)]
+			public int TesterID { get; set; }
+
+			[Display(Name = "Ответственный")]
+			[EmployeeSelect(CLID = 62)]
+			public int? ResponsibleID { get; set; }
+
+	        }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            // Модель представления
+	        public class ViewModel : ViewModel&lt;DataModel&gt; { }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Форма редактирования *@@
+            @@using (var form = Html.BeginForm())
+            {
+                @@Html.EditorForModel();
+            }
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Просмотр *@@
+            @@Html.EditorForModel();
+        </pre>
+        </span>
+        <span style="float: left;">
+        <pre>
+            @@* Состояние модели *@@
+        </pre>
+        <pre data-bind="text: ko.toJSON(ko.mapping.toJS(ViewModel.Model))">
+            @@* Состояние модели *@@
+        </pre>
+        </span>
+    </td>
+</tr>
+<tr valign="top">
+    <td>
+        <hr />
+        <h3>Форма редактирования</h3>
+        @using (var form = Html.BeginForm())
+        {
+            @Html.EditorFor(m => m.Model);
+        }
+        <hr />
+        <h3>Просмотр</h3>
+        @Html.DisplayFor(m => m.Model)
+    </td>
+</tr>
+</table>
+</div>
+
+@Html.CommonScriptCode("Index_dialogContentPaneResize",
+@<script>
+	$(function () {
+		@* 
+			Обработчик события изменения размера окна 
+		*@
+		$(window).resize(function() {
+			var $parent = $("#dialogContentPane");
+			$("#container").width($parent.width())
+			$("#container").height($parent.height())
+		});
+	});
+</script>)
+@{
+	
+	Html.RegisterScript(@"
+		
+		;(function(scope, $) {{
+			scope.ViewModel.Model.DeveloperID.__SearchParameters.HowSearch(1); // ограничим результат
+			scope.ViewModel.Model.DeveloperID.__SearchParameters.AccountDisabled(false); // ограничим результат
+			scope.ViewModel.Model.TesterID.__SearchParameters.AccountDisabled(false); // ограничим результат
+			scope.ViewModel.Model.TesterID.__SearchParameters.HowSearch(1); // ограничим результат
+			scope.ViewModel.Model.ResponsibleID.__SearchParameters.AccountDisabled(false); // ограничим результат
+			scope.ViewModel.Model.ResponsibleID.__SearchParameters.HowSearch(1); // ограничим результат
+		}})(window, jQuery);
+		
+	".FormatWith(""));
+}

@@ -1,0 +1,28 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+}
+<div class="ui-select-box" style="position:relative; left: 0; top: 0; width: 200px; z-index: 1;" >
+	<a href="javascript: void(0)" 
+		class="ui-button ui-state-default ui-corner-all"
+		style="position: absolute; left: 0px; top: 0px; height: 18px; width: 20px; z-index: 1"
+		data-bind="visible: @(name), attr: { href: 'mailto:'+@(name)() }" 
+		onclick="ViewModel.sendEmail($('#@(id)').val())"
+		><img src="@(WebAssetImage("Email.gif"))" style="border: none;" /></a>
+	<span style="width: 100%" class="ui-state-default ui-widget ui-widget-content ui-corner-all ui-spinner">
+		<div style="padding-left: 20px;" >
+			@Html.KescoTextBoxFor(m => m, new { style = "width: 200px;", data_bind = "decoration: true, value: " + name + ", valueUpdate: 'afterkeydown'" })
+		</div>
+	</span>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#@(id)').parent().parent().hover(
+			function () { $(this).addClass('ui-state-hover'); },
+			function () { $(this).removeClass('ui-state-hover'); }
+		)
+		.focus(function () { $(this).addClass('ui-state-focus'); })
+		.blur(function () { $(this).removeClass('ui-state-focus'); });
+	});
+</script>

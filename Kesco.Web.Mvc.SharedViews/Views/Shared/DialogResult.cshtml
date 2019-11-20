@@ -1,0 +1,73 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.DialogResultModel>
+@using Kesco.Web.Mvc.Compression;
+@using Kesco.Web.Mvc.Compression.Resource;
+@{
+	bool fl = "1".Equals(HttpContext.Current.Request.Form["escaped"]);
+	string prefix = "'";
+	string suffix = "'";
+
+	if (fl)
+	{
+		prefix = "unescape('";
+		suffix = "')";
+	}
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<META http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("jquery.js")))
+	<title>ReturnResult</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	    function IsJsonString(str) {
+	        try {
+	            JSON.parse(str);
+	        } catch (e) {
+	            return false;
+	        }
+	        return true;
+	    }
+
+
+	    $(document).ready(function () {
+	        var w = window.opener || window.parent.opener,
+	            wHost = window.parent || window.self;
+	        try {
+	            if (w && !w.closed && w.$ && w.$.windowManager) {
+	                //alert('@Html.Raw(Model.DialogResult.Value)');
+	           
+	                
+                    if(IsJsonString('@(Html.Raw(Model.DialogResult.Value.Replace(@"\", @"\\").Replace(@"""", @"\""").Replace(@"'", @"\'") ))'))
+                    {
+                        var obj = JSON.parse('@(Html.Raw(Model.DialogResult.Value.Replace(@"\", @"\\").Replace(@"""", @"\""").Replace(@"'", @"\'") ))');
+	                    var sectionId = obj[0].sectionId;
+	                    if(!sectionId) {
+	                        w.$.windowManager.closeDialogEx(wHost, @(Html.Raw(prefix + Model.DialogResult.Value.Replace(@"\", @"\\").Replace(@"""", @"\""").Replace(@"'", @"\'") + suffix )));
+	                     } else {
+	                        w.blur();
+	                        w.focus();
+	                        w.refreshSection(sectionId, false, true);
+	                    }
+                    } else {
+                         w.$.windowManager.closeDialogEx(wHost, @(Html.Raw(prefix + Model.DialogResult.Value.Replace(@"\", @"\\").Replace(@"""", @"\""").Replace(@"'", @"\'") + suffix )));
+                    }
+	                
+	                
+	            }
+	        } catch(e) {
+	            alert(e.Description);
+	        }
+	        if (!wHost.closed) {
+	                wHost.close();
+	        }
+	       
+	    });
+
+	</script>
+</body>
+</html>

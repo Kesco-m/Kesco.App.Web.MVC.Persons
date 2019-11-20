@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ComponentsDesigner1">
+  <componentModelMoniker name="/" />
+  <nestedChildShapes>
+    <componentShape Id="1d98be1b-10a6-4d48-8ff1-c172042f8e77" absoluteBounds="3.05, 1.01, 1.5, 0.5">
+      <componentMoniker name="//KescoLookupTextBox" />
+    </componentShape>
+    <componentShape Id="26dfe4c9-91c6-4553-93b9-b2aee203d202" absoluteBounds="0.91, 1.3900000000000001, 1.5, 0.5">
+      <componentMoniker name="//KescoLookupTextBoxBuilder" />
+    </componentShape>
+  </nestedChildShapes>
+</componentDiagram>

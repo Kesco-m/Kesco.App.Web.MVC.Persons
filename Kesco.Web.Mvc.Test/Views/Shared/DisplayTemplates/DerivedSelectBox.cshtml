@@ -1,0 +1,26 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.DisplayTemplates.SelectBox
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations
+@{
+	var id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	var name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	var metaData = ViewData.ModelMetadata;
+
+
+	var htmlAttributes = Html.MergeHtmlAttributes((object) ViewBag.HtmlAttributes);
+	htmlAttributes.PrependInValue("class", " ", "employee");
+	ViewBag.HtmlAttributes = htmlAttributes;
+
+	if (!metaData.AdditionalValues.ContainsKey(KescoSelectAttribute.AdditionalValuesKey_SelectBox)) {
+		metaData.AdditionalValues.Add(
+				KescoSelectAttribute.AdditionalValuesKey_SelectBox,
+				new Kesco.Web.Mvc.Test.Models.SelectBox.DerivedSelectAttribute()
+			);
+	}
+
+	
+	@* Выполним отрисовку основного KescoSelect *@
+	base.Execute();
+
+}

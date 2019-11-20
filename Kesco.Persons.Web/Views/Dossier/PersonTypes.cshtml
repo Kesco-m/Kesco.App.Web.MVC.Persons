@@ -1,0 +1,46 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc;
+@using Kesco.Persons.Web.Models.Dossier;
+@using Resources;
+@{
+	int sectionID = Model.Section.ID;
+	var groups = Model.ViewModel.GetContextItemsGroup(c => c.TabID == Model.Section.ID, c => c.Caption);
+}
+@if (groups.Count == 0) {
+	<tr class="dsl@(sectionID)"><td colspan="3">@Resources.Persons_Dossier_NoData</td></tr>
+} else {
+	var comparer = StringComparer.OrdinalIgnoreCase;
+	groups.Sort((x, y) => comparer.Compare(x.Caption, y.Caption));
+}
+
+<tr id="loading-panel" style="display: none">
+    <td colspan="3" style="text-align: center;"><table style="width: 100%; display: inline;"><tbody><tr><td>
+<div id="report-pane" style="position: relative;">  
+    <div id="report-loading" class="loading" style="width: 100%"><img src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/ajax-loader-doisser.gif" width="35" height="35" /></div>
+
+    <!-- report here -->
+</div>
+</td></tr></tbody></table></td>
+</tr>
+@foreach (var group in groups) {
+	string catalogs = String.Join(", ", group.Items.Select(itm => itm.Label));
+	var item = group.Items[0];
+	<tr class="hoverable dsl@(sectionID)" >
+		<td colspan="2">
+			<table cellspacing="0" cellpadding="0" style="width:100%;">
+				<tr>
+					<td style="width:250px; padding-left: 15px;">@(HL(group.Caption))</td>
+					<td><span>@(HL(catalogs))</span></td>
+				</tr>
+			</table>
+		</td>
+		<td class="changed">
+			@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new {
+				TooltipPositionMy = "middle right",
+				TooltipPositionAt = "middle left",
+				InitialLabel = item.ChangedByFIO
+			}) 
+			<span>@(item.ChangedDate)</span>
+		</td>
+	</tr>
+}

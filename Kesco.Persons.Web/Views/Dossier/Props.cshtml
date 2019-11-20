@@ -1,0 +1,63 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc; 
+@using Kesco.Persons.Web.Models.Dossier;
+@{
+	var sectionID = Model.Section.ID.ToString();
+	var currentAccess = Model.AccessGranted;
+	var groups = Model.ViewModel.GetContextItemsGroup(c => (c.TabID == Model.Section.ID), c => c.Sprt.ToString());
+	if (groups.Count == 0) {Html.DossierClientSideScript_HideSection(Model.Section.ID);}
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+
+@{
+int i = 0;
+foreach (var group in groups) {
+	if(i++ > 0) {
+<tr class="dsl@(sectionID)">
+	<td colspan="2" style="padding-left: 20px;"><nobr><hr/></nobr></td>
+	<td class="changed"><nobr><hr/></nobr></td>
+</tr>
+	}
+	foreach(var item in group.Items) {
+		if (item.Caption.Equals("Дата@")) {
+<tr class="hoverable dsl@(sectionID)">
+	<td colspan="2" style="padding-left: 20px;">
+		@if (currentAccess > 0){
+		<a href="javascript: void(0);" onclick="editProps(@(item.ID), null, @(sectionID), @(hideOldVer));"
+			title="@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Edit_Edit)"
+			><span class="ui-icon ui-icon-pencil text-ui-icon"></span></a>
+		}
+		<i>@Html.Raw(Html.GetDateString_Card(item.Label))</i>
+	</td>
+	<td class="changed">
+		@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new {
+			TooltipPositionMy = "middle right", TooltipPositionAt = "middle left",
+			InitialLabel = HL(item.ChangedByFIO) })  <span>@(item.ChangedDate)</span>
+	</td>
+</tr>
+		} else {
+<tr class="hoverable dsl@(sectionID)">
+			@if (!String.IsNullOrEmpty(item.Caption)) {
+	<td class="ui-label" style="padding-left: 20px;">@Html.Raw(Html.GetPropsLocalizedString(item.Caption)):</td>
+	<td>@HL(item.Label)</td>
+			} else {
+	<td colspan="2">@HL(item.Label)</td>
+			}
+	<td class="changed">&nbsp;</td>
+</tr>
+		}
+	}
+}
+}

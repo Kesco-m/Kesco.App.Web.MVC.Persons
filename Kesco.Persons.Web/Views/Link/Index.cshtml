@@ -1,0 +1,331 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.PersonLink.ViewModel>
+@using Resources
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.UI.Controls
+@using Kesco.Web.Mvc.SharedViews
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models
+
+@{
+	ViewBag.Title = "Связь лица";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+
+<div id="dialogContentPaneContainer" style="overflow: auto;">
+
+@Html.CommonScriptCode("Link_PageInit",
+@<script>
+	function ChildPersonID_OnRequest(request) {
+		var i = 0;
+	}
+
+	@* Расширим модель представления *@
+	(function(window, undefined) {
+
+		ViewModel.prevVersionUrl = function() {
+			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
+			var value = url.substring(0, url.lastIndexOf('/') + 1);
+			var params = "&title=" + encodeURIComponent(window.document.title)@(Html.Raw(Request.Url.Query.ToLower().IndexOf("id=") == -1 ? "+\"&id=0\"" : ""));
+
+			return value + "link.aspx@(Html.Raw(Request.Url.Query))" + params;
+		}
+
+		ViewModel.Save = function () {
+			var $form = $("#LinkForm");
+			if (!$form.valid()) return;
+			$.ajax({
+				url: '@(Url.Action("Save"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					control: null,
+					model: ko.mapping.toJS(ViewModel.Model)
+				}),
+				contentType: "application/json; charset=utf-8",
+				complete: function() {
+				}
+			});
+		};
+
+		ViewModel.Delete = function () {
+			if(ViewModel.Model.ID()==0) return;
+			confirmAction('@Resources.Persons_Delete_Confirm_Title', '@Html.Raw(Resources.Persons_Link_Delete_Confirm_Text)', '@Resources.GUI_Button_Confirm', function(){ 
+					$.ajax({
+						url: '@(Url.Action("Delete"))',
+						type: 'POST',
+						data: window.ko.toJSON({
+							model: ko.mapping.toJS(ViewModel.Model)
+						}),
+						contentType: "application/json; charset=utf-8",
+						complete: function() {
+						}
+					});
+				}, '@Resources.GUI_Button_Cancel', null, null);
+		};
+
+	})(this);
+
+	$(document).ready(function () {
+		$(window).resize(function () {
+			$("#dialogContentPaneContainer").height($("#dialogContentPane").height());
+			$("#dialogContentPaneContainer").width($("#dialogContentPane").width());
+		});
+
+		switch(window.ViewModel.Model.PersonLinkTypeID()){
+			case 1:
+				$("#parentPersonId").text(@Html.ToJson(Resources.Persons_Link_Parent_Type1)).attr('title', @Html.ToJson(Resources.Persons_Link_Parent_Type1));
+				$("#childPersonId").text(@Html.ToJson(Resources.Persons_Link_Child_Type1)).attr('title', @Html.ToJson(Resources.Persons_Link_Child_Type1));
+				$("#description").text(@Html.ToJson(Resources.Persons_Link_Description)).attr('title', @Html.ToJson(Resources.Persons_Link_Description));
+				$("#parameter").text(@Html.ToJson(Resources.Persons_Link_Parameter)).attr('title', @Html.ToJson(Resources.Persons_Link_Parameter));
+
+				window.document.title = ViewModel.ParentLinkType() ? @Html.ToJson(Resources.Persons_Link_Child_Type1) : @Html.ToJson(Resources.Persons_Link_Parent_Type1);
+				break;
+			case 2:
+				$("#parentPersonId").text(@(Html.ToJson(Resources.Persons_Link_Parent_Type2))).attr('title', @(Html.ToJson(Resources.Persons_Link_Parent_Type2)));
+				$("#childPersonId").text(@(Html.ToJson(Resources.Persons_Link_Child_Type2))).attr('title', @(Html.ToJson(Resources.Persons_Link_Child_Type2)));
+				window.document.title = ViewModel.ParentLinkType() ? @(Html.ToJson(Resources.Persons_Link_Child_Type2)) : @(Html.ToJson(Resources.Persons_Link_Parent_Type2));
+				break;
+			case 3:
+				$("#parentPersonId").text(@Html.ToJson(Resources.Persons_Link_Parent_Type3)).attr('title', @Html.ToJson(Resources.Persons_Link_Parent_Type3));
+				$("#childPersonId").text(@Html.ToJson(Resources.Persons_Link_Child_Type3)).attr('title', @Html.ToJson(Resources.Persons_Link_Child_Type3));
+				window.document.title = ViewModel.ParentLinkType() ? @Html.ToJson(Resources.Persons_Link_Child_Type3) : @Html.ToJson(Resources.Persons_Link_Parent_Type3);
+				break;
+			case 4:
+				$("#parentPersonId").text(@Html.ToJson(Resources.Persons_Link_Parent_Type4)).attr('title', @Html.ToJson(Resources.Persons_Link_Parent_Type4));
+				$("#childPersonId").text(@Html.ToJson(Resources.Persons_Link_Child_Type4)).attr('title', @Html.ToJson(Resources.Persons_Link_Child_Type4));
+				window.document.title = ViewModel.ParentLinkType() ? @Html.ToJson(Resources.Persons_Link_Child_Type4) : @Html.ToJson(Resources.Persons_Link_Parent_Type4);
+				break;
+		}
+
+		$("#LinkForm").submit(function () {
+			// this - DOM element - form
+			var $form = $(this);
+			if ($form.valid()) {
+				window.ViewModel.Save();
+			}
+			return false;
+		});
+
+	});
+</script>)
+@{ Html.EnableClientValidation(); }
+
+@using (Html.BeginForm("Save", "Link", FormMethod.Post, new { id = "LinkForm", name = "LinkForm", onsubmit = "return false;" }))
+{
+	@Html.ValidationSummary(true)
+
+	@Html.HiddenFor(m => m.Model.ID)
+	<table cellpadding="2" cellspacing="0" border="0" width="100%">
+	<tr valign="top">
+		<td style="padding-top: 4px;" nowrap="nowrap">
+			<div class="editor-label">
+				@(global::Resources.Resources.Kesco_Persons_Web_VW_133)
+			</div>
+		</td>
+		<td align="right">
+			<table cellpadding="2" cellspacing="0" border="0">
+				<tr>
+					<td>@Html.LabelForEx(m => m.Model.From)</td>
+					<td>@Html.EditorFor(m => m.Model.From, new { width = "80px" })</td>
+					<td>@Html.LabelForEx(m => m.Model.To)</td>
+					<td><div style="margin-right: 7px;">@Html.EditorFor(m => m.Model.To, new { width = "80px" })</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td style="padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.ParentPersonID, new { ID = "parentPersonId", @for = "Model_ParentPersonID___Autocomplete" }):
+			</div>
+		</td>
+		<td style="width:90%;">
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.ParentPersonID, new { HtmlAttributes = new { data_bind = "selectBoxEnabled: !ParentLinkType()" }})
+				@Html.ValidationMessageFor(m => m.Model.ParentPersonID)
+			</div>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.ChildPersonID, new { ID = "childPersonId", @for = "Model_ChildPersonID___Autocomplete" }):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.ChildPersonID, new { HtmlAttributes = new { data_bind = "selectBoxEnabled: ParentLinkType()" } })
+				@Html.ValidationMessageFor(m => m.Model.ChildPersonID)
+			</div>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.Description, new { ID = "description" }):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Description)
+				@Html.ValidationMessageFor(m => m.Model.Description)
+			</div>
+		</td>
+	</tr>
+
+	<tr valign="top" data-bind="
+		visible: Model.PersonLinkTypeID()==1">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Model.Parameter, new { ID = "parameter" }):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.Parameter)
+				@Html.ValidationMessageFor(m => m.Model.Parameter)
+			</div>
+		</td>
+	</tr>
+	<tr id="row_phraseGenitive" data-bind="
+		visible: false && Model.PersonLinkTypeID()==1">
+		<td>
+			<DIV class="editor-label" title="Родительный падеж">Письмо от КОГО?
+			</DIV>
+		</td>
+		<td nowrap="true">
+			<div data-bind="foreach: Words">
+				<span data-bind="text: $data"></span>
+			</div>
+			<span id="phraseGenitive"></span>
+			<div id="changePhraseGenitive" style="display: block;">
+				<input type="hidden" id="changePhraseGenitive_Nominative" />
+				<input type="hidden" id="changePhraseGenitive_Genitive_Current" />
+				<input type="hidden" id="changePhraseGenitive_Genitive_Timestamp" />
+				<input type="text" id="changePhraseGenitive_Genitive" style="WIDTH: 200px" 
+					onkeyup="changePhrase_OnKeyUp(this, 'changePhraseGenitive_Button')" />
+				<input type="button" id="changePhraseGenitive_Button" 
+					onclick="_save_padej(1)"
+					value="Установить">
+			</div>
+		</td>
+	</tr>
+	<tr id="row_phraseDative" style="display: none;">
+		<td width="5">&nbsp;</td>
+		<td style="HEIGHT: 17px" valign="top">
+			<DIV title="(Дательный падеж)">Письмо КОМУ?
+				</DIV>
+		</td>
+		<td valign="top" align="left"  nowrap="true">
+			<span id="phraseDative"></span>
+			<div id="changePhraseDative" style="display: none;">
+				<input type="hidden" id="changePhraseDative_Nominative" />
+				<input type="hidden" id="changePhraseDative_Dative_Current" />
+				<input type="hidden" id="changePhraseDative_Dative_Timestamp" />
+				<input type="text" id="changePhraseDative_Dative" style="WIDTH: 200px" onkeyup="changePhrase_OnKeyUp(this, 'changePhraseDative_Button')" />
+				<input type="button" id="changePhraseDative_Button" 
+					onclick="_save_padej(2)"
+					value="Установить">
+			</div>
+		</td>
+	</tr>
+	</table>
+	
+@Html.CommonScriptCode("Link_Padeji",
+@<script>
+	// Падежи
+	; (function (observable) {
+		var words = ko.computed(function () {
+			var value = observable() || '';
+			return value.toString().replace(/\s+/ig, " ").split(" ");
+		}, window.ViewModel);
+
+		window.ViewModel.Words = words;
+	}) (ViewModel.Model.Description);
+</script>)
+}
+</div>
+
+
+@section Header {
+<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar" style="padding: 2px;" data-bind="visible: PageLoaded">
+	<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr>
+			<td>
+				<button type="button" data-bind="
+						click: function() { ViewModel.Save(); $('#SubmitButton').click(); },
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-check' } } }
+					">@Resources.GUI_Button_Confirm</button>
+				<button type="button" data-bind="
+						click: Delete,
+						jqueryui: { widget: 'button', options: { disabled: Processing() || !Model.ID(), icons: { primary: 'ui-icon-trash' } } }
+					">@Resources.GUI_Button_Delete</button>
+				<button type="button" data-bind="
+						click: closeDialog,
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-cancel' } } }
+					">@Resources.GUI_Button_Cancel</button>
+			</td>
+			<td nowrap="nowrap" style="width: 30px;">
+				<button type="button" style="display: none;"
+					data-bind="jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, visible: PageLoaded, click: showHelp"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+			</td>
+                 </tr>
+	</table>
+</div>
+}
+
+@section Footer { 
+@{
+	Html.RegisterScript(@"
+	(function(){
+
+		if(window.ViewModel.Model.PersonLinkTypeID()) {
+			if (window.ViewModel.Model.ChildPersonID())
+				$('#Model_ParentPersonID').data('kescoSelectBox').autocomplete.focus();
+			else
+				$('#Model_ChildPersonID').data('kescoSelectBox').autocomplete.focus();
+		}
+
+		var $control = $('#Model_ParentPersonID');
+		var onCommand = $control.selectBox('option','command');
+		$control.selectBox('option', {
+			command: function(event, ui) {
+				ui.item.parameters = $.extend(ui.item.parameters || {}, {
+					PersonType: ViewModel.ParentTypeID()
+				});
+				onCommand.apply(this, arguments);
+			}
+		});
+	})();");
+
+	Html.RegisterScript(@"
+	(function(){
+		var $control = $('#Model_ChildPersonID');
+		var onCommand = $control.selectBox('option','command');
+		$control.selectBox('option', {
+			command: function(event, ui) {
+				ui.item.parameters = $.extend(ui.item.parameters || {}, {
+					PersonType: ViewModel.ChildTypeID()
+				});
+				onCommand.apply(this, [event, ui]);
+			}
+		});
+	})();");
+}
+
+@Html.DisplayFor(m => m.Model, "ChangedByInfo")
+}

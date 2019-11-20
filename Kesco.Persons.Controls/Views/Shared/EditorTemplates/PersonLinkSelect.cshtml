@@ -1,0 +1,34 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.ComponentModel
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+
+	if (!metaData.AdditionalValues.ContainsKey(PersonLinkSelectAttribute.AdditionalValuesKey_SelectBox))
+	{
+		throw new Exception(String.Format(
+				"Неверное использование шаблона PersonLinkSelect. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+				metaData.PropertyName,
+				typeof(PersonLinkSelectAttribute)
+			));
+	}
+
+	var descriptor = metaData.AdditionalValues[PersonLinkSelectAttribute.AdditionalValuesKey_SelectBox]
+		as PersonLinkSelectAttribute;
+
+	if (descriptor == null)
+	{
+		throw new Exception(String.Format(
+			"Неверное использование шаблона PersonLinkSelect. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+				metaData.PropertyName,
+				metaData.AdditionalValues[PersonLinkSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+		));
+	}
+
+	@* Выполним отрисовку основного KescoSelect *@
+	base.Execute();
+}
+

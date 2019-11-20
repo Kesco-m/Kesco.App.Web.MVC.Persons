@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Kesco.Web.Mvc.UI.KescoDatePicker">
+    <Position X="6.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACRAAQAAAAAAAEAAAAAAAAAgQQAAAAAAAAAgAAQAAAA=</HashCode>
+      <FileName>DatePicker\KescoDatePicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.KescoDatePickerHtmlBuilder" Collapsed="true">
+    <Position X="6.75" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DatePicker\KescoDatePickerHtmlBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.Fluent.KescoDatePickerBuilder">
+    <Position X="2" Y="1.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AARAAZAAAAQAAAAAAAAAAAAAQQAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>DatePicker\Fluent\KescoDatePickerBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ControlBuilderBase&lt;TControl, TBuilder&gt;" Collapsed="true">
+    <Position X="2" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAgAAAAABAAEAAAAAAQAAAQAAAEACBAAAAAAAAA=</HashCode>
+      <FileName>Base\ControlBuilderBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ControlBase" Collapsed="true">
+    <Position X="5.25" Y="0.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAgAAgAgAAAAAAAQgAAQAAAEAABAAAAAAAAA=</HashCode>
+      <FileName>Base\ControlBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes />
+  <Links />
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Настоятельно рекомендуется!" ToolTip="Узел является частью надежно соединенного компонента" ValueLabel="Узлы">
+      <Condition Expression="IsStronglyConnected" />
+      <Setter Property="Stroke" Value="#D02030" />
+      <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Настоятельно рекомендуется!" ToolTip="Узел является частью надежно соединенного компонента" ValueLabel="Ссылки">
+      <Condition Expression="IsCircularLink" />
+      <Setter Property="Stroke" Value="#D02030" />
+      <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Концентратор" ToolTip="Узел входит в первые 25% наиболее подключаемых узлов.  Узлы, непосредственно не соединяющие эти концентраторы, скрыты для упрощения графа." ValueLabel="True">
+      <Condition Expression="IsHub" />
+      <Setter Property="Background" Value="#FF008080" />
+    </Style>
+  </Styles>
+</DirectedGraph>

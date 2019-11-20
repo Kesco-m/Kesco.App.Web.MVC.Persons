@@ -1,0 +1,747 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Juridicals.ViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Localization
+@{
+    Model
+        .GetScriptCapabilities()
+        .DisableGridScript()
+        .DisableTreeScript();
+    string[] accessLevel = Model.EmployeeRoles.Split(',');
+    ViewBag.Title = Model.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+<div id="formContainer" style="overflow: auto;" class="ui-widget">
+    @{ Html.EnableClientValidation(); }
+    @using (Html.BeginForm("CreateNewJuridical", "Person", FormMethod.Post, new { id = "CreateNewJuridical", name = "NewJuridicalForm", onsubmit = "return false;" }))
+    {
+        @Html.ValidationSummary(true)
+        <table cellspacing="0" border="0" style="width: 99%" cellpadding="4">
+            <tr>
+                <td rowspan="30">
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <input style="visibility: hidden; width: 1px; height: 1px" type="submit" id="SubmitButton" />
+                </td>
+            </tr>
+            @* Псевдоним *@
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td width="100px">@Html.LabelFor(m => m.Model.Card.Nickname):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.Nickname)
+                                @Html.ValidationMessageFor(m => m.Model.Card.Nickname)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* Страна регистрации *@
+            <tr>
+                <td align="right">
+                    <table>
+                        <tr>
+                            <td align="right">@Html.LabelFor(m => m.Model.Card.TerritoryID, new { @for = "Model_Card_TerritoryID___Autocomplete" }):
+                            </td>
+                            <td style="width: 350px;">@Html.EditorFor(m => m.Model.Card.TerritoryID)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <span  class="field-validation-error"><span id="territotyIDValidationMessage"  style="display: none">@(Kesco.Persons.Web.Localization.Resources.Models_JuridicalPersonCard_TerritoryID_Required)</span></span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* Гос.организация? *@
+            <tr>
+                <td align="right" style="border-bottom: 1px solid;">
+                    <table>
+                        <tr>
+                            <td align="right">
+                                @Html.EditorFor(m => m.Model.Card.IsStateOrganization)
+                            </td>
+                            <td>@Html.LabelFor(m => m.Model.Card.IsStateOrganization)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* ОГРН, ИНН, ОКПО *@
+            <tr>
+                <td id="OGRNFields" style="border-bottom: 1px solid;">
+                    <table>
+                        <tr>
+                            <td width="100px">
+                                @Html.LabelFor(m => m.Model.Card.OGRN, new Dictionary<string, object> {
+							 { "data-bind", "text: FormatRegistration.OGRNName" }
+							}):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.OGRN, new { width = 150 })
+                              @*  (@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Length)
+                                <span id="OGRNlenghtField"></span>) *@
+                                @Html.ValidationMessageFor(m => m.Model.Card.OGRN)
+                            </td>
+                        </tr>
+                        <tr data-bind="visible: FormatRegistration.INNName">
+                            <td>
+                                @Html.LabelFor(m => m.Model.Card.INN, new Dictionary<string, object> {
+							 { "data-bind", "text: FormatRegistration.INNName" }
+						}):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.INN, new { width = 110 })
+                                (@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Length)
+                                <span data-bind="text: FormatRegistration.INNLength1"></span>)
+                                @Html.ValidationMessageFor(m => m.Model.Card.INN)
+                            </td>
+                        </tr>
+                        <tr data-bind="visible: FormatRegistration.OKPOName">
+                            <td>
+                                @Html.LabelFor(m => m.Model.Card.OKPO, new Dictionary<string, object> {
+							 { "data-bind", "text: FormatRegistration.OKPOName" }
+						}):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.OKPO, new { width = 110 })
+                                (@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Length)
+                                <span data-bind="text: FormatRegistration.OKPOLength1"></span>)
+                                @Html.ValidationMessageFor(m => m.Model.Card.OKPO)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* Бизнес-проект *@
+            <tr data-bind="visible: HasRolesForBusinessProjects().length > 0">
+                <td style="border-bottom: 1px solid;">
+                    <table width="100%">
+                        <tr>
+                            <td width="100px">
+                                @Html.LabelFor(m => m.Model.Card.BusinessProjectID, new { @for = "Model_Card_BusinessProjectID___Autocomplete" }):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.BusinessProjectID)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* Кнопка ввода реквизитов *@
+            <tr data-bind="ifnot: HidePersonTypesSection">
+                <td style="border-bottom: 1px outset;">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td valign="top" width="100px">
+                                <span class="ui-icon ui-icon-contact text-ui-icon"></span>
+                                @(global::Resources.Resources.Kesco_Persons_Web_VW_146)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => m.Model.Card.Requisites, "Requisites")
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* Банк? *@
+            <tr>
+                <td style="border-bottom: 1px outset;">
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.IsBank)
+                            </td>
+                            <td>@Html.LabelFor(m => m.Model.Card.IsBank)
+                            </td>
+                        </tr>
+                    </table>
+                    <table border="0" cellpadding="2" cellspacing="1" data-bind="visible: Model.Card.IsBank">
+                        <tr>
+                            <td width="100px">
+                                @Html.LabelFor(m => m.Model.Card.BIK):
+                            </td>
+                            <td style="width: 160px;">
+                                @Html.EditorFor(m => m.Model.Card.BIK)
+                                @Html.ValidationMessageFor(m => m.Model.Card.BIK)
+                            </td>
+                            <td>
+                                <a href="javascript: void(0);" onclick="addBanks(ViewModel.Model.Card.BIK());">
+                                    <img style="cursor: pointer; border: 0px;" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles)store.gif" 
+							/></a>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.Model.Card.LoroConto):
+                            </td>
+                            <td style="width: 160px;">
+                                @Html.EditorFor(m => m.Model.Card.LoroConto)
+                                @Html.ValidationMessageFor(m => m.Model.Card.LoroConto)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.Model.Card.SWIFT):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.SWIFT)
+                                @Html.ValidationMessageFor(m => m.Model.Card.SWIFT)
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.Model.Card.BIKRKC):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.BIKRKC)
+                                @Html.ValidationMessageFor(m => m.Model.Card.BIKRKC)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            @* Ответственные сотрудники *@
+            <tr data-bind="ifnot: HidePersonTypesSection">
+                <td style="border-bottom: 1px outset;">
+                    <table>
+                        <tr>
+                            <td>
+                                @*<span class="ui-icon ui-icon-person text-ui-icon">&nbsp; </span>@(global::Resources.Resources.Kesco_Persons_Web_VW_126)*@
+                                <!-- | <a href="javascript: void(0)" data-bind="
+								click: openChooseEmployeesDialog
+							" title="@(global::Resources.Resources.Kesco_Persons_Web_VW_1002)"><span class="ui-icon ui-icon-plus text-ui-icon">&nbsp;</span>@(global::Resources.Resources.Kesco_Persons_Web_VW_1002)</a>
+						//-->
+                                                <!-- Если секретарь или администратор лиц -->
+            	                    @if (accessLevel.Contains("11") || accessLevel.Contains("12"))
+                                    {
+				                    @Html.Raw(String.Format(@"<a href='javascript: void(0);' onclick=""window.ViewModel.ChooseEmpls(getResponsibleIds());"">{0}</a>", global::Resources.Resources.Kesco_Persons_Web_VW_126));
+				                    } else {
+            
+				                    <span class="ui-icon ui-icon-person text-ui-icon">&nbsp;
+				                    </span>@(global::Resources.Resources.Kesco_Persons_Web_VW_126)
+                                    }
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td style="width: 100px;">
+                                &nbsp;
+                            </td>
+                            <td>
+                               						<table cellpadding="0" cellpadding="0">
+							<tbody data-bind="foreach: Model.ResponsibleEmployees">
+								<tr>
+									<td>
+                                        <!--   visible: ($data.ID()) != ViewModel.Model.CurrentEmployeeID(), -->
+                                         @if (accessLevel.Contains("11") || accessLevel.Contains("12"))
+                                         {
+                                             <a href="javascript: void(0);" data-bind="
+												click: $root.removeResponsibleEmployee
+											" title="@(global::Resources.Resources.Kesco_Persons_Web_VW_1001)"
+                                                 ><span class="ui-icon ui-icon-minus text-ui-icon">&nbsp;</span></a>
+                                         }
+										<a class="employeeControl" title="$data.FullName()" href="javascript: void(0)"
+											data-bind="
+												attr: { 
+													id: $data.ID(), 
+													'data-employee-id': $data.ID(), 
+													alt: $data.FullName(), 
+													title: $data.FullName()
+												},
+												click: function() { ViewModel.showUser($data.ID()); },
+												dynamicLink: { 
+													value: $data.ID(), 
+													source: '@(Url.Action("GetItem", "EmployeeSelect"))',
+													tooltipSource: '@(Configuration.AppSettings.URI_user_info)'
+												}
+										"></a>
+									</td>
+								</tr>
+							</tbody>
+							<tbody data-bind="visible: Model.ResponsibleEmployees().length == 0">
+								<td>
+                                    <span id="responsibleValidationMessage">
+                                        <label style="COLOR: #ff0000; font-weight:100;  font-size: 10px;">@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Validation_Responsible)</label> 
+                                    </span>
+                                   
+                                </td>
+							</tbody>
+						</table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+                        <tr data-bind="ifnot: HidePersonTypesSection">
+                <td>
+                    <table width="100%">
+                        <tr valign="top">
+                            <td width="100px">
+                                <span class="ui-icon ui-icon-script text-ui-icon">&nbsp;</span> @(global::Resources.Resources.Kesco_Persons_Web_VW_138)
+                            </td>
+                            <td>
+	                            @Html.EditorFor(m => m.Model.PersonTypes)
+                                <span  class="field-validation-error"><span id="personTypesValidationMessage"  style="display: none">@(global::Resources.Resources.Kesco_Persons_CreateJuridical_2202)</span></span>
+                        
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <!-- Комментарии -->
+                <td style="border-top: 1px outset;">
+                    <table width="100%">
+                        <tr valign="top">
+                            <td width="100px">
+                                @Html.LabelFor(m => m.Model.Card.Comment):
+                            </td>
+                            <td>
+                                @Html.EditorFor(m => m.Model.Card.Comment)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+    }
+</div>
+@*	Бизнес-правила для элементов управления выбора *@
+@{
+    Html.RegisterScript(@"
+		;(function(scope, $) {{
+			// поиск страна регистрации 
+			scope.ViewModel.Model.Card.TerritoryID.__SearchParameters.HowSearch(1); // начинается с
+			scope.ViewModel.Model.Card.TerritoryID.__SearchParameters.AreaIDs.push(2); // является страной
+
+			// поиск бизнес-проекта 
+			scope.ViewModel.Model.Card.BusinessProjectID.__SearchParameters.HowSearch(1); // начинается с
+
+		}})(window, jQuery);
+		
+	");
+}
+@section Header {
+    <div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar" style="padding: 2px;"
+        data-bind="visible: PageLoaded">
+        <table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+            <tr valign="middle">
+                <td>
+                    &nbsp;
+                    <button type="button" data-bind=" 
+						click: function() { ViewModel.Model.Confirmed(false); SubmitForm(); },
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-disk' } } }
+					">@(global::Resources.Resources.GUI_Button_Save)</button>
+                    <button type="button" data-bind=" 
+						click: closeDialog, 
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-cancel' } } }
+					">@(global::Resources.Resources.GUI_Button_Cancel)</button>
+                </td>
+                <td nowrap="nowrap" style="width: 30px;">
+                    <button type="button" style="" data-bind="jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, click: showHelp">@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+}
+@section Footer {
+
+
+
+
+    @Html.CommonScriptCode("Juridical_Footer",
+@<script>
+@{
+    bool isMvc = (Request["clr"] ?? "0") == "0";
+}
+
+
+$(window).load(function() { ViewModel.Model.PersonTypes.PersonTypeIDs.subscribe(function(newValue) { checkTypesValid(); }) });
+	function returnResult(result) {
+
+		@if (isMvc)
+  { 
+			@: var arr = []; arr.push(result);
+			@: closeDialogAndReturnValue(JSON.stringify(arr));
+		}
+  else
+  {
+			@: var retVal = result.value + String.fromCharCode(31) + result.label;
+			@: DialogPageReturn(retVal, 0);
+		}
+	}
+
+	function addBanks(search) {
+		var callbackUrl = encodeURIComponent('@Url.FullPathAction("DialogResult", "Default")');
+
+		if (!search) {
+			var url = '@(Kesco.Persons.Web.Configuration.AppSettings.URI_bank_search)?return=1&mvc=1&callbackKey=c1&callbackUrl={0}';
+			url = $.validator.format(url, callbackUrl);
+		} else {
+			var url = '@(Kesco.Persons.Web.Configuration.AppSettings.URI_bank_search)?return=1&mvc=1&callbackKey=c1&callbackUrl={0}&search={1}';
+			url = $.validator.format(url, callbackUrl, encodeURIComponent(search));
+		}
+
+
+		window.openPopupWindow(url, {
+				callbackUrl: '@Url.FullPathAction("DialogResult", "Default")'
+			}, 
+			function (val) {
+				if (val) {
+					window.ViewModel.Model.Card.BIK(val[0].bik);
+					window.ViewModel.Model.Card.LoroConto(val[0].korschet);
+				}
+			}, "test", 800, 600);
+	}
+
+	function checkTypesValid() {
+	    var validationMsg = document.getElementById('personTypesValidationMessage');
+	    if(ViewModel.Model.PersonTypes.PersonTypeIDs() == null || ViewModel.Model.PersonTypes.PersonTypeIDs() == "") {
+            if (validationMsg != null && validationMsg != "") validationMsg.style.display = "table";
+        }
+	    else {
+             if (validationMsg != null && validationMsg != "") validationMsg.style.display = "none";
+        }   
+	}
+	function checkTerritoryValid() {
+	    if(ViewModel.Model.Card.TerritoryID() == null || ViewModel.Model.Card.TerritoryID() == "") {
+	        territotyIDValidationMessage.style.display = "table";
+        }
+	    else {
+	        territotyIDValidationMessage.style.display = "none";
+        }
+	}
+    function checkRequisitesValid() {
+	    if((ViewModel.Model.Card.Requisites.ShortNameLat() == null || ViewModel.Model.Card.Requisites.ShortNameLat() == "") && (ViewModel.Model.Card.Requisites.ShortNameRus() == null || ViewModel.Model.Card.Requisites.ShortNameRus() == "")) {
+	        setRequisitesValid(false);
+        }
+	    else {
+	       setRequisitesValid(true);
+        }
+	}
+    
+    function checkBunkFrom() {
+       if((document.getElementById('Model_Card_BIK').value == null || document.getElementById('Model_Card_BIK').value == "") && (document.getElementById('Model_Card_SWIFT').value == null || document.getElementById('Model_Card_SWIFT').value == ""))
+            {
+            ViewModel.Model.Card.LoroConto("");
+            ViewModel.Model.Card.BIKRKC("");
+            }
+        if(ViewModel.Model.Card.IsBank() == false) {
+             ViewModel.Model.Card.LoroConto("");
+            ViewModel.Model.Card.BIKRKC("");
+             ViewModel.Model.Card.BIK("");
+            ViewModel.Model.Card.SWIFT("");
+        }
+        
+    }
+
+        function getResponsibleIds() {
+        var employeeControlIds = '';
+	    for (var i = 0; i < $('.employeeControl').length; i++) {{
+	            if(i == ($('.employeeControl').length - 1))
+		                {{ employeeControlIds+= $('.employeeControl')[i].id; }} 
+  	            else {{employeeControlIds+= $('.employeeControl')[i].id; employeeControlIds+= ','; }}  
+            }}
+
+        return employeeControlIds;
+    }
+
+    function SubmitForm() {
+        checkBunkFrom();
+
+		var $form = $("#CreateNewJuridical");
+
+		if ($form.valid()) {
+			window.ViewModel.save();
+		}
+	    if(ViewModel.Model.Card.PersonID() == null || ViewModel.Model.Card.PersonID() == "") {
+	            checkTypesValid();
+	            checkTerritoryValid();
+	            checkRequisitesValid();
+	    }
+	  
+	    return false;
+	}
+
+
+    
+    function setCountryFildEmpty() {
+             var countryField = document.getElementById('Model_Card_TerritoryID___Autocomplete');
+            if(countryField == null) return;
+                countryField.onfocusout = function() {
+                    if(countryField.value == null || countryField.value == "") {
+                        ViewModel.Model.Card.TerritoryID('');
+                    }
+                };
+        }
+    
+    function setBuissnesFieldEmpty() {
+             var buissnessField = document.getElementById('Model_Card_BusinessProjectID___Autocomplete');
+            if(buissnessField == null) return;
+                buissnessField.onfocusout = function() {
+                    if(buissnessField.value == null || buissnessField.value == "") {
+                        ViewModel.Model.Card.BusinessProjectID('');
+                    }
+                };
+        }
+
+
+    $(document).ready(function () {
+	    @* Выделение значений в полях при клике (если они пусты) *@
+       
+       //$('#Model_Card_OGRN').mask('option').mask.length
+
+		@* Задаем селектор для установки фокуса на соответствующий элемент ввода после загрузки всех свойств страницы *@
+		ViewModel.ControlNameToFocus='#Model_Card_Nickname';
+
+		ViewModel.prevVersionUrl = function() {
+			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
+			var value = url.substring(0, url.lastIndexOf('/') + 1);
+			@if (Model.Model.Card.PersonID != null)
+   {
+			@: value += "Form/Edit/client.aspx?idClient=@(Model.Model.Card.PersonID)";
+			}
+   else
+   {
+			@: value += "Form/Edit/clientAdd.aspx?clr=1";
+			}
+		     setCountryFildEmpty();
+		    setBuissnesFieldEmpty();
+			return value;
+		    
+
+		}
+
+        	    window.ViewModel.ChooseEmpls = function (responsibleIDs) {
+			$.ajax({
+				url: '@(Url.Action("Dispatch"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					command: 'chooseempls',
+					control: responsibleIDs,
+					model:  window.ko.mapping.toJS(window.ViewModel.Model)
+				}),
+				contentType: "application/json; charset=utf-8"
+			});
+		};
+
+		window.ViewModel.save = function () {
+			$.ajax({
+				url: '@(Url.Action("Dispatch"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					command: 'save',
+					control: null,
+					model:  window.ko.mapping.toJS(window.ViewModel.Model)
+				}),
+				contentType: "application/json; charset=utf-8"
+			});
+		};
+
+		window.ViewModel.Model.Card.TerritoryID.subscribe(function (newTerritoryID) {
+			window.ViewModel.Model.Card.Requisites.TerritoryID(newTerritoryID);
+		    checkTerritoryValid();
+		});
+
+		ViewModel.removeResponsibleEmployee = function() {
+				ViewModel.Model.ResponsibleEmployees.remove(this);
+		};
+
+
+		// TODO: Make universary
+		ViewModel.openChooseEmployeesDialog = function() {
+			var selected = [];
+			var list = ko.mapping.toJS(ViewModel.Model.ResponsibleEmployees());
+			for(var i=0; i<list.length; i++) {
+				selected[i] = list[i].ID.toString();
+			}
+			selected = selected.join(",");
+			var callbackUrl = encodeURIComponent('@(Url.FullPathAction("DialogResult", "Default"))');
+			var title = encodeURIComponent('@(global::Resources.Resources.Kesco_Persons_Web_VW_1000)');
+			var url;
+			url = '@(Html.Raw(Configuration.AppSettings.URI_user_search))?@(Html.Raw(Configuration.URI_user_search_QS ?? "t=1"))&selectedid='+selected;
+			url = $.validator.format(url, callbackUrl, title);
+
+			openPopupWindow(url, null, function(result) {
+				if ($.isArray(result)) {
+					ViewModel.Model.ResponsibleEmployees.removeAll();
+					for(var i=0; i<result.length; i++)
+						ViewModel.Model.ResponsibleEmployees.push({ID: ko.observable(result[i].ID), FullName: ko.observable(result[i].Name) });
+				}
+			}, "wnd_ChooseEmployees", 800, 600);
+		};
+
+@{
+    ModelMetadata pmm = ViewData.ModelMetadata
+        .Properties.First(p => p.PropertyName == "Model")
+        .Properties.First(p => p.PropertyName == "Card");
+}
+
+		$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))').mask();
+		$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))').mask();
+		$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))').mask();
+
+//		var updateRegistrationFormat = function (tid) {
+//			function repeat(symbol, length) {
+//				var s="", len = 0+length;
+//				for (var i = 0; i < len; i++) s += symbol;
+//				return s;
+//			}
+//			var result = window.ViewModel.FormatRegistrations.filterByProperty("ID", tid || 0);
+//			var registrationFormat = window.ViewModel.FormatRegistration;
+//			if (result().length > 0) {
+//			    format = result()[0];
+//                registrationFormat.OGRNLength1(format.OGRNLength1());
+//			    registrationFormat.OGRNFormat1(format.OGRNFormat1());
+//				registrationFormat.OGRNName(format.OGRNName());
+//				registrationFormat.INNName(format.INNName());
+//				registrationFormat.INNLength1(format.INNLength1());
+//				registrationFormat.OKPOName(format.OKPOName());
+//				registrationFormat.OKPOLength1(format.OKPOLength1());
+//			    
+//			} else {
+//				registrationFormat.OGRNName('@(pmm.Properties.First(p => p.PropertyName == "OGRN").GetDisplayName())');
+//				registrationFormat.INNName("");
+//				//registrationFormat.INNLength1(20);
+//				registrationFormat.OGRNFormat1("####################");
+//			    registrationFormat.OGRNLength1(20);
+//				registrationFormat.OKPOName("");
+//				//registrationFormat.OKPOLength1(20);
+//			}
+
+//			try {
+//				var multiplicator = 8;
+//				var len = 0;
+//			    var baseMask;
+//                
+//                len = registrationFormat.OGRNLength1();
+//                baseMask = registrationFormat.OGRNFormat1();
+
+//				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))')
+//					.mask("option", { mask: baseMask })
+//					.width(len*multiplicator).parent().width(len*multiplicator);
+//                    
+//                    if(len == 0) {
+//                      document.getElementById("OGRNFields").style.display = "none";
+//                       
+//                    }
+//			        else {
+//                         document.getElementById("OGRNFields").style.display = "";
+//                    }
+//                     document.getElementById('OGRNlenghtField').innerText = len;
+//				len = registrationFormat.INNLength1()?registrationFormat.INNLength1():12;
+//				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))')
+//					.mask("option", { mask: repeat("9", len) })
+//					.width(len*multiplicator).parent().width(len*multiplicator);
+
+//				len = registrationFormat.OKPOLength1()?registrationFormat.OKPOLength1():10;
+//				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))')
+//					.mask("option", { mask: repeat("9", len) })
+//					.width(len*multiplicator).parent().width(len*multiplicator);
+//			} catch(e) { 
+//				if (window.console) console.log(e);
+//			}
+//		};
+        var updateRegistrationFormat = function (tid) {
+			function repeat(symbol, length) {
+				var s="", len = 0+length;
+				for (var i = 0; i < len; i++) s += symbol;
+				return s;
+			}
+			var result = window.ViewModel.FormatRegistrations.filterByProperty("ID", tid || 0);
+			var registrationFormat = window.ViewModel.FormatRegistration;
+			if (result().length > 0) {
+				format = result()[0];
+				registrationFormat.OGRNFormat(format.OGRNFormat());
+				registrationFormat.OGRNName(format.OGRNName());
+				registrationFormat.INNName(format.INNName());
+				registrationFormat.INNLength1(format.INNLength1());
+				registrationFormat.OKPOName(format.OKPOName());
+				registrationFormat.OKPOLength1(format.OKPOLength1());
+			} else {
+				registrationFormat.OGRNName('@(pmm.Properties.First(p => p.PropertyName == "OGRN").GetDisplayName())');
+				registrationFormat.INNName("");
+				//registrationFormat.INNLength1(20);
+				registrationFormat.OGRNFormat("####################");
+				registrationFormat.OKPOName("");
+				//registrationFormat.OKPOLength1(20);
+			}
+
+			try {
+				var multiplicator = 8;
+				var len = registrationFormat.OGRNFormat().length;
+				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))')
+					.mask("option", { mask: registrationFormat.OGRNFormat() })
+					.width(len*multiplicator).parent().width(len*multiplicator);
+
+				len = registrationFormat.INNLength1()?registrationFormat.INNLength1():12;
+				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))')
+					.mask("option", { mask: repeat("9", len) })
+					.width(len*multiplicator).parent().width(len*multiplicator);
+
+				len = registrationFormat.OKPOLength1()?registrationFormat.OKPOLength1():10;
+				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))')
+					.mask("option", { mask: repeat("9", len) })
+					.width(len*multiplicator).parent().width(len*multiplicator);
+			    
+                $('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))')[0].maxLength = 200;
+			    $('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))')[0].maxLength = 200;
+			    $('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))')[0].maxLength = 200;
+			} catch(e) { 
+				if (window.console) console.log(e);
+			}
+		};
+
+		updateRegistrationFormat(window.ViewModel.Model.Card.TerritoryID());
+
+		window.ViewModel.Model.Card.TerritoryID.subscribe(updateRegistrationFormat);
+
+		$(window).resize(function () {
+			$("#formContainer").height($("#dialogContentPane").height());
+			$("#formContainer").width($("#dialogContentPane").outerWidth());
+		});
+
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+        }
+
+        @if (!Model.Model.Card.ID.HasValue && Request["text"] != null && Request["text"] != "")
+        {
+        @:  var nickNameParametr = getURLParameter('text').replace(/\s+/gi, " ");
+		@:	ViewModel.Model.Card.Nickname(nickNameParametr)
+		}
+
+	});
+</script>)
+    @Html.DisplayFor(m => m.Model.Card, "ChangedByInfo")
+}

@@ -1,0 +1,42 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.SharedViews.Models.IndexViewModel>
+@{
+    ViewBag.Title = "Просмотр документа";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div  id="@(ViewData.TemplateInfo.HtmlFieldPrefix)__Container" style="overflow: auto;">
+@Html.DisplayFor(x => x.Model)
+<hr />
+<a id="MMM" href="javascript: void(0)" onclick="ViewModel.showPerson(1603)" data-bind="
+		dynamicLink: {
+			value: 1603,
+			source: '/mvc/persons/personselect.aspx/getitem',
+			tooltipSource: '/mvc/persons/personselect.aspx/personinfo/0'
+		}
+	">sdfdsffdsf</a>
+</div>
+
+<script type="text/javascript" language="javascript">
+	$(function () {
+		@* 
+			Обработчик события изменения размера окна 
+		*@
+		$(window).resize(function() {
+			var $parent = $("#dialogContentPane");
+			$("#@(ViewData.TemplateInfo.HtmlFieldPrefix)__Container").width($parent.width())
+			$("#@(ViewData.TemplateInfo.HtmlFieldPrefix)__Container").height($parent.height())
+		});
+
+
+	});
+</script>
+
+@section Header {
+	@Html.ActionLink("Редактировать", "Edit", "Default", new {  data_bind="jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-pencil' } }}" } )
+}
+
+
+@section Footer {
+	@Html.DisplayFor(m => m.Model, "ChangedByInfo")
+	<br />
+}

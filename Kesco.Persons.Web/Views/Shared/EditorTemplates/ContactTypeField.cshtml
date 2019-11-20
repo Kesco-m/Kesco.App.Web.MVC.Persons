@@ -1,0 +1,23 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<int?>
+@using Resources
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string enable = ViewData["EnableExpr"] == null ? "true" : ViewData["EnableExpr"].ToString();
+}
+
+<select name="@(name)" id="@(id)"  data-no_results_text="@(Resources.Kesco_Choosen_NoResultsMatch)" 
+	data-bind="
+		jqOptions: ContactTypes,
+		value: @(name),
+		selectmenuEnabled: @(enable),
+		optionsValue: 'ID',
+		optionsText: 'Name',
+		optionsCaptionClear: true,
+		required: @(ViewData.ModelMetadata.IsRequired ? "true" : "false")
+	"></select>
+@{
+	Html.RegisterScript(@"window.ViewModel.ContactTypes.unshift({ID: null, Name:''});");
+}

@@ -1,0 +1,1331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b17afa79-2e80-4165-86fa-bb432d0e0d34" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="f75b2056-db20-41d9-abbb-9fca9c07f6c0" name="Comment1">
+      <body>Source: Microsoft Application Architecture Guide, 2nd Edition. 
+Refer to "Chapter 23: Designing Rich Internet Applications" for more information.
+URL: http://msdn.microsoft.com/en-us/library/ee658083.aspx</body>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="11e93cd0-d2f0-464a-9796-0ba469ba75bc" name="Диаграмма библиотек (DLL, папки JavaScript, CSS)">
+      <childLayers>
+        <layer Id="6a16fb2d-d4de-4abd-8cb6-8b4caad02a8b" name="Kesco.DataAccess.dll&#xD;&#xA;Доступ к данным">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="bcdd73b0-1284-491a-95ca-fc779d71644e" direction="Forward">
+              <layerMoniker Id="4d4a1e3a-18cc-4ef9-ae88-15b4686e79c4" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="c491fbe4-7dfb-4e94-949b-da9c1ab41517" direction="Forward">
+              <layerMoniker Id="8faa4914-a97f-4898-9c2a-0bdb82c91654" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="b68e67ee-d4ec-41de-9b21-3e6538391fb8" direction="Forward">
+              <layerMoniker Id="987ee334-21c3-484f-9499-459aacdc1b68" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="ace112cb-e3e9-4f38-a0f6-2e1210dd230a" name="Обработка исключительных&#xD;&#xA;ситуаций" />
+            <layer Id="7c54d7be-57be-4a9a-b8f9-b479373738ff" name="Управление соединением с базой данных">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="4fd517a7-28c8-4006-bc33-b8f7f727fdbc" direction="Forward">
+                  <layerMoniker Id="ace112cb-e3e9-4f38-a0f6-2e1210dd230a" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="c420da44-84d4-47b4-bc8a-8d2ea8714df0" name="Компоненты &#xD;&#xA;доступа к данным">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="45c06176-a4c4-4b25-9868-3c66bdf05197" direction="Forward">
+                  <layerMoniker Id="7aaf529f-08ee-4f58-a6d8-fdc2b3652616" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="284f2145-340e-4c9d-8d88-91f21292d464" direction="Forward">
+                  <layerMoniker Id="7c54d7be-57be-4a9a-b8f9-b479373738ff" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+            <layer Id="7aaf529f-08ee-4f58-a6d8-fdc2b3652616" name="Поддержка поиска" />
+          </childLayers>
+          <references>
+            <reference Id="374962de-99c4-4603-9006-95bad49d3505" name="IEntitySearchable">
+              <ArtifactNode Label="IEntitySearchable" Category="CodeSchema_Interface" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=IEntitySearchable)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=IEntitySearchable)" Label="IEntitySearchable" Category="CodeSchema_Interface">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="4e2682c0-0904-4ace-b736-914c68aea718" name="BaseException">
+              <ArtifactNode Label="BaseException" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=BaseException)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=BaseException)" Label="BaseException" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="d1922932-e237-4ecb-a27e-c487a87fbab8" name="ConnectionException">
+              <ArtifactNode Label="ConnectionException" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=ConnectionException)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=ConnectionException)" Label="ConnectionException" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="47eb304f-aabc-4e8e-acac-d5c20644c117" name="ConstraintException">
+              <ArtifactNode Label="ConstraintException" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=ConstraintException)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=ConstraintException)" Label="ConstraintException" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="0639cafd-7eee-479d-bba6-7b2d049d47d9" name="DataException">
+              <ArtifactNode Label="DataException" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=DataException)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=DataException)" Label="DataException" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="7249d2f8-419f-4ae3-8907-df63b3b63514" name="Database">
+              <ArtifactNode Label="Database" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=Database)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=Database)" Label="Database" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="10aa46aa-017c-4d4e-a7fc-be3f74fa2ac6" name="Manager&lt;D,A&gt;">
+              <ArtifactNode Label="Manager&lt;D,A&gt;" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=Manager GenericParameterCount=2))" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=Manager GenericParameterCount=2))" Label="Manager&lt;D,A&gt;" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="2d8b1e5d-ec31-4121-a487-9f01bcd5bea3" name="EntityAccessor&lt;A,D,T,S,TID&gt;">
+              <ArtifactNode Label="EntityAccessor&lt;A,D,T,S,TID&gt;" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=EntityAccessor GenericParameterCount=5))" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=EntityAccessor GenericParameterCount=5))" Label="EntityAccessor&lt;A,D,T,S,TID&gt;" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="8dd4f473-4a18-4c0e-938a-b849efea56f1" name="EntityAccessor&lt;A,D,T,S,TID&gt;.DbQuery">
+              <ArtifactNode Label="EntityAccessor&lt;A,D,T,S,TID&gt;.DbQuery" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=DbQuery ParentType=(Name=EntityAccessor GenericParameterCount=5)))" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=DbQuery ParentType=(Name=EntityAccessor GenericParameterCount=5)))" Label="EntityAccessor&lt;A,D,T,S,TID&gt;.DbQuery" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="227a6769-0695-403e-8eb2-248b2c28f260" name="IEntityAccessor&lt;T,S,TID&gt;">
+              <ArtifactNode Label="IEntityAccessor&lt;T,S,TID&gt;" Category="CodeSchema_Interface" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=IEntityAccessor GenericParameterCount=3))" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=(Name=IEntityAccessor GenericParameterCount=3))" Label="IEntityAccessor&lt;T,S,TID&gt;" Category="CodeSchema_Interface">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="b3d39fdb-c5d2-4c6b-84cd-868bf61ff85d" name="IAccessor">
+              <ArtifactNode Label="IAccessor" Category="CodeSchema_Interface" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=IAccessor)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=IAccessor)" Label="IAccessor" Category="CodeSchema_Interface">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="ee9f4ae0-cead-4057-a88a-0b0313b6a30a" name="EntitySearchParameters">
+              <ArtifactNode Label="EntitySearchParameters" Category="CodeSchema_Class" Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=EntitySearchParameters)" />
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess Namespace=Kesco.DataAccess Type=EntitySearchParameters)" Label="EntitySearchParameters" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="6ef8648a-d44e-4a8c-9b71-18769972a14f" name="Сквозные">
+          <childLayers>
+            <layer Id="69fe5d44-9843-4c73-9353-99debddc0bf1" name="Kesco.Log.dll&#xD;&#xA;Логирование">
+              <references>
+                <reference Id="5bfecbff-e9a8-4039-811f-f329b316c1fb" name="LogicalException">
+                  <ArtifactNode Label="LogicalException" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Log.dll Namespace=Kesco.Log Type=LogicalException)" />
+                  <ExpandedNode Id="(Assembly=Kesco.Log Namespace=Kesco.Log Type=LogicalException)" Label="LogicalException" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="9134ff9a-7ea7-4da8-b9a2-69669c80327a" name="LogModule">
+                  <ArtifactNode Label="LogModule" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Log.dll Namespace=Kesco.Log Type=LogModule)" />
+                  <ExpandedNode Id="(Assembly=Kesco.Log Namespace=Kesco.Log Type=LogModule)" Label="LogModule" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="1ec324dd-d4a6-4995-9342-7ceb5b9cf92a" name="DetailedException">
+                  <ArtifactNode Label="DetailedException" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Log.dll Namespace=Kesco.Log Type=DetailedException)" />
+                  <ExpandedNode Id="(Assembly=Kesco.Log Namespace=Kesco.Log Type=DetailedException)" Label="DetailedException" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="84953be5-8cbf-46b8-9253-8fa140cc63c6" name="Logger">
+                  <ArtifactNode Label="Logger" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Log.dll Namespace=Kesco Type=Logger)" />
+                  <ExpandedNode Id="(Assembly=Kesco.Log Namespace=Kesco Type=Logger)" Label="Logger" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="1c5da5ef-5981-43e7-972c-298af2fa53b9" name="Kesco.ClassExtensions.dll&#xD;&#xA;Методы-расширения типов">
+              <references>
+                <reference Id="7a33c0eb-35c1-42f5-81e5-0ec390df9906" name="Kesco.ClassExtensions">
+                  <ArtifactNode Label="Kesco.ClassExtensions" Category="CodeSchema_Project" Id="(Assembly=../Kesco.ClassExtensions/Kesco.ClassExtensions.csproj)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.ClassExtensions)" Label="Kesco.ClassExtensions.dll" Category="FileSystem.Category.FileOfType.dll">
+                    <LinkCategory Ref="Produces" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="368cd5a3-8964-4c91-95ce-3f3d906239ca" name="Kesco.Utilities.dll&#xD;&#xA;Утилиты">
+              <references>
+                <reference Id="5f1e8925-9008-48ac-b7ee-6c4745a2d395" name="Kesco.Utilities">
+                  <ArtifactNode Label="Kesco.Utilities" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Utilities/Kesco.Utilities.csproj)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Utilities)" Label="Kesco.Utilities.dll" Category="FileSystem.Category.FileOfType.dll">
+                    <LinkCategory Ref="Produces" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="81a2446a-57f9-49ea-9ece-1d34008ef85a" name="Kesco.Linq.Dynamic.dll&#xD;&#xA;Библиотеку Dynamic Linq">
+              <references>
+                <reference Id="c72dd34d-1ec4-469a-a73e-819d4b8f3aec" name="Kesco.Linq.Dynamic">
+                  <ArtifactNode Label="Kesco.Linq.Dynamic" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Linq.Dynamic/Kesco.Linq.Dynamic.csproj)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Linq.Dynamic)" Label="Kesco.Linq.Dynamic.dll" Category="FileSystem.Category.FileOfType.dll">
+                    <LinkCategory Ref="Produces" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="08cfc151-2e61-4562-9c50-4ae1a86a1a47" name="Kesco.ObjectModel.dll&#xD;&#xA;Объектная модель&#xD;&#xA;">
+          <childLayers>
+            <layer Id="d1e4d8bb-35c7-4c09-8336-3d5855818fe7" name="Сущности">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="6b9c44c9-ecb1-470c-937d-255f24e69e1f" direction="Forward">
+                  <layerMoniker Id="8faa4914-a97f-4898-9c2a-0bdb82c91654" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="cbf8316b-2fd4-4822-86a7-930984444161" direction="Forward">
+                  <layerMoniker Id="4d4a1e3a-18cc-4ef9-ae88-15b4686e79c4" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <childLayers>
+                <layer Id="f128a438-e8ed-4384-950a-53cfce00445f" name="Entity&lt;T,TID&gt;&#xD;&#xA;Базовая сущность" />
+                <layer Id="6bb392ff-a5ec-4407-997f-ecb7da9fe595" name="Сущность с трекингом изменений">
+                  <dependencyToLayers>
+                    <dependencyFromLayerToLayer Id="22300e74-d619-42e7-b7fc-0ef2aa212eac" direction="Forward">
+                      <layerMoniker Id="f128a438-e8ed-4384-950a-53cfce00445f" />
+                    </dependencyFromLayerToLayer>
+                  </dependencyToLayers>
+                </layer>
+                <layer Id="8d210cc3-caf4-42c2-901a-dcd8be053003" name="Сущность с поддержкой древовидной структуры и трекингом">
+                  <dependencyToLayers>
+                    <dependencyFromLayerToLayer Id="c9cfea79-3bc5-4920-8ae1-0b0183c592f3" direction="Forward">
+                      <layerMoniker Id="6bb392ff-a5ec-4407-997f-ecb7da9fe595" />
+                    </dependencyFromLayerToLayer>
+                  </dependencyToLayers>
+                </layer>
+              </childLayers>
+              <references>
+                <reference Id="4c1891c0-e45c-45ea-bac1-583406b79d51" name="EntityT.cs">
+                  <ArtifactNode Label="EntityT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/EntityT.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=(Name=Entity GenericParameterCount=2))" Label="Entity&lt;T,TID&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="9800f9aa-e8b8-447a-8ae1-32b52bfe52fe" name="TrackableEntityT.cs">
+                  <ArtifactNode Label="TrackableEntityT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/TrackableEntityT.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=(Name=TrackableEntity GenericParameterCount=2))" Label="TrackableEntity&lt;T,TID&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="2cef9742-9c56-4906-bbe4-6fe46fb8d34e" name="TrackableTreeEntityT.cs">
+                  <ArtifactNode Label="TrackableTreeEntityT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../kesco.objectmodel/trackabletreeentityt.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=(Name=TrackableTreeEntity GenericParameterCount=2))" Label="TrackableTreeEntity&lt;T,TID&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="8faa4914-a97f-4898-9c2a-0bdb82c91654" name="Особенности сущностей&#xD;&#xA;(Интерфейсы)">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="68ad81d3-b684-423d-a25c-e46fc5f7e0bb" direction="Forward">
+                  <layerMoniker Id="4d4a1e3a-18cc-4ef9-ae88-15b4686e79c4" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <childLayers>
+                <layer Id="5a1e049f-50d3-4a28-a90f-c202d2a73a61" name="Уникальность" />
+                <layer Id="5afa9e8e-5b39-480f-b741-f46cdce357d6" name="Трекинг изменений" />
+                <layer Id="3be5b325-719f-44cc-956d-0ae3804e96ed" name="Наименование" />
+                <layer Id="6d4853f1-f8d5-4838-81fd-5f4fd60ae9e6" name="Древовидность" />
+              </childLayers>
+              <references>
+                <reference Id="cb5f8a22-0a78-4a2e-9c34-6bdd3983e78f" name="IFriendlyNamed.cs">
+                  <ArtifactNode Label="IFriendlyNamed.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/IFriendlyNamed.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=IFriendlyNamed)" Label="IFriendlyNamed" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="cd191558-4e1c-4733-86d9-3b17b93f5426" name="ITrackableEntity.cs">
+                  <ArtifactNode Label="ITrackableEntity.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/ITrackableEntity.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=ITrackableEntity)" Label="ITrackableEntity" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="96a46f80-3dcc-4055-8a1a-495e483eb463" name="IUnique.cs">
+                  <ArtifactNode Label="IUnique.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/IUnique.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=IUnique)" Label="IUnique" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="529f7ec5-cfd9-4606-980e-45ce9e127259" name="IUniqueIDT.cs">
+                  <ArtifactNode Label="IUniqueIDT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/IUniqueIDT.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=(Name=IUniqueID GenericParameterCount=1))" Label="IUniqueID&lt;T&gt;" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="1190c9f3-f8ae-4e2b-b691-d8c956091d57" name="TrackableT.cs">
+                  <ArtifactNode Label="TrackableT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.ObjectModel/TrackableT.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=(Name=Trackable GenericParameterCount=1))" Label="Trackable&lt;T&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="0727b1b6-3a80-4d71-aca9-57ac6d7f0564" name="ITreeEntity.cs">
+                  <ArtifactNode Label="ITreeEntity.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../kesco.objectmodel/itreeentity.cs)" />
+                  <ExpandedNode Id="(Assembly=Kesco.ObjectModel Namespace=Kesco.ObjectModel Type=ITreeEntity)" Label="ITreeEntity" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="3d9f92b0-6e6b-4c55-af2f-207afc61a130" name="Kesco.Web.Mvc.UI.dll&#xD;&#xA;Расширение инфраструкты ASP.NET MVC">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="9b90981d-122d-433d-8484-00431f304212" direction="Forward">
+              <layerMoniker Id="1c5da5ef-5981-43e7-972c-298af2fa53b9" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="29c54dbd-c672-4aca-92f8-152117eff6d0" direction="Forward">
+              <layerMoniker Id="987ee334-21c3-484f-9499-459aacdc1b68" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="e289b4a9-b959-4c4e-9ad3-8986c3ea02aa" name="Фасад приложения">
+              <childLayers>
+                <layer Id="31670948-6587-4fc8-b866-7e3e30b491e4" name="Шаблон приложения">
+                  <references>
+                    <reference Id="2d0eaa93-329a-4a4e-83cb-e67373a8211c" name="Application&lt;S&gt;">
+                      <ArtifactNode Label="Application&lt;S&gt;" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc Type=(Name=Application GenericParameterCount=1))" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=(Name=Application GenericParameterCount=1))" Label="Application&lt;S&gt;" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                  </references>
+                </layer>
+                <layer Id="0e543aa7-9689-4142-b2eb-b3a0fb6d5f58" name="Настройки приложения">
+                  <references>
+                    <reference Id="64bf7e6a-1687-4bce-bf0e-f95c9fbb52fc" name="ApplicationSettings">
+                      <ArtifactNode Label="ApplicationSettings" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc Type=ApplicationSettings)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=ApplicationSettings)" Label="ApplicationSettings" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                  </references>
+                </layer>
+              </childLayers>
+              <references>
+                <reference Id="ac6f238a-1fa9-4cfd-bc9c-a7ab8faf6530" name="ApplicationEx.cs">
+                  <ArtifactNode Label="ApplicationEx.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Infrastructure/ApplicationEx.cs)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=IThemeable)" Label="IThemeable" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=ILocalized)" Label="ILocalized" Category="CodeSchema_Interface">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=(Name=Application GenericParameterCount=1))" Label="Application&lt;S&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="ec226120-ace3-49f9-8a0a-9859652a4965" name="ApplicationSettingsT.cs">
+                  <ArtifactNode Label="ApplicationSettingsT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Infrastructure/ApplicationSettingsT.cs)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=ApplicationSettings)" Label="ApplicationSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=CacheSettings)" Label="CacheSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=CultureSettings)" Label="CultureSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=DateTimeSettings)" Label="DateTimeSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=NumberWithSymbolSettings)" Label="NumberWithSymbolSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=NumberSettings)" Label="NumberSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="ad65c3ab-5a6b-41ac-a6cf-5e36ff90d98a" name="ConfigurationT.cs">
+                  <ArtifactNode Label="ConfigurationT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Infrastructure/ConfigurationT.cs)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=(Name=Configuration GenericParameterCount=1))" Label="Configuration&lt;TApplicationSettings&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="0793e996-b221-43cd-b0da-f0c23cf0d10a" name="Представления" />
+            <layer Id="d57f5cb0-a2c1-487d-b287-0e25405f0b12" name="Контроллеры">
+              <references>
+                <reference Id="aab70427-0c39-4bff-a5f4-5f4b63e5a6c4" name="ControllerEx.cs">
+                  <ArtifactNode Label="ControllerEx.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Infrastructure/ControllerEx.cs)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=ControllerEx)" Label="ControllerEx" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="a263a464-fe9b-4c32-8ae9-cffa9377dcb6" name="ModelControllerT.cs">
+                  <ArtifactNode Label="ModelControllerT.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Infrastructure/ModelControllerT.cs)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=(Name=ModelController GenericParameterCount=1))" Label="ModelController&lt;TDataModel&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="e758759e-68b7-4bed-9f53-c36e8a28498e" name="Модели">
+              <childLayers>
+                <layer Id="9407c564-0acf-4e23-ae47-766a2694f2a3" name="Провайдер метаданных">
+                  <references>
+                    <reference Id="81edb6cb-118b-40a7-a16e-230db96ca409" name="KescoDataAnnotationsModelMetadataProvider.cs">
+                      <ArtifactNode Label="KescoDataAnnotationsModelMetadataProvider.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Providers/KescoDataAnnotationsModelMetadataProvider.cs)">
+                        <Category Ref="CodeSchema_SourceFile" />
+                      </ArtifactNode>
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=CustomMetadata)" Label="CustomMetadata" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Contains" />
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc Type=KescoDataAnnotationsModelMetadataProvider)" Label="KescoDataAnnotationsModelMetadataProvider" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Contains" />
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                  </references>
+                </layer>
+                <layer Id="74d68f43-f685-41ac-8720-e1d40ad7cc46" name="Валидация на клиенте">
+                  <childLayers>
+                    <layer Id="c2bcef8e-5639-4f1d-b369-610b78ca0584" name="Адаптеры">
+                      <dependencyToLayers>
+                        <dependencyFromLayerToLayer Id="cade592c-1f39-4a42-9642-d155c840cd56" direction="Forward">
+                          <layerMoniker Id="ecbf66f0-4d6f-47ce-a0f1-2c98cbffdc74" />
+                        </dependencyFromLayerToLayer>
+                      </dependencyToLayers>
+                      <references>
+                        <reference Id="2f95c9e1-5e2e-4a4c-8659-97ee9e906b1b" name="MaxValueAttributeAdapter.cs">
+                          <ArtifactNode Label="MaxValueAttributeAdapter.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Validation/Adapters/MaxValueAttributeAdapter.cs)">
+                            <Category Ref="CodeSchema_SourceFile" />
+                          </ArtifactNode>
+                          <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=MaxValueAttributeAdapter)" Label="MaxValueAttributeAdapter" Category="CodeSchema_Class">
+                            <LinkCategory Ref="Contains" />
+                            <LinkCategory Ref="Represents" />
+                          </ExpandedNode>
+                        </reference>
+                        <reference Id="0cdb00db-280e-42b7-930d-cdd2cf2ca094" name="RemoteAttributeAdapter.cs">
+                          <ArtifactNode Label="RemoteAttributeAdapter.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Validation/Adapters/RemoteAttributeAdapter.cs)">
+                            <Category Ref="CodeSchema_SourceFile" />
+                          </ArtifactNode>
+                          <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=RemoteAttributeAdapter)" Label="RemoteAttributeAdapter" Category="CodeSchema_Class">
+                            <LinkCategory Ref="Contains" />
+                            <LinkCategory Ref="Represents" />
+                          </ExpandedNode>
+                        </reference>
+                        <reference Id="a6696825-cfe5-45da-b91c-2ab3df7a846d" name="MinValueAttributeAdapter.cs">
+                          <ArtifactNode Label="MinValueAttributeAdapter.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Validation/Adapters/MinValueAttributeAdapter.cs)">
+                            <Category Ref="CodeSchema_SourceFile" />
+                          </ArtifactNode>
+                          <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=MinValueAttributeAdapter)" Label="MinValueAttributeAdapter" Category="CodeSchema_Class">
+                            <LinkCategory Ref="Contains" />
+                            <LinkCategory Ref="Represents" />
+                          </ExpandedNode>
+                        </reference>
+                        <reference Id="7303fc97-e8e8-4724-8105-2401fc2ac30a" name="ModelValidatorRegistration">
+                          <ArtifactNode Label="ModelValidatorRegistration" Category="CodeSchema_Class" Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=ModelValidatorRegistration)" />
+                          <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=ModelValidatorRegistration)" Label="ModelValidatorRegistration" Category="CodeSchema_Class">
+                            <LinkCategory Ref="Contains" />
+                            <LinkCategory Ref="Represents" />
+                          </ExpandedNode>
+                        </reference>
+                      </references>
+                    </layer>
+                    <layer Id="ecbf66f0-4d6f-47ce-a0f1-2c98cbffdc74" name="Правила">
+                      <references>
+                        <reference Id="b1790f3c-53f2-4a92-80cb-fd97f6aaf344" name="ModelClientValidationMaxValueRule.cs">
+                          <ArtifactNode Label="ModelClientValidationMaxValueRule.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Validation/Rules/ModelClientValidationMaxValueRule.cs)">
+                            <Category Ref="CodeSchema_SourceFile" />
+                          </ArtifactNode>
+                          <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=ModelClientValidationMaxValueRule)" Label="ModelClientValidationMaxValueRule" Category="CodeSchema_Class">
+                            <LinkCategory Ref="Contains" />
+                            <LinkCategory Ref="Represents" />
+                          </ExpandedNode>
+                        </reference>
+                        <reference Id="01965312-045f-43e1-a494-027871bd0bbe" name="ModelClientValidationMinValueRule.cs">
+                          <ArtifactNode Label="ModelClientValidationMinValueRule.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI/Validation/Rules/ModelClientValidationMinValueRule.cs)">
+                            <Category Ref="CodeSchema_SourceFile" />
+                          </ArtifactNode>
+                          <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Validation Type=ModelClientValidationMinValueRule)" Label="ModelClientValidationMinValueRule" Category="CodeSchema_Class">
+                            <LinkCategory Ref="Contains" />
+                            <LinkCategory Ref="Represents" />
+                          </ExpandedNode>
+                        </reference>
+                      </references>
+                    </layer>
+                  </childLayers>
+                </layer>
+                <layer Id="62fbf5c6-c373-438d-848e-45342084d761" name="Параметры-фильтры HTTP-запроса">
+                  <dependencyToLayers>
+                    <dependencyFromLayerToLayer Id="06dfe958-dd9e-4fa8-a895-2cce092c1031" direction="Forward">
+                      <layerMoniker Id="4d4a1e3a-18cc-4ef9-ae88-15b4686e79c4" />
+                    </dependencyFromLayerToLayer>
+                  </dependencyToLayers>
+                  <references>
+                    <reference Id="cd60b079-f91a-4906-b4a2-708c16da74e9" name="QSFilterSetting&lt;T&gt;">
+                      <ArtifactNode Label="QSFilterSetting&lt;T&gt;" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=(Name=QSFilterSetting GenericParameterCount=1))" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=(Name=QSFilterSetting GenericParameterCount=1))" Label="QSFilterSetting&lt;T&gt;" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="77ffee3d-766c-47bb-bd99-830e7226d2c7" name="ListQSFilterSetting&lt;T,TElement&gt;">
+                      <ArtifactNode Label="ListQSFilterSetting&lt;T,TElement&gt;" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=(Name=ListQSFilterSetting GenericParameterCount=2))" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=(Name=ListQSFilterSetting GenericParameterCount=2))" Label="ListQSFilterSetting&lt;T,TElement&gt;" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="74636d16-b47b-4502-bbad-ac58251f90ce" name="ListQSFilterSetting&lt;T,TElement&gt;.ListAccessor">
+                      <ArtifactNode Label="ListQSFilterSetting&lt;T,TElement&gt;.ListAccessor" Category="CodeSchema_Delegate" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=(Name=ListAccessor ParentType=(Name=ListQSFilterSetting GenericParameterCount=2)))" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=(Name=ListAccessor ParentType=(Name=ListQSFilterSetting GenericParameterCount=2)))" Label="ListQSFilterSetting&lt;T,TElement&gt;.ListAccessor" Category="CodeSchema_Delegate">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="271e6670-a5c8-48b6-8d9d-242d84142cb6" name="ArrayQSFilterSetting">
+                      <ArtifactNode Label="ArrayQSFilterSetting" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=ArrayQSFilterSetting)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=ArrayQSFilterSetting)" Label="ArrayQSFilterSetting" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="f10769ef-80bd-4bab-9877-2bcafc8075b3" name="BooleanQSFilterSetting">
+                      <ArtifactNode Label="BooleanQSFilterSetting" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=BooleanQSFilterSetting)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=BooleanQSFilterSetting)" Label="BooleanQSFilterSetting" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="25a52200-c0f1-4bc4-832f-7a6112ce188b" name="ConstantFilterSetting">
+                      <ArtifactNode Label="ConstantFilterSetting" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=ConstantFilterSetting)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=ConstantFilterSetting)" Label="ConstantFilterSetting" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="ceed69e2-d42b-4e61-ac53-5dfdc6b6f7f6" name="HiddenFilterSetting">
+                      <ArtifactNode Label="HiddenFilterSetting" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=HiddenFilterSetting)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=HiddenFilterSetting)" Label="HiddenFilterSetting" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="730fcb57-a363-4cf2-a5de-d0f0c2ec396a" name="StringQSFilterSetting">
+                      <ArtifactNode Label="StringQSFilterSetting" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=StringQSFilterSetting)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=StringQSFilterSetting)" Label="StringQSFilterSetting" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="04241212-e1ad-4e61-ab28-09ad52df53d9" name="UniqueIdQSFilterSetting">
+                      <ArtifactNode Label="UniqueIdQSFilterSetting" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=UniqueIdQSFilterSetting)" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=UniqueIdQSFilterSetting)" Label="UniqueIdQSFilterSetting" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="eda386d4-4e8d-4363-ae6f-0bbc1a2bbfde" name="FilterSetting&lt;T&gt;">
+                      <ArtifactNode Label="FilterSetting&lt;T&gt;" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=(Name=FilterSetting GenericParameterCount=1))" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=(Name=FilterSetting GenericParameterCount=1))" Label="FilterSetting&lt;T&gt;" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                    <reference Id="0e6714c6-188c-450d-821d-796f4423f950" name="IntQSFilterSetting&lt;T&gt;">
+                      <ArtifactNode Label="IntQSFilterSetting&lt;T&gt;" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Web.Mvc.UI.dll Namespace=Kesco.Web.Mvc.Filtering Type=(Name=IntQSFilterSetting GenericParameterCount=1))" />
+                      <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI Namespace=Kesco.Web.Mvc.Filtering Type=(Name=IntQSFilterSetting GenericParameterCount=1))" Label="IntQSFilterSetting&lt;T&gt;" Category="CodeSchema_Class">
+                        <LinkCategory Ref="Represents" />
+                      </ExpandedNode>
+                    </reference>
+                  </references>
+                </layer>
+              </childLayers>
+            </layer>
+          </childLayers>
+          <references>
+            <reference Id="8f7dfe5f-4f63-408f-bbbb-960a3abed597" name="Kesco.Web.Mvc.UI">
+              <ArtifactNode Label="Kesco.Web.Mvc.UI" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Web.Mvc.UI/Kesco.Web.Mvc.UI.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI)" Label="Kesco.Web.Mvc.UI.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="61d28125-b72b-4458-b88a-79f4299e229b" name="Kesco.Web.Mvc.UI.Controls">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="1660f345-48bf-47af-815e-f14c087402ae" direction="Forward">
+              <layerMoniker Id="3d9f92b0-6e6b-4c55-af2f-207afc61a130" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="9bf89d63-4d87-4d72-930d-d771063538b1" direction="Forward">
+              <layerMoniker Id="987ee334-21c3-484f-9499-459aacdc1b68" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="3c596243-82dd-403e-b61f-01ddf2300a4c" direction="Forward">
+              <layerMoniker Id="6a16fb2d-d4de-4abd-8cb6-8b4caad02a8b" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="7d244231-6aa4-4e0a-aa01-822c678d3993" name="Base Control">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="841886c1-3953-43aa-8720-0116e130ae8d" direction="Forward">
+                  <layerMoniker Id="9d8fd894-6ae0-4cfd-8e1e-0f865d987b20" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="dd0a830e-231e-45fe-8932-a1210b6982e5" name="Base">
+                  <ArtifactNode Label="Base" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/Base/)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=ControlBase)" Label="ControlBase" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=(Name=ControlBuilderBase GenericParameterCount=2))" Label="ControlBuilderBase&lt;TControl,TBuilder&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="b7118be6-731f-41fa-b250-752a6ebe9cfa" name="DatePicker">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="c514bdc5-8591-4b0e-9044-e7a342939d08" direction="Forward">
+                  <layerMoniker Id="7d244231-6aa4-4e0a-aa01-822c678d3993" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="25c5e374-e400-4427-bce4-94e383a825a6" name="DatePicker">
+                  <ArtifactNode Label="DatePicker" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/DatePicker/)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Fluent Type=KescoDatePickerBuilder)" Label="KescoDatePickerBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoDatePicker)" Label="KescoDatePicker" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoDatePickerHtmlBuilder)" Label="KescoDatePickerHtmlBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="4b1f1f1d-cf20-40c5-b52c-26c752a2bbc3" name="DateRange">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="04f58a3e-3ec4-4941-8a62-d0212b166973" direction="Forward">
+                  <layerMoniker Id="7d244231-6aa4-4e0a-aa01-822c678d3993" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="18294183-83b4-4d49-80e1-b4989530529e" direction="Forward">
+                  <layerMoniker Id="b7118be6-731f-41fa-b250-752a6ebe9cfa" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="be5c87d7-cdbb-465d-8190-e14f35c9c5f0" name="DateRange">
+                  <ArtifactNode Label="DateRange" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/DateRange/)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Fluent Type=KescoDateRangeBuilder)" Label="KescoDateRangeBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoDateRange)" Label="KescoDateRange" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoDateRangeHtmlBuilder)" Label="KescoDateRangeHtmlBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="9d8fd894-6ae0-4cfd-8e1e-0f865d987b20" name="Grid">
+              <references>
+                <reference Id="f1329830-eaf1-4c5e-9892-7723813eb047" name="Grid">
+                  <ArtifactNode Label="Grid" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/Grid/)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=AjaxCallBackMode)" Label="AjaxCallBackMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=AppearanceSettings)" Label="AppearanceSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=AutoCompleteDisplayMode)" Label="AutoCompleteDisplayMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=AutoCompleteMode)" Label="AutoCompleteMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=ClientSideEvents)" Label="ClientSideEvents" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=CompiledOn)" Label="CompiledOn" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=DataTypeNotSetException)" Label="DataTypeNotSetException" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=DatePickerDisplayMode)" Label="DatePickerDisplayMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=AddDialogSettings)" Label="AddDialogSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=DeleteDialogSettings)" Label="DeleteDialogSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=EditDialogSettings)" Label="EditDialogSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=EditActionIconsClientSideEvents)" Label="EditActionIconsClientSideEvents" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=EditActionIconsSettings)" Label="EditActionIconsSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=EditType)" Label="EditType" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=CheckBoxFormatter)" Label="CheckBoxFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=CurrencyFormatter)" Label="CurrencyFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=CustomFormatter)" Label="CustomFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=EmailFormatter)" Label="EmailFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=IntegerFormatter)" Label="IntegerFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridColumnFormatter)" Label="JQGridColumnFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=LinkFormatter)" Label="LinkFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=NumberFormatter)" Label="NumberFormatter" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=GridUtil)" Label="GridUtil" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=GroupField)" Label="GroupField" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=GroupSettings)" Label="GroupSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=GroupSummaryType)" Label="GroupSummaryType" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=HierarchyMode)" Label="HierarchyMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=HierarchySettings)" Label="HierarchySettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=HtmlHelperExtensions)" Label="HtmlHelperExtensions" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=IEnumerableExtensions)" Label="IEnumerableExtensions" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQAutoComplete)" Label="JQAutoComplete" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQAutoCompleteEx)" Label="JQAutoCompleteEx" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQAutoCompleteClientEvents)" Label="JQAutoCompleteClientEvents" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQAutoCompleteExRenderer)" Label="JQAutoCompleteExRenderer" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQAutoCompleteRenderer)" Label="JQAutoCompleteRenderer" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQDatePicker)" Label="JQDatePicker" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQDatePickerRenderer)" Label="JQDatePickerRenderer" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGrid)" Label="JQGrid" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridColumn)" Label="JQGridColumn" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridDataResolvedEventArgs)" Label="JQGridDataResolvedEventArgs" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridDataResolvedEventHandler)" Label="JQGridDataResolvedEventHandler" Category="CodeSchema_Delegate">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridEditData)" Label="JQGridEditData" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridEditFieldAttribute)" Label="JQGridEditFieldAttribute" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridHeaderGroup)" Label="JQGridHeaderGroup" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridRenderer)" Label="JQGridRenderer" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridState)" Label="JQGridState" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridToolBarButton)" Label="JQGridToolBarButton" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridTreeExpandData)" Label="JQGridTreeExpandData" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQTreeNode)" Label="JQTreeNode" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQTreeView)" Label="JQTreeView" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQTreeViewRenderer)" Label="JQTreeViewRenderer" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonAddDialog)" Label="JsonAddDialog" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonColModel)" Label="JsonColModel" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonCustomButton)" Label="JsonCustomButton" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonDelDialog)" Label="JsonDelDialog" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonEditDialog)" Label="JsonEditDialog" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonMultipleSearch)" Label="JsonMultipleSearch" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonResponse)" Label="JsonResponse" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonRow)" Label="JsonRow" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonSearchDialog)" Label="JsonSearchDialog" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonSearchToolBar)" Label="JsonSearchToolBar" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonToolBar)" Label="JsonToolBar" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonTreeResponse)" Label="JsonTreeResponse" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JsonUtil)" Label="JsonUtil" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=MultipleSearchRule)" Label="MultipleSearchRule" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=MultiSelectKey)" Label="MultiSelectKey" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=MultiSelectMode)" Label="MultiSelectMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=PagerSettings)" Label="PagerSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=RenderingMode)" Label="RenderingMode" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchDataType)" Label="SearchDataType" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchDialogSettings)" Label="SearchDialogSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchOperation)" Label="SearchOperation" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchOperations)" Label="SearchOperations" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchToolBarSettings)" Label="SearchToolBarSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchToolBarAction)" Label="SearchToolBarAction" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SearchType)" Label="SearchType" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=ShowOn)" Label="ShowOn" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SortAction)" Label="SortAction" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SortDirection)" Label="SortDirection" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SortIconsPosition)" Label="SortIconsPosition" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=SortSettings)" Label="SortSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=StringExtensions)" Label="StringExtensions" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=TextAlign)" Label="TextAlign" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=ToolBarAlign)" Label="ToolBarAlign" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=ToolBarButtonPosition)" Label="ToolBarButtonPosition" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=ToolBarPosition)" Label="ToolBarPosition" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=ToolBarSettings)" Label="ToolBarSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=TreeGridSettings)" Label="TreeGridSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=TrirandNamespace)" Label="TrirandNamespace" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=(Name=SearchArguments ParentType=Util))" Label="Util.SearchArguments" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=Util)" Label="Util" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=CustomValidator)" Label="CustomValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=DateValidator)" Label="DateValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=EmailValidator)" Label="EmailValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=IntegerValidator)" Label="IntegerValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=JQGridEditClientSideValidator)" Label="JQGridEditClientSideValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=MaxValueValidator)" Label="MaxValueValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=MinValueValidator)" Label="MinValueValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=NumberValidator)" Label="NumberValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=RequiredValidator)" Label="RequiredValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=TimeValidator)" Label="TimeValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Grid Type=UrlValidator)" Label="UrlValidator" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="6ffbbda0-e774-4105-8be4-2c2c40260062" name="Select">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="6e3246ac-1a41-443b-8cfc-c6f34b349983" direction="Forward">
+                  <layerMoniker Id="7d244231-6aa4-4e0a-aa01-822c678d3993" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="42bac03e-9404-4129-86dd-6e825e43899e" name="Lookup">
+                  <ArtifactNode Label="Lookup" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/Lookup/)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Fluent Type=KescoSelectBuilder)" Label="KescoSelectBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoSelectLink)" Label="KescoSelectLink" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoSelect)" Label="KescoSelect" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoSelectButtons)" Label="KescoSelectButtons" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoSelectClientEvents)" Label="KescoSelectClientEvents" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoSelectLinkShowCondition)" Label="KescoSelectLinkShowCondition" Category="CodeSchema_Enum">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoSelectHtmlBuilder)" Label="KescoSelectHtmlBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="93c243f2-b04c-4209-91d2-c92535f0cf6e" name="TreeView">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="be429c37-d27f-4284-ba8a-04141421d2f1" direction="Forward">
+                  <layerMoniker Id="7d244231-6aa4-4e0a-aa01-822c678d3993" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="033a638d-25d5-4672-9847-50d1516cebbe" name="TreeView">
+                  <ArtifactNode Label="TreeView" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/TreeView/)">
+                    <Category Ref="ProjectFolder" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI.Fluent Type=KescoTreeViewBuilder)" Label="KescoTreeViewBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoTreeViewClientEvents)" Label="KescoTreeViewClientEvents" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoTreeViewJsonDataPluginSettings)" Label="KescoTreeViewJsonDataPluginSettings" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoTreeViewCssClasses)" Label="KescoTreeViewCssClasses" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoTreeView)" Label="KescoTreeView" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc.UI Type=KescoTreeViewHtmlBuilder)" Label="KescoTreeViewHtmlBuilder" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="3458b8e3-223b-40dc-b7b2-1f9afd94402f" name="Grid Model Base.cs">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="682c06bc-5078-4866-82c6-39f8c8eb60b6" direction="Forward">
+                  <layerMoniker Id="9d8fd894-6ae0-4cfd-8e1e-0f865d987b20" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="0b50fb3a-969e-462e-88c9-b3302e447a09" direction="Forward">
+                  <layerMoniker Id="8faa4914-a97f-4898-9c2a-0bdb82c91654" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="09de152b-e8c6-41ab-a11d-d54e80ae88c5" name="KescoGridModelBase.cs">
+                  <ArtifactNode Label="KescoGridModelBase.cs" Category="CodeSchema_ProjectItem" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/Base/KescoGridModelBase.cs)">
+                    <Category Ref="CodeSchema_SourceFile" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls Namespace=Kesco.Web.Mvc Type=(Name=KescoGridModelBase GenericParameterCount=1))" Label="KescoGridModelBase&lt;T&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Contains" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+          <references>
+            <reference Id="20068b39-aa98-4f11-89cd-101620de4128" name="Kesco.Web.Mvc.UI.Controls">
+              <ArtifactNode Label="Kesco.Web.Mvc.UI.Controls" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/Kesco.Web.Mvc.UI.Controls.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls)" Label="Kesco.Web.Mvc.UI.Controls.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="987ee334-21c3-484f-9499-459aacdc1b68" name="Kesco.ComponentModel.dll&#xD;&#xA;Компонентная модель&#xD;&#xA;">
+          <childLayers>
+            <layer Id="90bcb415-0fb9-45a6-bc6a-b10cfad29575" name="Валидация данных" />
+            <layer Id="46e25457-ffbb-4bb8-9510-e91810e05d38" name="Аннотация данных" />
+            <layer Id="e0be9722-5491-442a-b177-9b95ecd40a1f" name="Опции для фильтрации">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="e9dba958-b10e-42e6-9cf0-ea6df4ad2136" direction="Forward">
+                  <layerMoniker Id="46e25457-ffbb-4bb8-9510-e91810e05d38" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+            </layer>
+          </childLayers>
+          <references>
+            <reference Id="7493d903-fa94-47ed-b23b-4ddecfad633e" name="Kesco.ComponentModel">
+              <ArtifactNode Label="Kesco.ComponentModel" Category="CodeSchema_Project" Id="(Assembly=../Kesco.ComponentModel/Kesco.ComponentModel.csproj)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel)" Label="Kesco.ComponentModel.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="e6b9e00a-1b4f-44f2-a5bc-be4a06c6caeb" name="GreaterThanAttribute">
+              <ArtifactNode Label="GreaterThanAttribute" Category="CodeSchema_Class" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=GreaterThanAttribute)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=GreaterThanAttribute)" Label="GreaterThanAttribute" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="d83cddc1-1e4f-4076-ad50-5e32003c0e5c" name="MaxValueAttribute">
+              <ArtifactNode Label="MaxValueAttribute" Category="CodeSchema_Class" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=MaxValueAttribute)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=MaxValueAttribute)" Label="MaxValueAttribute" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="fd2c08c0-98a6-4052-b989-dc1ae668e6dc" name="MinValueAttribute">
+              <ArtifactNode Label="MinValueAttribute" Category="CodeSchema_Class" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=MinValueAttribute)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=MinValueAttribute)" Label="MinValueAttribute" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="c7b431ab-9992-4d97-8ceb-434957957d72" name="RemoteAttribute">
+              <ArtifactNode Label="RemoteAttribute" Category="CodeSchema_Class" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=RemoteAttribute)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=RemoteAttribute)" Label="RemoteAttribute" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="9e7a7c84-3df5-4b6d-8179-dd219ee640e1" name="AnnotationAttribute">
+              <ArtifactNode Label="AnnotationAttribute" Category="CodeSchema_Class" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=AnnotationAttribute)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations Type=AnnotationAttribute)" Label="AnnotationAttribute" Category="CodeSchema_Class">
+                <LinkCategory Ref="Contains" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="0312a315-b113-48c3-9039-c16c6d86d1cf" name="FilterOption">
+              <ArtifactNode Label="FilterOption" Category="CodeSchema_Class" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations.Filtering Type=FilterOption)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations.Filtering Type=FilterOption)" Label="FilterOption" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="ba4f5049-17c8-4186-b256-429a83067ee1" name="FilterOptionCondition">
+              <ArtifactNode Label="FilterOptionCondition" Category="CodeSchema_Enum" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations.Filtering Type=FilterOptionCondition)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations.Filtering Type=FilterOptionCondition)" Label="FilterOptionCondition" Category="CodeSchema_Enum">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="362e823d-84a0-4c3d-a8c6-37ff1e5a3966" name="FilterOptionFlags">
+              <ArtifactNode Label="FilterOptionFlags" Category="CodeSchema_Enum" Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations.Filtering Type=FilterOptionFlags)" />
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel Namespace=Kesco.ComponentModel.DataAnnotations.Filtering Type=FilterOptionFlags)" Label="FilterOptionFlags" Category="CodeSchema_Enum">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="551168eb-0ba9-4c30-b8c4-3005e82a8db5" name="Внешние библиотеки">
+          <childLayers>
+            <layer Id="4d4a1e3a-18cc-4ef9-ae88-15b4686e79c4" name="BLToolkit.dll">
+              <childLayers>
+                <layer Id="b2c92709-605b-4965-a0f6-7bf517eb47d6" name="Компоненты доступа к данным" />
+                <layer Id="629b6af4-c2ae-492b-9ea8-0338cda16b6f" name="Управление соединением с базой данных" />
+                <layer Id="efc464e4-5d80-43fe-a2bd-d5609ff2722e" name="Отображение&#xD;&#xA;(Mapping)" />
+                <layer Id="d85ccc6f-e150-4947-95d8-b751310fe060" name="Reflection" />
+              </childLayers>
+              <references>
+                <reference Id="bb95363b-d8b5-4bd6-b65e-f22bc497a969" name="TypeAccessor1">
+                  <ArtifactNode Label="TypeAccessor" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Reflection Type=TypeAccessor)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Reflection Type=TypeAccessor)" Label="TypeAccessor" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="faadb7ad-d610-40e6-ba3b-8fd0c8800d35" name="TypeAccessor&lt;T&gt;1">
+                  <ArtifactNode Label="TypeAccessor&lt;T&gt;" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Reflection Type=(Name=TypeAccessor GenericParameterCount=1))" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Reflection Type=(Name=TypeAccessor GenericParameterCount=1))" Label="TypeAccessor&lt;T&gt;" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="b5420c9b-b0e7-4efc-969f-ccd4a31924a6" name="DataAccessor1">
+                  <ArtifactNode Label="DataAccessor" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.DataAccess Type=DataAccessor)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.DataAccess Type=DataAccessor)" Label="DataAccessor" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="dc848066-1b51-4afe-9242-e1f24d9e8393" name="SqlQuery1">
+                  <ArtifactNode Label="SqlQuery" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.DataAccess Type=SqlQuery)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.DataAccess Type=SqlQuery)" Label="SqlQuery" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="4f553b44-82b2-47fe-9a29-84c2d2fd8533" name="SqlQueryAttribute1">
+                  <ArtifactNode Label="SqlQueryAttribute" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.DataAccess Type=SqlQueryAttribute)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.DataAccess Type=SqlQueryAttribute)" Label="SqlQueryAttribute" Category="CodeSchema_Class">
+                    <Category Ref="CodeSchema_Attribute" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="628863b8-6289-44ac-8420-efeaf241e5bd" name="DbManager1">
+                  <ArtifactNode Label="DbManager" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Data Type=DbManager)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Data Type=DbManager)" Label="DbManager" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="4b6b6721-e58e-4b2c-ab0e-c57c0124bccd" name="MsSqlSqlProvider1">
+                  <ArtifactNode Label="MsSqlSqlProvider" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Data.Sql.SqlProvider Type=MsSqlSqlProvider)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Data.Sql.SqlProvider Type=MsSqlSqlProvider)" Label="MsSqlSqlProvider" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+                <reference Id="5482077d-9e79-4685-8ca6-1278f7a4b2d4" name="MapFieldAttribute1">
+                  <ArtifactNode Label="MapFieldAttribute" Category="CodeSchema_Class" Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Mapping Type=MapFieldAttribute)" />
+                  <ExpandedNode Id="(Assembly=BLToolkit.4 Namespace=BLToolkit.Mapping Type=MapFieldAttribute)" Label="MapFieldAttribute" Category="CodeSchema_Class">
+                    <Category Ref="CodeSchema_Attribute" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="4bd68956-7e07-4f87-968f-59c928a438cf" name="Newtonsoft.Json.dll&#xD;&#xA;&#xD;&#xA;Сериализация/Десериализация в формат JSON">
+              <references>
+                <reference Id="810e432d-d0c5-40bf-9cc4-6d86a8265669" name="Newtonsoft.Json.dll">
+                  <ArtifactNode Label="Newtonsoft.Json.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Newtonsoft.Json.dll)">
+                    <Category Ref="CodeSchema_Assembly" />
+                  </ArtifactNode>
+                  <ExpandedNode Id="(Assembly=Newtonsoft.Json)" Label="Newtonsoft.Json.dll" Category="FileSystem.Category.FileOfType.dll">
+                    <Category Ref="CodeSchema_Assembly" />
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+        </layer>
+        <layer Id="6510a60a-cf87-4992-9589-15a15ab4229f" name="Kesco.ApplicationServices">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="0e9da5e5-bfd9-48fb-a353-f441c32a0851" direction="Forward">
+              <layerMoniker Id="6a16fb2d-d4de-4abd-8cb6-8b4caad02a8b" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="070d60b3-88b0-4b5e-bfd6-13acf782d949" direction="Forward">
+              <layerMoniker Id="4d4a1e3a-18cc-4ef9-ae88-15b4686e79c4" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="5dbab319-9a13-487b-8efe-112b0fa43b69" direction="Forward">
+              <layerMoniker Id="d1e4d8bb-35c7-4c09-8336-3d5855818fe7" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="95e4f095-d984-4b3c-8f96-0eddb6d6b0ad" direction="Forward">
+              <layerMoniker Id="8faa4914-a97f-4898-9c2a-0bdb82c91654" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="346eb74c-7cff-4870-810f-623fa0e901a8" name="Kesco.ApplicationServices">
+              <ArtifactNode Label="Kesco.ApplicationServices" Category="CodeSchema_Project" Id="(Assembly=../../Kesco.ApplicationServices/Kesco.ApplicationServices/Kesco.ApplicationServices.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.ApplicationServices)" Label="Kesco.ApplicationServices.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="e85d6729-5247-4fe6-879f-849b1454ccbd" name="Cross Cutting">
+      <childLayers>
+        <layer Id="28d94d3f-b82c-414f-98ea-0053e6b605d6" name="Security" />
+        <layer Id="4a93f602-fbd2-4ab1-bd79-ccadb5f16630" name="Communication" />
+        <layer Id="5efed48c-eeb0-4054-b49a-ec266be7b4c9" name="Operational Management" />
+      </childLayers>
+    </layer>
+    <layer Id="1e50151b-f839-4209-bbec-b28ecf5bd322" name="Client">
+      <childLayers>
+        <layer Id="14817718-0e2e-417d-a6cf-bccb85bc9cc1" name="Isolated Storage" />
+        <layer Id="c259dbfa-828a-4fdb-a234-5439f8b7aec6" name="Browser">
+          <childLayers>
+            <layer Id="642cf73f-dfeb-41a9-8a5e-e479a9b276b5" name="Plug-in Execution Container">
+              <childLayers>
+                <layer Id="bef77286-57ef-463b-ba9c-226fcf5ff8e1" name="Rich UI Engine" />
+                <layer Id="33aa106a-62c7-4f08-b8b9-91b90e5de2eb" name="Business Processing Components" />
+                <layer Id="fbebf009-de7f-471e-9fba-0008edcbe9f6" name="Presentation Layer" />
+              </childLayers>
+            </layer>
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="75fe42e6-7570-4f48-8b99-bc7be39fb0bd" name="Web Server">
+      <childLayers>
+        <layer Id="2429ed22-84d7-4b67-bc62-6e3427c2d87b" name="Services Layer">
+          <childLayers>
+            <layer Id="ff18e4af-4f50-44a9-8d52-1cac8525895c" name="Service Interfaces" />
+            <layer Id="604fd076-c3a4-4832-b37a-0da5f935e1cc" name="Message Types" />
+          </childLayers>
+        </layer>
+        <layer Id="8a117c05-41bd-4114-9688-e47164e2fcd7" name="Data Layer">
+          <childLayers>
+            <layer Id="a45dd32e-c2af-464c-813a-3eef50f9e394" name="Data Access Components" />
+            <layer Id="356b2cbe-1553-4aa0-8c31-d66ec9efc9d4" name="Data Helpers/ Utilities" />
+            <layer Id="2e3dda93-0659-4bf4-a3b1-93d53da82ff9" name="Service Agents" />
+          </childLayers>
+        </layer>
+        <layer Id="08f3538f-eb9f-4693-a8f4-52177fb8ad22" name="Business Layer">
+          <childLayers>
+            <layer Id="9a7fd1ca-299f-4aff-bc48-fb2b936e04d5" name="Application Facade" />
+            <layer Id="df0b477a-72e6-400c-b346-20f430f7d530" name="Business Workflow" />
+            <layer Id="279ebbf2-e7a7-478e-9ba3-1a1e50872ae3" name="Business Components" />
+            <layer Id="45a583d0-1d49-422a-9b84-36f637254c49" name="Business Entities" />
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

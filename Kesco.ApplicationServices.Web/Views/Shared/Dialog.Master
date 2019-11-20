@@ -1,0 +1,195 @@
+﻿<%@ Master Language="C#" Inherits="Kesco.ApplicationServices.Web.SiteViewMasterPage"  %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery-ui.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("json2.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.busy.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery-ui-i18n.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.validate.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.global.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("globinfo/jquery.glob.basic.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.mousewheel.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.ui.selectmenu.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.datalink.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.cookie.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.hotkeys.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.jstree.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.form.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.timeentry.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript(String.Format("i18n/jquery.timeentry-{0}.js", System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag.Substring(0,2))) %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript(String.Format("i18n/grid.locale-{0}.js", System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag.Substring(0,2))) %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("jquery.jqGrid.min.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("MicrosoftMvcJQueryValidation.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("kesco.common.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("kesco.daterange.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("kesco.buttonbar.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("kesco.datalink.js") %>'></script>
+	<script type="text/javascript" src='<%= WebAssetScript("kesco.numeric.min.js") %>'></script>
+
+	<style type="text/css">
+		.field-validation-error 
+		{
+			display: block !important;
+		}
+
+	</style>
+</head>
+<body>
+<img src="<%= WebAssetImage("busy.gif") %>" id="imgBusy" style="display: none; position: absolute; top: 1px; z-index: 1000;" />
+<img src="<%= WebAssetImage("sandwatch.gif") %>" id="sandwatch" style="display: none; position: absolute; margin: auto auto;" />
+<link type="text/css" href='<%= WebAssetCssStyle(GetUserThemeFolder() +"jquery-ui.css") %>' rel="stylesheet"/>
+<link type="text/css" href='<%= WebAssetCssStyle("jquery-ui-numeric.css") %>' rel="stylesheet"/>
+<link type="text/css" href='<%= WebAssetCssStyle("jquery-ui-selectmenu.css") %>' rel="stylesheet"/>
+<link type="text/css" href='<%= WebAssetCssStyle("jquery-ui-jqgrid.css") %>' rel="stylesheet"/>
+<link type="text/css" href='<%= WebAssetCssStyle("kesco-ui.css") %>' rel="stylesheet"/>
+
+	<script language="javascript" type="text/javascript">
+		$(document).ready(function() {
+			jQuery.ajaxSettings.traditional = true;
+			$.validator.methods.number = function (value, element) {
+				var culture = jQuery(element).attr("input-culture");
+				if (!culture)
+					culture = (jQuery.global.culture ? jQuery.global.culture.name:'<%= Request.UserLanguages[0]  %>');
+				var val = jQuery.global.parseFloat(value, 10, culture);
+				return this.optional(element) || (!isNaN(val)) ;
+			}
+
+			$.datepicker.regional[ "en" ] = $.datepicker.regional[ "" ];
+			
+			$().busy("defaults", { 
+				img: '<%= WebAssetImage("busy.gif") %>',
+				hide : false });
+
+			var acceptLanguage = '<%= Request.UserLanguages[0]  %>';
+			$.global.preferCulture(acceptLanguage);
+
+		});
+	</script>
+		<form id="dialogResultForm" method="post" action="<%= Url.Action("DialogResult") %>">
+			<input type="hidden" name="t" value='<%= ((ulong) DateTime.Now.ToBinary()).ToString() %>' /> 
+			<input type="hidden" id="dialogResultField_Control" name="control" value="" />
+			<input type="hidden" id="dialogResultField_Value" name="value" value="" />
+		</form>
+	<span id="wndSize" style="background-color: transparent; position: absolute; visibility:hidden; left: 2px; top: 3px;"></span>
+	<div id="dialogHeader" class="ui-widget" style="padding-bottom:  5px; min-height: 33px;">
+        <asp:ContentPlaceHolder ID="HeaderContent" runat="server" />
+	</div>
+	<div id="dialogContentPane" class="ui-widget-content ui-corner-all" style="overflow: auto;">
+	<script language="javascript" type="text/javascript">
+		$(document).ready(function() {
+			$(window).resize(resizeContentPane);
+		});
+
+		function resizeContentPane() {
+			var $window = $(window);
+			$("#wndSize").html("width: "+$window.width()+" | height: "+$window.height()+" | header: "+$("#dialogHeader").outerHeight()+" | footer: "+$("#dialogFooter").outerHeight()+" | content: "+($window.height() - $("#dialogHeader").outerHeight() - $("#dialogFooter").outerHeight()));
+			$("#dialogContentPane").width($("#dialogHeader").width());
+			$("#dialogContentPane").height($window.height() - $("#dialogHeader").outerHeight() - $("#dialogFooter").outerHeight()-12);
+		}
+	</script>
+	<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+	</div>
+	<div id="dialogFooter" class="ui-widget" style="padding: 10px 5px 5px 5px; text-align: center;">
+		<asp:ContentPlaceHolder ID="FooterContent" runat="server" />
+	</div>
+
+
+	<script language="javascript" type="text/javascript">
+		function openPopupWindow(url, callbackKey, callback, windowName, width, height) {
+			var dialog;
+			//alert(window.name);
+			if (!$.isFunction(callback)) {
+				callback = function (data) {
+						if (!dialog.closed) dialog.close();
+					};
+			}
+			dialog = popupWindow({
+					resizable: 1,
+					//centerScreen: 1,
+					left: 50,
+					top: 50,
+					location: 0,
+					windowURL: url, 
+					windowName: windowName,
+					width: width,
+					height: height,
+					callbackRegKey: callbackKey,
+					callback: callback
+				});
+		}
+
+
+		function closeDialogAndReturnValue(value) {
+			$("#dialogResultField_Value").val(value);
+			$("#dialogResultForm").submit();
+		}	
+
+		function closeDialog() {
+			//var key = $("#dialogResultField_Control").val();
+			//$("#dialogResultField_Control").val(key+"$$$CLOSEPOPUP$$$");
+			//$("#dialogResultForm").submit();
+			var opener = window.opener || window.parent;
+			if (opener && !opener.closed) {
+				opener.focus();
+			} 
+			window.self.close();
+		}	
+
+		$(document).ready(function() {
+			$("#dialogContentPane").height(1200);
+			resizeContentPane();
+			$(window).trigger("resize");
+		});
+
+		function changeTheme(theme) {
+			$.ajax({
+    			url: '<%= Url.FullPathAction("ChangeTheme") %>',
+    			cache: false,
+				type: "POST",
+				data: {
+					theme: theme
+				}
+				, error: function (xhr, status, errorThrown) {
+					alert("Error");
+    			}
+				, success: function (response) {
+					if (response.status == "ok") {
+						window.location.reload();
+					} else if (response.status == "error") {
+						alert(response.error.Content || response.error);
+					}
+				}
+			});
+		}
+
+		function changeCulture(culture) {
+			$.ajax({
+    			url: '<%= Url.FullPathAction("ChangeCulture") %>',
+    			cache: false,
+				type: "POST",
+				data: {
+					culture: culture
+				}
+				, error: function (xhr, status, errorThrown) {
+					alert("Error");
+    			}
+				, success: function (response) {
+					if (response.status == "ok") {
+						window.location.reload();
+					} else if (response.status == "error") {
+						alert(response.error.Content || response.error);
+					}
+				}
+			});
+		}
+	</script>
+
+</body>
+</html>

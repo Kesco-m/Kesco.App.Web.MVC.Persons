@@ -1,0 +1,105 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<PersonTypesList>
+@using Kesco.Persons.Controls.Models
+@using Kesco.Persons.ObjectModel
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string viewModelPersonTypes = "window.ViewModel." + name;
+}
+
+
+@Html.EditorFor(m => m.PersonThemeID, "PersonThemeSelect")
+
+@{
+<script>
+
+    function RenderAllThemesAndTypes(personTypes) {
+                $.ajax({
+                    url: '@(Url.Action("RenderAllThemesAndTypes", "PersonThemeSelect"))',
+                    type: 'POST',
+                    data: window.ko.toJSON({
+                        typeIDs: personTypes
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    complete: function () {
+
+                    }
+                });
+
+            }
+            
+</script>
+    Html.RegisterScript(String.Format(@"
+ $(window).load(function () {{ {0}.PersonTypeIDs.subscribe(function(newValue){{
+        RenderAllThemesAndTypes(newValue);  $('#{1}_PersonThemeID___Autocomplete')[0].focus();
+        var colorSpan = $('#{1}_PersonThemeID___Autocomplete').parent('div').parent('span')[0];
+                if(newValue != null && newValue !=''){{
+                    colorSpan.className  = colorSpan.className.replace('ui-state-highlight', '');
+                }}
+                else
+                {{
+                    colorSpan.className  += ' ui-state-highlight';
+                }}
+            }})  
+        }})
+
+
+ViewModel.renderAllTypesAndThemes = function(typeIDs)
+{{
+    {0}.PersonTypeIDs(typeIDs);
+}}
+
+ViewModel.addNewPersonType = function(typeID, deletedTypeID){{ 
+    if({0}.PersonTypeIDs() == null || {0}.PersonTypeIDs() == '')
+    {{
+        {0}.PersonTypeIDs(typeID)
+    }}
+    else
+    {{
+        ViewModel.updateOldPersonType(typeID, deletedTypeID);
+    }}
+
+}}
+
+ViewModel.getAllRenderedTypes = function(){{
+    var selectedPersonTypesIds = '';
+    for (var i = 0; i < $('.selectedPersonTypes').length; i++) {{
+	    if(i == ($('.selectedPersonTypes').length - 1))
+		        {{ selectedPersonTypesIds += $('.selectedPersonTypes')[i].id; }} 
+  	    else {{selectedPersonTypesIds += $('.selectedPersonTypes')[i].id; selectedPersonTypesIds += ','; }}  
+    }}
+    return selectedPersonTypesIds;
+}}
+
+ViewModel.updateOldPersonType = function(typeID, deletedTypeID){{
+  
+            var resDeleted = deletedTypeID.split(',');
+            var resExist = {0}.PersonTypeIDs().split(',');    	
+
+            var temp = [];
+  	        for(var i=0, n=resExist.length;i<n;i++) {{
+
+           
+                                   
+                if($.inArray(resExist[i], resDeleted) == -1 && $.inArray(resExist[i], typeID.split(',')) == -1){{
+		            temp[temp.length] = resExist[i];
+                }}   
+
+
+            }}
+            var finalIDs = temp.join(','); 
+
+            if(temp.length == 0)
+            {{
+                {0}.PersonTypeIDs(typeID);
+            }}
+            else
+            {{
+                var personTypesString = finalIDs + ',' + typeID;
+                {0}.PersonTypeIDs(personTypesString);
+            }}
+}}
+
+", viewModelPersonTypes, id));
+    
+}

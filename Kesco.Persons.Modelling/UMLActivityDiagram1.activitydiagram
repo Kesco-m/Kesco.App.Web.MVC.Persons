@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="25316ba5-65f1-423c-a2e2-a213480beccb" name="Activity1" linkedPackageId="1a43eac8-9083-414c-b5a7-eccccd772ff6" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="f6f5dcbc-8ddf-4f7c-89b4-780f0f5bd291">
+      <profileInstance Id="a5aa9b02-c563-4896-a707-3cdd5d248a84" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="2e93b3e9-4306-4365-8f9e-4d7e61975629">
+      <profileInstance Id="92f6ac41-3fed-4291-b452-4fe3f6547ae6" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="db675883-82d1-4033-9823-8510ac526151" name="Activity1" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="b99075c7-5c71-46d4-932e-e2e0e512027e" />
+        <nodes>
+          <activityFinalNode Id="9595e7e7-fdd5-48eb-8c0f-7b225db9b16f" name="ActivityFinal2" isLeaf="false">
+            <elementDefinition Id="014966ce-8e95-4edc-b9e2-65441a3b44f0" />
+          </activityFinalNode>
+          <initialNode Id="afb2a01e-0f61-4688-a005-ecf9a660ce50" name="Initial1" isLeaf="false">
+            <elementDefinition Id="08177eb8-b92e-43bd-a559-a260d1306c9b" />
+            <flowNodeTargets>
+              <controlFlow Id="92964ed9-2f8a-40c4-a884-b63000e82a85" isLeaf="false">
+                <opaqueActionMoniker Id="6c6699a9-188e-4cfe-ab94-634fe2830356" LastKnownName="Получить&#xD;&#xA;реквизиты" />
+                <elementDefinition Id="165fe3f4-65b0-49ae-8afc-b1c1faf2e289" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityParameterNode Id="4e278a4d-346f-468f-b92d-ade04c96081f" name="Requisites" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="5d1d7a59-9464-4ca9-b5dc-946f211ee379" />
+            <objectFlowTargets>
+              <objectFlow Id="ab623273-2ed9-47d7-8bcc-7136b0e93147" isLeaf="false" isMulticast="false" isMultireceive="false">
+                <opaqueActionMoniker Id="6c6699a9-188e-4cfe-ab94-634fe2830356" LastKnownName="Получить&#xD;&#xA;реквизиты" />
+                <elementDefinition Id="39bdf82b-82c9-4ebb-9582-c255893bcda8" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger Id="3aa386e3-a657-411b-b5e7-73161d9b6ea2" name="2147483647" value="2147483647">
+                <elementDefinition Id="bfe4f45d-ff98-41bb-b52e-b7f0cd74f9fd" />
+              </literalInteger>
+            </upperBound>
+          </activityParameterNode>
+          <forkNode Id="fed6aedd-2cb4-45e9-8c4c-e6b36b7b17bf" name="Fork1" isLeaf="false">
+            <elementDefinition Id="4857edbf-0355-498f-b46e-a921e30fd481" />
+          </forkNode>
+          <joinNode Id="1304b8f7-5a99-495c-9c84-82f2682958c2" name="Join1" isLeaf="false">
+            <elementDefinition Id="eddc0bcc-33cc-4434-88da-b43b9da2d291" />
+          </joinNode>
+          <sendSignalAction Id="1ded6303-0d5b-41de-a09f-9924a47d7d0d" name="Signal1" isLeaf="false">
+            <elementDefinition Id="3d389f95-6a5d-4cd1-8a40-475a2301865a" />
+          </sendSignalAction>
+          <acceptEventAction Id="53f70345-c135-47c6-a159-9507af18077b" name="Event1" isLeaf="false" isUnmarshall="false">
+            <elementDefinition Id="0c36166e-35fd-4e1e-9e7b-28f74cab0708" />
+          </acceptEventAction>
+          <callBehaviorAction Id="0790a912-c1ea-4187-ab7b-4edb59855f41" name="Behavior1" isLeaf="false">
+            <elementDefinition Id="9cd5052e-6bb9-4015-8ef5-b354a66a14e6" />
+          </callBehaviorAction>
+          <callOperationAction Id="f16ffb6e-d5e7-477f-b621-3c1a94b1b68e" name="Operation1" isLeaf="false">
+            <elementDefinition Id="07caf2aa-d16b-43c1-9e26-9e48e02ceb31" />
+          </callOperationAction>
+          <opaqueAction Id="6c6699a9-188e-4cfe-ab94-634fe2830356" name="Получить&#xD;&#xA;реквизиты" isLeaf="false">
+            <elementDefinition Id="983af122-dc60-47c5-9396-8f320115cc88" />
+            <flowNodeTargets>
+              <controlFlow Id="d1811daa-9655-42e9-81a2-32e551c5046c" isLeaf="false">
+                <opaqueActionMoniker Id="867417b4-f0d8-44db-898f-ab91a126a852" LastKnownName="Создать валидатор" />
+                <elementDefinition Id="98607bf7-139e-485e-85e9-eb884ba4bd38" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <objectNode Id="1cdb2753-4b61-4e46-8e45-ea6286ab22a2" name="Object1" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="e0b8be5c-4b30-4120-9c1a-df1df3bee086" />
+            <upperBound>
+              <literalInteger Id="a9408369-467e-4031-88d0-541f9392537b" name="2147483647" value="2147483647">
+                <elementDefinition Id="c04c86a8-a31e-4bc5-896c-620f1baa10ad" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+          <opaqueAction Id="867417b4-f0d8-44db-898f-ab91a126a852" name="Создать валидатор" isLeaf="false">
+            <elementDefinition Id="3afd8a4c-2dc2-4b0b-9966-dd093a3b7bd6" />
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="1a43eac8-9083-414c-b5a7-eccccd772ff6" name="Kesco.Persons.Modelling">
+    <elementDefinition Id="b434b3e4-e8a1-4706-8633-2efc7b7e1f98" />
+  </package>
+</activityRootModel>

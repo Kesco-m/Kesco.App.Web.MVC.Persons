@@ -1,0 +1,10 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.Compression.Configuration
+@{ 
+	Html.RegisterExternalScript("Script/AppThemeRoller", Url.Action("AppThemeRoller", "Script")); 
+}
+<div>
+	<button id="themeRollerBtn">@Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_View_Theme</button>
+	<button>@Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_View_Theme</button>
+</div>

@@ -1,0 +1,60 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Test.IndexViewModel>
+@using Resources
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models
+@using Kesco.Persons.Controls.Models
+@using Kesco.Persons.Controls.Views.Shared
+@{
+    ViewBag.Title = "Страница для тестирования";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Header {
+}
+@section Footer {
+&nbsp;
+}
+@using (Html.BeginForm())
+{
+    
+    <table class="formTable" cellspacing="0" cellpadding="4" border="0" style="min-width: 600px;">
+	<tr valign="top">
+		<td style="width: 150px; padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelFor(m => m.PersonTypes):
+			</div>
+		</td>
+		<td>
+			<div class="editor-field">
+                @Html.EditorFor(m => m.PersonTypes)
+				
+				@Html.ValidationMessageFor(m => m.PersonTypes)
+			</div>
+		</td>
+	</tr>
+  </table>  
+
+@*	<table>
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ID)</td>
+		<td>@Html.DisplayFor(m => m.DocumentInstance.ID)</td>
+	</tr>
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ResponsibleEmployeeID)</td>
+		<td>@Html.DisplayForEmployee("DocumentInstance.ResponsibleEmployeeID", EmployeeInfoTypes.FullName)</td>
+	</tr>
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ShipperID)</td>
+		<td>@Html.DisplayForPerson("DocumentInstance.ShipperID", PersonInfoTypes.Nickname)</td>
+	</tr>
+	<tr>
+		<td>@Html.LabelFor(m => m.DocumentInstance.ConsigneeID)</td>
+		<td>@Html.DisplayForPerson("DocumentInstance.ConsigneeID", PersonInfoTypes.Nickname)</td>
+	</tr>
+	</table>
+*@
+    foreach (var person in Model.PersonList)
+    {
+    <div>@person.Nickname</div>
+    }
+}

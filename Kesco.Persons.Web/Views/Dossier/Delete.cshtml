@@ -1,0 +1,136 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.Delete.ViewModel>
+@using Resources
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models.Dossier
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@{
+	ViewBag.Title = Resources.Persons_Dossier_Delete_PageTitle;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="dialogContentPaneContainer" style="overflow: auto;">
+@using (Html.BeginForm("Delete", "Dossier", FormMethod.Post, new { id = "DeleteForm", name = "DeleteForm", style ="width: 100%; height: 100%", onsubmit = "return false;" })) {
+	@Html.ValidationSummary(true)
+
+<table style="width: 100%; height: 100%" border="0">
+<tr>
+	<td style="height:40px;">
+		<table width="100%">
+		<tr>
+			<td style="width: 100px;">
+			@Html.LabelFor(m => m.Model.PersonID):
+			</td>
+			<td>
+			@Html.EditorFor(m => m.Model.PersonID)
+			</td>
+		</tr>
+		</table>
+	
+	</td>
+	<td>
+		<table width="100%">
+		<tr>
+			<td style="width: 100px;">
+			@Html.LabelFor(m => m.Model.ReplaceWithPersonID):
+			</td>
+			<td>
+			@Html.EditorFor(m => m.Model.ReplaceWithPersonID)
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr valign="top">
+	<td style="overflow: hidden;">
+		<iframe frameborder="0" id="leftFrame" name="frmLeft" height="100%" width="100%" ></iframe>
+	</td>
+	<td style="overflow: hidden;">
+		<iframe frameborder="0" id="rightFrame" name="frmRight" style="height: 100%; width: 100%"  ></iframe>
+	</td>
+</tr>
+</table>
+}
+</div>
+@section Header {
+<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar" style="padding: 2px;" data-bind="visible: PageLoaded">
+	<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr>
+			<td>
+				<button type="button" data-bind="
+						click: function() { ViewModel.Model.Confirmed(false); ViewModel.deletePerson();  },
+						jqueryui: { widget: 'button', options: { disabled: ViewModel.Processing(), icons: { primary: 'ui-icon-check' } } }
+					">@Resources.Persons_Dossier_Delete_Button_PerformDeleting</button>
+				<button type="button" data-bind="
+						click: closeDialog,
+						jqueryui: { widget: 'button', options: { disabled: ViewModel.Processing(), icons: { primary: 'ui-icon-cancel' } } }
+					">@Resources.GUI_Button_Cancel</button>
+			</td>
+			<td nowrap="nowrap" style="width: 30px;">
+				<button type="button" style="display: none;"
+					data-bind="jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, visible: PageLoaded, click: showHelp"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+			</td>
+		</tr>
+	</table>
+</div>
+}
+
+@section Footer { 
+@Html.CommonScriptCode("Dossier_Delete_Footer",
+@<script>
+	ViewModel.deletePerson = function () {
+			$.ajax({
+				url: '@(Url.Action("Remove"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					id: ViewModel.Model.PersonID(),
+					replaceWithPersonID: ViewModel.Model.ReplaceWithPersonID(),
+					confirmed: ViewModel.Model.Confirmed()
+				}),
+				contentType: "application/json; charset=utf-8",
+				beforeSend: function () {
+					ViewModel.Processing(true);
+				},
+				complete: function () {
+					ViewModel.Processing(false);
+				}
+			});
+		};
+
+		ViewModel.Model.PersonID.subscribe(function (newValue) {
+			if (newValue) {
+				$("#leftFrame").attr({
+					src: '@(Url.Action("Index", "Dossier"))?PersonMainMenu=false&id=' + newValue
+				});
+			}
+		});
+
+		ViewModel.Model.ReplaceWithPersonID.subscribe(function (newValue) {
+			if (newValue) {
+				$("#rightFrame").attr({
+					src: '@(Url.Action("Index", "Dossier"))?PersonMainMenu=false&id=' + newValue
+				});
+			}
+		});
+
+		$(document).ready(function () {
+
+			$(window).resize(function () {
+				$("#dialogContentPaneContainer").height($("#dialogContentPane").height() - 2);
+				$("#dialogContentPaneContainer").width($("#dialogContentPane").width() - 2);
+				var $leftFrame = $("#leftFrame");
+				$leftFrame.height($leftFrame.parent().height() - 5);
+				var $rightFrame = $("#rightFrame");
+				$rightFrame.height($rightFrame.parent().height() - 5);
+			});
+			setTimeout(function () { $(window).resize(); }, 100);
+
+			if (ViewModel.Model.PersonID()) {
+				$("#leftFrame").attr({
+					src: '@(Url.Action("Index", "Dossier"))?PersonMainMenu=false&id=' + ViewModel.Model.PersonID()
+				});
+			}
+		});
+</script>)
+}
+

@@ -1,0 +1,63 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Web.Models.Dossier
+@{
+	int personID = Model.ViewModel.Model.PersonID;
+	string url = Model.Section.GetURL(Model.ViewModel.Model.PersonID);
+	int accessLevel = (int) Model.ViewModel.AccessLevel;
+	var sectionID = Model.Section.ID.ToString();
+	var currentAccess = Model.AccessGranted;
+	var groups = Model.ViewModel.GetContextItemsGroup(c => c.TabID == Model.Section.ID, c => c.Caption);
+
+	if (groups.Count == 0) {Html.DossierClientSideScript_HideSection(Model.Section.ID);}
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+	Html.DossierClientSideScript_OpenStoreSection(sectionID.ToString(), url);
+}
+
+@foreach (var group in groups) {
+	int i = 0;
+	foreach (var item in group.Items) {
+	<tr class="hoverable dsl@(sectionID)">
+		<td style="width: 180px; padding-left: 20px;">
+			@if (i++ == 0) {
+				@HL(group.Caption)
+			} else {
+				
+			}
+		</td>
+		<td>
+			@if (currentAccess > 0) {
+			<a href="javascript: void(0);" title="@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Edit_Edit)"
+					onclick="dossierOpenStore_@(sectionID.ToString())(@(item.ID), @(personID), @(hideOldVer));"
+					><span class="ui-icon ui-icon-pencil text-ui-icon"></span></a>
+			}
+			@Html.DisplayFor(m => item.LinkID, "PersonStatic", new {
+				TooltipPositionMy = "middle left",
+				TooltipPositionAt = "middle right",
+				InitialLabel = HL(item.LinkText)
+			})
+			@Html.Raw(HL(item.Label))
+		</td>
+		<td class="changed">
+			@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new {
+				TooltipPositionMy = "middle right",
+				TooltipPositionAt = "middle left",
+				InitialLabel = item.ChangedByFIO
+			}) 
+			<span>@(item.ChangedDate)</span>
+		</td>
+	</tr>
+	}
+}

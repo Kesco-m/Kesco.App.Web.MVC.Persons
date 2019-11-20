@@ -1,0 +1,32 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.ComponentModel
+@{
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    //string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    //ModelMetadata metaData = ViewData.ModelMetadata;
+
+	// descriptor
+    //var descriptor = metaData.AdditionalValues[PersonSelectAttribute.AdditionalValuesKey_SelectBox]
+    //   as PersonSelectAttribute;
+
+	// Объединяем HTML атрибуты для элемента управления
+	var htmlAttributes = Html.MergeHtmlAttributes((object)ViewBag.HtmlAttributes);
+
+	htmlAttributes.PrependInValue("class", " ", "person-simple");
+
+	ViewBag.HtmlAttributes = htmlAttributes;
+    @* Выполним отрисовку основного KescoSelect *@
+    base.Execute();
+}
+@{
+	Html.RegisterPersonControlsEnvironment();
+	
+    @* Зарегистрируем скрипт создания тултипа для элемента управления Выбор Лица *@
+	Html.RegisterScript(@"
+		initSelectBoxToolTip('#{0}', Env.URI_person_info);
+		".FormatWith(id)
+    );
+}

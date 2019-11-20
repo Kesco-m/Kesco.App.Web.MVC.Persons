@@ -1,0 +1,10 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<int?>
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Web
+@using Kesco.BusinessProjects.Controls.ComponentModel
+
+@{
+	var descriptor = new BusinessProjectSelectAttribute();
+	descriptor.OnMetadataCreated(ViewData.ModelMetadata);
+}
+@Html.EditorFor(m => m, "BusinessProjectSelect")

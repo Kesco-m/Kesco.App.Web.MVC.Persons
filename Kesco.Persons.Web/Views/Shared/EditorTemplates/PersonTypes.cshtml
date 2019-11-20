@@ -1,0 +1,70 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<IList<int>>
+
+@using Kesco.Persons.Web
+@using Kesco.Web.Mvc
+
+@{ 
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string PersonThemes = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string PersonThemesVM = "window.ViewModel." + ViewData.TemplateInfo.HtmlFieldPrefix;
+	string PersonThemesAndCatalogs = ViewData.TemplateInfo.HtmlFieldPrefix + "AndCatalogs";
+}
+	<table >
+	<tr>
+		<th>
+			<button type="button" data-bind="
+							click: openChooseThemesDialog,
+							jqueryui: {widget: 'button', options: { icons: { primary: 'ui-icon-plus'} } }"
+					title="@(Kesco.Persons.Web.Localization.Resources.Views_PersonThemes_ChooseButtonTitle)" id="btnPersonTypes"
+				>
+				<span data-bind="visible: Model.PersonThemesAndCatalogs().length == 0">@(global::Resources.Resources.Kesco_Persons_CreateIndividual_2105)</span>
+				<span data-bind="visible: Model.PersonThemesAndCatalogs().length != 0">@(global::Resources.Resources.Kesco_Persons_CreateIndividual_2104a)</span>
+			</button>
+            </br>
+            <span id="personTypesValidationMessage" style="display: none;">
+                <label style="COLOR: #ff0000; font-weight:100; font-size: 10px;">@(global::Resources.Resources.Kesco_Persons_CreateJuridical_2202)</label> 
+           </span>
+		</th>
+		<th data-bind="visible: Model.PersonThemesAndCatalogs().length != 0
+		">@(Kesco.Persons.Web.Localization.Resources.Views_PersonTypes_Catalogs)</th>
+	</tr>
+	<tbody data-bind="foreach: Model.PersonThemesAndCatalogs" >
+	<tr>
+		<td >
+			<span data-bind="
+				text: $data.Name
+			"></span>
+		</td>
+		<td data-bind="foreach: $data.Catalogs"><span data-bind="if: $index">,</span> <span data-bind="text: $data"></span></td>
+	</tr>
+	</tbody>
+	</table>
+
+@Html.CommonScriptCode("Persons_PersonType_Methods",
+@<script>
+     !(function (scope, $, undefined) {
+         var vm = scope.ViewModel || {}; scope.ViewModel = vm;
+         vm.openChooseThemesDialog = function () {
+             vm.dispatchModelCommand('ChoosePersonTypes', null);
+         };
+         vm.checkPersonThemes = function () {
+             vm.dispatchModelCommand('CheckPersonThemes', null);
+         };
+         vm.setPersonTypes = function () {
+             setTypesValid(true);
+             vm.dispatchModelCommand('SetPersonTypes', null);
+         };
+
+     })(window, jQuery);
+
+	function setTypesValid(flag) {
+	    var validationMsg = document.getElementById('personTypesValidationMessage');
+	    if (flag == true || flag == "true") {
+	        if (validationMsg != null && validationMsg != "") validationMsg.style.display = "none";
+	    }
+	    if (flag == false || flag == "false") {
+	        if (validationMsg != null && validationMsg != "") validationMsg.style.display = "table";
+	    }
+	}
+
+</script>)

@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Пространство имён: Kesco.DataAccess&#xD;&#xA;Классы расширения над ORM BLToolkit">
+    <Position X="7.265" Y="3.358" Height="0.484" Width="5.514" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Kesco.Logging&#xD;&#xA;Расширение для логирования сообщений">
+    <Position X="4.25" Y="3.285" Height="0.505" Width="2.609" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Kesco.ComponentModel.DataAnnotations&#xD;&#xA;Классы-атрибуты, расширящие базовые классы для поддержки локализации свойств, сообщений из ресурсов.">
+    <Position X="4.25" Y="1.201" Height="0.385" Width="8.519" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Kesco.ObjectModel&#xD;&#xA;Интерфейсы и классы для описания сущностей.">
+    <Position X="0.5" Y="1.313" Height="0.509" Width="3.273" />
+  </Comment>
+  <Comment CommentText="Класс-расширение для определения реального типа объекта">
+    <Position X="4.209" Y="5.612" Height="0.5" Width="1.867" />
+  </Comment>
+  <Comment CommentText="Сборка: Kesco.BaseExtensions.dll&#xD;&#xA;Пространство имён: Kesco">
+    <Position X="0.5" Y="0.5" Height="0.437" Width="12.285" />
+  </Comment>
+  <Class Name="Kesco.Logging.Logger" Collapsed="true">
+    <Position X="4.25" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAACAAAAAgAAQAAAAACAAAAAAA=</HashCode>
+      <FileName>Logging\LoggerT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ObjectModel.Trackable&lt;T&gt;" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>ObjectModel\TrackableT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.ObjectModel.Entity&lt;T, TID&gt;" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAABAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModel\EntityT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.ObjectModel.TrackableEntity&lt;T, TID&gt;" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>ObjectModel\TrackableEntityT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Reflection.TypeExtensions" Collapsed="true">
+    <Position X="4.25" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reflection\TypeExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Logging.BLToolkitLoggingInitializer" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Logging\BLToolkitLoggingInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ObjectModel.TrackableTreeEntity&lt;T, TID&gt;" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAAQA=</HashCode>
+      <FileName>ObjectModel\TrackableTreeEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.AnnotationAttribute" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>gAEAMQACAAAgAAAEIACAQCQCAAAAAIAAABAAAAAQBAE=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\AnnotationAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.LocalizableString" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAAAAAAABAAQgAAAAAAAAAAAAAgCAAQAAA=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\LocalizableString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.GreaterThanAttribute" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAgAAAAAAAAAAAAAAIAAACAAAAg=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\GreaterThanValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.MaxValueAttribute" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAgAAAAAAAAAAAAAAIAgACAAAAg=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\MaxValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.MinValueAttribute" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAgAAAAAAAAAAAAAAIAAACAAAAg=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\MinValueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.ComponentModel.DataAnnotations.RemoteAttribute" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAABAQABAEAAAAAAA=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\RemoteAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.ConnectionException" Collapsed="true">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ConnectionException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.ConstraintException" Collapsed="true">
+    <Position X="11" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ConstraintException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.Database" Collapsed="true">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.DataException" Collapsed="true">
+    <Position X="11.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\DataException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.EntityAccessor&lt;A, D, T, S, TID&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAGAAAAAAAAAAAEAAAACCBAEAAAgAAAAQAAAgAAA=</HashCode>
+      <FileName>DataAccess\EntityAccessorT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.DataAccess.EntitySearchParameters" Collapsed="true">
+    <Position X="9" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>DataAccess\EntitySearchParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Kesco.ObjectModel.ITrackableEntity" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>ObjectModel\ITrackableEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.IUnique" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModel\IUnique.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.IUniqueID&lt;T&gt;" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModel\IUniqueIDT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.IFriendlyNamed" Collapsed="true">
+    <Position X="2.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectModel\IFriendlyNamed.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.DataAccess.IEntityAccessor" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAEAAAAAABAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\IEntityAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.DataAccess.IEntityAccessor&lt;T, S, TID&gt;" Collapsed="true">
+    <Position X="6.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAABAEAAAAAAAAQAAAgAAA=</HashCode>
+      <FileName>DataAccess\IEntityAccessorT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.DataAccess.IEntitySearchable" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\IEntitySearchable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

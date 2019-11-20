@@ -1,0 +1,2520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Kesco_Persons_MDL_101" xml:space="preserve">
+    <value>Nickname of person</value>
+    <comment>Person.Nickname.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_102" xml:space="preserve">
+    <value>Specifies a description of nickname of person</value>
+    <comment>Person.Nickname.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_103" xml:space="preserve">
+    <value>Nickname</value>
+    <comment>Person.Nickname.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_104" xml:space="preserve">
+    <value>Specifies a prompt for person</value>
+    <comment>Person.Nickname.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_105" xml:space="preserve">
+    <value>NicknameRL</value>
+    <comment>Person.NicknameRL.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_106" xml:space="preserve">
+    <value>NicknameRL</value>
+    <comment>Person.NicknameRL.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_107" xml:space="preserve">
+    <value>NicknameRL</value>
+    <comment>Person.NicknameRL.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_108" xml:space="preserve">
+    <value>NicknameRL</value>
+    <comment>Person.NicknameRL.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_109" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_110" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_111" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_112" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_113" xml:space="preserve">
+    <value>Person Type</value>
+    <comment>Person.PersonType.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_114" xml:space="preserve">
+    <value>Person Type</value>
+    <comment>Person.PersonType.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_115" xml:space="preserve">
+    <value>Person Type</value>
+    <comment>Person.PersonType.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_116" xml:space="preserve">
+    <value>PersonType</value>
+    <comment>Person.PersonType.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_117" xml:space="preserve">
+    <value>Business Project</value>
+    <comment>Person.BusinessProjectID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_118" xml:space="preserve">
+    <value>Business Project</value>
+    <comment>Person.BusinessProjectID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_119" xml:space="preserve">
+    <value>BProject</value>
+    <comment>Person.BusinessProjectID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_120" xml:space="preserve">
+    <value>Business Project</value>
+    <comment>Person.BusinessProjectID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_121" xml:space="preserve">
+    <value>Verified</value>
+    <comment>Person.Verified.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_122" xml:space="preserve">
+    <value>Verified</value>
+    <comment>Person.Verified.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_123" xml:space="preserve">
+    <value>Verified</value>
+    <comment>Person.Verified.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_124" xml:space="preserve">
+    <value>Verified</value>
+    <comment>Person.Verified.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_125" xml:space="preserve">
+    <value>NameRL</value>
+    <comment>Person.NameRL.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_126" xml:space="preserve">
+    <value>NameRL</value>
+    <comment>Person.NameRL.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_127" xml:space="preserve">
+    <value>NameRL</value>
+    <comment>Person.NameRL.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_128" xml:space="preserve">
+    <value>NameRL</value>
+    <comment>Person.NameRL.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_129" xml:space="preserve">
+    <value>Сountry of registry</value>
+    <comment>Person.Territory.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_130" xml:space="preserve">
+    <value>Country of registry</value>
+    <comment>Person.Territory.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_131" xml:space="preserve">
+    <value>Specifies a country of registry</value>
+    <comment>Person.Territory.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_132" xml:space="preserve">
+    <value>Please specify a country of registry</value>
+    <comment>Person.Territory.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_133" xml:space="preserve">
+    <value>Is state organization</value>
+    <comment>Person.IsStateOrganisation.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_134" xml:space="preserve">
+    <value>Is state organization</value>
+    <comment>Person.IsStateOrganisation.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_135" xml:space="preserve">
+    <value>Person is a state organization</value>
+    <comment>Person.IsStateOrganisation.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_136" xml:space="preserve">
+    <value>Please specify whether a person is  a state organization or not</value>
+    <comment>Person.IsStateOrganisation.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_137" xml:space="preserve">
+    <value>INN</value>
+    <comment>Person.INN.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_138" xml:space="preserve">
+    <value>INN</value>
+    <comment>Person.INN.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_139" xml:space="preserve">
+    <value>INN</value>
+    <comment>Person.INN.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_140" xml:space="preserve">
+    <value>INN</value>
+    <comment>Person.INN.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_141" xml:space="preserve">
+    <value>OGRN</value>
+    <comment>Person.OGRN.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_142" xml:space="preserve">
+    <value>OGRN</value>
+    <comment>Person.OGRN.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_143" xml:space="preserve">
+    <value>OGRN</value>
+    <comment>Person.OGRN.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_144" xml:space="preserve">
+    <value>OGRN</value>
+    <comment>Person.OGRN.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_145" xml:space="preserve">
+    <value>OKPO</value>
+    <comment>Person.OKPO.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_146" xml:space="preserve">
+    <value>OKPO</value>
+    <comment>Person.OKPO.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_147" xml:space="preserve">
+    <value>OKPO</value>
+    <comment>Person.OKPO.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_148" xml:space="preserve">
+    <value>OKPO</value>
+    <comment>Person.OKPO.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_149" xml:space="preserve">
+    <value>BIС</value>
+    <comment>Person.BIK.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_150" xml:space="preserve">
+    <value>BIС</value>
+    <comment>Person.BIK.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_151" xml:space="preserve">
+    <value>BIС</value>
+    <comment>Person.BIK.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_152" xml:space="preserve">
+    <value>BIС</value>
+    <comment>Person.BIK.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_153" xml:space="preserve">
+    <value>Corr. account</value>
+    <comment>Person.LoroConto.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_154" xml:space="preserve">
+    <value>Correspondent account</value>
+    <comment>Person.LoroConto.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_155" xml:space="preserve">
+    <value>Correspondent account</value>
+    <comment>Person.LoroConto.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_156" xml:space="preserve">
+    <value>Correspondent account</value>
+    <comment>Person.LoroConto.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_157" xml:space="preserve">
+    <value>BIK RKC</value>
+    <comment>Person.BIKRKC.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_158" xml:space="preserve">
+    <value>BIK RKC</value>
+    <comment>Person.BIKRKC.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_159" xml:space="preserve">
+    <value>BIK RKC</value>
+    <comment>Person.BIKRKC.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_160" xml:space="preserve">
+    <value>BIK RKC</value>
+    <comment>Person.BIKRKC.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_161" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_162" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_163" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_164" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_165" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_166" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_167" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_168" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Person.Birthday.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_169" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Person.Comment.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_170" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Person.Comment.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_171" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Person.Comment.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_172" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Person.Comment.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_173" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardJ.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_174" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardJ.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_175" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardJ.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_176" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardJ.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_177" xml:space="preserve">
+    <value>from</value>
+    <comment>CardJ.From.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_178" xml:space="preserve">
+    <value>Defines a date the card of juridical person is valid from.</value>
+    <comment>CardJ.From.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_179" xml:space="preserve">
+    <value>from</value>
+    <comment>CardJ.From.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_180" xml:space="preserve">
+    <value>Please specify a date the card of juridical person is valid from.</value>
+    <comment>CardJ.From.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_181" xml:space="preserve">
+    <value>to</value>
+    <comment>CardJ.To.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_182" xml:space="preserve">
+    <value>to</value>
+    <comment>CardJ.To.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_183" xml:space="preserve">
+    <value>to</value>
+    <comment>CardJ.To.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_184" xml:space="preserve">
+    <value>to</value>
+    <comment>CardJ.To.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_185" xml:space="preserve">
+    <value>IncorporationForm</value>
+    <comment>CardJ.IncorporationForm.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_186" xml:space="preserve">
+    <value>IncorporationForm</value>
+    <comment>CardJ.IncorporationForm.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_187" xml:space="preserve">
+    <value>IncorporationForm</value>
+    <comment>CardJ.IncorporationForm.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_188" xml:space="preserve">
+    <value>IncorporationForm</value>
+    <comment>CardJ.IncorporationForm.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_189" xml:space="preserve">
+    <value>ShortNameRus</value>
+    <comment>CardJ.ShortNameRus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_190" xml:space="preserve">
+    <value>ShortNameRus</value>
+    <comment>CardJ.ShortNameRus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_191" xml:space="preserve">
+    <value>ShortNameRus</value>
+    <comment>CardJ.ShortNameRus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_192" xml:space="preserve">
+    <value>ShortNameRus</value>
+    <comment>CardJ.ShortNameRus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_193" xml:space="preserve">
+    <value>ShortNameRusGen</value>
+    <comment>CardJ.ShortNameRusGen.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_194" xml:space="preserve">
+    <value>ShortNameRusGen</value>
+    <comment>CardJ.ShortNameRusGen.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_195" xml:space="preserve">
+    <value>ShortNameRusGen</value>
+    <comment>CardJ.ShortNameRusGen.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_196" xml:space="preserve">
+    <value>ShortNameRusGen</value>
+    <comment>CardJ.ShortNameRusGen.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_197" xml:space="preserve">
+    <value>ShortNameLat</value>
+    <comment>CardJ.ShortNameLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_198" xml:space="preserve">
+    <value>ShortNameLat</value>
+    <comment>CardJ.ShortNameLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_199" xml:space="preserve">
+    <value>ShortNameLat</value>
+    <comment>CardJ.ShortNameLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_200" xml:space="preserve">
+    <value>ShortNameLat</value>
+    <comment>CardJ.ShortNameLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_201" xml:space="preserve">
+    <value>FullName</value>
+    <comment>CardJ.FullName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_202" xml:space="preserve">
+    <value>FullName</value>
+    <comment>CardJ.FullName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_203" xml:space="preserve">
+    <value>FullName</value>
+    <comment>CardJ.FullName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_204" xml:space="preserve">
+    <value>FullName</value>
+    <comment>CardJ.FullName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_205" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardJ.OKONH.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_206" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardJ.OKONH.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_207" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardJ.OKONH.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_208" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardJ.OKONH.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_209" xml:space="preserve">
+    <value>OKVED</value>
+    <comment>CardJ.OKVED.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_210" xml:space="preserve">
+    <value>OKVED</value>
+    <comment>CardJ.OKVED.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_211" xml:space="preserve">
+    <value>OKVED</value>
+    <comment>CardJ.OKVED.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_212" xml:space="preserve">
+    <value>OKVED</value>
+    <comment>CardJ.OKVED.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_213" xml:space="preserve">
+    <value>KPP</value>
+    <comment>CardJ.KPP.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_214" xml:space="preserve">
+    <value>KPP</value>
+    <comment>CardJ.KPP.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_215" xml:space="preserve">
+    <value>KPP</value>
+    <comment>CardJ.KPP.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_216" xml:space="preserve">
+    <value>KPP</value>
+    <comment>CardJ.KPP.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_217" xml:space="preserve">
+    <value>RwID</value>
+    <comment>CardJ.RwID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_218" xml:space="preserve">
+    <value>RwID</value>
+    <comment>CardJ.RwID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_219" xml:space="preserve">
+    <value>RwID</value>
+    <comment>CardJ.RwID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_220" xml:space="preserve">
+    <value>RwID</value>
+    <comment>CardJ.RwID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_221" xml:space="preserve">
+    <value>AddressLegal</value>
+    <comment>CardJ.AddressLegal.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_222" xml:space="preserve">
+    <value>AddressLegal</value>
+    <comment>CardJ.AddressLegal.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_223" xml:space="preserve">
+    <value>AddressLegal</value>
+    <comment>CardJ.AddressLegal.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_224" xml:space="preserve">
+    <value>AddressLegal</value>
+    <comment>CardJ.AddressLegal.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_225" xml:space="preserve">
+    <value>AddressLegalLat</value>
+    <comment>CardJ.AddressLegalLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_226" xml:space="preserve">
+    <value>AddressLegalLat</value>
+    <comment>CardJ.AddressLegalLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_227" xml:space="preserve">
+    <value>AddressLegalLat</value>
+    <comment>CardJ.AddressLegalLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_228" xml:space="preserve">
+    <value>AddressLegalLat</value>
+    <comment>CardJ.AddressLegalLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_229" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardN.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_230" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardN.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_231" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardN.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_232" xml:space="preserve">
+    <value>Person</value>
+    <comment>CardN.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_233" xml:space="preserve">
+    <value>from</value>
+    <comment>CardN.From.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_234" xml:space="preserve">
+    <value>from</value>
+    <comment>CardN.From.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_235" xml:space="preserve">
+    <value>from</value>
+    <comment>CardN.From.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_236" xml:space="preserve">
+    <value>from</value>
+    <comment>CardN.From.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_237" xml:space="preserve">
+    <value>to</value>
+    <comment>CardN.To.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_238" xml:space="preserve">
+    <value>to</value>
+    <comment>CardN.To.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_239" xml:space="preserve">
+    <value>to</value>
+    <comment>CardN.To.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_240" xml:space="preserve">
+    <value>to</value>
+    <comment>CardN.To.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_241" xml:space="preserve">
+    <value>Incorporation Form</value>
+    <comment>CardN.IncorporationForm.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_242" xml:space="preserve">
+    <value>Incorporation Form</value>
+    <comment>CardN.IncorporationForm.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_243" xml:space="preserve">
+    <value>Incorporation Form</value>
+    <comment>CardN.IncorporationForm.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_244" xml:space="preserve">
+    <value>Incorporation Form</value>
+    <comment>CardN.IncorporationForm.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_245" xml:space="preserve">
+    <value>Last Name</value>
+    <comment>CardN.LastNameRus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_246" xml:space="preserve">
+    <value>Specifies a last name of person in russian language</value>
+    <comment>CardN.LastNameRus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_247" xml:space="preserve">
+    <value>Last name</value>
+    <comment>CardN.LastNameRus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_248" xml:space="preserve">
+    <value>Last name</value>
+    <comment>CardN.LastNameRus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_249" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.FirstNameRus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_250" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.FirstNameRus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_251" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.FirstNameRus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_252" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.FirstNameRus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_253" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameRus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_254" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameRus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_255" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameRus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_256" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameRus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_257" xml:space="preserve">
+    <value>FIORus</value>
+    <comment>CardN.FIORus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_258" xml:space="preserve">
+    <value>FIORus</value>
+    <comment>CardN.FIORus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_259" xml:space="preserve">
+    <value>FIORus</value>
+    <comment>CardN.FIORus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_260" xml:space="preserve">
+    <value>FIORus</value>
+    <comment>CardN.FIORus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_261" xml:space="preserve">
+    <value>IOFRus</value>
+    <comment>CardN.IOFRus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_262" xml:space="preserve">
+    <value>IOFRus</value>
+    <comment>CardN.IOFRus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_263" xml:space="preserve">
+    <value>IOFRus</value>
+    <comment>CardN.IOFRus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_264" xml:space="preserve">
+    <value>IOFRus</value>
+    <comment>CardN.IOFRus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_265" xml:space="preserve">
+    <value>Last name</value>
+    <comment>CardN.LastNameLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_266" xml:space="preserve">
+    <value>Last name</value>
+    <comment>CardN.LastNameLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_267" xml:space="preserve">
+    <value>Last name</value>
+    <comment>CardN.LastNameLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_268" xml:space="preserve">
+    <value>Last name</value>
+    <comment>CardN.LastNameLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_269" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.NameLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_270" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.NameLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_271" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.NameLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_272" xml:space="preserve">
+    <value>First name</value>
+    <comment>CardN.NameLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_273" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_274" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_275" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_276" xml:space="preserve">
+    <value>Middle name</value>
+    <comment>CardN.MiddleNameLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_277" xml:space="preserve">
+    <value>Sex</value>
+    <comment>CardN.Sex.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_278" xml:space="preserve">
+    <value>Sex</value>
+    <comment>CardN.Sex.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_279" xml:space="preserve">
+    <value>Sex</value>
+    <comment>CardN.Sex.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_280" xml:space="preserve">
+    <value>Sex</value>
+    <comment>CardN.Sex.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_281" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardN.OKONH.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_282" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardN.OKONH.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_283" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardN.OKONH.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_284" xml:space="preserve">
+    <value>OKONH</value>
+    <comment>CardN.OKONH.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_285" xml:space="preserve">
+    <value>NACE</value>
+    <comment>CardN.OKVED.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_286" xml:space="preserve">
+    <value>NACE</value>
+    <comment>CardN.OKVED.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_287" xml:space="preserve">
+    <value>NACE</value>
+    <comment>CardN.OKVED.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_288" xml:space="preserve">
+    <value>NACE</value>
+    <comment>CardN.OKVED.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_289" xml:space="preserve">
+    <value>CAT</value>
+    <comment>CardN.OKVED.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_290" xml:space="preserve">
+    <value>CAT</value>
+    <comment>CardN.OKVED.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_291" xml:space="preserve">
+    <value>CAT</value>
+    <comment>CardN.OKVED.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_292" xml:space="preserve">
+    <value>CAT</value>
+    <comment>CardN.OKVED.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_293" xml:space="preserve">
+    <value>Railway ID</value>
+    <comment>CardN.RwID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_294" xml:space="preserve">
+    <value>Railway ID</value>
+    <comment>CardN.RwID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_295" xml:space="preserve">
+    <value>Railway ID</value>
+    <comment>CardN.RwID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_296" xml:space="preserve">
+    <value>Railway ID</value>
+    <comment>CardN.RwID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_297" xml:space="preserve">
+    <value>Legal Address</value>
+    <comment>CardN.AddressLegal.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_298" xml:space="preserve">
+    <value>Legal Address</value>
+    <comment>CardN.AddressLegal.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_299" xml:space="preserve">
+    <value>Legal Address</value>
+    <comment>CardN.AddressLegal.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_300" xml:space="preserve">
+    <value>Legal Address</value>
+    <comment>CardN.AddressLegal.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_301" xml:space="preserve">
+    <value>Legal Address (en)</value>
+    <comment>CardN.AddressLegalLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_302" xml:space="preserve">
+    <value>Legal Address (en)</value>
+    <comment>CardN.AddressLegalLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_303" xml:space="preserve">
+    <value>Legal Address (en)</value>
+    <comment>CardN.AddressLegalLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_304" xml:space="preserve">
+    <value>Legal Address (en)</value>
+    <comment>CardN.AddressLegalLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_305" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardN.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_306" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardN.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_307" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardN.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_308" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardN.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_309" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardJ.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_310" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardJ.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_311" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardJ.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_312" xml:space="preserve">
+    <value>ID</value>
+    <comment>CardJ.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_313" xml:space="preserve">
+    <value>ID</value>
+    <comment>Person.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_314" xml:space="preserve">
+    <value>ID</value>
+    <comment>Person.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_315" xml:space="preserve">
+    <value>ID</value>
+    <comment>Person.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_316" xml:space="preserve">
+    <value>ID</value>
+    <comment>Person.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_317" xml:space="preserve">
+    <value>ID</value>
+    <comment>Case.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_318" xml:space="preserve">
+    <value>ID</value>
+    <comment>Case.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_319" xml:space="preserve">
+    <value>ID</value>
+    <comment>Case.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_320" xml:space="preserve">
+    <value>ID</value>
+    <comment>Case.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_321" xml:space="preserve">
+    <value>Nominative</value>
+    <comment>Case.Nominative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_322" xml:space="preserve">
+    <value>Nominative</value>
+    <comment>Case.Nominative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_323" xml:space="preserve">
+    <value>Nominative</value>
+    <comment>Case.Nominative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_324" xml:space="preserve">
+    <value>Nominative</value>
+    <comment>Case.Nominative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_325" xml:space="preserve">
+    <value>Dative</value>
+    <comment>Case.Dative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_326" xml:space="preserve">
+    <value>Dative</value>
+    <comment>Case.Dative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_327" xml:space="preserve">
+    <value>Dative</value>
+    <comment>Case.Dative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_328" xml:space="preserve">
+    <value>Dative</value>
+    <comment>Case.Dative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_329" xml:space="preserve">
+    <value>Genitive</value>
+    <comment>Case.Genitive.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_330" xml:space="preserve">
+    <value>Genitive</value>
+    <comment>Case.Genitive.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_331" xml:space="preserve">
+    <value>Genitive</value>
+    <comment>Case.Genitive.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_332" xml:space="preserve">
+    <value>Genitive</value>
+    <comment>Case.Genitive.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_333" xml:space="preserve">
+    <value>ID</value>
+    <comment>Catalog.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_334" xml:space="preserve">
+    <value>ID</value>
+    <comment>Catalog.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_335" xml:space="preserve">
+    <value>ID</value>
+    <comment>Catalog.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_336" xml:space="preserve">
+    <value>ID</value>
+    <comment>Catalog.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_337" xml:space="preserve">
+    <value>CatalogName</value>
+    <comment>Catalog.CatalogName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_338" xml:space="preserve">
+    <value>CatalogName</value>
+    <comment>Catalog.CatalogName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_339" xml:space="preserve">
+    <value>CatalogName</value>
+    <comment>Catalog.CatalogName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_340" xml:space="preserve">
+    <value>CatalogName</value>
+    <comment>Catalog.CatalogName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_341" xml:space="preserve">
+    <value>ID</value>
+    <comment>Contact.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_342" xml:space="preserve">
+    <value>ID</value>
+    <comment>Contact.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_343" xml:space="preserve">
+    <value>ID</value>
+    <comment>Contact.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_344" xml:space="preserve">
+    <value>ID</value>
+    <comment>Contact.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_345" xml:space="preserve">
+    <value>Person</value>
+    <comment>Contact.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_346" xml:space="preserve">
+    <value>Person</value>
+    <comment>Contact.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_347" xml:space="preserve">
+    <value>Person</value>
+    <comment>Contact.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_348" xml:space="preserve">
+    <value>Please specify a person for a contact</value>
+    <comment>Contact.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_349" xml:space="preserve">
+    <value>PersonLink</value>
+    <comment>Contact.PersonLink.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_350" xml:space="preserve">
+    <value>PersonLink</value>
+    <comment>Contact.PersonLink.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_351" xml:space="preserve">
+    <value>PersonLink</value>
+    <comment>Contact.PersonLink.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_352" xml:space="preserve">
+    <value>PersonLink</value>
+    <comment>Contact.PersonLink.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_353" xml:space="preserve">
+    <value>Contact Type</value>
+    <comment>Contact.ContactType.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_354" xml:space="preserve">
+    <value>Type</value>
+    <comment>Contact.ContactType.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_355" xml:space="preserve">
+    <value>Contact Type</value>
+    <comment>Contact.ContactType.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_356" xml:space="preserve">
+    <value>Please specify a type of contact</value>
+    <comment>Contact.ContactType.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_357" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.ContactText.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_358" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.ContactText.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_359" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.ContactText.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_360" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.ContactText.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_361" xml:space="preserve">
+    <value>ContactTextRL</value>
+    <comment>Contact.ContactTextRL.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_362" xml:space="preserve">
+    <value>ContactTextRL</value>
+    <comment>Contact.ContactTextRL.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_363" xml:space="preserve">
+    <value>ContactTextRL</value>
+    <comment>Contact.ContactTextRL.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_364" xml:space="preserve">
+    <value>ContactTextRL</value>
+    <comment>Contact.ContactTextRL.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_365" xml:space="preserve">
+    <value>Country</value>
+    <comment>Contact.CountryID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_366" xml:space="preserve">
+    <value>Country</value>
+    <comment>Contact.CountryID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_367" xml:space="preserve">
+    <value>Country</value>
+    <comment>Contact.CountryID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_368" xml:space="preserve">
+    <value>Country</value>
+    <comment>Contact.CountryID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_369" xml:space="preserve">
+    <value>ZIP</value>
+    <comment>Contact.ZIP.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_370" xml:space="preserve">
+    <value>ZIP</value>
+    <comment>Contact.ZIP.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_371" xml:space="preserve">
+    <value>ZIP</value>
+    <comment>Contact.ZIP.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_372" xml:space="preserve">
+    <value>ZIP</value>
+    <comment>Contact.ZIP.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_373" xml:space="preserve">
+    <value>State/Region</value>
+    <comment>Contact.Region.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_374" xml:space="preserve">
+    <value>State/Region</value>
+    <comment>Contact.Region.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_375" xml:space="preserve">
+    <value>State/Region</value>
+    <comment>Contact.Region.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_376" xml:space="preserve">
+    <value>State/Region</value>
+    <comment>Contact.Region.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_377" xml:space="preserve">
+    <value>City</value>
+    <comment>Contact.CityName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_378" xml:space="preserve">
+    <value>City</value>
+    <comment>Contact.CityName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_379" xml:space="preserve">
+    <value>City</value>
+    <comment>Contact.CityName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_380" xml:space="preserve">
+    <value>City</value>
+    <comment>Contact.CityName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_381" xml:space="preserve">
+    <value>City (in russian)</value>
+    <comment>Contact.CityNameRus.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_382" xml:space="preserve">
+    <value>City (ru)</value>
+    <comment>Contact.CityNameRus.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_383" xml:space="preserve">
+    <value>Name of city specified in russian, for search purposes.</value>
+    <comment>Contact.CityNameRus.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_384" xml:space="preserve">
+    <value>For search, please specify a name of the city in russian.</value>
+    <comment>Contact.CityNameRus.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_385" xml:space="preserve">
+    <value>Address</value>
+    <comment>Contact.Address.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_386" xml:space="preserve">
+    <value>Address</value>
+    <comment>Contact.Address.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_387" xml:space="preserve">
+    <value>Address</value>
+    <comment>Contact.Address.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_388" xml:space="preserve">
+    <value>Address</value>
+    <comment>Contact.Address.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_389" xml:space="preserve">
+    <value>Country Code</value>
+    <comment>Contact.CountryPhoneCode.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_390" xml:space="preserve">
+    <value>Country Code</value>
+    <comment>Contact.CountryPhoneCode.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_391" xml:space="preserve">
+    <value>Phone Country Code</value>
+    <comment>Contact.CountryPhoneCode.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_392" xml:space="preserve">
+    <value>Please specify a phone code of the country</value>
+    <comment>Contact.CountryPhoneCode.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_393" xml:space="preserve">
+    <value>City Code</value>
+    <comment>Contact.CityPhoneCode.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_394" xml:space="preserve">
+    <value>City Code</value>
+    <comment>Contact.CityPhoneCode.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_395" xml:space="preserve">
+    <value>Please specify a phone code of the city/region</value>
+    <comment>Contact.CityPhoneCode.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_396" xml:space="preserve">
+    <value>CityPhoneCode</value>
+    <comment>Contact.CityPhoneCode.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_397" xml:space="preserve">
+    <value>Phone Number</value>
+    <comment>Contact.PhoneNumber.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_398" xml:space="preserve">
+    <value>Phone</value>
+    <comment>Contact.PhoneNumber.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_399" xml:space="preserve">
+    <value>Phone Number</value>
+    <comment>Contact.PhoneNumber.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_400" xml:space="preserve">
+    <value>Phone Number</value>
+    <comment>Contact.PhoneNumber.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_401" xml:space="preserve">
+    <value>ext.</value>
+    <comment>Contact.PhoneNumberAdd.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_402" xml:space="preserve">
+    <value>ext.</value>
+    <comment>Contact.PhoneNumberAdd.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_403" xml:space="preserve">
+    <value>Telephone extension</value>
+    <comment>Contact.PhoneNumberAdd.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_404" xml:space="preserve">
+    <value>Telephone extension</value>
+    <comment>Contact.PhoneNumberAdd.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_405" xml:space="preserve">
+    <value>PhoneNumberCorporative</value>
+    <comment>Contact.PhoneNumberCorporative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_406" xml:space="preserve">
+    <value>PhoneNumbeCorporative</value>
+    <comment>Contact.PhoneNumberCorporative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_407" xml:space="preserve">
+    <value>PhoneNumberCorporative</value>
+    <comment>Contact.PhoneNumberCorporative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_408" xml:space="preserve">
+    <value>PhoneNumberCorporative</value>
+    <comment>Contact.PhoneNumberCorporative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_409" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.OtherContact.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_410" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.OtherContact.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_411" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.OtherContact.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_412" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Contact.OtherContact.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_413" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Contact.Comment.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_414" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Contact.Comment.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_415" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Contact.Comment.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_416" xml:space="preserve">
+    <value>Comment</value>
+    <comment>Contact.Comment.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_417" xml:space="preserve">
+    <value>Person</value>
+    <comment>ContactActual.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_418" xml:space="preserve">
+    <value>Person</value>
+    <comment>ContactActual.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_419" xml:space="preserve">
+    <value>Person</value>
+    <comment>ContactActual.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_420" xml:space="preserve">
+    <value>Person</value>
+    <comment>ContactActual.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_421" xml:space="preserve">
+    <value>ChangedBy</value>
+    <comment>ContactActual.ChangedBy.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_422" xml:space="preserve">
+    <value>ChangedBy</value>
+    <comment>ContactActual.ChangedBy.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_423" xml:space="preserve">
+    <value>ChangedBy</value>
+    <comment>ContactActual.ChangedBy.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_424" xml:space="preserve">
+    <value>ChangedBy</value>
+    <comment>ContactActual.ChangedBy.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_425" xml:space="preserve">
+    <value>ChangedDate</value>
+    <comment>ContactActual.ChangedDate.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_426" xml:space="preserve">
+    <value>ChangedDate</value>
+    <comment>ContactActual.ChangedDate.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_427" xml:space="preserve">
+    <value>ChangedDate</value>
+    <comment>ContactActual.ChangedDate.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_428" xml:space="preserve">
+    <value>ChangedDate</value>
+    <comment>ContactActual.ChangedDate.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_429" xml:space="preserve">
+    <value>ID</value>
+    <comment>ContactType.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_430" xml:space="preserve">
+    <value>ID</value>
+    <comment>ContactType.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_431" xml:space="preserve">
+    <value>ID</value>
+    <comment>ContactType.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_432" xml:space="preserve">
+    <value>ID</value>
+    <comment>ContactType.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_433" xml:space="preserve">
+    <value>Name</value>
+    <comment>ContactType.Name.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_434" xml:space="preserve">
+    <value>Name</value>
+    <comment>ContactType.Name.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_435" xml:space="preserve">
+    <value>Name</value>
+    <comment>ContactType.Name.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_436" xml:space="preserve">
+    <value>Name</value>
+    <comment>ContactType.Name.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_437" xml:space="preserve">
+    <value>NameLat</value>
+    <comment>ContactType.NameLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_438" xml:space="preserve">
+    <value>NameLat</value>
+    <comment>ContactType.NameLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_439" xml:space="preserve">
+    <value>NameLat</value>
+    <comment>ContactType.NameLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_440" xml:space="preserve">
+    <value>NameLat</value>
+    <comment>ContactType.NameLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_441" xml:space="preserve">
+    <value>Category</value>
+    <comment>ContactType.Category.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_442" xml:space="preserve">
+    <value>Category</value>
+    <comment>ContactType.Category.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_443" xml:space="preserve">
+    <value>Category</value>
+    <comment>ContactType.Category.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_444" xml:space="preserve">
+    <value>Category</value>
+    <comment>ContactType.Category.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_445" xml:space="preserve">
+    <value>Icon</value>
+    <comment>ContactType.Icon.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_446" xml:space="preserve">
+    <value>Icon</value>
+    <comment>ContactType.Icon.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_447" xml:space="preserve">
+    <value>Icon</value>
+    <comment>ContactType.Icon.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_448" xml:space="preserve">
+    <value>Icon</value>
+    <comment>ContactType.Icon.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_449" xml:space="preserve">
+    <value>ID</value>
+    <comment>Department.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_450" xml:space="preserve">
+    <value>ID</value>
+    <comment>Department.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_451" xml:space="preserve">
+    <value>ID</value>
+    <comment>Department.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_452" xml:space="preserve">
+    <value>ID</value>
+    <comment>Department.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_453" xml:space="preserve">
+    <value>Person</value>
+    <comment>Department.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_454" xml:space="preserve">
+    <value>Person</value>
+    <comment>Department.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_455" xml:space="preserve">
+    <value>Person</value>
+    <comment>Department.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_456" xml:space="preserve">
+    <value>Person</value>
+    <comment>Department.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_457" xml:space="preserve">
+    <value>DepartmentName</value>
+    <comment>Department.DepartmentName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_458" xml:space="preserve">
+    <value>DepartmentName</value>
+    <comment>Department.DepartmentName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_459" xml:space="preserve">
+    <value>DepartmentName</value>
+    <comment>Department.DepartmentName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_460" xml:space="preserve">
+    <value>DepartmentName</value>
+    <comment>Department.DepartmentName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_461" xml:space="preserve">
+    <value>DepartmentNameLat</value>
+    <comment>Department.DepartmentNameLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_462" xml:space="preserve">
+    <value>DepartmentNameLat</value>
+    <comment>Department.DepartmentNameLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_463" xml:space="preserve">
+    <value>DepartmentNameLat</value>
+    <comment>Department.DepartmentNameLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_464" xml:space="preserve">
+    <value>DepartmentNameLat</value>
+    <comment>Department.DepartmentNameLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_465" xml:space="preserve">
+    <value>ParentDepartment</value>
+    <comment>Department.ParentDepartment.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_466" xml:space="preserve">
+    <value>ParentDepartment</value>
+    <comment>Department.ParentDepartment.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_467" xml:space="preserve">
+    <value>ParentDepartment</value>
+    <comment>Department.ParentDepartment.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_468" xml:space="preserve">
+    <value>ParentDepartment</value>
+    <comment>Department.ParentDepartment.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_469" xml:space="preserve">
+    <value>ID</value>
+    <comment>DistributionCertificate.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_470" xml:space="preserve">
+    <value>ID</value>
+    <comment>DistributionCertificate.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_471" xml:space="preserve">
+    <value>ID</value>
+    <comment>DistributionCertificate.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_472" xml:space="preserve">
+    <value>ID</value>
+    <comment>DistributionCertificate.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_473" xml:space="preserve">
+    <value>Person</value>
+    <comment>DistributionCertificate.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_474" xml:space="preserve">
+    <value>Person</value>
+    <comment>DistributionCertificate.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_475" xml:space="preserve">
+    <value>Person</value>
+    <comment>DistributionCertificate.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_476" xml:space="preserve">
+    <value>Person</value>
+    <comment>DistributionCertificate.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_477" xml:space="preserve">
+    <value>From</value>
+    <comment>DistributionCertificate.From.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_478" xml:space="preserve">
+    <value>From</value>
+    <comment>DistributionCertificate.From.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_479" xml:space="preserve">
+    <value>From</value>
+    <comment>DistributionCertificate.From.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_480" xml:space="preserve">
+    <value>From</value>
+    <comment>DistributionCertificate.From.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_481" xml:space="preserve">
+    <value>To</value>
+    <comment>DistributionCertificate.To.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_482" xml:space="preserve">
+    <value>To</value>
+    <comment>DistributionCertificate.To.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_483" xml:space="preserve">
+    <value>To</value>
+    <comment>DistributionCertificate.To.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_484" xml:space="preserve">
+    <value>To</value>
+    <comment>DistributionCertificate.To.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_485" xml:space="preserve">
+    <value>Number</value>
+    <comment>DistributionCertificate.Number.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_486" xml:space="preserve">
+    <value>Number</value>
+    <comment>DistributionCertificate.Number.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_487" xml:space="preserve">
+    <value>Number</value>
+    <comment>DistributionCertificate.Number.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_488" xml:space="preserve">
+    <value>Number</value>
+    <comment>DistributionCertificate.Number.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_489" xml:space="preserve">
+    <value>Comment</value>
+    <comment>DistributionCertificate.Comment.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_490" xml:space="preserve">
+    <value>Comment</value>
+    <comment>DistributionCertificate.Comment.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_491" xml:space="preserve">
+    <value>Comment</value>
+    <comment>DistributionCertificate.Comment.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_492" xml:space="preserve">
+    <value>Comment</value>
+    <comment>DistributionCertificate.Comment.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_493" xml:space="preserve">
+    <value>Territory</value>
+    <comment>FormatRegistration.Territory.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_494" xml:space="preserve">
+    <value>Territory</value>
+    <comment>FormatRegistration.Territory.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_495" xml:space="preserve">
+    <value>Territory</value>
+    <comment>FormatRegistration.Territory.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_496" xml:space="preserve">
+    <value>Territory</value>
+    <comment>FormatRegistration.Territory.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_497" xml:space="preserve">
+    <value>OGRNName</value>
+    <comment>FormatRegistration.OGRNName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_498" xml:space="preserve">
+    <value>OGRNName</value>
+    <comment>FormatRegistration.OGRNName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_499" xml:space="preserve">
+    <value>OGRNName</value>
+    <comment>FormatRegistration.OGRNName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_500" xml:space="preserve">
+    <value>OGRNName</value>
+    <comment>FormatRegistration.OGRNName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_501" xml:space="preserve">
+    <value>OGRNFormat1</value>
+    <comment>FormatRegistration.OGRNFormat1.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_502" xml:space="preserve">
+    <value>OGRNFormat1</value>
+    <comment>FormatRegistration.OGRNFormat1.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_503" xml:space="preserve">
+    <value>OGRNFormat1</value>
+    <comment>FormatRegistration.OGRNFormat1.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_504" xml:space="preserve">
+    <value>OGRNFormat1</value>
+    <comment>FormatRegistration.OGRNFormat1.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_505" xml:space="preserve">
+    <value>INNName</value>
+    <comment>FormatRegistration.INNName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_506" xml:space="preserve">
+    <value>INNName</value>
+    <comment>FormatRegistration.INNName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_507" xml:space="preserve">
+    <value>INNName</value>
+    <comment>FormatRegistration.INNName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_508" xml:space="preserve">
+    <value>INNName</value>
+    <comment>FormatRegistration.INNName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_509" xml:space="preserve">
+    <value>INNLength1</value>
+    <comment>FormatRegistration.INNLength1.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_510" xml:space="preserve">
+    <value>INNLength1</value>
+    <comment>FormatRegistration.INNLength1.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_511" xml:space="preserve">
+    <value>INNLength1</value>
+    <comment>FormatRegistration.INNLength1.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_512" xml:space="preserve">
+    <value>INNLength1</value>
+    <comment>FormatRegistration.INNLength1.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_513" xml:space="preserve">
+    <value>INNLength2</value>
+    <comment>FormatRegistration.INNLength2.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_514" xml:space="preserve">
+    <value>INNLength2</value>
+    <comment>FormatRegistration.INNLength2.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_515" xml:space="preserve">
+    <value>INNLength2</value>
+    <comment>FormatRegistration.INNLength2.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_516" xml:space="preserve">
+    <value>INNLength2</value>
+    <comment>FormatRegistration.INNLength2.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_517" xml:space="preserve">
+    <value>OKPOName</value>
+    <comment>FormatRegistration.OKPOName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_518" xml:space="preserve">
+    <value>OKPOName</value>
+    <comment>FormatRegistration.OKPOName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_519" xml:space="preserve">
+    <value>OKPOName</value>
+    <comment>FormatRegistration.OKPOName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_520" xml:space="preserve">
+    <value>OKPOName</value>
+    <comment>FormatRegistration.OKPOName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_521" xml:space="preserve">
+    <value>OKPOLength1</value>
+    <comment>FormatRegistration.OKPOLength1.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_522" xml:space="preserve">
+    <value>OKPOLength1</value>
+    <comment>FormatRegistration.OKPOLength1.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_523" xml:space="preserve">
+    <value>OKPOLength1</value>
+    <comment>FormatRegistration.OKPOLength1.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_524" xml:space="preserve">
+    <value>OKPOLength1</value>
+    <comment>FormatRegistration.OKPOLength1.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_525" xml:space="preserve">
+    <value>OKPOLength2</value>
+    <comment>FormatRegistration.OKPOLength2.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_526" xml:space="preserve">
+    <value>OKPOLength2</value>
+    <comment>FormatRegistration.OKPOLength2.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_527" xml:space="preserve">
+    <value>OKPOLength2</value>
+    <comment>FormatRegistration.OKPOLength2.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_528" xml:space="preserve">
+    <value>OKPOLength2</value>
+    <comment>FormatRegistration.OKPOLength2.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_529" xml:space="preserve">
+    <value>ID</value>
+    <comment>IncorporationForm.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_530" xml:space="preserve">
+    <value>ID</value>
+    <comment>IncorporationForm.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_531" xml:space="preserve">
+    <value>ID</value>
+    <comment>IncorporationForm.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_532" xml:space="preserve">
+    <value>ID</value>
+    <comment>IncorporationForm.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_533" xml:space="preserve">
+    <value>IncorporationFormName</value>
+    <comment>IncorporationForm.IncorporationFormName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_534" xml:space="preserve">
+    <value>IncorporationFormName</value>
+    <comment>IncorporationForm.IncorporationFormName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_535" xml:space="preserve">
+    <value>IncorporationFormName</value>
+    <comment>IncorporationForm.IncorporationFormName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_536" xml:space="preserve">
+    <value>IncorporationFormName</value>
+    <comment>IncorporationForm.IncorporationFormName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_537" xml:space="preserve">
+    <value>IncorporationFormShortName</value>
+    <comment>IncorporationForm.IncorporationFormShortName.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_538" xml:space="preserve">
+    <value>IncorporationFormShortName</value>
+    <comment>IncorporationForm.IncorporationFormShortName.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_539" xml:space="preserve">
+    <value>IncorporationFormShortName</value>
+    <comment>IncorporationForm.IncorporationFormShortName.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_540" xml:space="preserve">
+    <value>IncorporationFormShortName</value>
+    <comment>IncorporationForm.IncorporationFormShortName.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_541" xml:space="preserve">
+    <value>PersonType</value>
+    <comment>IncorporationForm.PersonType.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_542" xml:space="preserve">
+    <value>PersonType</value>
+    <comment>IncorporationForm.PersonType.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_543" xml:space="preserve">
+    <value>PersonType</value>
+    <comment>IncorporationForm.PersonType.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_544" xml:space="preserve">
+    <value>PersonType</value>
+    <comment>IncorporationForm.PersonType.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_545" xml:space="preserve">
+    <value>ID</value>
+    <comment>Logotype.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_546" xml:space="preserve">
+    <value>ID</value>
+    <comment>Logotype.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_547" xml:space="preserve">
+    <value>ID</value>
+    <comment>Logotype.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_548" xml:space="preserve">
+    <value>ID</value>
+    <comment>Logotype.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_549" xml:space="preserve">
+    <value>Person</value>
+    <comment>Logotype.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_550" xml:space="preserve">
+    <value>Person</value>
+    <comment>Logotype.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_551" xml:space="preserve">
+    <value>Person</value>
+    <comment>Logotype.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_552" xml:space="preserve">
+    <value>Person</value>
+    <comment>Logotype.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_553" xml:space="preserve">
+    <value>SaveDate</value>
+    <comment>Logotype.SaveDate.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_554" xml:space="preserve">
+    <value>SaveDate</value>
+    <comment>Logotype.SaveDate.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_555" xml:space="preserve">
+    <value>SaveDate</value>
+    <comment>Logotype.SaveDate.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_556" xml:space="preserve">
+    <value>SaveDate</value>
+    <comment>Logotype.SaveDate.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_557" xml:space="preserve">
+    <value>Logo</value>
+    <comment>Logotype.Logo.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_558" xml:space="preserve">
+    <value>Logo</value>
+    <comment>Logotype.Logo.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_559" xml:space="preserve">
+    <value>Logo</value>
+    <comment>Logotype.Logo.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_560" xml:space="preserve">
+    <value>Logo</value>
+    <comment>Logotype.Logo.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_561" xml:space="preserve">
+    <value>Header</value>
+    <comment>Logotype.Header.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_562" xml:space="preserve">
+    <value>Header</value>
+    <comment>Logotype.Header.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_563" xml:space="preserve">
+    <value>Header</value>
+    <comment>Logotype.Header.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_564" xml:space="preserve">
+    <value>Header</value>
+    <comment>Logotype.Header.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_565" xml:space="preserve">
+    <value>Footer</value>
+    <comment>Logotype.Footer.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_566" xml:space="preserve">
+    <value>Footer</value>
+    <comment>Logotype.Footer.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_567" xml:space="preserve">
+    <value>Footer</value>
+    <comment>Logotype.Footer.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_568" xml:space="preserve">
+    <value>Footer</value>
+    <comment>Logotype.Footer.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_569" xml:space="preserve">
+    <value>Person</value>
+    <comment>PersonCatalog.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_570" xml:space="preserve">
+    <value>Person</value>
+    <comment>PersonCatalog.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_571" xml:space="preserve">
+    <value>Person</value>
+    <comment>PersonCatalog.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_572" xml:space="preserve">
+    <value>Person</value>
+    <comment>PersonCatalog.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_573" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonCatalog.Catalog.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_574" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonCatalog.Catalog.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_575" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonCatalog.Catalog.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_576" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonCatalog.Catalog.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_577" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLink.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_578" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLink.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_579" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLink.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_580" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLink.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_581" xml:space="preserve">
+    <value>PersonLinkType</value>
+    <comment>PersonLink.PersonLinkType.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_582" xml:space="preserve">
+    <value>PersonLinkType</value>
+    <comment>PersonLink.PersonLinkType.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_583" xml:space="preserve">
+    <value>PersonLinkType</value>
+    <comment>PersonLink.PersonLinkType.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_584" xml:space="preserve">
+    <value>PersonLinkType</value>
+    <comment>PersonLink.PersonLinkType.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_585" xml:space="preserve">
+    <value>From</value>
+    <comment>PersonLink.From.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_586" xml:space="preserve">
+    <value>From</value>
+    <comment>PersonLink.From.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_587" xml:space="preserve">
+    <value>From</value>
+    <comment>PersonLink.From.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_588" xml:space="preserve">
+    <value>From</value>
+    <comment>PersonLink.From.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_589" xml:space="preserve">
+    <value>To</value>
+    <comment>PersonLink.To.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_590" xml:space="preserve">
+    <value>To</value>
+    <comment>PersonLink.To.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_591" xml:space="preserve">
+    <value>To</value>
+    <comment>PersonLink.To.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_592" xml:space="preserve">
+    <value>To</value>
+    <comment>PersonLink.To.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_593" xml:space="preserve">
+    <value>ParentPerson</value>
+    <comment>PersonLink.ParentPerson.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_594" xml:space="preserve">
+    <value>ParentPerson</value>
+    <comment>PersonLink.ParentPerson.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_595" xml:space="preserve">
+    <value>ParentPerson</value>
+    <comment>PersonLink.ParentPerson.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_596" xml:space="preserve">
+    <value>ParentPerson</value>
+    <comment>PersonLink.ParentPerson.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_597" xml:space="preserve">
+    <value>ChildPerson</value>
+    <comment>PersonLink.ChildPerson.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_598" xml:space="preserve">
+    <value>ChildPerson</value>
+    <comment>PersonLink.ChildPerson.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_599" xml:space="preserve">
+    <value>ChildPerson</value>
+    <comment>PersonLink.ChildPerson.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_600" xml:space="preserve">
+    <value>ChildPerson</value>
+    <comment>PersonLink.ChildPerson.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_601" xml:space="preserve">
+    <value>Note</value>
+    <comment>PersonLink.Description.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_602" xml:space="preserve">
+    <value>Note</value>
+    <comment>PersonLink.Description.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_603" xml:space="preserve">
+    <value>Note</value>
+    <comment>PersonLink.Description.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_604" xml:space="preserve">
+    <value>Note</value>
+    <comment>PersonLink.Description.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_605" xml:space="preserve">
+    <value>Sign right</value>
+    <comment>PersonLink.Parameter.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_606" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>PersonLink.Parameter.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_607" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>PersonLink.Parameter.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_608" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>PersonLink.Parameter.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_609" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLinkType.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_610" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLinkType.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_611" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLinkType.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_612" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonLinkType.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_613" xml:space="preserve">
+    <value>ParentPersonType</value>
+    <comment>PersonLinkType.ParentPersonType.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_614" xml:space="preserve">
+    <value>ParentPersonType</value>
+    <comment>PersonLinkType.ParentPersonType.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_615" xml:space="preserve">
+    <value>ParentPersonType</value>
+    <comment>PersonLinkType.ParentPersonType.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_616" xml:space="preserve">
+    <value>ParentPersonType</value>
+    <comment>PersonLinkType.ParentPersonType.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_617" xml:space="preserve">
+    <value>ChildPersonType</value>
+    <comment>PersonLinkType.ChildPersonType.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_618" xml:space="preserve">
+    <value>ChildPersonType</value>
+    <comment>PersonLinkType.ChildPersonType.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_619" xml:space="preserve">
+    <value>ChildPersonType</value>
+    <comment>PersonLinkType.ChildPersonType.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_620" xml:space="preserve">
+    <value>ChildPersonType</value>
+    <comment>PersonLinkType.ChildPersonType.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_621" xml:space="preserve">
+    <value>ParentNameSingularNominative</value>
+    <comment>PersonLinkType.ParentNameSingularNominative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_622" xml:space="preserve">
+    <value>ParentNameSingularNominative</value>
+    <comment>PersonLinkType.ParentNameSingularNominative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_623" xml:space="preserve">
+    <value>ParentNameSingularNominative</value>
+    <comment>PersonLinkType.ParentNameSingularNominative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_624" xml:space="preserve">
+    <value>ParentNameSingularNominative</value>
+    <comment>PersonLinkType.ParentNameSingularNominative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_625" xml:space="preserve">
+    <value>ChildNameSingularNominative</value>
+    <comment>PersonLinkType.ChildNameSingularNominative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_626" xml:space="preserve">
+    <value>ChildNameSingularNominative</value>
+    <comment>PersonLinkType.ChildNameSingularNominative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_627" xml:space="preserve">
+    <value>ChildNameSingularNominative</value>
+    <comment>PersonLinkType.ChildNameSingularNominative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_628" xml:space="preserve">
+    <value>ChildNameSingularNominative</value>
+    <comment>PersonLinkType.ChildNameSingularNominative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_629" xml:space="preserve">
+    <value>ParentNamePluralNominative</value>
+    <comment>PersonLinkType.ParentNamePluralNominative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_630" xml:space="preserve">
+    <value>ParentNamePluralNominative</value>
+    <comment>PersonLinkType.ParentNamePluralNominative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_631" xml:space="preserve">
+    <value>ParentNamePluralNominative</value>
+    <comment>PersonLinkType.ParentNamePluralNominative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_632" xml:space="preserve">
+    <value>ParentNamePluralNominative</value>
+    <comment>PersonLinkType.ParentNamePluralNominative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_633" xml:space="preserve">
+    <value>ChildNamePluralNominative</value>
+    <comment>PersonLinkType.ChildNamePluralNominative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_634" xml:space="preserve">
+    <value>ChildNamePluralNominative</value>
+    <comment>PersonLinkType.ChildNamePluralNominative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_635" xml:space="preserve">
+    <value>ChildNamePluralNominative</value>
+    <comment>PersonLinkType.ChildNamePluralNominative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_636" xml:space="preserve">
+    <value>ChildNamePluralNominative</value>
+    <comment>PersonLinkType.ChildNamePluralNominative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_637" xml:space="preserve">
+    <value>ParentNameSingularAccusative</value>
+    <comment>PersonLinkType.ParentNameSingularAccusative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_638" xml:space="preserve">
+    <value>ParentNameSingularAccusative</value>
+    <comment>PersonLinkType.ParentNameSingularAccusative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_639" xml:space="preserve">
+    <value>ParentNameSingularAccusative</value>
+    <comment>PersonLinkType.ParentNameSingularAccusative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_640" xml:space="preserve">
+    <value>ParentNameSingularAccusative</value>
+    <comment>PersonLinkType.ParentNameSingularAccusative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_641" xml:space="preserve">
+    <value>ParentNamePluralAccusative</value>
+    <comment>PersonLinkType.ParentNamePluralAccusative.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_642" xml:space="preserve">
+    <value>ParentNamePluralAccusative</value>
+    <comment>PersonLinkType.ParentNamePluralAccusative.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_643" xml:space="preserve">
+    <value>ParentNamePluralAccusative</value>
+    <comment>PersonLinkType.ParentNamePluralAccusative.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_644" xml:space="preserve">
+    <value>ParentNamePluralAccusative</value>
+    <comment>PersonLinkType.ParentNamePluralAccusative.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_645" xml:space="preserve">
+    <value>ParentNamePluralLat</value>
+    <comment>PersonLinkType.ParentNamePluralLat.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_646" xml:space="preserve">
+    <value>ParentNamePluralLat</value>
+    <comment>PersonLinkType.ParentNamePluralLat.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_647" xml:space="preserve">
+    <value>ParentNamePluralLat</value>
+    <comment>PersonLinkType.ParentNamePluralLat.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_648" xml:space="preserve">
+    <value>ParentNamePluralLat</value>
+    <comment>PersonLinkType.ParentNamePluralLat.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_649" xml:space="preserve">
+    <value>Description</value>
+    <comment>PersonLinkType.Description.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_650" xml:space="preserve">
+    <value>Description</value>
+    <comment>PersonLinkType.Description.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_651" xml:space="preserve">
+    <value>Description</value>
+    <comment>PersonLinkType.Description.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_652" xml:space="preserve">
+    <value>Description</value>
+    <comment>PersonLinkType.Description.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_653" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonType.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_654" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonType.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_655" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonType.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_656" xml:space="preserve">
+    <value>ID</value>
+    <comment>PersonType.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_657" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonType.Catalog.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_658" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonType.Catalog.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_659" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonType.Catalog.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_660" xml:space="preserve">
+    <value>Catalog</value>
+    <comment>PersonType.Catalog.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_661" xml:space="preserve">
+    <value>PersonThemeID</value>
+    <comment>PersonType.PersonThemeID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_662" xml:space="preserve">
+    <value>PersonThemeID</value>
+    <comment>PersonType.PersonThemeID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_663" xml:space="preserve">
+    <value>PersonThemeID</value>
+    <comment>PersonType.PersonThemeID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_664" xml:space="preserve">
+    <value>PersonThemeID</value>
+    <comment>PersonType.PersonThemeID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_665" xml:space="preserve">
+    <value>ID</value>
+    <comment>ResponsibleEmployee.ID.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_666" xml:space="preserve">
+    <value>ID</value>
+    <comment>ResponsibleEmployee.ID.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_667" xml:space="preserve">
+    <value>ID</value>
+    <comment>ResponsibleEmployee.ID.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_668" xml:space="preserve">
+    <value>ID</value>
+    <comment>ResponsibleEmployee.ID.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_669" xml:space="preserve">
+    <value>Person</value>
+    <comment>ResponsibleEmployee.Person.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_670" xml:space="preserve">
+    <value>Person</value>
+    <comment>ResponsibleEmployee.Person.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_671" xml:space="preserve">
+    <value>Person</value>
+    <comment>ResponsibleEmployee.Person.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_672" xml:space="preserve">
+    <value>Person</value>
+    <comment>ResponsibleEmployee.Person.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_673" xml:space="preserve">
+    <value>Employee</value>
+    <comment>ResponsibleEmployee.Employee.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_674" xml:space="preserve">
+    <value>Employee</value>
+    <comment>ResponsibleEmployee.Employee.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_675" xml:space="preserve">
+    <value>Employee</value>
+    <comment>ResponsibleEmployee.Employee.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_676" xml:space="preserve">
+    <value>Employee</value>
+    <comment>ResponsibleEmployee.Employee.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_677" xml:space="preserve">
+    <value>looks like</value>
+  </data>
+  <data name="Kesco_Persons_MDL_678" xml:space="preserve">
+    <value>is equal</value>
+  </data>
+  <data name="Kesco_Persons_MDL_2000" xml:space="preserve">
+    <value>The length of first name (ru) is exceeded {1} chars. Make it shorter.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_2001" xml:space="preserve">
+    <value>The length of middle name (ru) is exceeded {1} chars. Make it shorter.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_2002" xml:space="preserve">
+    <value>The length of last name (ru) is exceeded {1} chars. Make it shorter.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_Name" xml:space="preserve">
+    <value>Theme ID</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_ShortName" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_Description" xml:space="preserve">
+    <value>Specifies an unique number for the theme which entity can have.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_Prompt" xml:space="preserve">
+    <value>Please specify unique ID of the theme</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_Name" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_ShortName" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_Description" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_Prompt" xml:space="preserve">
+    <value>Parent</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ChildID_Name" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ChildID_ShortName" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ChildID_Description" xml:space="preserve">
+    <value>Child</value>
+  </data>
+  <data name="Kesco_Persons_MDL_679" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_680" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_681" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_682" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_683" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_684" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_685" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_686" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_687" xml:space="preserve">
+    <value>OGRNFormat2</value>
+    <comment>FormatRegistration.OGRNFormat2.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_688" xml:space="preserve">
+    <value>OGRNFormat2</value>
+    <comment>FormatRegistration.OGRNFormat2.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_689" xml:space="preserve">
+    <value>OGRNFormat2</value>
+    <comment>FormatRegistration.OGRNFormat2.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_690" xml:space="preserve">
+    <value>OGRNFormat2</value>
+    <comment>FormatRegistration.OGRNFormat2.Prompt</comment>
+  </data>
+</root>

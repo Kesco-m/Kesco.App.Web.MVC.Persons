@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="07c130cf-bcc8-4c3b-b021-d40e6a0db89e" name="КЛИЕНТ" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <description>КЛИЕНТ</description>
+  <comments>
+    <comment Id="88572c0b-2918-43b7-9c0d-21d6d19a65dc" name="Comment1">
+      <body>Данный функционал представлен библиотеками, реализующими функционал конкретного приложения. Например, Kesco.Persons.Web, Kesco.Trade.Web</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="fcd5da5d-18df-40b3-82f8-5ecbd280d2bb" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="332121b2-bbe7-4410-a203-346e262f5e74" name="Comment2">
+      <body>Данный функционал обеспечивает приложение обработкой процессов над бизнес-объектами, включая задачи создания, изменения, проверки и сохранения.</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="2c9fd1d5-6b76-4a51-836f-d02011e56855" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="6bfadc7f-0f79-4b31-9f04-51ddc5510c9e" name="Comment3">
+      <body>Данный функционал обеспечивает доступ и использование определеного оборудования,
+например, телефония, COM-порт, принтер</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="320596c2-591f-4721-9b66-20ccf5b87c73" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="2904bbfe-8adc-4d72-b57d-964329414df1" name="Comment31">
+      <body>Данный функционал обеспечивает приложение пользовательским интерфейсом, включая клиентские библиотеки, стилевые файлы, серверные элементы управления.</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="e353142a-f40f-4cb6-8467-9f8516b5fe9a" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="75106de6-90b0-4d16-a625-a1e15f539e14" name="Comment4">
+      <body>Данный функционал обеспечивает работу с базой данных, а именно,
+- управление соединением с базой данных
+- выполнение SQL-запросов
+- обработка исключительных операций
+</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="2de5fd43-7054-414f-b1be-583f6416e616" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="045e0740-0022-4a61-b5c1-543c8552bdd4" name="Comment5">
+      <body>Данный функционал обеспечивает приложение бизнес-объектами, включая метаданные с правилами проверки и вспомогательными методами, изменяющими свойства самого объекта или дополняющими его.</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="86e82a0e-c278-42c8-aeaa-d71043527b25" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="252387f8-b8ab-4988-9a43-c4f5dfcda8f6" name="Comment6">
+      <body>Данный функционал обеспечивает приложение обработкой ошибок и их логированием.</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="dee03f21-c32e-4d3b-8b36-c114fb08e3e7" name="Comment321">
+      <body>Данный функционал пресдтавлен библиотеками, реализующими общие полезные функции и расширения.</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="d4c6c685-8694-41e1-9200-2729deb9433a" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+    <comment Id="4befd60a-5f11-41e2-bd65-b1a301705a4b" name="Comment7">
+      <body>Данный функционал обеспечивает приложение связью с другими приложениями, сервисами</body>
+      <layerElements>
+        <linkFromCommentToLayerElement>
+          <layerMoniker Id="0ce920e8-d88f-42a2-ad74-29345145ec34" />
+        </linkFromCommentToLayerElement>
+      </layerElements>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="ec709d8c-3974-4308-9ed1-f3fad51006a8" name="Схема взаимодействия функционала библиотек (DLL, ActiveX, JS, CSS)">
+      <references>
+        <reference Id="7cc1f3f3-832d-459a-ad5e-494176eb49ef" name="Kesco.Zvonilka.dll">
+          <ArtifactNode Label="Kesco.Zvonilka.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Zvonilka.dll)">
+            <Category Ref="CodeSchema_Assembly" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Kesco.Zvonilka)" Label="Kesco.Zvonilka.dll" Category="FileSystem.Category.FileOfType.dll">
+            <Category Ref="CodeSchema_Assembly" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="e353142a-f40f-4cb6-8467-9f8516b5fe9a" name="Интерфейс пользователя">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="4e319aa4-0db7-48db-9c18-1feea5682450" direction="Forward">
+          <layerMoniker Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="8a0c4844-5bf2-4183-a9ff-e97bebecb0e2" direction="Forward">
+          <layerMoniker Id="2c9fd1d5-6b76-4a51-836f-d02011e56855" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="38e2ba9c-3895-4b13-a8ee-cad4cfb93fa6" direction="Forward">
+          <layerMoniker Id="0ce920e8-d88f-42a2-ad74-29345145ec34" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="4b88802f-b87c-44f1-9209-f7c5520362e7" direction="Forward">
+          <layerMoniker Id="320596c2-591f-4721-9b66-20ccf5b87c73" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="665252ac-7f36-4d41-bb36-9040d02f0156" name="Kesco.Web.Mvc.UI.Controls">
+          <references>
+            <reference Id="449e6d61-1fc8-478f-a686-3e6e74250c40" name="Kesco.Web.Mvc.UI.Controls">
+              <ArtifactNode Label="Kesco.Web.Mvc.UI.Controls" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Web.Mvc.UI.Controls/Kesco.Web.Mvc.UI.Controls.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI.Controls)" Label="Kesco.Web.Mvc.UI.Controls.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="f5c8e578-ca7b-4994-a861-f8ae26ba32ed" name="Kesco.Web.Mvc.SharedViews">
+          <references>
+            <reference Id="1ac08ef1-c1b1-45a8-aac4-0473705cddac" name="Kesco.Web.Mvc.SharedViews">
+              <ArtifactNode Label="Kesco.Web.Mvc.SharedViews" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Web.Mvc.SharedViews/Kesco.Web.Mvc.SharedViews.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.SharedViews)" Label="Kesco.Web.Mvc.SharedViews.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="f01cb9dd-4282-4ecd-8a8a-6c0d98061708" name="Knockout" />
+        <layer Id="e30edda2-43a7-4efa-a41a-724441dba7e8" name="jQuery UI" />
+        <layer Id="bf7df4a0-01c4-4674-bb1f-54d058d8af0e" name="Стили" />
+        <layer Id="e68d73a4-c9ad-4ed6-82e2-18d5290f0c13" name="Темы" />
+        <layer Id="43031e73-4586-4073-bb07-913440dd610a" name="Kesco.Employees.Controls.dll">
+          <references>
+            <reference Id="32e6628c-215f-4db6-8bfa-a026e32e7a5f" name="Kesco.Employees.Controls.dll">
+              <ArtifactNode Label="Kesco.Employees.Controls.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Employees.Controls.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Employees.Controls)" Label="Kesco.Employees.Controls.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="e1ff25b9-1066-4375-a2ea-9640ede57ed0" name="Kesco.Persons.Controls.dll">
+          <references>
+            <reference Id="e478f13b-9af0-4b9f-9857-51ac8e94eb6a" name="Kesco.Persons.Controls.dll">
+              <ArtifactNode Label="Kesco.Persons.Controls.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Persons.Controls.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Persons.Controls)" Label="Kesco.Persons.Controls.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="1f01f3bf-8ece-445a-ba24-d2fd1934eba8" name="Kesco.Web.Mvc.Compression">
+          <references>
+            <reference Id="cd2c12b3-c1cf-4ad3-a8a9-f43538b6fce4" name="Kesco.Web.Mvc.Compression">
+              <ArtifactNode Label="Kesco.Web.Mvc.Compression" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Web.Mvc.Compression/Kesco.Web.Mvc.Compression.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.Compression)" Label="Kesco.Web.Mvc.Compression.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="2796483f-38f8-42b8-a76c-28dc55ec6916" name="Kesco.ApplicationServices">
+          <references>
+            <reference Id="b90d6643-55f2-48a6-998f-a310c2f28951" name="Kesco.ApplicationServices">
+              <ArtifactNode Label="Kesco.ApplicationServices" Category="CodeSchema_Project" Id="(Assembly=../../Kesco.ApplicationServices/Kesco.ApplicationServices/Kesco.ApplicationServices.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.ApplicationServices)" Label="Kesco.ApplicationServices.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="a7de40c8-3e88-42e8-b5c6-f23fd72ed337" name="Kesco.Web.Mvc.UI">
+          <references>
+            <reference Id="36f38311-abf7-4a30-870d-64ab5491a6a0" name="Kesco.Web.Mvc.UI">
+              <ArtifactNode Label="Kesco.Web.Mvc.UI" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Web.Mvc.UI/Kesco.Web.Mvc.UI.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI)" Label="Kesco.Web.Mvc.UI.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="a946a5f0-bc15-497b-ba9c-e2aa383c917b" name="Kesco.Web.Mvc.UI.dll">
+          <references>
+            <reference Id="1c1b8aa2-4a88-4bdd-afd4-175f9b081a4f" name="Kesco.Web.Mvc.UI.dll">
+              <ArtifactNode Label="Kesco.Web.Mvc.UI.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../Kesco.Web.Mvc.UI/bin/Release/Kesco.Web.Mvc.UI.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.UI)" Label="Kesco.Web.Mvc.UI.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="0d4a37c4-5a57-4b5f-bd44-cd588f4c05a9" name="Kesco.Documents.Controls.dll">
+          <references>
+            <reference Id="233aab69-3544-48c1-a7b8-5f22d3b761e9" name="Kesco.Documents.Controls.dll">
+              <ArtifactNode Label="Kesco.Documents.Controls.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../Kesco.Documents/Kesco.Documents.Controls/bin/Kesco.Documents.Controls.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Documents.Controls)" Label="Kesco.Documents.Controls.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="6d592152-507c-4cb5-99d3-79115a40079b" name="Kesco.Common" />
+        <layer Id="bd4140e9-af9c-43be-a8a1-049b77b5b2f8" name="Kesco.Corporate.Controls.dll">
+          <references>
+            <reference Id="a099c899-e37f-4eee-bef8-ab3010f189f7" name="Kesco.Documents.Controls.dll">
+              <ArtifactNode Label="Kesco.Documents.Controls.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../Kesco.Documents/Kesco.Documents.Controls/bin/Kesco.Documents.Controls.dll)" />
+              <ExpandedNode Id="(Assembly=Kesco.Documents.Controls)" Label="Kesco.Documents.Controls.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="86e82a0e-c278-42c8-aeaa-d71043527b25" name="Бизнес-объекты и их методы">
+      <childLayers>
+        <layer Id="c7400ad7-b783-48fe-84c8-4a8c7eca9f64" name="Kesco.ObjectModel">
+          <references>
+            <reference Id="ac488491-eb97-477d-9230-7ab982ec7726" name="Kesco.ObjectModel">
+              <ArtifactNode Label="Kesco.ObjectModel" Category="CodeSchema_Project" Id="(Assembly=../Kesco.ObjectModel/Kesco.ObjectModel.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.ObjectModel)" Label="Kesco.ObjectModel.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="9681c940-4408-47aa-aa8c-70b057654d18" name="Kesco.ComponentModel">
+          <references>
+            <reference Id="d17d4100-7e7f-4eb1-ae7f-90857b478aa2" name="Kesco.ComponentModel">
+              <ArtifactNode Label="Kesco.ComponentModel" Category="CodeSchema_Project" Id="(Assembly=../Kesco.ComponentModel/Kesco.ComponentModel.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.ComponentModel)" Label="Kesco.ComponentModel.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="4b552ae3-c82e-41ad-8e45-9befe45c1274" name="Kesco.Employees.ObjectModel" />
+        <layer Id="c2f720d2-271c-4df9-80f7-e2997da5e7de" name="Kesco.Persons.ObjectModel" />
+        <layer Id="4dca1832-4aa4-42ce-ab24-588a4efbf8a2" name="Kesco.BusinessProjects.ObjectModel" />
+        <layer Id="b81e210a-ed2e-45bd-bd17-abf3aa41219c" name="Kesco.Territories.ObjectModel" />
+        <layer Id="7631a896-d4f7-49e8-9c2a-9461c31b19fa" name="Kesco.Documents.ObjectModel" />
+        <layer Id="35d872d7-94ea-4f5c-9bd6-cca868eae94f" name="Kesco.Corporate.ObjectModel" />
+      </childLayers>
+    </layer>
+    <layer Id="2c9fd1d5-6b76-4a51-836f-d02011e56855" name="Процессы над бизнес-объектами">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="f531e0a7-955e-4877-bafb-f36448066c3d" direction="Forward">
+          <layerMoniker Id="86e82a0e-c278-42c8-aeaa-d71043527b25" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="03e4058b-2dfe-49c9-8ae5-b7c549a8ca01" direction="Forward">
+          <layerMoniker Id="2de5fd43-7054-414f-b1be-583f6416e616" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="109435e7-47f4-4a68-bfd1-933095faed1b" name="Kesco.BusinessProjects.BusinessLogic">
+          <references>
+            <reference Id="a3f06c6d-223e-4d5c-8569-a29ecbf63f7a" name="Kesco.DALC.BProjects">
+              <ArtifactNode Label="Kesco.DALC.BProjects" Category="CodeSchema_Project" Id="(Assembly=../../DALC/Kesco.DALC.BProjects/Kesco.DALC.BProjects.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.DALC.BProjects)" Label="Kesco.DALC.BProjects.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="c2e1658f-52f7-4710-84ea-cd74bb80cc25" name="Kesco.Employees.BusinessLogic">
+          <references>
+            <reference Id="fb46a7f0-4c98-474c-8c95-0669028ea507" name="Kesco.DALC.Employees">
+              <ArtifactNode Label="Kesco.DALC.Employees" Category="CodeSchema_Project" Id="(Assembly=../../DALC/Kesco.DALC.Employees/Kesco.DALC.Employees.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.DALC.Employees)" Label="Kesco.DALC.Employees.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="2faa0d8b-2a4f-4f20-a812-d4b65fd02681" name="Kesco.Persons.BusinessLogic">
+          <references>
+            <reference Id="3dbe8f9c-c202-401e-81ea-77abc4ca00c0" name="Kesco.DALC.Persons">
+              <ArtifactNode Label="Kesco.DALC.Persons" Category="CodeSchema_Project" Id="(Assembly=../../DALC/Kesco.DALC.Persons/Kesco.DALC.Persons.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.DALC.Persons)" Label="Kesco.DALC.Persons.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="c09e7564-fdf8-47b8-81b6-e977c3d855c4" name="Kesco.Territories.BusinessLogic">
+          <references>
+            <reference Id="99cacb27-e779-491f-9a24-2a0cc8927a9e" name="Kesco.DALC.Territories">
+              <ArtifactNode Label="Kesco.DALC.Territories" Category="CodeSchema_Project" Id="(Assembly=../../DALC/Kesco.DALC.Territories/Kesco.DALC.Territories.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.DALC.Territories)" Label="Kesco.DALC.Territories.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="e454a06a-a047-4f30-8055-72f0d66c77a2" name="Kesco.Documents.BusinessLogic">
+          <references>
+            <reference Id="8473716a-efd1-4340-b7b6-8cb36c9ae06f" name="Kesco.Documents.BusinessLogic.dll">
+              <ArtifactNode Label="Kesco.Documents.BusinessLogic.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../Kesco.Documents/Kesco.Documents.BusinessLogic/bin/Release/Kesco.Documents.BusinessLogic.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Documents.BusinessLogic)" Label="Kesco.Documents.BusinessLogic.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="e536aafa-058c-4629-8fc1-b3c089b598d2" name="Kesco.Corporate.BusinessLogic">
+          <references>
+            <reference Id="171bc78c-134b-4d84-8b4b-a9abe2f0fb52" name="Kesco.Documents.BusinessLogic.dll">
+              <ArtifactNode Label="Kesco.Documents.BusinessLogic.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../Kesco.Documents/Kesco.Documents.BusinessLogic/bin/Release/Kesco.Documents.BusinessLogic.dll)" />
+              <ExpandedNode Id="(Assembly=Kesco.Documents.BusinessLogic)" Label="Kesco.Documents.BusinessLogic.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="2de5fd43-7054-414f-b1be-583f6416e616" name="Работа с базой данных">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="5cde844c-bcf5-41b6-aa35-4a7264ff5302" direction="Forward">
+          <layerMoniker Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="561ab6d7-358e-452c-9f5b-b252b2fe6fad" name="Kesco.DataAccess">
+          <references>
+            <reference Id="3b47237e-0d5b-4ee6-bb30-f33fa79ad12e" name="Kesco.DataAccess">
+              <ArtifactNode Label="Kesco.DataAccess" Category="CodeSchema_Project" Id="(Assembly=../Kesco.DataAccess/Kesco.DataAccess.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.DataAccess)" Label="Kesco.DataAccess.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" name="Обработка ошибок">
+      <childLayers>
+        <layer Id="1801bd16-82d0-48da-b048-f52b532f8544" name="Kesco.Log.dll">
+          <references>
+            <reference Id="01c97f07-c98e-4e07-bf36-b18727e477bc" name="Kesco.Log.dll">
+              <ArtifactNode Label="Kesco.Log.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Log.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Log)" Label="Kesco.Log.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="320596c2-591f-4721-9b66-20ccf5b87c73" name="Интерфейс к оборудованию">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="22ccf653-ef59-4ca8-a532-b8be2e9dafb8" direction="Forward">
+          <layerMoniker Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="10893449-89eb-41d4-beb7-68f5f8b9a36b" name="Kesco.Zvonilka.dll">
+          <references>
+            <reference Id="c3269a23-2be0-489e-a1ef-ee697aace2ae" name="Kesco.Zvonilka.dll">
+              <ArtifactNode Label="Kesco.Zvonilka.dll" Category="FileSystem.Category.FileOfType.dll" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.Zvonilka.dll)">
+                <Category Ref="CodeSchema_Assembly" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Zvonilka)" Label="Kesco.Zvonilka.dll" Category="FileSystem.Category.FileOfType.dll">
+                <Category Ref="CodeSchema_Assembly" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="0ce920e8-d88f-42a2-ad74-29345145ec34" name="Интерфейс  с другими приложениями">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="55b91fb2-e5d3-4315-b7d9-e00fb3738810" direction="Forward">
+          <layerMoniker Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+    </layer>
+    <layer Id="d4c6c685-8694-41e1-9200-2729deb9433a" name="Полезные фукции">
+      <childLayers>
+        <layer Id="25b2a456-e39f-4453-8ecb-8da9f5f20702" name="Kesco.Linq.Dynamic">
+          <references>
+            <reference Id="0d73b2dc-d267-4bfc-ba43-ac08a9fa7e70" name="Kesco.Linq.Dynamic">
+              <ArtifactNode Label="Kesco.Linq.Dynamic" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Linq.Dynamic/Kesco.Linq.Dynamic.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Linq.Dynamic)" Label="Kesco.Linq.Dynamic.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="692d4b62-d223-403b-af81-30c0b8f7ae91" name="Kesco.Utilities">
+          <references>
+            <reference Id="db7179c6-2ef4-4577-a718-64c8ce62be5c" name="Kesco.Utilities">
+              <ArtifactNode Label="Kesco.Utilities" Category="CodeSchema_Project" Id="(Assembly=../Kesco.Utilities/Kesco.Utilities.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.Utilities)" Label="Kesco.Utilities.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="3f160f83-cf6b-4d89-afda-32d9a4df48b3" name="Kesco.ClassExtensions">
+          <references>
+            <reference Id="82f3f733-8a3d-4963-8678-d57893af93ad" name="Kesco.ClassExtensions">
+              <ArtifactNode Label="Kesco.ClassExtensions" Category="CodeSchema_Project" Id="(Assembly=../Kesco.ClassExtensions/Kesco.ClassExtensions.csproj)">
+                <Category Ref="CodeSchema_SourceFile" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=Kesco.ClassExtensions)" Label="Kesco.ClassExtensions.dll" Category="FileSystem.Category.FileOfType.dll">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="fcd5da5d-18df-40b3-82f8-5ecbd280d2bb" name="Библиотеки приложения">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="ade8ec8e-f8dd-4c2b-94af-50939d720ae4" direction="Forward">
+          <layerMoniker Id="2c9fd1d5-6b76-4a51-836f-d02011e56855" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="5655f7fd-f8f9-4e32-b936-ce2ae1611ca0" direction="Forward">
+          <layerMoniker Id="e353142a-f40f-4cb6-8467-9f8516b5fe9a" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="4a7b45ce-8c8f-4733-8594-6262a558c966" direction="Forward">
+          <layerMoniker Id="ebf79ff4-9d8a-45b8-b9ff-0904b386eb25" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0d605cd2-08a4-4c24-b49e-3379472e69e1" direction="Forward">
+          <layerMoniker Id="86e82a0e-c278-42c8-aeaa-d71043527b25" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="ee6f79e1-5cc6-47be-8824-1bce7f856ecc" name="Kesco.Persons.Web" />
+        <layer Id="fd023bd8-cc8c-453e-b829-edc52fed08b0" name="Kesco.Documents.Direction.Web" />
+        <layer Id="50de1c8e-9d0c-4a6a-9ad0-3365a9d12270" name="Kesco.Documents.Web" />
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

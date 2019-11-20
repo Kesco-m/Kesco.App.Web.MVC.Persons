@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accounting_CheckPerson1SStatus_ErrorMessage" xml:space="preserve">
+    <value>Возникла ошибка при проверке лица в бухгалтерии 1C.</value>
+  </data>
+  <data name="Accounting_CheckPersonAbacusStatus_ErrorMessage" xml:space="preserve">
+    <value>Возникла ошибка при проверке лица в бухгалтерии Abacus.</value>
+  </data>
+  <data name="Dossier_CheckPersonAbacusAnd1S_Error" xml:space="preserve">
+    <value>Ошибка! Т.к. данное лицо уже добавлено в ABACUS или 1С.&lt;br&gt;&lt;br&gt;Сделать лицо НЕ ПРОВЕРЕННЫМ - НЕВОЗМОЖНО!!!</value>
+  </data>
+  <data name="Kesco_Persons_MDL_2000" xml:space="preserve">
+    <value>Длина имени превышает {1} символов. Сделайте его короче.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_2001" xml:space="preserve">
+    <value>Длина отчества превышает {1} символов. Сделайте его короче.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_2002" xml:space="preserve">
+    <value>Длина фамилии превышает {1} символов. Сделайте его короче.</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegalLat_Description" xml:space="preserve">
+    <value>Место нахождения (юридический адрес) международное</value>
+    <comment>CardJ.AddressLegalLat.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegalLat_Name" xml:space="preserve">
+    <value>Место нахождения (юридический адрес) международное</value>
+    <comment>CardJ.AddressLegalLat.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegalLat_Prompt" xml:space="preserve">
+    <value>Укажите местонахождение лица (юридический адрес)  международное</value>
+    <comment>CardJ.AddressLegalLat.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegalLat_ShortName" xml:space="preserve">
+    <value>Место нахождения (юридический адрес) международное</value>
+    <comment>CardJ.AddressLegalLat.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegal_Description" xml:space="preserve">
+    <value>Место нахождения (юридический адрес)</value>
+    <comment>CardJ.AddressLegal.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegal_Name" xml:space="preserve">
+    <value>Место нахождения (юридический адрес)</value>
+    <comment>CardJ.AddressLegal.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegal_Prompt" xml:space="preserve">
+    <value>Место нахождения (юридический адрес)</value>
+    <comment>CardJ.AddressLegal.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_AddressLegal_ShortName" xml:space="preserve">
+    <value>Место нахождения (юридический адрес)</value>
+    <comment>CardJ.AddressLegal.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIKRKC_Description" xml:space="preserve">
+    <value>БИК РКЦ</value>
+    <comment>Person.BIKRKC.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIKRKC_Name" xml:space="preserve">
+    <value>БИК РКЦ</value>
+    <comment>Person.BIKRKC.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIKRKC_Prompt" xml:space="preserve">
+    <value>БИК РКЦ</value>
+    <comment>Person.BIKRKC.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIKRKC_ShortName" xml:space="preserve">
+    <value>БИК РКЦ</value>
+    <comment>Person.BIKRKC.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIK_Description" xml:space="preserve">
+    <value>БИК лица</value>
+    <comment>Person.BIK.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIK_Name" xml:space="preserve">
+    <value>БИК</value>
+    <comment>Person.BIK.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIK_Prompt" xml:space="preserve">
+    <value>Введите БИК</value>
+    <comment>Person.BIK.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BIK_ShortName" xml:space="preserve">
+    <value>БИК</value>
+    <comment>Person.BIK.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_BusinessProjectID_Description" xml:space="preserve">
+    <value>Указывает бизнес-проект, связанный с лицом</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_BusinessProjectID_Name" xml:space="preserve">
+    <value>Проект</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_BusinessProjectID_Prompt" xml:space="preserve">
+    <value>Укажите бизнес-проект, связанный с лицом</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_BusinessProjectID_ShortName" xml:space="preserve">
+    <value>Б-проект</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_Comment_Description" xml:space="preserve">
+    <value>Примечание</value>
+    <comment>Person.Comment.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_Comment_Name" xml:space="preserve">
+    <value>Примечание</value>
+    <comment>Person.Comment.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_Comment_Prompt" xml:space="preserve">
+    <value>Примечание</value>
+    <comment>Person.Comment.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_Comment_ShortName" xml:space="preserve">
+    <value>Примечание</value>
+    <comment>Person.Comment.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_FullName_Description" xml:space="preserve">
+    <value>Полное название</value>
+    <comment>CardJ.FullName.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_FullName_Name" xml:space="preserve">
+    <value>Полное название</value>
+    <comment>CardJ.FullName.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_FullName_Prompt" xml:space="preserve">
+    <value>Полное название</value>
+    <comment>CardJ.FullName.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_FullName_ShortName" xml:space="preserve">
+    <value>Полное название</value>
+    <comment>CardJ.FullName.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_IncorporationForm_Description" xml:space="preserve">
+    <value>Организационно-правовая форма</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IncorporationForm_Name" xml:space="preserve">
+    <value>Орг.-прав. форма</value>
+    <comment>CardJ.IncorporationForm.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_IncorporationForm_Prompt" xml:space="preserve">
+    <value>Организационно-правовая форма</value>
+    <comment>CardJ.IncorporationForm.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_IncorporationForm_ShortName" xml:space="preserve">
+    <value>Орг.-прав. форма</value>
+    <comment>CardJ.IncorporationForm.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_INN_Description" xml:space="preserve">
+    <value>Идентификационный номер налогоплательщика</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_INN_Name" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_INN_Prompt" xml:space="preserve">
+    <value>Укажите идентификационный номер налогоплательщика</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_INN_ShortName" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsBank_Description" xml:space="preserve">
+    <value>Указывает является ли организация банком.</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsBank_Name" xml:space="preserve">
+    <value>Данная организация является банком</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsBank_Prompt" xml:space="preserve">
+    <value>Укажите является ли организация банком или нет</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsBank_ShortName" xml:space="preserve">
+    <value>Банк</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsStateOrganization_Description" xml:space="preserve">
+    <value>Указывает является ли организация государственной</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsStateOrganization_Name" xml:space="preserve">
+    <value>Государственная организация</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsStateOrganization_Prompt" xml:space="preserve">
+    <value>Укажите является ли организация государственной</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_IsStateOrganization_ShortName" xml:space="preserve">
+    <value>Гос. организация</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_KPP_Description" xml:space="preserve">
+    <value>КПП</value>
+    <comment>CardJ.KPP.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_KPP_Name" xml:space="preserve">
+    <value>КПП</value>
+    <comment>CardJ.KPP.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_KPP_Prompt" xml:space="preserve">
+    <value>КПП</value>
+    <comment>CardJ.KPP.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_KPP_ShortName" xml:space="preserve">
+    <value>КПП</value>
+    <comment>CardJ.KPP.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_LoroConto_Description" xml:space="preserve">
+    <value>Корр. счет</value>
+    <comment>Person.LoroConto.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_LoroConto_Name" xml:space="preserve">
+    <value>Корр. счет</value>
+    <comment>Person.LoroConto.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_LoroConto_Prompt" xml:space="preserve">
+    <value>Корр. счет</value>
+    <comment>Person.LoroConto.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_LoroConto_ShortName" xml:space="preserve">
+    <value>Корр. счет</value>
+    <comment>Person.LoroConto.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_Nickname_Description" xml:space="preserve">
+    <value>Псевдоним лица</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_Nickname_Name" xml:space="preserve">
+    <value>Псевдоним</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_Nickname_Prompt" xml:space="preserve">
+    <value>Укажите псевдоним лица</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_Nickname_Required" xml:space="preserve">
+    <value>Требуется указать псевдоним лица</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_Nickname_ShortName" xml:space="preserve">
+    <value>Кличка</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OGRN_Description" xml:space="preserve">
+    <value>Государственный регистрационный номер</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OGRN_Name" xml:space="preserve">
+    <value>ГРН</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OGRN_Prompt" xml:space="preserve">
+    <value>Укажитете основной государственный регистрационный номер.</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OGRN_ShortName" xml:space="preserve">
+    <value>ГРН</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKONH_Description" xml:space="preserve">
+    <value>ОКОНХ</value>
+    <comment>CardJ.OKONH.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKONH_Name" xml:space="preserve">
+    <value>ОКОНХ</value>
+    <comment>CardJ.OKONH.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKONH_Prompt" xml:space="preserve">
+    <value>ОКОНХ</value>
+    <comment>CardJ.OKONH.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKONH_ShortName" xml:space="preserve">
+    <value>ОКОНХ</value>
+    <comment>CardJ.OKONH.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKPO_Description" xml:space="preserve">
+    <value>Национальный классификатор предприятий и организаций.</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKPO_Name" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKPO_Prompt" xml:space="preserve">
+    <value>Укажите код национального классификатора предприятий и </value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKPO_ShortName" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKVED_Description" xml:space="preserve">
+    <value>ОКВЭД</value>
+    <comment>CardJ.OKVED.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKVED_Name" xml:space="preserve">
+    <value>ОКВЭД</value>
+    <comment>CardJ.OKVED.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKVED_Prompt" xml:space="preserve">
+    <value>ОКВЭД</value>
+    <comment>CardJ.OKVED.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_OKVED_ShortName" xml:space="preserve">
+    <value>ОКВЭД</value>
+    <comment>CardJ.OKVED.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_RwID_Description" xml:space="preserve">
+    <value>Ж/Д Код</value>
+    <comment>CardJ.RwID.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_RwID_Name" xml:space="preserve">
+    <value>Ж/Д Код</value>
+    <comment>CardJ.RwID.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_RwID_Prompt" xml:space="preserve">
+    <value>Ж/Д Код</value>
+    <comment>CardJ.RwID.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_RwID_ShortName" xml:space="preserve">
+    <value>Ж/Д Код</value>
+    <comment>CardJ.RwID.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameLat_Description" xml:space="preserve">
+    <value>Краткое название юридического лица на английском языке</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameLat_Name" xml:space="preserve">
+    <value>Краткое название международное</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameLat_Prompt" xml:space="preserve">
+    <value>Укажите краткое международное название юридического лица.</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameLat_ShortName" xml:space="preserve">
+    <value>Краткое название международное</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRusGenitive_Description" xml:space="preserve">
+    <value>Название в родительном падеже</value>
+    <comment>CardJ.ShortNameLat.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRusGenitive_Name" xml:space="preserve">
+    <value>Краткое название в родительном падеже</value>
+    <comment>CardJ.ShortNameLat.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRusGenitive_Prompt" xml:space="preserve">
+    <value>Название в родительном падеже</value>
+    <comment>CardJ.ShortNameLat.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRusGenitive_ShortName" xml:space="preserve">
+    <value>Краткое название в родительном падеже</value>
+    <comment>CardJ.ShortNameLat.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRus_Description" xml:space="preserve">
+    <value>Краткое название на родном языке</value>
+    <comment>CardJ.ShortNameRus.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRus_Name" xml:space="preserve">
+    <value>Краткое название</value>
+    <comment>CardJ.ShortNameRus.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRus_Prompt" xml:space="preserve">
+    <value>Краткое название</value>
+    <comment>CardJ.ShortNameRus.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameRus_ShortName" xml:space="preserve">
+    <value>Краткое название</value>
+    <comment>CardJ.ShortNameRus.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_SWIFT_Description" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.Description</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_SWIFT_Name" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.Name</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_SWIFT_Prompt" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.Prompt</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_SWIFT_ShortName" xml:space="preserve">
+    <value>SWIFT</value>
+    <comment>Person.SWIFT.ShortName</comment>
+  </data>
+  <data name="Models_JuridicalPersonCard_TerritoryID_Description" xml:space="preserve">
+    <value>Страна регистрации</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_TerritoryID_Name" xml:space="preserve">
+    <value>Страна регистрации</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_TerritoryID_Prompt" xml:space="preserve">
+    <value>Укажите страну регистрации</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_TerritoryID_Required" xml:space="preserve">
+    <value>Укажите страну регистрации</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_TerritoryID_ShortName" xml:space="preserve">
+    <value>Страна регистрации</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegalEn_Description" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegalEn_Name" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegalEn_Prompt" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegalEn_ShortName" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegal_Description" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegal_Name" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegal_Prompt" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_NaturalPersonCard_AddressLegal_ShortName" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Models_PersonCard_LastNameRus_Description" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Models_PersonCard_LastNameRus_Name" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Models_PersonCard_LastNameRus_Prompt" xml:space="preserve">
+    <value>Укажите фамилию лица</value>
+  </data>
+  <data name="Models_PersonCard_LastNameRus_ShortName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Models_Requisites_From_Description" xml:space="preserve">
+    <value>Дата начала действия реквизитов</value>
+  </data>
+  <data name="Models_Requisites_From_Name" xml:space="preserve">
+    <value>c</value>
+    <comment>C</comment>
+  </data>
+  <data name="Models_Requisites_From_Prompt" xml:space="preserve">
+    <value>Укажите дату, с которой действуют указанные реквизиты</value>
+  </data>
+  <data name="Models_Requisites_From_ShortName" xml:space="preserve">
+    <value>c</value>
+  </data>
+  <data name="Models_Requisites_To_Description" xml:space="preserve">
+    <value>Дата окончания действия реквизитов</value>
+  </data>
+  <data name="Models_Requisites_To_Name" xml:space="preserve">
+    <value>по</value>
+    <comment>C</comment>
+  </data>
+  <data name="Models_Requisites_To_Prompt" xml:space="preserve">
+    <value>Укажите дату, по которую действуют указанные реквизиты</value>
+  </data>
+  <data name="Models_Requisites_To_ShortName" xml:space="preserve">
+    <value>по</value>
+  </data>
+  <data name="Persons_Delete_ConfirmDeletion_ActionTitle" xml:space="preserve">
+    <value>Подтверждаю</value>
+  </data>
+  <data name="Persons_Delete_Message_ConfirmDeletion" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить лицо '{0}'</value>
+  </data>
+  <data name="Persons_Delete_Message_ConfirmDeletion_DetailsOfPersonWillBeDeleted" xml:space="preserve">
+    <value>При замене, т.к. тип удаляемого лица отличается от типа замечающего лица, &lt;br&gt;реквизиты удаляемого лица будут удалены!</value>
+  </data>
+  <data name="Persons_Delete_Message_ConfirmDeletion_Replacement" xml:space="preserve">
+    <value> с заменой на лицо '{0}'?</value>
+  </data>
+  <data name="Persons_Delete_Message_DeleteSuccess" xml:space="preserve">
+    <value>Лицо '{0}' удалено!</value>
+  </data>
+  <data name="Persons_Delete_Message_DeleteWithReplaceSuccess" xml:space="preserve">
+    <value>Лицо '{0}' было заменено на лицо '{1}'.&lt;br&gt;&lt;br&gt;Проверьте правильность реквизитов замещающего лица!</value>
+  </data>
+  <data name="Persons_Delete_Message_PersonIsTheSameAsSpecifiedForReplcement" xml:space="preserve">
+    <value>Замена невозможна! Замещающее лицо совпадает с удаляемым лицом.</value>
+  </data>
+  <data name="Persons_Delete_Message_PersonNotFound" xml:space="preserve">
+    <value>Лицо с №{0} не найдено!</value>
+  </data>
+  <data name="Persons_Delete_Message_PersonNotSpecified" xml:space="preserve">
+    <value>Не указано лицо для удаления.</value>
+  </data>
+  <data name="Persons_Delete_Title_ConfirmDeletion" xml:space="preserve">
+    <value>Подтвердите удаление лица</value>
+  </data>
+  <data name="Persons_Delete_Title_DeleteSuccess" xml:space="preserve">
+    <value>Лицо удалено</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PersonID_Label" xml:space="preserve">
+    <value>удаляется</value>
+  </data>
+  <data name="Persons_Dossier_Delete_ReplaceWithPersonID_Label" xml:space="preserve">
+    <value>c заменой на</value>
+  </data>
+  <data name="Persons_INN_185" xml:space="preserve">
+    <value>РНН</value>
+  </data>
+  <data name="Persons_INN_186" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="Persons_INN_188" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="Persons_OGRN_185" xml:space="preserve">
+    <value>Регистрационный номер</value>
+  </data>
+  <data name="Persons_OGRN_186" xml:space="preserve">
+    <value>Регистрационный номер</value>
+  </data>
+  <data name="Persons_OGRN_188" xml:space="preserve">
+    <value>ОГРН</value>
+  </data>
+  <data name="Persons_OGRN_189" xml:space="preserve">
+    <value>Реестровый номер</value>
+  </data>
+  <data name="Persons_OKPO_185" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Persons_OKPO_186" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Persons_OKPO_188" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Persons_OKPO_189" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Persons_Requisites_ShortNameRusGenitive_AddOn" xml:space="preserve">
+    <value>(для документов)</value>
+  </data>
+  <data name="Validation_Contact_ErrorDlg_Message" xml:space="preserve">
+    <value>Возникла одна или несколько ошибок при сохранении контакта. Исправьте их.</value>
+  </data>
+  <data name="Validation_Contact_ErrorDlg_Title" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Validation_Contact_SpecifyContactType" xml:space="preserve">
+    <value>Необходимо указать тип контакта</value>
+  </data>
+  <data name="Validation_Contact_SpecifyCountryAtLeast" xml:space="preserve">
+    <value>Необходимо указать поле '{PropertyName}'</value>
+  </data>
+  <data name="Validation_Contact_SpecifyCountryPhoneCode" xml:space="preserve">
+    <value>Необходимо указать поле '{PropertyName}'</value>
+  </data>
+  <data name="Validation_Contact_SpecifyOtherContact" xml:space="preserve">
+    <value>Необходимо указать поле '{PropertyName}'</value>
+  </data>
+  <data name="Validation_Contact_SpecifyPhoneNumber" xml:space="preserve">
+    <value>Необходимо указать поле '{PropertyName}'</value>
+  </data>
+  <data name="Validation_JuridicalPerson_MustSpecifyAtLeastOnePersonType" xml:space="preserve">
+    <value>Укажите тип лица</value>
+  </data>
+  <data name="Validation_JuridicalPerson_RequisitesMustBeSpecified" xml:space="preserve">
+    <value>Укажите реквизиты лица.</value>
+  </data>
+  <data name="Validation_NaturalPerson_AtLeastTheNameMustBeSpecified" xml:space="preserve">
+    <value>Необходимо указать хотя бы имя частного лица</value>
+  </data>
+  <data name="Validation_Person_ErrorDlg_Message" xml:space="preserve">
+    <value>Возникла одна или несколько ошибок при проверке указанных данных. Исправьте их.</value>
+  </data>
+  <data name="Validation_NaturalPerson_NameHasNoCyrillicChars" xml:space="preserve">
+    <value>Некорректно заполнено поле &lt;{0} [A-Z]&gt;. [заполняется с использованием только латинских букв]</value>
+  </data>
+  <data name="Validation_NaturalPerson_PersonWithTheSameNicknameDoesNotExist" xml:space="preserve">
+    <value>Лицо с таким псевдонимом уже существует</value>
+  </data>
+  <data name="Validation_NaturalPerson_SexMustBeSpecified" xml:space="preserve">
+    <value>Необходимо указать пол частного лица.</value>
+  </data>
+  <data name="Validation_Requisites_DateRange_must_be_valid" xml:space="preserve">
+    <value>Неправильно указано время действия данных.</value>
+  </data>
+  <data name="Validation_ErrorDlg_Title" xml:space="preserve">
+    <value>Ошибка проверки</value>
+  </data>
+  <data name="Validation_Requisites_FullName_is_invalid" xml:space="preserve">
+    <value>Неправильно указано полное название лица.</value>
+  </data>
+  <data name="Validation_Requisites_ShortNameRus_must_be_correct" xml:space="preserve">
+    <value>Некорректно заполнено поле КРАТКОЕ НАЗВАНИЕ</value>
+  </data>
+  <data name="Validation_Requisites_SomeShortNames_must_be_specified" xml:space="preserve">
+    <value>Необходимо указать русское или латинское название юр. лица</value>
+  </data>
+  <data name="Validation_String_LengthExceeded" xml:space="preserve">
+    <value>Длина поля '{PropertyName}' превышает максимальное значение {MaxLength} символов. Сделайте строку короче.</value>
+  </data>
+  <data name="Validation_String_LengthExceeded2" xml:space="preserve">
+    <value>Длина поля '{0}' превышает максимальное значение {MaxLength} символов. Сделайте строку короче.</value>
+  </data>
+  <data name="Validation_Specify_Field" xml:space="preserve">
+    <value>Необходимо указать поле '{PropertyName}'.</value>
+  </data>
+  <data name="Validation_Specify_Field_Name" xml:space="preserve">
+    <value>Необходимо указать поле '{0}'</value>
+  </data>
+  <data name="ViewModel_Exception_JuridicalPerson_Requisites_CardNotFound" xml:space="preserve">
+    <value>Не удалось загрузить карточку юридического лица с идентификатором #{0}.</value>
+  </data>
+  <data name="ViewModel_Exception_JuridicalPerson_Requisites_InvalidAreaIDPassed" xml:space="preserve">
+    <value>Передан неверный идентификатор (#{0}) страны регистрации</value>
+  </data>
+  <data name="ViewModel_Exception_JuridicalPerson_Requisites_InvalidCardIDPassed" xml:space="preserve">
+    <value>Передан неверный идентификатор (#{0}) карточки с реквизитами</value>
+  </data>
+  <data name="ViewModel_Exception_JuridicalPerson_Requisites_InvalidPersonIDPassed" xml:space="preserve">
+    <value>Передан неверный идентификатор (#{0}) лица</value>
+  </data>
+  <data name="ViewModel_Exception_JuridicalPerson_Requisites_PersonNotFound" xml:space="preserve">
+    <value>Не удалось загрузить данные о лице с идентификатором #{0}.</value>
+  </data>
+  <data name="Views_Contact_ContactText_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Views_Contact_ContactText_Http" xml:space="preserve">
+    <value>HTTP</value>
+  </data>
+  <data name="Views_Contact_ContactText_Pager" xml:space="preserve">
+    <value>Пейджер</value>
+  </data>
+  <data name="Views_Contact_ContactText_Teletype" xml:space="preserve">
+    <value>Телетайп</value>
+  </data>
+  <data name="Views_Contact_ContactText_Telex" xml:space="preserve">
+    <value>Телекс</value>
+  </data>
+  <data name="Views_Contact_ContactText_YahooIM" xml:space="preserve">
+    <value>Yahoo IM</value>
+  </data>
+  <data name="Views_Contact_PersonLinkID_Label_ByEmployee" xml:space="preserve">
+    <value>По работнику</value>
+  </data>
+  <data name="Views_Contact_PersonLinkID_Label_ByWorkPlace" xml:space="preserve">
+    <value>По месту работы</value>
+  </data>
+  <data name="Views_CreateJuridical_PageTitle" xml:space="preserve">
+    <value>Создать юридическое лицо</value>
+  </data>
+  <data name="Views_Dossier_PersonSync_PageTitle" xml:space="preserve">
+    <value>Синхронизовать данные сотрудника и лица.</value>
+  </data>
+  <data name="Views_JuridicalPerson_Edit_PageTitle" xml:space="preserve">
+    <value>Данные о организации или банке</value>
+  </data>
+  <data name="Views_JuridicalPerson_Length" xml:space="preserve">
+    <value>Длина</value>
+  </data>
+  <data name="Views_JuridicalPerson_RemoveFromList" xml:space="preserve">
+    <value>Удалить из списка</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_AddressLegalLat" xml:space="preserve">
+    <value>поле должно содержать международное название страны регистрации:</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_NationalPassport" xml:space="preserve">
+    <value>Поля должны быть заполнены как в национальном паспорте страны</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_English" xml:space="preserve">
+    <value>Поля должны быть заполнены c использованием только латинских букв (A-Z)</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_English1" xml:space="preserve">
+    <value>поле должно быть заполнено c использованием только латинских букв (A-Z)</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_Local" xml:space="preserve">
+    <value>поле должно быть заполнено на языке страны регистрации </value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_PageTitle_AddNew" xml:space="preserve">
+    <value>Добавление реквизитов юридического лица</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_PageTitle_Edit" xml:space="preserve">
+    <value>Редактирование реквизитов юридического лица</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_Valid" xml:space="preserve">
+    <value>действуют</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_Valid_From" xml:space="preserve">
+    <value>c</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_Valid_To" xml:space="preserve">
+    <value>по</value>
+  </data>
+  <data name="Views_NaturalPerson_Create_PageTitle" xml:space="preserve">
+    <value>Создание физического лица</value>
+  </data>
+  <data name="Views_NaturalPerson_Duplicate_PageTitle" xml:space="preserve">
+    <value>Возможные дубликаты лица</value>
+  </data>
+  <data name="Views_NaturalPerson_EditRequisites_PageTitle" xml:space="preserve">
+    <value>Карточка физического лица</value>
+  </data>
+  <data name="Views_NaturalPerson_Edit_PageTitle" xml:space="preserve">
+    <value>Данные частного лица</value>
+  </data>
+  <data name="Views_PersonThemes_ChooseButtonTitle" xml:space="preserve">
+    <value>Выбрать список типов лиц</value>
+  </data>
+  <data name="Views_PersonTypes_Catalogs" xml:space="preserve">
+    <value>Каталог(и)</value>
+  </data>
+  <data name="Views_Card_PageTitle" xml:space="preserve">
+    <value>Проверка пересечения дат</value>
+  </data>
+  <data name="Views_NaturalPerson_CreateRequisites_PageTitle" xml:space="preserve">
+    <value>Новая карточка физического лица</value>
+  </data>
+  <data name="Views_Card_PageMessage" xml:space="preserve">
+    <value>Определите сроки действия новой карточки</value>
+  </data>
+  <data name="Views_Card_PageMessageComment" xml:space="preserve">
+    <value>выполняется проверка введённого диапазона и создание новой карточки с проверенными датами</value>
+  </data>
+  <data name="Validation_JuridicalPerson_RegistrationCountryMustBeSpecified" xml:space="preserve">
+    <value>Укажите страну регистрации</value>
+  </data>
+  <data name="Validation_EmailAddressInvalid" xml:space="preserve">
+    <value>Указанный {0} введён некорректно [{1}]</value>
+  </data>
+  <data name="Validation_StringField_OnlyLatinChars" xml:space="preserve">
+    <value>Некорректно заполнено поле '{PropertyName}'. [заполняется на английском языке]</value>
+  </data>
+  <data name="Validation_UrlAddressInvalid" xml:space="preserve">
+    <value>Указанный {0} адрес введён некорректно</value>
+  </data>
+  <data name="Views_JuridicalPerson_Requisites_SpecifyCountryOfRegistration" xml:space="preserve">
+    <value>Укажите страну регистрации перед указанием реквизитов.</value>
+  </data>
+  <data name="Validation_Card_DateRange_must_be_valid" xml:space="preserve">
+    <value>Диапазон дат указан некорректно!</value>
+  </data>
+  <data name="Validation_Card_ErrorDlg_Message" xml:space="preserve">
+    <value>Невозможно создать новую карточку, &lt;br&gt;проверьте диапазон дат!</value>
+  </data>
+  <data name="Validation_Card_ErrorDlg_Title" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Models_JuridicalPersonCard_ShortNameGenitive_IfExists" xml:space="preserve">
+    <value>(если есть падеж)</value>
+  </data>
+  <data name="Persons_Contact_PleaseSpecifyPerson" xml:space="preserve">
+    <value>- для создания контакта необходимо указать лицо!</value>
+  </data>
+  <data name="Models_NaturalPersonCard_LastNameAZ" xml:space="preserve">
+    <value>Фамилия [A-Z]</value>
+  </data>
+  <data name="Models_NaturalPersonCard_FirstNameAZ" xml:space="preserve">
+    <value>Имя [A-Z]</value>
+  </data>
+  <data name="Models_NaturalPersonCard_MiddleNameAZ" xml:space="preserve">
+    <value>Отчество [A-Z]</value>
+  </data>
+  <data name="Persons_Synchronize_PageTitle" xml:space="preserve">
+    <value>Синхронизовать данные сотрудника и лица</value>
+  </data>
+  <data name="Models_Dossier_Info_RegistrationCountry" xml:space="preserve">
+    <value>Страна регистрации</value>
+  </data>
+  <data name="Models_Dossier_Info_BusinessProject" xml:space="preserve">
+    <value>Бизнес-проект</value>
+  </data>
+  <data name="Models_Dossier_Info_INN" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="Models_Dossier_Info_OGRN" xml:space="preserve">
+    <value>ОГРН</value>
+  </data>
+  <data name="Models_Dossier_Info_GRN" xml:space="preserve">
+    <value>ГРН</value>
+  </data>
+  <data name="Models_Dossier_Info_OKPO" xml:space="preserve">
+    <value>ОКПО</value>
+  </data>
+  <data name="Models_Dossier_Info_BIK" xml:space="preserve">
+    <value>БИК</value>
+  </data>
+  <data name="Models_Dossier_Info_CorrAccount" xml:space="preserve">
+    <value>Кор. счёт</value>
+  </data>
+  <data name="Models_Dossier_Info_RCCBIK" xml:space="preserve">
+    <value>РКЦ БИК</value>
+  </data>
+  <data name="Models_Dossier_Info_Comment" xml:space="preserve">
+    <value>Примечание</value>
+  </data>
+  <data name="Models_Dossier_Info_DateStart" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="Models_Dossier_Info_DateEnd" xml:space="preserve">
+    <value>Дата конца</value>
+  </data>
+  <data name="Models_Dossier_Info_StateOrganization" xml:space="preserve">
+    <value>&lt;i&gt;государственная организация&lt;/i&gt;</value>
+  </data>
+  <data name="Validation_NaturalPerson_CheckFirstNameOnLat" xml:space="preserve">
+    <value>Проверьте написание имени на английском</value>
+  </data>
+  <data name="Validation_NaturalPerson_CheckMiddleNameOnLat" xml:space="preserve">
+    <value>Проверьте написание отчества на английском</value>
+  </data>
+  <data name="Validation_NaturalPerson_CheckSecondNameOnLat" xml:space="preserve">
+    <value>Проверьте написание фамилии на английском</value>
+  </data>
+  <data name="Validation_NaturalPerson_NaturalFIOMustBeOnEnglish" xml:space="preserve">
+    <value>Все заполненные поля ФИО должны иметь английскую транслитирацию.</value>
+  </data>
+  <data name="Views_NaturalPerson_Tooltip_TranslateName" xml:space="preserve">
+    <value>Перевести на английский</value>
+  </data>
+  <data name="Views_NaturalPerson_Validation_Responsible" xml:space="preserve">
+    <value>Необходимо указать ответственных</value>
+  </data>
+</root>

@@ -1,0 +1,66 @@
+﻿@inherits Kesco.Persons.Controls.SiteViewPage<Kesco.Persons.Controls.Models.PersonInfo.ViewModel>
+@using Kesco.ObjectModel
+@using Kesco.Persons.ObjectModel
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.Models.PersonInfo
+@using Kesco.Web.Mvc
+@{
+    ViewBag.Title = "Контакты сотрудника";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+<div class="" style="margin-bottom: 5px;" >
+@if (Model == null) {
+	@: @ViewData.ModelMetadata.NullDisplayText
+} else {
+	if (Model.Person == null) {
+		@: - #@(Model.PersonID) -
+	} else {
+		if (Model.HasLogotypes) {
+		@: <img src="@(Configuration.AppSettings.URI_person_logo)?id=@(Model.Person.ID)&h=50" vspace="5" hspace="5" height="50px" />
+		}
+		if(Model.Employee != null) {
+			<img src="@(Configuration.AppSettings.URI_user_photo)?id=@(Model.Employee.ID)&w=70" align="left" vspace="5" hspace="5" width="70px" />
+			<div style="padding-left: 5px; margin: 3px 0;">
+				@Html.DisplayFor(m => m.Employee.FullName)
+			</div>
+			<div style="padding-left: 5px; margin: 3px 0;">
+				@Html.DisplayFor(m => m.Employee.FullNameEn)
+			</div>
+			if (Model.LastPassage != null) {
+			<div style="padding-left: 5px; margin: 3px 0;">
+					@Html.DisplayFor(m => m.LastPassage.Point) 
+					@Model.LastPassage.TimeAt.FromUtcToClient().ToString("F")
+			</div>
+			}
+		}
+		if (Model.AllContacts.Count > 0) {
+			bool drawBorder = false;
+			@: <div style="margin-top: 10px; clear: both; ">
+				foreach(var c in Model.AllContacts) {
+				@: <div style="min-height: 18x; padding-top: 2px; @(drawBorder ? "border-top: 1px solid silver !important;" : "")">
+					@Html.DisplayFor(m => c.Contact, GetControlNameByContactType(c.ContactType), new {
+						contactName = c.ContactName,
+						contactIcon = GetControlIconByContactType(c.ContactType),
+						PhoneType = c.Type,
+						PhoneNumber = c.PhoneNumber,
+						CssClass = (c.InDictionary ? "" : "clGrayTrans")
+					})
+					if (!String.IsNullOrEmpty(c.Note)) {
+						@: <small class="clGray">(@(c.Note))</small>
+					}
+				@: </div>
+					drawBorder = true;
+				}
+				@* Необходим для правильной отрисовки *@
+				@: <div style="width: 150px;"></div>
+			@: </div>
+		} else {
+			@: <div>@(Kesco.Web.Mvc.SharedViews.Localization.Resources.PersonContacts_NoContacts)</div>
+		}
+	}
+}
+</div>

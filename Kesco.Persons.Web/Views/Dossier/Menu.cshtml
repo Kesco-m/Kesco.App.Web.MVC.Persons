@@ -1,0 +1,272 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<List<Kesco.Persons.BusinessLogic.Dossier.PersonMenuItem>>
+@using Resources
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models.Dossier
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@{
+	int PersonID = (int) ViewData["PersonID"];
+	int AccessLevel = (int)ViewData["AccessLevel"];
+	bool Verified = (bool)ViewData["Verified"];
+    bool IsBProject = (bool)ViewData["IsBProject"];
+    
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+@Html.CommonScriptCode("Dossier_MenuScript",
+@<script>
+ 
+	@* Расширим модель представления *@
+	(function(window, undefined) {
+		var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
+		var value = url.substring(0, url.lastIndexOf('/') + 1);
+
+		ViewModel.prevVersionUrl  = value + "person.aspx@(Html.Raw(Request.Url.Query))";
+	})(this);
+
+    $(document).ready(function() {
+        function dispatchMenuCommand(ev, ui) {
+            var cmd = ui.item.data('command');
+            switch (cmd) {
+            case 'printRequisites':
+                var url = "@(Configuration.AppSettings.URI_store_person)?personId=@(PersonID)";
+                window.open(url,
+                    "_storePerson@(PersonID)",
+                    "scrollbars = yes,height=450,width=650,resizable = yes,toolbar=no,menubar=no,location=no");
+                break;
+            case 'createJuridical':
+                openPopupWindow('@Url.Action("Index", "Juridical")',
+                    null,
+                    function(result) {
+                        if (result) {
+                            var personID = $.isArray(result) ? result[0].value : result;
+                            if (personID)
+                                openPopupWindow(
+                                    '@(Url.Action("Index", "Dossier"))?id=' + personID + '&hideOldVer=@(hideOldVer)',
+                                    null,
+                                    null,
+                                    "wndPerson" + personID,
+                                    800,
+                                    600,
+                                    { close: false });
+                        }
+                    },
+                    "wndPersonCreateJuridical",
+                    800,
+                    600,
+                    { close: false });
+                break;
+            case 'createIndividual':
+                openPopupWindow('@Url.Action("Index", "Natural")',
+                    null,
+                    function(result) {
+                        if (result) {
+                            var personID = $.isArray(result) ? result[0].value : result;
+                            if (personID)
+                                openPopupWindow(
+                                    '@(Url.Action("Index", "Dossier"))?id=' + personID + '&hideOldVer=@(hideOldVer)',
+                                    null,
+                                    null,
+                                    "wndPerson" + personID,
+                                    800,
+                                    600,
+                                    { close: false });
+                        }
+                    },
+                    "wndPersonCreateNatural",
+                    800,
+                    600,
+                    { close: false });
+                break;
+            case 'searchPerson':
+                openPopupWindow('@Url.Action("Index", "Search")',
+                    null,
+                    null,
+                    "wndSearchPerson",
+                    800,
+                    600,
+                    { close: false });
+                break;
+            case 'searchDocs':
+                $.srv4js('SEARCHDISCONNECTED', { args: 'persons=@(PersonID)', callback: docView_Result });
+                break;
+            case 'printDossier':
+                window.print();
+                break;
+            case 'deletePerson':
+                openPopupWindow('@Url.Action("Delete", "Dossier", new { id = PersonID })',
+                    null,
+                    function(result) {
+                        if (result) {
+                            var personID = $.isArray(result) ? result[0] : result;
+                            if (personID)
+                                window.location.href = '@(Url.Action("Index", "Dossier"))' +
+                                    "?id=" +
+                                    personID +
+                                    "&hideOldVer=" +
+                                    '@(hideOldVer)';
+                            else closeDialog();
+                        }
+                    },
+                    "wndPersonDelete",
+                    800,
+                    600,
+                    { close: false });
+                break;
+
+            case 'addToPerson':
+                var w = 800, h = 600;
+                var isOldApp = ui.item.data('url').indexOf('/MVC/') == -1;
+                var callback = function() { window.location.href = window.location.href; };
+                if (ui.item.data('url').indexOf('Store.aspx') != -1) {
+                    w = 520;
+                    h = 300;
+                    isOldApp = true;
+                }
+                if (ui.item.data('url').indexOf('Link.aspx') != -1) {
+                    w = 520;
+                    h = 300;
+                }
+                if (ui.item.data('url').indexOf('Card.aspx') != -1) {
+                    w = 500;
+                    h = 250;
+                    callback = function(result) {
+                        if ($.isArray(result)) {
+                            editProps(0,
+                                {
+                                    type: 'POST',
+                                    callbackUrl: '@(Url.FullPathAction("DialogResult"))',
+                                    Requisites: {
+                                        ID: 0,
+                                        PersonID: @(PersonID),
+                                        From: result[0].From,
+                                        To: result[0].To
+                                    }
+                                },
+                                null,
+                                null)
+                        }
+                    }
+                }
+
+                if (isOldApp)
+                    DialogPageOpen(ui.item.data('url'),
+                        $.validator.format('center:yes;status:no;help:no;resizable:yes;width:{0};height:{1};', w, h),
+                        callback);
+                else
+                    openPopupWindow(ui.item.data('url'), null, callback, "wndPersonAdd", w, h);
+                break;
+
+            case 'toggleChangedBy':
+                window.ViewModel.Params.PersonChange(window.ViewModel.Params.PersonChange() == 1 ? 0 : 1);
+                ev.stopImmediatePropagation();
+                $('.changed').toggle(window.ViewModel.Params.PersonChange() == 1);
+                return false;
+                break;
+                case 'toggleOldProps':
+                    var x = window.ViewModel.Params.PersonDateOld();
+                    window.ViewModel.Params.PersonDateOld((x == 1) ? 0 : 1);
+                    ev.stopImmediatePropagation();
+                    window.location = '@Url.Action("Index")?id=@(PersonID)&hideOldVer=@(hideOldVer)';
+                return false;
+                break;
+                case 'toggleStoreOldProps':
+                    var x = window.ViewModel.Params.PersonDateOld();
+                    window.ViewModel.Params.PersonDateOld((x == 2) ? 0 : 2);
+                    ev.stopImmediatePropagation();
+                    window.location = '@Url.Action("Index")?id=@(PersonID)&hideOldVer=@(hideOldVer)';
+                    return false;
+                break;
+            default:
+                break;
+            }
+        }
+
+        $("#menyBar").menubar({
+            menuIcon: true,
+            buttons: true,
+            position: {
+                within: $("#dialogHeader").add(window).first()
+            },
+            select: dispatchMenuCommand
+        }).show();
+
+        if (window.ViewModel.Params.PersonChange() == 0) $('.changed').hide();
+    });
+
+	function docView_Result(rez, obj) {
+		//значение контрола уже сброшено
+		if (!rez.error)
+			switch (rez.value) {
+			case '-1': alert('Ошибка взаимодействия с архивом документов!'); break;
+			case '0': break;
+			default:
+				break;
+		}
+		else
+			alert(rez.errorMsg);
+	}
+</script>)
+<style type="text/css">
+	#oldVersion { white-space:nowrap; border-width:0px; font-weight:bold; background-color:inherit; float:right; }
+	#oldVersion a { text-decoration: none; }
+	#oldVersion a:hover { text-decoration: underline; }
+</style>
+
+<ul id="menyBar" class="menubar" style="float: left; display: none;">
+	<li>
+		<a href="#Edit">@Resources.Persons_Dossier_Menu_Person</a>
+		<ul>
+			<li data-command="createJuridical"><a href="javascript: void(0);"><span class="ui-icon ui-icon-home"></span>@Resources.Persons_Dossier_Menu_NewJur</a></li>
+			<li data-command="createIndividual"><a href="javascript: void(0);"><span class="ui-icon ui-icon-person"></span>@Resources.Persons_Dossier_Menu_NewInd</a></li>
+			<li data-command="searchPerson"><a href="javascript: void(0);"><span class="ui-icon ui-icon-search"></span>@Resources.Persons_Dossier_Menu_Search</a></li>
+			<li data-command="searchDocs"><a href="javascript: void(0);"><span class="ui-icon ui-icon-copy"></span>@Resources.Persons_Dossier_Menu_Docs</a></li>
+			<li data-command="printDossier"><a href="javascript: void(0);"><span class="ui-icon ui-icon-print"></span>@Resources.Persons_Dossier_Menu_Print</a></li>
+           
+            @if (IsBProject)
+            { 
+                <li data-command="printRequisites"><a href="javascript: void(0);"><span class="ui-icon ui-icon-print"></span>@Resources.Persons_Synchronize_Differences_Requisites</a></li>
+            }
+
+			@if (AccessLevel > 3 || (!Verified && AccessLevel == 3))
+			{
+				<li data-command="deletePerson"><a href="javascript: void(0);"><span class="ui-icon ui-icon-trash"></span>@Resources.GUI_Button_Delete.ToLower()</a></li>
+			}
+		</ul>
+	</li>
+	@if (Model.Count>0) {
+	<li>
+		<a href="#Edit">@Resources.Persons_Dossier_Menu_AddToPerson</a>
+		<ul>
+			@foreach (var item in Model) {
+				if (item.Separator == 1) {
+					<li><span></span></li>
+				}
+				<li data-command="addToPerson" data-url="@(Url.GetURL(item, PersonID))"
+					><a href="javascript: void(0);">@(item.Caption)</a></li>
+			}
+		</ul>
+	</li>
+	}
+	<li>
+		<a href="#Edit">@Resources.Persons_Dossier_Menu_View</a>
+		<ul>
+			<li data-command="toggleChangedBy"><a href="javascript: void(0);"><span class="ui-icon ui-icon-check" data-bind="visible: window.ViewModel.Params.PersonChange()"></span>@Resources.Persons_Dossier_Menu_ChangedBy</a></li>
+            <li data-command="toggleOldProps"><a href="javascript: void(0);"><span class="ui-icon ui-icon-check" data-bind="visible: (window.ViewModel.Params.PersonDateOld()==1?1:0)"></span>@Resources.Persons_Dossier_Menu_OldProps</a></li>
+            
+            <li data-command="toggleStoreOldProps"><a href="javascript: void(0);"><span class="ui-icon ui-icon-check" data-bind="visible: (window.ViewModel.Params.PersonDateOld()==2?1:0)"></span>@Resources.Persons_Dossier_Menu_StoreOldProps</a></li>
+		</ul>
+	</li>
+</ul>
+

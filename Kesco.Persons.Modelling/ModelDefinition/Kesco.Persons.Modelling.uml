@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+  dslVersion="1.0.0.0"
+  Id="b434b3e4-e8a1-4706-8633-2efc7b7e1f98"
+  name="Kesco.Persons.Modelling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="898b9fd0-df1f-4677-8e46-df29f8df90ae"
+        LastKnownName="Package1"
+        LastKnownLocation="Package_1155.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="80d5c86e-663e-407b-8a55-d835aca1c602"
+        name="Пользователь"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3f3e0a7a-7c4c-4061-a0f7-299eff9a714e"
+            isDerived="false"
+            sourceEndRoleName="Пользователь"
+            targetEndRoleName="Выбор из списка лиц"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="11e152c4-4c4d-4c91-b77c-a0f6b137fcfd"
+              LastKnownName="Выбор лица"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2d1e925d-7ef1-4503-bfa9-69d0ac25ae6c"
+                  name="Пользователь"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8eff4e31-2032-4836-8cc4-1079c56d69d5"
+                  name="Выбор из списка лиц"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="db96f3ad-9436-46ca-b26d-f4468d6e2502"
+                name="realization"
+                profile="StandardProfileL2" />
+            </appliedStereotypesInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <artifact
+        Id="cf74abc9-a983-45cb-8d72-edf0b6629d88"
+        name="personselect.cshtml"
+        isAbstract="false"
+        isLeaf="false"
+        fileName="kesco.persons.controls\views\shared\editortemplates\personselect.cshtml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="780f9d50-0207-4794-b640-e125b709dbe5"
+        name="Элемент управления Выбор лица (PersonSelect)"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment
+            Id="0858776f-d7ee-4530-9ff1-5580b08a70d1">
+            <body>Запрос может быть выполнен по нажатию клавишы ENTER или по нажатию кнопки поиска</body>
+            <annotatedElements>
+              <useCaseMoniker
+                Id="037a448b-a1d3-40a5-9dfb-973d4afba772"
+                LastKnownName="Поиск"
+                LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            </annotatedElements>
+          </comment>
+          <comment
+            Id="580b90f2-ee3f-4ac1-8d2a-9cdab66ba262">
+            <body>Пользователь может ввести стороку для более точного поиска соответствий</body>
+            <annotatedElements>
+              <useCaseMoniker
+                Id="71ba6e10-187b-4e2a-bbf0-dceea2483039"
+                LastKnownName="Ввести строку поиска"
+                LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="78a59f14-cef2-458d-a150-1355063b7d15"
+            name="process"
+            profile="StandardProfileL2" />
+          <stereotypeInstance
+            Id="89264a1d-07f5-4f32-8c9c-3c8efd97884e"
+            name="buildComponent"
+            profile="StandardProfileL3" />
+        </appliedStereotypesInternal>
+      </subsystem>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="11e152c4-4c4d-4c91-b77c-a0f6b137fcfd"
+        name="Выбор лица"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="ec023d3c-3f0c-4f65-b66d-97876343d27e">
+            <useCaseMoniker
+              Id="fca341d3-a55a-4a2c-9e57-f2bc4c4ac8aa"
+              LastKnownName="Расширенный поиск"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+          </extend>
+          <extend
+            Id="beb99339-a8d6-4d9b-826b-ca5c61519f7c">
+            <useCaseMoniker
+              Id="c2c02425-575e-435d-b5fe-4f95ff5e9481"
+              LastKnownName="Создание юридического лица"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+          </extend>
+          <extend
+            Id="74149843-ca44-4a16-94f5-700c39e692f5">
+            <useCaseMoniker
+              Id="1cca400d-2175-4a4c-b8f1-5a0e3dc82828"
+              LastKnownName="Создание физического лица"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="1fb19c24-5378-469d-8eb0-379404c3d965">
+            <useCaseMoniker
+              Id="037a448b-a1d3-40a5-9dfb-973d4afba772"
+              LastKnownName="Поиск"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="780f9d50-0207-4794-b640-e125b709dbe5"
+            LastKnownName="Элемент управления Выбор лица (PersonSelect)"
+            LastKnownLocation="Kesco.Persons.Modelling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="037a448b-a1d3-40a5-9dfb-973d4afba772"
+        name="Поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="29c0fa7f-9347-4c52-8df1-6e71ca3e398a"
+            isDerived="false"
+            sourceEndRoleName="Ввод строки поиска"
+            targetEndRoleName="PersonSelectController"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="5b7a4bb3-a4c0-40c3-942f-27429b439d34"
+              LastKnownName="PersonSelect&#xD;&#xA;Controller"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c30ee96a-9f0d-4680-8956-8209834f6837"
+                  name="Ввод строки поиска"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c532a92f-309c-4ae4-a913-1645791b57e7"
+                  name="PersonSelectController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d0549bb2-5c5a-4aee-a92d-fa42646f894f"
+                name="realization"
+                profile="StandardProfileL2" />
+            </appliedStereotypesInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="57331798-4381-4c94-a34f-e1ee8c17959c">
+            <useCaseMoniker
+              Id="71ba6e10-187b-4e2a-bbf0-dceea2483039"
+              LastKnownName="Ввести строку поиска"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="780f9d50-0207-4794-b640-e125b709dbe5"
+            LastKnownName="Элемент управления Выбор лица (PersonSelect)"
+            LastKnownLocation="Kesco.Persons.Modelling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fca341d3-a55a-4a2c-9e57-f2bc4c4ac8aa"
+        name="Расширенный поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="780f9d50-0207-4794-b640-e125b709dbe5"
+            LastKnownName="Элемент управления Выбор лица (PersonSelect)"
+            LastKnownLocation="Kesco.Persons.Modelling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c2c02425-575e-435d-b5fe-4f95ff5e9481"
+        name="Создание юридического лица"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="780f9d50-0207-4794-b640-e125b709dbe5"
+            LastKnownName="Элемент управления Выбор лица (PersonSelect)"
+            LastKnownLocation="Kesco.Persons.Modelling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1cca400d-2175-4a4c-b8f1-5a0e3dc82828"
+        name="Создание физического лица"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="780f9d50-0207-4794-b640-e125b709dbe5"
+            LastKnownName="Элемент управления Выбор лица (PersonSelect)"
+            LastKnownLocation="Kesco.Persons.Modelling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="40f17af6-b63e-4ce4-a922-990aade65b25"
+        name="Приложение Persons"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3fdfd6b9-1dc2-440f-b106-6964004ceece"
+            isDerived="false"
+            sourceEndRoleName="Приложение Persons"
+            targetEndRoleName="Расширенный поиск"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="fca341d3-a55a-4a2c-9e57-f2bc4c4ac8aa"
+              LastKnownName="Расширенный поиск"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="62fff998-03ef-481f-bc95-3151d141e975"
+                  name="Приложение Persons"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="87a5587d-0238-4007-842e-49ce72d6073c"
+                  name="Расширенный поиск"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="95b54677-2c42-45c5-a0a8-257b1e75f5f5"
+            isDerived="false"
+            sourceEndRoleName="Приложение Persons"
+            targetEndRoleName="Создание юридического лица"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c2c02425-575e-435d-b5fe-4f95ff5e9481"
+              LastKnownName="Создание юридического лица"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="814c2c4b-67fe-46b7-b534-e260041b8c39"
+                  name="Приложение Persons"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="eaa03618-799b-4aa9-a9e4-7bc44170f0cb"
+                  name="Создание юридического лица"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="057fa6fd-7f1c-496d-b0f0-0f6a2c19c5c0"
+            isDerived="false"
+            sourceEndRoleName="Приложение Persons"
+            targetEndRoleName="Создание физического лица"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1cca400d-2175-4a4c-b8f1-5a0e3dc82828"
+              LastKnownName="Создание физического лица"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f8696f9d-2e9a-446a-a3ae-b86a5da0f88c"
+                  name="Приложение Persons"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="19167962-8e28-4325-b44c-0dc789547a05"
+                  name="Создание физического лица"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="5b7a4bb3-a4c0-40c3-942f-27429b439d34"
+        name="PersonSelect&#xD;&#xA;Controller"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="d85bc28d-2016-4651-becf-1455bb1f984c"
+            isDerived="false"
+            sourceEndRoleName="PersonSelectController"
+            targetEndRoleName="Выбор варианта из списка "
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="11e152c4-4c4d-4c91-b77c-a0f6b137fcfd"
+              LastKnownName="Выбор лица"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <description>Результаты поиска</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="75b6d575-cdf2-4254-b2ab-5863001b5fc6"
+                  name="PersonSelectController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="647d5f02-3651-4155-bcfd-28fd42c9a4e5"
+                  name="Выбор варианта из списка "
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3c270871-b9d5-4ea5-bf04-ab797c2d4cb5"
+                name="realization"
+                profile="StandardProfileL2" />
+            </appliedStereotypesInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="71ba6e10-187b-4e2a-bbf0-dceea2483039"
+        name="Ввести строку поиска"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="7bbdf3f0-5d9b-4cb6-b59d-88f2cf782063"
+            isDerived="false"
+            sourceEndRoleName="UseCase1"
+            targetEndRoleName="PersonSelectController"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="5b7a4bb3-a4c0-40c3-942f-27429b439d34"
+              LastKnownName="PersonSelect&#xD;&#xA;Controller"
+              LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            <description>Поиск по строке</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ec6ea663-ad46-4069-8ce0-b22dc80d7004"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ef5e76e2-53d3-4b19-91e0-2e655c0dd935"
+                  name="PersonSelectController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="0d94a2bf-0730-4ae6-bd55-e78bf365aa73"
+                name="realization"
+                profile="StandardProfileL2" />
+            </appliedStereotypesInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="780f9d50-0207-4794-b640-e125b709dbe5"
+            LastKnownName="Элемент управления Выбор лица (PersonSelect)"
+            LastKnownLocation="Kesco.Persons.Modelling.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="a32fc183-3fd0-40f3-8eae-773a529e3843"
+        name="PersonSelect"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <part
+            Id="ee584234-1246-4289-a544-a01d9bd00087"
+            name="PersonSelectController"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="Composite"
+            isComposite="true">
+            <type_NamedElement>
+              <componentMoniker
+                Id="04e37561-8819-4372-b0ce-2d7dbe0ff867"
+                LastKnownName="Component1"
+                LastKnownLocation="Kesco.Persons.Modelling.uml" />
+            </type_NamedElement>
+          </part>
+        </ownedAttributesInternal>
+      </component>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <component
+        Id="04e37561-8819-4372-b0ce-2d7dbe0ff867"
+        name="Component1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="b99075c7-5c71-46d4-932e-e2e0e512027e"
+        name="Activity1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <activityFinalNode
+            Id="014966ce-8e95-4edc-b9e2-65441a3b44f0"
+            name="ActivityFinal2"
+            isLeaf="false" />
+          <initialNode
+            Id="08177eb8-b92e-43bd-a559-a260d1306c9b"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="165fe3f4-65b0-49ae-8afc-b1c1faf2e289"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="983af122-dc60-47c5-9396-8f320115cc88"
+                  LastKnownName="Получить&#xD;&#xA;реквизиты"
+                  LastKnownLocation="Kesco.Persons.Modelling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <activityParameterNode
+            Id="5d1d7a59-9464-4ca9-b5dc-946f211ee379"
+            name="Requisites"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="39bdf82b-82c9-4ebb-9582-c255893bcda8"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="983af122-dc60-47c5-9396-8f320115cc88"
+                  LastKnownName="Получить&#xD;&#xA;реквизиты"
+                  LastKnownLocation="Kesco.Persons.Modelling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="bfe4f45d-ff98-41bb-b52e-b7f0cd74f9fd"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </activityParameterNode>
+          <forkNode
+            Id="4857edbf-0355-498f-b46e-a921e30fd481"
+            name="Fork1"
+            isLeaf="false" />
+          <joinNode
+            Id="eddc0bcc-33cc-4434-88da-b43b9da2d291"
+            name="Join1"
+            isLeaf="false" />
+          <sendSignalAction
+            Id="3d389f95-6a5d-4cd1-8a40-475a2301865a"
+            name="Signal1"
+            isLeaf="false" />
+          <acceptEventAction
+            Id="0c36166e-35fd-4e1e-9e7b-28f74cab0708"
+            name="Event1"
+            isLeaf="false"
+            isUnmarshall="false" />
+          <callBehaviorAction
+            Id="9cd5052e-6bb9-4015-8ef5-b354a66a14e6"
+            name="Behavior1"
+            isLeaf="false" />
+          <callOperationAction
+            Id="07caf2aa-d16b-43c1-9e26-9e48e02ceb31"
+            name="Operation1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="983af122-dc60-47c5-9396-8f320115cc88"
+            name="Получить&#xD;&#xA;реквизиты"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="98607bf7-139e-485e-85e9-eb884ba4bd38"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="3afd8a4c-2dc2-4b0b-9966-dd093a3b7bd6"
+                  LastKnownName="Создать валидатор"
+                  LastKnownLocation="Kesco.Persons.Modelling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <objectNode
+            Id="e0b8be5c-4b30-4120-9c1a-df1df3bee086"
+            name="Object1"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="c04c86a8-a31e-4bc5-896c-620f1baa10ad"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="3afd8a4c-2dc2-4b0b-9966-dd093a3b7bd6"
+            name="Создать валидатор"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

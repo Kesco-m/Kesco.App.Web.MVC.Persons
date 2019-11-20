@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Kesco_Web_Mvc_SharedApp_LBL_13112" xml:space="preserve">
+    <value>Ошибка приложенияN0</value>
+  </data>
+  <data name="Kesco_Web_Mvc_SharedApp_LBL_13113" xml:space="preserve">
+    <value>Нажмите, чтобы увидеть детали ...</value>
+  </data>
+  <data name="Kesco_Web_Mvc_SharedApp_LBL_20000" xml:space="preserve">
+    <value>Мужской</value>
+  </data>
+  <data name="Kesco_Web_Mvc_SharedApp_LBL_20001" xml:space="preserve">
+    <value>Женский</value>
+  </data>
+  <data name="ResourceView_NoData" xml:space="preserve">
+    <value>Нет данных</value>
+  </data>
+  <data name="Kesco_Web_Mvc_SharedApp_EditorTemplate_UniqueID_NewEntry" xml:space="preserve">
+    <value>Новая запись</value>
+  </data>
+  <data name="GUI_Button_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="GUI_Button_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="GUI_Button_Copy" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="GUI_Button_Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="GUI_Button_Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="GUI_Button_Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="GUI_Button_Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="GUI_Button_OK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="GUI_Button_Refresh" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="GUI_Button_Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="GUI_Button_Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="GUI_Button_View" xml:space="preserve">
+    <value>Просмотр</value>
+  </data>
+  <data name="GUI_Message_AjaxRequestError" xml:space="preserve">
+    <value>Возникла ошибка в процессе выполнения действия на сервере.</value>
+  </data>
+  <data name="GUI_Message_Loading" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="GUI_Message_Refreshing" xml:space="preserve">
+    <value>Обновление...</value>
+  </data>
+  <data name="QTip_LoadingStatus" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="EmployeeContacts_NoContacts" xml:space="preserve">
+    <value>Нет контактов.</value>
+  </data>
+  <data name="GUI_PhoneContact_ChooseAnotherPhone" xml:space="preserve">
+    <value>Выбрать телефон</value>
+  </data>
+  <data name="GUI_PhoneContact_ChooseDefaultPhone" xml:space="preserve">
+    <value>Выбрать телефон</value>
+  </data>
+  <data name="PersonContacts_NoContacts" xml:space="preserve">
+    <value>Нет контактов.</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_CallThrouh" xml:space="preserve">
+    <value>Звонить через</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_Caption" xml:space="preserve">
+    <value>Выберите телефон, с которого осуществить вызов на номер &lt;span style=\"white-space: nowrap;\"&gt;{0}&lt;/span&gt;.</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_Equipment" xml:space="preserve">
+    <value>Оборудование</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_Phone" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_PhoneType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="PhoneCalling_Dialog_Title" xml:space="preserve">
+    <value>Звонок...</value>
+  </data>
+  <data name="LINECALLSTATE_ACCEPTED" xml:space="preserve">
+    <value>вызов был принят</value>
+  </data>
+  <data name="LINECALLSTATE_BUSY" xml:space="preserve">
+    <value>занят</value>
+  </data>
+  <data name="LINECALLSTATE_CONFERENCED" xml:space="preserve">
+    <value>конференция</value>
+  </data>
+  <data name="LINECALLSTATE_CONNECTED" xml:space="preserve">
+    <value>соединение с абонентом установлено</value>
+  </data>
+  <data name="LINECALLSTATE_DIALING" xml:space="preserve">
+    <value>набор телефонного номера</value>
+  </data>
+  <data name="LINECALLSTATE_DIALTONE" xml:space="preserve">
+    <value>готов к набору номера</value>
+  </data>
+  <data name="LINECALLSTATE_DISCONNECTED" xml:space="preserve">
+    <value>абонент отсоединился</value>
+  </data>
+  <data name="LINECALLSTATE_IDLE" xml:space="preserve">
+    <value>нет активного звонка</value>
+  </data>
+  <data name="LINECALLSTATE_OFFERING" xml:space="preserve">
+    <value>происходит вызов</value>
+  </data>
+  <data name="LINECALLSTATE_ONHOLD" xml:space="preserve">
+    <value>удержание</value>
+  </data>
+  <data name="LINECALLSTATE_PROCEEDING" xml:space="preserve">
+    <value>вызов был принят, номер набран</value>
+  </data>
+  <data name="LINECALLSTATE_RINGBACK" xml:space="preserve">
+    <value>телефон абонента зазвонил</value>
+  </data>
+  <data name="LINECALLSTATE_SPECIALINFO" xml:space="preserve">
+    <value>специальное сообщение</value>
+  </data>
+  <data name="LINECALLSTATE_UNKNOWN" xml:space="preserve">
+    <value>неизвестно</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="PhoneCalling_Dialog_ChooseDefaultPhone_Table_Location" xml:space="preserve">
+    <value>Расположение</value>
+  </data>
+  <data name="CheckCall_Call" xml:space="preserve">
+    <value>Звонок</value>
+  </data>
+  <data name="CheckCall_Checking" xml:space="preserve">
+    <value>Проверка</value>
+  </data>
+  <data name="CheckCall_Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="MakeCall_Call" xml:space="preserve">
+    <value>Звонок {0} &amp;lt;-&amp;gt; {1}</value>
+  </data>
+  <data name="MakeCall_PhoneNotFound" xml:space="preserve">
+    <value>Телефон с {0} номером не найден в списке доступного оборудования.</value>
+  </data>
+  <data name="MakeCall_PhoneNotSpecified" xml:space="preserve">
+    <value>Телефон не указан</value>
+  </data>
+  <data name="MakeCall_Timeout" xml:space="preserve">
+    <value>Тайм-аут</value>
+  </data>
+  <data name="PhoneCalling_Dialog_Button_Call" xml:space="preserve">
+    <value>Позвонить</value>
+  </data>
+  <data name="PhoneCalling_Dialog_Button_Call_Seconds" xml:space="preserve">
+    <value>сек.</value>
+  </data>
+  <data name="PhoneCalling_Dialog_NoPhonesAvailable" xml:space="preserve">
+    <value>Нет доступных телефонов</value>
+  </data>
+  <data name="PhoneCalling_Dialog_PhoneCallState_Call" xml:space="preserve">
+    <value>Звонок</value>
+  </data>
+  <data name="PhoneCalling_Dialog_PhoneCallState_Connecting" xml:space="preserve">
+    <value>Соединение...</value>
+  </data>
+  <data name="PhoneCalling_Dialog_PhonesLoading" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="PhoneCalling_Dialog_Title2" xml:space="preserve">
+    <value>Вызов {0}...</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_ALERTING" xml:space="preserve">
+    <value>Устройство оповещено (звонит).</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_CONNECT" xml:space="preserve">
+    <value>Устройство принимает активное участие в звонке</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_FAIL" xml:space="preserve">
+    <value>Ошибка соединения с вызывающим устройством или называемым устройством.</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_HOLD" xml:space="preserve">
+    <value>Устройство неактивно участвует в вызове (проведены).</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_INITIATE" xml:space="preserve">
+    <value>Устройство обращаться в сервисную службу.</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_NONE" xml:space="preserve">
+    <value>Устройство участвует в вызове, но его состояние неизвестно.</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_NULL" xml:space="preserve">
+    <value>Устройство не участвует в вызове</value>
+  </data>
+  <data name="LocalConnectionState_t_CS_QUEUED" xml:space="preserve">
+    <value>Устройство пытается установить соединение с вызовом.</value>
+  </data>
+  <data name="PhoneCalling_Dialog_Button_Call_In_Seconds" xml:space="preserve">
+    <value>через</value>
+  </data>
+  <data name="MakeCall_CallCannotBeEstablished" xml:space="preserve">
+    <value>Звонок не может быть установлен с этого телефона</value>
+  </data>
+  <data name="MakeCall_TryToCallFromAnotherPhone" xml:space="preserve">
+    <value>Попытайтесь позвонить с другого.</value>
+  </data>
+  <data name="PersonControl_CreateJuridalPerson" xml:space="preserve">
+    <value>Создать юридическое лицо</value>
+  </data>
+  <data name="PersonControl_CreateNaturalPerson" xml:space="preserve">
+    <value>Создать физическое лицо</value>
+  </data>
+  <data name="PhoneCalling_PleaseSpecifyEmailToWrite" xml:space="preserve">
+    <value>Укажите электронный адрес.</value>
+  </data>
+  <data name="PhoneCalling_PleaseSpecifyPhoneToCall" xml:space="preserve">
+    <value>Укажите номер телефона, на который Вы хотите позвонить.</value>
+  </data>
+  <data name="SelectBox_AdvancedSearch" xml:space="preserve">
+    <value>Расширенный поиск</value>
+  </data>
+  <data name="Kesco_Web_Mvc_SharedApp_ClientSideViewModel_IncorrectEmail" xml:space="preserve">
+    <value>Электронный адрес {0} неверен. Проверьте.</value>
+  </data>
+  <data name="SelectBox_View" xml:space="preserve">
+    <value>Просмотр</value>
+  </data>
+  <data name="ContactControl_CommunicateWithContact" xml:space="preserve">
+    <value>Cвязаться по контакту</value>
+  </data>
+  <data name="PhoneCalling_Dialog_Message_SpecifyPhoneToMakeACall" xml:space="preserve">
+    <value>Укажите телефон, с которого осуществить звонок.</value>
+  </data>
+  <data name="PhoneCalling_Dialog_SaveAsMainWorkingPhoneAtThisLocation" xml:space="preserve">
+    <value>Сохранить как основной рабочий телефонный аппарат на этом компьютере</value>
+  </data>
+  <data name="CheckCall_Error_CallCancellationFailed" xml:space="preserve">
+    <value>Невозможно отменить звонок.</value>
+  </data>
+  <data name="GUI_Button_FinishCall" xml:space="preserve">
+    <value>Завершить звонок</value>
+  </data>
+  <data name="DossierEmployeeInfo_Contacts_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="DossierEmployeeInfo_Contacts_Messanger" xml:space="preserve">
+    <value>Мессенжер</value>
+  </data>
+  <data name="DossierEmployeeInfo_Contacts_WorkPhone" xml:space="preserve">
+    <value>Рабочий телефон</value>
+  </data>
+  <data name="Documents_Controls_DocumentsArhiveErrorMessage" xml:space="preserve">
+    <value>Ошибка взаимодействия с архивом документов</value>
+  </data>
+</root>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.BaseExtensions.dll&#xD;&#xA;Пространство имён: Kesco.DataAccess">
+    <Position X="0.5" Y="0.5" Height="0.52" Width="10.471" />
+  </Comment>
+  <Comment CommentText="Базовые исключения для слоя работы с базой данных">
+    <Position X="6.24" Y="1.25" Height="0.333" Width="4.742" />
+  </Comment>
+  <Comment CommentText="Базовый класс для управления соединения с базой данных и для выполнения SQL запросов">
+    <Position X="0.5" Y="1.208" Height="0.458" Width="4.742" />
+  </Comment>
+  <Comment CommentText="Базовый класс для проводника данных сущности &#xD;&#xA;(аналог DSO)">
+    <Position X="0.5" Y="4.74" Height="0.51" Width="2.575" />
+  </Comment>
+  <Comment CommentText="Базовый интерфейс для проводника данных сущности &#xD;&#xA;">
+    <Position X="3.75" Y="3.69" Height="0.403" Width="2.232" />
+  </Comment>
+  <Comment CommentText="Базовый generic-интерфейс для проводника данных сущности &#xD;&#xA;">
+    <Position X="3.662" Y="6.218" Height="0.447" Width="2.294" />
+  </Comment>
+  <Comment CommentText="Интерфейс определяет, что проводник данных поддерживает поиск для сущности">
+    <Position X="6.354" Y="3.945" Height="0.551" Width="2.346" />
+  </Comment>
+  <Comment CommentText="Базовый класс для параметров поиска">
+    <Position X="6.406" Y="7.052" Height="0.291" Width="2.486" />
+  </Comment>
+  <Comment CommentText="Поддержка фильтрации данных. В разработке">
+    <Position X="9.25" Y="4" Height="0.406" Width="3.437" />
+  </Comment>
+  <Class Name="Kesco.DataAccess.BaseException" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\BaseException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.ConnectionException" Collapsed="true">
+    <Position X="9.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ConnectionException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.ConstraintException" Collapsed="true">
+    <Position X="6.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ConstraintException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.Database">
+    <Position X="0.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.DataException" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\DataException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.DataAccess.EntityAccessor&lt;A, D, T, S, TID&gt;" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.75" Width="2.5" />
+    <NestedTypes>
+      <Class Name="Kesco.DataAccess.EntityAccessor&lt;A, D, T, S, TID&gt;.DbQuery" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DataAccess\EntityAccessorT.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAGAAAAAAAAAAAEAAAACCBAEAAAgAAAAQAAAgAAA=</HashCode>
+      <FileName>DataAccess\EntityAccessorT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BLToolkit.DataAccess.DataAccessor" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.DataAccess.EntitySearchParameters">
+    <Position X="6.5" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>DataAccess\EntitySearchParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BLToolkit.Data.DbManager" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.DataAccess.Filtering.FilterOption">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <Members>
+      <Method Name="FilterOption" Hidden="true" />
+      <Field Name="flagsMask" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\Filtering\FilterOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Kesco.DataAccess.IEntityAccessor">
+    <Position X="3.75" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAEAAAAAABAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\IEntityAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.DataAccess.IEntityAccessor&lt;T, S, TID&gt;">
+    <Position X="3.75" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAABAEAAAAAAAAQAAAgAAA=</HashCode>
+      <FileName>DataAccess\IEntityAccessorT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.DataAccess.IEntitySearchable">
+    <Position X="6.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\IEntitySearchable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Kesco.DataAccess.Filtering.FilterOptionFlags">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAACAAAAAISAAEKAgAAAEAAAAAAAAAAAAAFAAAA=</HashCode>
+      <FileName>DataAccess\Filtering\FilterOptionFlags.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Kesco.DataAccess.Filtering.FilterOptionCondition">
+    <Position X="9" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAgAAAACAAAAIAAAAIUBAAAAUAABM=</HashCode>
+      <FileName>DataAccess\Filtering\FilterOptionCondition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

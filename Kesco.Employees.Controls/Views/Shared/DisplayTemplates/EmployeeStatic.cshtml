@@ -1,0 +1,46 @@
+﻿@inherits Kesco.Employees.Controls.SiteViewPage<int?>
+@using Kesco.Employees.Controls
+@using Kesco.Employees.Controls.ComponentModel
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	ModelMetadata metaData = ViewData.ModelMetadata;
+	string initialLabel = ((string)ViewData["InitialLabel"]) ?? String.Empty;
+	string tooltipPositionMy = ((string)ViewData["TooltipPositionMy"]) ?? String.Empty;
+	string tooltipPositionAt = ((string)ViewData["TooltipPositionAt"]) ?? String.Empty;
+	string cssClass = ((string) ViewData["CssClass"]) ?? String.Empty;
+	string value = Model.HasValue?Model.ToString() : String.Empty;
+    cssClass = ("employeeStatic " + cssClass).Trim();
+
+   
+    
+    Html.RegisterCommonScriptCode("employeeStatic", @"
+        setTimeout(function(){
+         $( '.employeeStatic' ).each(function( index ) {
+                    var ev = $._data(this, 'events');
+                    if (ev && ev.click) {
+                    } else {
+                        $(this).on( 'click', function() {
+                           var emplId = $(this).data('employee-id');
+                            window.ViewModel.showUser(emplId);                         
+                        });
+                    }
+
+                    if (ev && ev.mouseenter){}
+                    else {
+                        $(this).on('mouseenter', function() {
+                            var $this = $(this);
+                            if (!$this.data('qtip')) {
+                                $this.initToolTip(function() {
+                                    var uri = Env.URI_user_info;
+                                    uri = uri.replace('/0', '/' + $this.data('employee-id'));
+                                    return uri;
+                                }, $(document.body)).qtip('show');
+                            }
+                        });
+                    }
+        });	}, 1000);	
+	");
+}
+<a class="@(cssClass)" test-attr="test" data-employee-id="@(value)" href="javascript: void(0);" data-tip-pos-my="@(tooltipPositionMy)" data-tip-pos-at="@(tooltipPositionAt)"
+	>@Html.Raw(initialLabel)</a>

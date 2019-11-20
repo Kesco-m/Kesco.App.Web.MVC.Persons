@@ -1,0 +1,11 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<int?>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Persons.Controls.ComponentModel
+
+@{
+	var descriptor = new PersonSelectAttribute();
+	descriptor.OnMetadataCreated(ViewData.ModelMetadata);
+}
+@Html.EditorFor(m => m, "PersonSelect")
+

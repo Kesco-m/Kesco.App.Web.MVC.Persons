@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.Web.Mvc.UI&#xD;&#xA;Пространство имён: Kesco.Web.Mvc.UI">
+    <Position X="0.5" Y="0.5" Height="0.75" Width="20.246" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.UI.Extensions&#xD;&#xA;Классы-расширения">
+    <Position X="0.5" Y="1.4" Height="0.448" Width="7.309" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.Filtering&#xD;&#xA;Классы для параметров фильтраии, которые передаются через строку запроса (QueryString)">
+    <Position X="8.667" Y="1.398" Height="0.448" Width="7.309" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.UI.Infrastructure&#xD;&#xA;Классы-расширения инфраструктуры приложения">
+    <Position X="0.5" Y="3.825" Height="0.448" Width="7.538" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.UI&#xD;&#xA;Классы-расширения моделей для представлений (Views)">
+    <Position X="16.25" Y="1.415" Height="0.448" Width="4.524" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.Validation&#xD;&#xA;Классы поддержки валидаии данных на клиенте">
+    <Position X="8.5" Y="8.25" Height="0.448" Width="7.451" />
+  </Comment>
+  <Comment CommentText="Пространство имён: Пространство имён: Kesco.Web.Mvc.Json&#xD;&#xA;Классы поддержки для работы с форматом Json">
+    <Position X="16.267" Y="6.596" Height="0.448" Width="4.472" />
+  </Comment>
+  <Class Name="Kesco.Web.Mvc.CultureInfoExtensions" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\CultureInfoExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ViewDataDictionaryExtensions" Collapsed="true">
+    <Position X="5.75" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Extensions\ViewDataDictionaryExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.DictionaryExtensions" Collapsed="true">
+    <Position X="3" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABgAAAAAAAAAIAQAAAAAAAAACAAA=</HashCode>
+      <FileName>Extensions\DictionaryExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.HttpSessionStateExtensions" Collapsed="true">
+    <Position X="0.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\HttpSessionStateExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UrlExtensions" Collapsed="true">
+    <Position X="3" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Extensions\UrlExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Extensions.EntityExtensions" Collapsed="true">
+    <Position X="5.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\EntityExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.ArrayQSFilterSetting" Collapsed="true">
+    <Position X="11.5" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\ArrayQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.UniqueIdQSFilterSetting" Collapsed="true">
+    <Position X="13.5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\UniqueIdQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.BooleanQSFilterSetting" Collapsed="true">
+    <Position X="13.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\BooleanQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.ConstantFilterSetting" Collapsed="true">
+    <Position X="13" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\ConstantFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.FilterSetting&lt;T&gt;" Collapsed="true">
+    <Position X="8.75" Y="2.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAgAAAAAASAAAQABAAAAAAAAiABAAAAA=</HashCode>
+      <FileName>Filtering\FilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.HiddenFilterSetting" Collapsed="true">
+    <Position X="13" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\HiddenFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.IntQSFilterSetting&lt;T&gt;" Collapsed="true">
+    <Position X="11" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAIAAAAAAAAAKAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\IntQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.ListQSFilterSetting&lt;T, TElement&gt;" Collapsed="true">
+    <Position X="14" Y="7.25" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="Kesco.Web.Mvc.Filtering.ListQSFilterSetting&lt;T, TElement&gt;.ListAccessor" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Filtering\ListQSFilterSetting.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAABAAAAAAAAAAAAgAAAAAAAABAAAAI=</HashCode>
+      <FileName>Filtering\ListQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.QSFilterSetting&lt;T&gt;" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\QSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Filtering.StringQSFilterSetting" Collapsed="true">
+    <Position X="8.75" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Filtering\StringQSFilterSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UserContext" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAgAEAAQAACAAAAAAQAAAIAIAAAAAAAAAAE=</HashCode>
+      <FileName>Infrastructure\UserContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Application&lt;S&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAQAAAAAQAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationEx.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.DateTimeSettings" Collapsed="true">
+    <Position X="5.25" Y="8.5" Width="1.5" />
+    <InheritanceLine Type="Kesco.Web.Mvc.Settings" ManuallyRouted="true">
+      <Path>
+        <Point X="4" Y="8.009" />
+        <Point X="4" Y="8.308" />
+        <Point X="6" Y="8.308" />
+        <Point X="6" Y="8.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEABAEAABBFMAAAAAAAAACAAAAAAAABAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.NumberSettings" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAAAAASEgAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.NumberWithSymbolSettings" Collapsed="true">
+    <Position X="0.5" Y="10" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.CultureSettings" Collapsed="true">
+    <Position X="6.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAEAAAAAACAAAAEQAAAAACAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.CacheSettings" Collapsed="true">
+    <Position X="3.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ApplicationSettings" Collapsed="true">
+    <Position X="5.25" Y="6" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAgBAAAAAAAAABAAEAAIwDAACAAAAAQBAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Configuration&lt;TApplicationSettings&gt;" Collapsed="true">
+    <Position X="5.25" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAQAA=</HashCode>
+      <FileName>Infrastructure\ConfigurationT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ControllerEx" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EgAQBAAQABgoAwAgAACAAQAAAABBABCAABAEMAEAAAA=</HashCode>
+      <FileName>Infrastructure\ControllerEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ModelController&lt;TDataModel&gt;" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ModelControllerT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Settings" Collapsed="true">
+    <Position X="3.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Infrastructure\Settings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.NoCacheRequestFilterAttribute" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Infrastructure\NoCacheRequestFilterAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.AjaxRequestFilterAttribute" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\AjaxRequestFilterAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.DialogResult" Collapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>UI\DialogResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.DialogResultModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\DialogResultModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.DialogViewModel" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAAgAAAIAAAAAAAAAAAACAAAAARAIAAAAAAAA=</HashCode>
+      <FileName>UI\DialogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ViewModel&lt;TDataModel&gt;" Collapsed="true">
+    <Position X="16.25" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>UI\ViewModelT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.WebViewPage&lt;TSettings, TModel&gt;" Collapsed="true">
+    <Position X="16.25" Y="5.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAQAAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\WebViewPageT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Validation.MaxValueAttributeAdapter" Collapsed="true">
+    <Position X="11" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Validation\Adapters\MaxValueAttributeAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Validation.MinValueAttributeAdapter" Collapsed="true">
+    <Position X="8.5" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Validation\Adapters\MinValueAttributeAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Validation.RemoteAttributeAdapter" Collapsed="true">
+    <Position X="14" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Validation\Adapters\RemoteAttributeAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Validation.ModelClientValidationMaxValueRule" Collapsed="true">
+    <Position X="11" Y="10" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Rules\ModelClientValidationMaxValueRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Validation.ModelClientValidationMinValueRule" Collapsed="true">
+    <Position X="8.5" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validation\Rules\ModelClientValidationMinValueRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Json" Collapsed="true">
+    <Position X="16.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Json\Json.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.JsonValueProviderFactory" Collapsed="true">
+    <Position X="18.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAgAACAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Json\JsonValueProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.JsonErrorResult" Collapsed="true">
+    <Position X="19.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Json\JsonErrorResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.JsonModelResult&lt;TModel&gt;" Collapsed="true">
+    <Position X="16.5" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Json\JsonModelResultT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.JsonNetResult" Collapsed="true">
+    <Position X="18.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAABAAAAAQACAQACA=</HashCode>
+      <FileName>Json\JsonNetResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.JsonResultEx" Collapsed="true">
+    <Position X="16.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQACA=</HashCode>
+      <FileName>Json\JsonResultEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Kesco.Web.Mvc.ILocalized" Collapsed="true">
+    <Position X="3" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationEx.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.Web.Mvc.IThemeable" Collapsed="true">
+    <Position X="3" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationEx.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.Web.Mvc.IDialogResultSupport" Collapsed="true">
+    <Position X="16.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\DialogResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

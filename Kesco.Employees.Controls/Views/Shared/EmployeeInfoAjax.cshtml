@@ -1,0 +1,48 @@
+﻿@inherits Kesco.Employees.Controls.SiteViewPage<Kesco.Employees.Controls.Models.EmployeeInfo.ViewModel>
+@using Kesco.ObjectModel
+@using Kesco.Employees.ObjectModel
+@using Kesco.Persons.ObjectModel
+@using Kesco.Employees.Controls
+@using Kesco.Employees.Controls.Localization
+@using Kesco.Web.Mvc
+
+@{ 
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+<div class="" style="min-width: 450px; " >
+@if (Model == null) {
+	@ViewData.ModelMetadata.NullDisplayText
+} else {
+	if (Model.Employee == null) {
+		@: - #@(Model.EmployeeID) -
+	} else {
+<text>
+<div class="" style="margin-bottom: 5px; " >
+	@if (Model.AllContacts.Count > 0) {
+		bool drawBorder = false;
+		<div style="margin-top: 10px; clear: both; ">
+		@foreach (var c in Model.AllContacts) {
+			<div style="min-height: 18px; padding-top: 2px; @(drawBorder?"border-top: 1px solid silver !important;":"")">
+				@Html.DisplayFor(m => c.Contact, GetControlNameByContactType(c.ContactType), new {
+					contactIcon = GetControlIconByContactType(c.ContactType),
+					PhoneType = c.Type,
+					PhoneNumber = c.PhoneNumber,
+					CssClass = (c.InDictionary ? "" : "clGrayTrans")
+				}) 
+				@if (!String.IsNullOrEmpty(c.Note)) {
+					@:<small class="clGray">(@(c.Note))</small>
+				}
+			</div>
+			drawBorder = true;
+		}
+		</div>
+		<div style="width: 150px;">@* Необходим для правильной отрисовки *@</div>
+	} else {
+		<div style="margin-top: 10px;">@(Kesco.Web.Mvc.SharedViews.Localization.Resources.PersonContacts_NoContacts)</div>
+	}
+</div>
+</text>
+	}
+}
+</div>

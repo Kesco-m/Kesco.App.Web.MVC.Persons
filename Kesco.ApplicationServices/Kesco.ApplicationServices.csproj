@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{64C8F921-DBF3-490A-AB1F-385EB1C41D53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kesco.ApplicationServices</RootNamespace>
+    <AssemblyName>Kesco.ApplicationServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Kesco.ApplicationServices.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Kesco.ApplicationServices.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BLToolkit.4">
+      <HintPath>..\_Assemblies\BLToolkit.4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\Accessor.cs" />
+    <Compile Include="DataAccess\DB.cs" />
+    <Compile Include="DataAccess\HelpManager.cs" />
+    <Compile Include="DataAccess\InventoryAccessor.cs" />
+    <Compile Include="DataAccess\InventoryManager.cs" />
+    <Compile Include="DataAccess\Manager.cs" />
+    <Compile Include="Localization\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectModel\ClientApplicationSetting.cs" />
+    <Compile Include="ObjectModel\Employee.cs" />
+    <Compile Include="ObjectModel\HelpTopic.cs" />
+    <Compile Include="ObjectModel\Metadata\ClientApplicationSetting.cs" />
+    <Compile Include="ObjectModel\Metadata\Employee.cs" />
+    <Compile Include="ObjectModel\Metadata\Setting.cs" />
+    <Compile Include="ObjectModel\Metadata\UserSetting.cs" />
+    <Compile Include="ObjectModel\Setting.cs" />
+    <Compile Include="ObjectModel\UserSetting.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources.et.resx" />
+    <EmbeddedResource Include="Localization\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.BaseExtensions\Kesco.BaseExtensions.csproj">
+      <Project>{0c4d6de0-daf5-49d7-bc56-f79287332045}</Project>
+      <Name>Kesco.BaseExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Project>{1170b0d6-2512-474e-9c69-debb7ef5904a}</Project>
+      <Name>Kesco.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.DataAccess\Kesco.DataAccess.csproj">
+      <Project>{9e72b472-d36d-496f-9ff7-ee2caeb26003}</Project>
+      <Name>Kesco.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+      <Name>Kesco.Lib.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Project>{195a7c92-ec1b-4af6-92b7-ba53cb643a16}</Project>
+      <Name>Kesco.ObjectModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,25 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@{
+	ModelMetadata metadata = ViewData.ModelMetadata;
+	string contactIcon = (ViewData["contactIcon"] ?? String.Empty).ToString();
+	string phoneType = (ViewData["PhoneType"] ??
+			(metadata.AdditionalValues.ContainsKey("PhoneType") ? metadata.AdditionalValues["PhoneType"] : "")).ToString();
+}
+@if (String.IsNullOrEmpty(Model)) {
+	@: @ViewData.ModelMetadata.NullDisplayText
+} else {
+	if (!String.IsNullOrEmpty(contactIcon)) {
+	@: <span style="position: relative; top: 0px; left: 0px; padding-left: 20px;  line-height: 20px;"
+	@:	><img src="@(WebAssetImage(contactIcon))" style="position: absolute; top: -2px; left: 1px; cursor: pointer;" 
+	@:		title="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
+	@:		alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
+	@:		onclick="$(this).next().get(0).click()" /> 
+	}
+	@:	<a href="ymgr:sendim?@(@Model)" 
+	@:		title="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
+	@:		alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
+	@:	>@Model</a>
+	if (!String.IsNullOrEmpty(contactIcon)) {
+	@: </span>
+	}
+}

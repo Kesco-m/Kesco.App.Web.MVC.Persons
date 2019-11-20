@@ -1,0 +1,13 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<System.Web.Mvc.HandleErrorInfo>
+
+@using Kesco.Web.Mvc.SharedViews.Localization;
+
+@{
+	ViewBag.Title = Resources.Kesco_Web_Mvc_SharedApp_LBL_13112;
+	Response.StatusCode = 500;
+}
+
+<b>@Resources.Kesco_Web_Mvc_SharedApp_LBL_13112</b>
+<p>@Model.Exception.Message</p>
+
+

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7dc3a7fa-ff26-4cee-a9b1-365ebed5d859" name="Kesco.Web.Mvc.SharedViews.StartAction" linkedPackageId="ec1a8ae5-90c4-45e9-a274-3b7955e83f2f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="dd92e9c6-f875-4fdf-b533-aeb9cf6c66a1">
+      <profileInstance Id="dbabf98f-5f66-4abf-a838-1c307d26e0c2" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="68570f2e-92ab-44df-a2e2-8e158cf8a429">
+      <profileInstance Id="1ffcf966-02bf-4135-9aca-c06002c62dc9" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="4d54b556-df33-4972-8451-3713224e6e7d" name="Kesco.Web.Mvc.SharedViews.StartAction" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="ff439fb4-3a15-45ee-86a7-1e01c88d31ff" />
+        <nodes>
+          <objectNode Id="c85846d1-c0c8-4a54-9611-aa508d78aeba" name="Object1" isLeaf="false" ordering="Unordered" isControlType="false">
+            <elementDefinition Id="50e902b9-d6fd-48e9-97bf-1fa8e476da67" />
+            <upperBound>
+              <literalInteger Id="ac77b112-e590-47d0-8128-0a5a1cc55396" name="2147483647" value="2147483647">
+                <elementDefinition Id="2db1f89e-d6b4-40c4-9f0b-e19840ef8df8" />
+              </literalInteger>
+            </upperBound>
+          </objectNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="ec1a8ae5-90c4-45e9-a274-3b7955e83f2f" name="Kesco.Common.Modelling">
+    <elementDefinition Id="5f18d5d9-8756-4eac-818f-591c60661f79" />
+  </package>
+</activityRootModel>

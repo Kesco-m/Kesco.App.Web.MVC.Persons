@@ -1,0 +1,26 @@
+﻿#dialogoverlay{
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	
+}
+#dialogbox{
+	display: none;
+	position: fixed;
+	z-index: 10;
+	background-color: #D1D1D1;
+	box-shadow: 0px 0px 10px #000;
+}
+
+
+#dialogbox > div{ background:#FFF; }
+#dialogbox > div > #dialogboxhead{ background: #FBFBFB; font-size:15px;  color:#000000;  }
+#dialogbox > div > #dialogboxbody{ background: #FBFBFB; color:#000000;  }
+#dialogbox > div > #dialogboxfoot{ background: #FBFBFB; text-align:center; }
+
+
+#dialogboxfoot{ background: #FBFBFB; padding:5px; text-align:center; margin-left:5px; margin-right:5px; margin-bottom:5px;}
+#dialogboxbody{ background: #FBFBFB; padding:10px; color:#000000; margin-left:5px; margin-right:5px; margin-bottom:2px; margin-top:2px;}
+#dialogboxhead{ background: #FBFBFB; font-size:15px; padding:5px; color:#000000; margin-top:5px; margin-left:5px; margin-right:5px;}

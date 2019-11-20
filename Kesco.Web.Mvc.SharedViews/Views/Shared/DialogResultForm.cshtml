@@ -1,0 +1,9 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage
+@{
+	string action = Request["callbackUrl"] ?? Url.Action("DialogResult");
+}
+<form id="dialogResultForm" method="post" action="@(action)" style="display: none;">
+	<input type="hidden" name="t" value='@(((ulong) DateTime.Now.ToBinary()).ToString())' /> 
+	<input type="hidden" id="dialogResultField_Control" name="control" value="" />
+	<input type="hidden" id="dialogResultField_Value" name="value" value="" />
+</form>

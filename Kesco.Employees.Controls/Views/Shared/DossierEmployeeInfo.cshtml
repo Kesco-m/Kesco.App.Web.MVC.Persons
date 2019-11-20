@@ -1,0 +1,723 @@
+﻿@inherits Kesco.Employees.Controls.SiteViewPage<Kesco.Employees.Controls.Models.Dossier.EmployeeInfo.ViewModel>
+@using Kesco.DataAccess
+@using Kesco.ObjectModel
+@using Kesco.Persons.ObjectModel
+@using Kesco.Employees.ObjectModel
+@using Kesco.Employees.Controls
+@using Kesco.Employees.Controls.Localization
+@using Kesco.Web.Mvc
+
+@{ 
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    string replacementIDs = "";
+    string deleteReplacmentsValMsg = "";
+
+}
+
+<div id="empCardInfo" class="" style="min-width: 450px; " >
+@if (Model == null) {
+	@ViewData.ModelMetadata.NullDisplayText
+} else {
+	if (Model.Employee == null) {
+		@: - #@(Model.Employee.ID) -
+	} else {
+<text>
+	<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.employeeControlLink').each(function(index, item) {
+                var value = $(this).data('employee-id');
+                $(this).employee({
+                    container: $(document.body)
+                }).employee('option', 'value', value);		
+            });
+
+            setTimeout(function() {
+                if (window.console) console.log('employeeControl starting...'+new Date());
+                $('.employeeControl').each(function(index, item) {
+                    $(this).employee({
+                        container: $(document.body),
+                        value: $(this).data('employee-id')
+                    });
+                });
+                if (window.console) console.log('employeeControl finished. '+new Date());
+            }, 10);
+        });
+
+        $( "a.employeeStatic" ).each(function( index ) {
+            var ev = $._data(this, 'events');
+            if (ev && ev.click) {
+            } else {
+                $(this).on( "click", function() {
+                    window.ViewModel.showUser($(this).data('employee-id'));
+                });
+            }
+
+            if (ev && ev.mouseenter){}
+            else {
+                $(this).on("mouseenter", function() {
+                    var $this = $(this);
+                    if (!$this.data('qtip')) {
+                        $this.initToolTip(function() {
+                            var uri = Env.URI_user_info;
+                            uri = uri.replace('/0', '/' + $this.data('employee-id'));
+                            return uri;
+                        }, $(document.body)).qtip('show');
+                    }
+                });
+            }
+        });
+
+       
+
+        //$(document).on('click', 'a.employeeStatic', function() {
+        //    window.ViewModel.showUser($(this).data('employee-id'));
+        //});
+
+        //$(document).on('mouseenter', 'a.employeeStatic', function() {
+        //    var $this = $(this);
+        //    if (!$this.data('qtip')) {
+        //        $this.initToolTip(function() {
+        //            var uri = Env.URI_user_info;
+        //            uri = uri.replace('/0', '/' + $this.data('employee-id'));
+        //            return uri;
+        //        }, $(document.body)).qtip('show');
+        //    }
+        //});
+
+        $(document).on('click', 'a.personStaticLink', function() {
+            window.ViewModel.showPerson($(this).data('person-id'));
+        });
+
+        $(document).on('mouseenter', 'a.personStaticLink', function() {
+            var $this = $(this);
+            if (!$this.data('qtip')) {
+                $this.initToolTip(function() {
+                    var uri = Env.URI_person_info;
+                    uri = uri.replace('/0', '/' + $this.data('person-id'));
+                    return uri;
+                }, $(document.body)).qtip('show');
+            }
+        });
+
+    function add(uid) {
+        $.ajax({
+            url: '@(Url.Action("AddReplace"))?uid=' + uid,
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            complete: function () {
+                if ('@(Model.Replaced)' == 'False') { document.getElementById('cbUserOut').checked = false; }
+                UpdateUserProxy();
+            }
+        });
+    }
+
+    function _open(id) {
+        $.ajax({
+            url: '@(Url.Action("OpenReplace"))?id=' + id,
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            complete: function () {  UpdateUserProxy();}
+        });
+    }
+
+    function RoleOpen(id, title) {
+        var t = screen.availHeight / 2 - 200;
+        var l = screen.availWidth / 2 - 300;
+        var url = "@(Configuration.AppSettings.URI_role_form)?id=" + id + "&title=" + title;
+
+        var w = window.open(url,
+            '_blank',
+            'scrollbars = yes,height=600,width=400,resizable = yes,toolbar=no,menubar=no,location=no,top=' +
+            t +
+            ',left=' +
+            l);
+        w.focus();
+        }
+
+
+        function _clickPhoto() {
+            var id = '@(Model.EmployeeID)';
+
+            var url = "@(Configuration.AppSettings.URI_user_photos)?Id=" + id 
+
+            openPopupWindow(url, null, null, "", 600, 500);
+
+        }
+
+        function _openExtFields(id) {
+            var t = screen.availHeight / 2 - 200;
+            var l = screen.availWidth / 2 - 300;
+            var title = encodeURIComponent("@(Resources.DossierEmployeeInfo_ExtFields)");
+            var url = "@(Configuration.AppSettings.URI_user_extFields)?clid=77&id=" + id + "&title=" + title;
+            /*DialogPageOpen(url, 'dialogHeight:500px;dialogWidth:690px;center:yes;status:no;help:no;resizable:yes;');
+            window.location.reload();*/
+
+            window.open(url,
+                'person_'+id,
+                'scrollbars = yes,height=535,width=610,resizable = yes,toolbar=no,menubar=no,location=no,top=' +
+                t +
+                ',left=' +
+                l);
+        }
+
+        function AddLocWithoutWorkPlaces() {
+            var path = '@(Configuration.AppSettings.URI_location_search)&return=1';
+            try {
+                $.removeCookie("RetVal");
+            } catch (e) {
+            }
+            try {
+                DialogPageOpen(path,
+                    "dialogHeight: 500px; dialogWidth: 400px;",
+                    function(result) {
+
+                        ViewModel.request("/MVC/PERSONS/EmployeeSelect.aspx/CheckCoworkersAndCommonEmployees",
+                            {
+                                id: @(Model.EmployeeID),
+                    workPlaceID: result.split('%1F')[0]
+                }).success(function (res) {
+                    if (res != "true") {
+                        var r = confirm(res);
+                        if (r == true) { confirmAddLoc(result); }
+                        else {UpdateUserProxy(); }
+                    }
+                    else
+                    {
+                        confirmAddLoc(result);
+                                    
+                    }
+
+                }).error(function (res){alert(res.responseText);});
+
+
+
+
+            });
+        } catch (e) { }
+    }
+
+
+
+
+    function confirmAddLoc(result)
+    {
+        ViewModel.request("/MVC/PERSONS/EmployeeSelect.aspx/SaveEmployeeWorkplace", {
+            id: @(Model.EmployeeID),
+            workPlaceID: result.split('%1F')[0]
+        }).always(function () {
+            UpdateUserProxy();
+        });;
+    }
+
+	function OpenLoc(idLoc) {
+			var id = '@(Model.EmployeeID)';
+        var loc = "";
+        if (idLoc)
+            loc = "&idLoc=" + idLoc;
+
+        var url = "@(Configuration.AppSettings.URI_user_workplace)?id=" + id + loc;
+
+        var res = window.showModalDialog(url, "",
+            "dialogHeight: 120px; dialogWidth: 650px;resizable: Yes; status: No;edge: Raised;help: No;");
+
+        UpdateUserProxy();
+    }
+
+    function RoleOpen(id, title) {
+        var t = screen.availHeight / 2 - 200;
+        var l = screen.availWidth / 2 - 300;
+        var url = "@(Configuration.AppSettings.URI_role_form)?id=" + id + "&title=" + title;
+
+        window.open(url, '_blank', 'scrollbars = yes,height=600,width=650,resizable = yes,toolbar=no,menubar=no,location=no,top=' + t + ',left=' + l);
+    }
+
+        function deleteAllReplacement()
+        {
+            @{
+                if (Model.EmployeeReplacements.Count != 0)
+                    {
+                        foreach (EmployeeReplacement replacement in Model.EmployeeReplacements)
+                        {
+                            replacementIDs += replacement.ReplacementId + ",";
+                    }
+                    replacementIDs = replacementIDs.Substring(0, replacementIDs.Length - 1);
+                }
+            }
+            
+            var replacementCount = '@(Model.EmployeeReplacements.Count)';
+            if (replacementCount == '1'){var r = confirm("@(Resources.DossierEmployeeInfo_DeleteReplacment)");}
+            else {var r = confirm("@(Resources.DossierEmployeeInfo_DeleteAllReplacments)");}
+
+            if (r == true) { 
+                ViewModel.request("/MVC/PERSONS/EmployeeSelect.aspx/DeleteAllReplacement", {
+                    ids: '@(replacementIDs)'
+                }).always(function () {
+                    UpdateUserProxy();
+                });
+            }
+            else
+            {
+                document.getElementById('cbUserOut').checked = true; 
+            }
+        }
+	</script>
+
+
+<div class="" style="margin-bottom: 5px; " >
+<table style="width: 100%;">
+<tr valign="top">
+    <td rowspan="2" style="width: 135px">
+        @if (Model.Employee.CommonEmployeeID == null && Model.Employee.Status == 0 && Model.Employee.PersonID == null)
+        {
+            <img src="@(Configuration.AppSettings.URI_user_photo)?id=@(Model.Employee.ID)&w=120"
+                 vspace="5" hspace="5" width="120px" border="0" />
+        }
+        else
+        {
+            <a href="javascript: void(0);" onclick="_clickPhoto()">
+                <img src="@(Configuration.AppSettings.URI_user_photo)?id=@(Model.Employee.ID)&w=120"
+                     vspace="5" hspace="5" width="120px" border="0" />
+            </a>
+        }
+    </td>
+    <td nowrap="nowrap">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    @(Resources.DossierEmployeeInfo_FullName_Label) 
+                    @if (Model.IsPersonCardAccess){
+                        @:№<a href="javascript: void(0);" onclick="_openExtFields(@(Model.Employee.ID))">@(Model.Employee.ID)</a> :
+                    } else {
+                        @:№@(Model.Employee.ID)
+                    }
+						
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    @Html.DisplayFor(m => m.Employee.ID, "EmployeeStatic", new
+                    {
+                        value = Model.Employee.ID,
+                        TooltipPositionMy = "middle right",
+                        TooltipPositionAt = "middle left",
+                        InitialLabel = Model.Employee.FullNameCorrected
+                    })
+                </td>
+            </tr>
+			
+            <tr>
+                <td></td>
+                <td>&nbsp;</td>
+                <td>
+                    @Model.Employee.FullNameEnCorrected
+                </td>
+            </tr>
+			
+        </table>
+    </td>
+    <td class="changed" style="width: 200px; text-align: right;">
+        @Html.DisplayFor(m => m.ChnagedBy, "EmployeeStatic", new
+        {
+            value = Model.ChnagedBy,
+            TooltipPositionMy = "middle right",
+            TooltipPositionAt = "middle left",
+            InitialLabel = Model.ChangedByName.FullNameCorrected
+        })
+
+        <span>@(Model.Employee.ChangedDate.Value.FromUtcToClient().ToString("F"))</span>
+           
+    </td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+@if (Model.Employee.Status != 3 && Model.EmployeeCustomer != null) {
+    <div style="margin: 1px 0; white-space: nowrap !important;">
+            
+        <span class="ui-label">@(Resources.DossierEmployeeInfo_Organization) :</span>
+        @Html.DisplayFor(m => m.ChnagedBy, "PersonStaticLink", new
+        {
+            personid = Model.Employee.EmployerID.ToString(),
+            TooltipPositionMy = "middle right",
+            TooltipPositionAt = "middle left",
+            InitialLabel = Model.EmployeeCustomer.Nickname
+        })
+    </div>
+}
+@if (Model.Employee.Status != 3 && Model.ContactGroups.Count > 0) {
+    <div class="ui-label" style="margin: 1px 0; ">
+        @foreach (var g in Model.ContactGroups) {
+       
+            @(GetContactGroupLabel(g.ContactTypeID)) @: :
+                                            
+            @: @foreach (var c in g.Items)
+               {
+                   @Html.DisplayFor(m => c.Contact,
+                       GetControlNameByContactType(c.ContactType), new
+                       {
+                           contactIcon = c.Icon ?? GetControlIconByContactType(c.ContactType),
+                           PhoneType = c.Type,
+                           PhoneNumber = c.PhoneNumber,
+                           CssClass = (c.InDictionary ? "" : "clGrayTrans")
+                       })
+               }
+        }
+    </div>
+
+
+}
+else
+{
+    <!-- <div style="margin-top: 10px;">@(Kesco.Web.Mvc.SharedViews.Localization.Resources.PersonContacts_NoContacts)</div> //-->
+}
+
+@* Емайл и messanger *@
+<div class="ui-label" style="margin: 1px 0;">
+    @{
+        var email = Model.Contacts.FirstOrDefault(c => c.ContactType == -2);
+        var msgr = Model.Contacts.FirstOrDefault(c => c.ContactType == -3);
+    }
+    @if (email != null)
+    {
+        @(GetContactGroupLabel(email.ContactType)) @: :
+        @Html.DisplayFor(m => email.Contact,
+            GetControlNameByContactType(email.ContactType), new
+            {
+                contactIcon = String.Empty,
+                PhoneType = email.ContactTypeDesc,
+                PhoneNumber = String.Empty
+            })
+    
+        if (msgr != null)
+        {
+            @: <span style="position: relative; top: 0px; left: 0px; padding-left: 20px; line-height: 20px;"
+            @:	><img src="@(WebAssetImage("messenger.gif"))"  style="position: absolute; top: -2px; left: 1px; cursor: pointer;"  
+            @:		onclick="ViewModel.openMessengerChat('@(msgr.Contact)')" 
+            @:		title="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
+            @:		alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
+            @:	/></span> 
+        }
+    }
+
+
+</div>
+
+        
+<table class="ui-label" style="padding-top: 2px;" cellpadding="0" cellspacing="0" border="0">
+    <tr valign="top">
+        @if (Model.CanChangeWorkPlace || Model.WorkPlaces.Count > 0)
+        {
+            <td style="padding: 0px;" nowrap>
+                @if (Model.CanChangeWorkPlace)
+                {
+                    /*AddLocWithoutWorkPlaces();*/
+                    <a style="color: dimgray" href="javascript: void(0);" onclick=" OpenLoc(); ">
+                        @(Resources.DossierEmployeeInfo_WorkPlace)
+                    </a>@: :
+                }
+                else
+                {
+                    @(Resources.DossierEmployeeInfo_WorkPlace)
+                    @: :
+                }
+            </td>
+            <td>&nbsp;</td>
+        }
+        <td>
+            @if (Model.WorkPlaces != null && Model.WorkPlaces.Count > 0)
+            {
+                foreach (var workPlace in Model.WorkPlaces)
+                {
+                    <div>
+
+
+                        @if (workPlace.WorkPlacePar == "1")
+                        {
+                            <img src="@(Configuration.AppSettings.URI_Styles)\Notebook.GIF" height="10px" width="10px"/>
+                        }
+
+                        @if (Model.CanChangeWorkPlace)
+                        {
+                            <a href="javascript: void(0);" title="@(Resources.DoisserEmployeeInfo_OfiiceWorkPlace)" alt="@(workPlace.Path)" onclick=" OpenLoc((@workPlace.WorkPlaceID)) ">
+                                @(workPlace.Path)
+                            </a>
+                        }
+                        else
+                        {
+                            @(workPlace.Path)
+                        }
+                        @if (Model.Employee.CommonEmployeeID == null  //не входит в группу
+                             && !(Model.Employee.CommonEmployeeID == null && Model.Employee.Status == 0 && Model.Employee.PersonID == null) // не является общим сотрудников
+                             && workPlace.CoWorkers != null 
+                             && workPlace.CoWorkers.Count > 0)
+                        {
+                            <table>
+                                <tr valign=top>
+                                <td style='darkgray; font-size: 7pt'>@(workPlace.WorkPlacePar == "1" ? Resources.DossierEmployeeInfo_Organization_CoWorkingWithAnother : Resources.DossierEmployeeInfo_Organization_CoWorkingWith)&nbsp;&nbsp;</td>
+                                <td>
+                                    @foreach (var coWorker in workPlace.CoWorkers)
+                                    {
+                                        <div>
+                                            <a href="javascript: void(0);" style='color: darkgray; font-size: 7pt' title="@(coWorker.CoWorker)" alt="@(coWorker.CoWorker)" onclick=" ViewModel.showUser(@(coWorker.CoWorkerID)) ">
+                                                @(coWorker.CoWorker)
+                                            </a>
+                                        </div>
+                                    }
+                                </td>
+                            </table>
+                        }
+                    </div>
+                }
+            }
+            &nbsp;
+        </td>
+    </tr>
+
+    @*======================================================================== *@
+
+    @*Если общий сотрудник*@
+    @if (Model.Employee.CommonEmployeeID == null && Model.Employee.Status == 0 && Model.Employee.PersonID == null)
+    {
+        <tr>
+            <td colspan="3">
+                @*<a href="javascript: void(0);" onclick=" var cont = document.getElementById('commonEmployeesContaincer');
+                    if(cont.style.display == 'none'){ cont.style.display = '';}
+                    else {cont.style.display = 'none';}">@(Resources.DossierEmployeeInfo_CommonEmployees)</a>*@<a href="javascript: void(0);" onclick=" var cont = document.getElementById('commonEmployeesContaincer');
+if(cont.style.display == 'none'){ cont.style.display = '';}
+else {cont.style.display = 'none';}"></a>
+                <span>@(Resources.DossierEmployeeInfo_CommonEmployees):</span>
+                <div style="clear: both; padding-left: 5px;" id="commonEmployeesContaincer">
+                    @foreach (var commonEMployee in Model.CommonEmployees)
+                    {
+                        <div>
+                            <div>
+                                @Html.DisplayFor(m => commonEMployee.ID, "EmployeeStatic", new
+                                {
+                                    TooltipPositionMy = "middle right",
+                                    TooltipPositionAt = "middle left",
+                                    InitialLabel = commonEMployee.FullNameCorrected
+                                })
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.CommonEmployees.Count == 0)
+                    {
+                        <div>
+                            <div>
+                                <span>@(Resources.DoisserEmployeeInfo_NoCommonEmpoyees)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </td>
+        </tr>
+    }
+    else
+    {
+        if (Model.Employee.CommonEmployeeID != null)
+        {
+            <tr>
+                <td colspan="3">
+                    <div>
+                        <span>
+                            @(Resources.DossierEmployeeInfo_InCommonGroup)
+
+                            @Html.DisplayFor(m => Model.CommonEmployeeGroup.ID, "EmployeeStatic", new
+                            {
+                                TooltipPositionMy = "middle right",
+                                TooltipPositionAt = "middle left",
+                                InitialLabel = Model.CommonEmployeeGroup.FullNameCorrected
+                            })
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+
+
+    @*========================================================================*@
+            
+</table>
+        
+@if (Model.Employee.Status != 3 && !String.IsNullOrEmpty(Model.EmployeeStatus))
+{
+    <div style="margin: 1px 0; white-space: nowrap !important;">
+        @(Model.EmployeeStatus)&nbsp;
+    </div>
+}
+
+@if (Model.LastPassage != null)
+{
+    <div style="margin: 1px 0; white-space: nowrap !important;">
+        @Html.DisplayFor(m => m.LastPassage.Point)
+        @Model.LastPassage.TimeAt.FromUtcToClient().ToString("F")
+    </div>
+}
+
+</td>
+</tr>
+@if (Model.Employee.Status != 3)
+{
+    <tr>
+        <td colspan="3">
+            <div style="clear: both;">
+                @foreach (var position in Model.Positions)
+                {
+                    <div>
+                        <div>
+                            @(Resources.DossierEmployeeInfo_Organization) :
+                            @Html.DisplayFor(m => m.ChnagedBy, "PersonStaticLink", new
+                            {
+                                personid = position.PersonID,
+                                TooltipPositionMy = "middle right",
+                                TooltipPositionAt = "middle left",
+                                InitialLabel = position.Organization
+                            })
+                            / @(position.Department)
+
+                        </div>
+                        <div>
+                            @(Resources.DossierEmployeeInfo_Position) :
+                            @(position.Position) @(position.IsCombining ? "(" + Resources.DossierEmployeeInfo_PositionIsCombined + ")" : "")
+                        </div>
+                    </div>
+                }
+            </div>
+        </td>
+    </tr>
+ 
+
+    if (Model.EmployeeSupervisor != null)
+    {
+        <tr>
+            <td colspan="3">
+                <div style="clear: both; vertical-align: top;">
+                    <div style="float: left;">
+                        @(Resources.DossierEmployeeInfo_Supervisor) :
+                    </div>
+                    <div style="display: inline-block; vertical-align: top; margin-left: 5px;">
+                        @Html.DisplayFor(m => m.EmployeeSupervisor.ID, "EmployeeStatic", new
+                        {
+                            value = Model.EmployeeSupervisor.ID,
+                            TooltipPositionMy = "middle right",
+                            TooltipPositionAt = "middle left",
+                            InitialLabel = Model.EmployeeSupervisor.FullNameCorrected
+                        })
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+
+    @* Роли сотрудника *@
+
+
+  
+    <tr>
+        <td colspan="3">
+            <a href="javascript: void(0);" onclick=" var cont = document.getElementById('rolesContaincer'); 
+if(cont.style.display == 'none'){ cont.style.display = '';}
+else {cont.style.display = 'none';}">@(Resources.PersonRoles_RoleName)</a>
+            <div style="clear: both; padding-left: 5px; display: none;" id="rolesContaincer">
+                <table style="border-collapse: collapse;">
+                    @if (Model.RolesWithPersonNames.Count == 0)
+                    {
+                        <span>@(Resources.DossierEmployeeInfo_NoInfo)</span>
+                    }
+                    @foreach (var role in Model.RolesWithPersonNames)
+                    {
+                        <tr style="border-bottom: 1px solid #aaaaaa;">
+                            <td style="vertical-align:top;"><a style="display: inline-block; margin-right: 20px;" href="javascript:RoleOpen('@(role.Key.ID)', '@(role.Key.RoleName)')"> @(role.Key.RoleName) </a></td>
+                            <td>
+                                <div style="vertical-align: top; display: inline-block;">
+                                    @foreach (var personNames in role.Value)
+                                    {
+                                        if (personNames.PersonID == 0)
+                                        {
+                                            <span>@(Resources.DossierEmployeeInfo_AllOrganization)</span>
+                                        }
+                                        else
+                                        {
+                                            <div style="display:block">
+                                                @Html.DisplayFor(m => m.ChnagedBy, "PersonStaticLink", new
+                                                {
+                                                    personid = personNames.PersonID.ToString(),
+                                                    TooltipPositionMy = "middle right",
+                                                    TooltipPositionAt = "middle left",
+                                                    InitialLabel = personNames.PersonName
+                                                })
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        </td>
+    </tr>
+     
+      
+      @* END Роли сотрудника *@
+      
+         
+        
+         @* Сотрудник отсутствует *@
+            
+    if (!String.IsNullOrEmpty(Model.Employee.Login)) { 
+        <tr>
+            <td style="width: 100%" colspan="2">
+                <input onclick="javascript: if (this.checked) {add('@(Model.EmployeeID)');} else { deleteAllReplacement();}" @((Model.Replaced) ? "checked" : "") id=cbUserOut type=checkbox value="" name=cbUserOut> 
+                @{
+                    if (!Model.Replaced)
+                    {
+                        <SPAN>@(Resources.DossierEmployeeInfo_Replacement)</SPAN>
+                    }
+                    else
+                    {
+                        <SPAN>@(Resources.DossierEmployeeInfo_NotReplacement)</SPAN>
+                    }
+                }
+                                                                                                                                                                                                                    
+            </td>
+            @foreach (var remplacement in Model.EmployeeReplacements)
+            {
+                <tr> <td colspan="3" style="padding-left: 27px;"> <a href="javascript:_open('@(remplacement.ReplacementId.ToString())')">@(remplacement.ForDate.ToString("dd.MM.yyyy"))</a> <span>(@(remplacement.Comment))</span> <a href="dossier.aspx?employeeId=@(remplacement.VicariousId)">@(remplacement.VicariousName)</a></td></tr>
+            }
+
+              
+        </tr>
+           
+        if (Model.Replaced)
+        {
+            <tr><td>
+                <a href="javascript:add(@(Model.EmployeeID))"><img style="border: none;" src="/MVC/PERSONS/Styles/Css/images/New.gif"/> </a>
+            </td></tr>
+        }
+                       
+                  
+        if (Model.EmployeeRepresentatives.Count != 0)
+        {
+            <tr> <td style="width: 100%" colspan="2"><SPAN> @(Resources.DossierEmployeeInfo_Remplacementive) </SPAN></td> </tr>
+        }
+        foreach (var remplacementive in Model.EmployeeRepresentatives)
+        {
+            <tr> <td colspan="3" style="padding-left: 27px;"> <a href="javascript:_open('@(remplacementive.ReplacementId.ToString())')">@(remplacementive.ForDate.ToString("dd.MM.yyyy"))</a> <span>(@(remplacementive.Comment))</span> <a href="dossier.aspx?employeeId=@(remplacementive.EmployeeId)">@(remplacementive.ReplacedEmployeeName)</a></td></tr>
+        }
+            
+    }
+          @* Сотрудник отсутствует *@
+
+}
+</table>
+
+</div>
+</text>
+	}
+}
+</div>

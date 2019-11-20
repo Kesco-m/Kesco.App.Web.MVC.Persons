@@ -1,0 +1,12 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.Validation.ValidationResults>
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+}
+<div data-bind="if:  ViewModel.@(name).Messages() != null &&  ViewModel.@(name).Messages().length > 0">
+	<div style="font-size: 7pt" data-bind="css: 'validation-error', foreach: ViewModel.@(name).Messages">		
+		<div data-bind="html: $data"></div>		
+	</div>
+</div>

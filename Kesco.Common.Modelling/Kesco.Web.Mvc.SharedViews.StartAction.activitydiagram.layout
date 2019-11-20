@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Kesco.Web.Mvc.SharedViews.StartAction">
+  <activityRootModelMoniker Id="7dc3a7fa-ff26-4cee-a9b1-365ebed5d859" />
+  <nestedChildShapes>
+    <rectangleShape Id="4e739f46-68e9-49b8-bbf3-f579d5588874" absoluteBounds="0.5, 0.625, 2, 6.375" outlineColor="83, 134, 191" outlineThickness="0.03125" />
+    <objectNodeShape Id="0dc0fe08-d646-4e9f-a2de-0ee12c4da7ff" absoluteBounds="0.5, 0.625, 2, 0.5" customColor="White">
+      <objectNodeMoniker Id="c85846d1-c0c8-4a54-9611-aa508d78aeba" LastKnownName="Object1" />
+    </objectNodeShape>
+  </nestedChildShapes>
+</activityDiagram>

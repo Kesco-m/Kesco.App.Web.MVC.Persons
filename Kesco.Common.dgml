@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="TopToBottom" Layout="ForceDirected" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@13 @1 Type=EnumerableExtensions)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" IsHub="True" Label="EnumerableExtensions" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @1 Type=Guard)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" IsHub="True" Label="Guard" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @1 Type=StringExtensions)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" IsHub="True" Label="StringExtensions" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @1 Type=Utilities)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" IsHub="True" Label="Utilities" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=(Name=Entity @14))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="Entity&lt;T,TID&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=(Name=IUniqueID GenericParameterCount=1))" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="IUniqueID&lt;T&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=(Name=Trackable GenericParameterCount=1))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="Trackable&lt;T&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=(Name=TrackableEntity @14))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="TrackableEntity&lt;T,TID&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=(Name=TrackableTreeEntity @14))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="TrackableTreeEntity&lt;T,TID&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=IFriendlyNamed)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="IFriendlyNamed" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=ITrackableEntity)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="ITrackableEntity" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @10 Type=IUnique)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="IUnique" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=AnnotationAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="AnnotationAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=DescriptionExAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="DescriptionExAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=DisplayFormatExAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="DisplayFormatExAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=DisplayAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="DisplayAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=GreaterThanAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="GreaterThanAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=LocalizableString)" Category="CodeSchema_Class" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="LocalizableString" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=MaxValueAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="MaxValueAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=MinValueAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="MinValueAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @3 Type=RemoteAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="RemoteAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=AccessorBase @14))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="AccessorBase&lt;D,A&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=DbQuery ParentType=(Name=AccessorBase @14)))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="AccessorBase&lt;D,A&gt;.DbQuery" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=DbQuery ParentType=(Name=EntityAccessor GenericParameterCount=5)))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="EntityAccessor&lt;A,D,T,S,TID&gt;.DbQuery" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=EntityAccessor GenericParameterCount=5))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="EntityAccessor&lt;A,D,T,S,TID&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=IEntityAccessor GenericParameterCount=3))" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="IEntityAccessor&lt;T,S,TID&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=Manager @14))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="Manager&lt;D,A&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=(Name=SqlQueryEx GenericParameterCount=1))" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="SqlQueryEx&lt;D&gt;" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=BaseException)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="BaseException" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=ConnectionException)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="ConnectionException" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=ConstraintException)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="ConstraintException" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=DataException)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="DataException" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=Database)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="Database" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=EntitySearchParameters)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="EntitySearchParameters" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=Extensions)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="Extensions" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=IEntityAccessor)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="IEntityAccessor" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=IEntitySearchable)" Category="CodeSchema_Interface" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="IEntitySearchable" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @5 Type=SearchQueryAttribute)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="SearchQueryAttribute" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @7 Type=FilterOption)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="FilterOption" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @7 Type=FilterOptionCondition)" Category="CodeSchema_Enum" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="FilterOptionCondition" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 @7 Type=FilterOptionFlags)" Category="CodeSchema_Enum" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="FilterOptionFlags" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 Namespace=Kesco.Logging Type=BLToolkitLoggingInitializer)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="BLToolkitLoggingInitializer" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 Namespace=Kesco.Logging Type=Logger)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" Label="Logger" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@13 Namespace=Kesco.Reflection Type=TypeExtensions)" Category="CodeSchema_Class" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" IsDragSource="True" IsHub="True" Label="TypeExtensions" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(@15 @1 Type=Logger)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" IsDragSource="True" IsHub="True" Label="Logger" Language="{B5E9BD34-6D3E-4B5D-925E-8A43B79820B4}" />
+    <Node Id="(Namespace=Kesco.Linq)" Category="CodeSchema_Namespace" IsDragSource="True" Label="Kesco.Linq" />
+    <Node Id="@11" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco.ObjectModel" />
+    <Node Id="@12" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco.Reflection" />
+    <Node Id="@2" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco" />
+    <Node Id="@4" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco.ComponentModel.DataAnnotations" />
+    <Node Id="@6" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco.DataAccess" />
+    <Node Id="@8" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco.DataAccess.Filtering" />
+    <Node Id="@9" Category="CodeSchema_Namespace" IsDragSource="True" IsHub="True" Label="Kesco.Logging" />
+  </Nodes>
+  <Links>
+    <Link Source="@11" Target="(@13 @10 Type=(Name=Entity @14))" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=(Name=IUniqueID GenericParameterCount=1))" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=(Name=Trackable GenericParameterCount=1))" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=(Name=TrackableEntity @14))" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=(Name=TrackableTreeEntity @14))" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=IFriendlyNamed)" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=ITrackableEntity)" Category="Contains" />
+    <Link Source="@11" Target="(@13 @10 Type=IUnique)" Category="Contains" />
+    <Link Source="@12" Target="(@13 Namespace=Kesco.Reflection Type=TypeExtensions)" Category="Contains" />
+    <Link Source="@2" Target="(@13 @1 Type=EnumerableExtensions)" Category="Contains" />
+    <Link Source="@2" Target="(@13 @1 Type=Guard)" Category="Contains" />
+    <Link Source="@2" Target="(@13 @1 Type=StringExtensions)" Category="Contains" />
+    <Link Source="@2" Target="(@13 @1 Type=Utilities)" Category="Contains" />
+    <Link Source="@2" Target="(@15 @1 Type=Logger)" Category="Contains" />
+    <Link Source="@2" Target="(Namespace=Kesco.Linq)" Category="Contains" />
+    <Link Source="@2" Target="@11" Category="Contains" />
+    <Link Source="@2" Target="@12" Category="Contains" />
+    <Link Source="@2" Target="@4" Category="Contains" />
+    <Link Source="@2" Target="@6" Category="Contains" />
+    <Link Source="@2" Target="@9" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=AnnotationAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=DescriptionExAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=DisplayFormatExAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=DisplayAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=GreaterThanAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=LocalizableString)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=MaxValueAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=MinValueAttribute)" Category="Contains" />
+    <Link Source="@4" Target="(@13 @3 Type=RemoteAttribute)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=AccessorBase @14))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=DbQuery ParentType=(Name=AccessorBase @14)))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=DbQuery ParentType=(Name=EntityAccessor GenericParameterCount=5)))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=EntityAccessor GenericParameterCount=5))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=IEntityAccessor GenericParameterCount=3))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=Manager @14))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=(Name=SqlQueryEx GenericParameterCount=1))" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=BaseException)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=ConnectionException)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=ConstraintException)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=DataException)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=Database)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=EntitySearchParameters)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=Extensions)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=IEntityAccessor)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=IEntitySearchable)" Category="Contains" />
+    <Link Source="@6" Target="(@13 @5 Type=SearchQueryAttribute)" Category="Contains" />
+    <Link Source="@6" Target="@8" Category="Contains" />
+    <Link Source="@8" Target="(@13 @7 Type=FilterOption)" Category="Contains" />
+    <Link Source="@8" Target="(@13 @7 Type=FilterOptionCondition)" Category="Contains" />
+    <Link Source="@8" Target="(@13 @7 Type=FilterOptionFlags)" Category="Contains" />
+    <Link Source="@9" Target="(@13 Namespace=Kesco.Logging Type=BLToolkitLoggingInitializer)" Category="Contains" />
+    <Link Source="@9" Target="(@13 Namespace=Kesco.Logging Type=Logger)" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Block" Label="Блок" BasedOn="CodeSchema_Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Блоки" />
+    <Category Id="CodeSchema_Class" Label="Класс" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Классы" />
+    <Category Id="CodeSchema_Enum" Label="Перечисление" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Enum" IsProviderRoot="False" NavigationActionLabel="Перечисления" />
+    <Category Id="CodeSchema_Interface" Label="Интерфейс" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Interface" IsProviderRoot="False" NavigationActionLabel="Интерфейсы" />
+    <Category Id="CodeSchema_Namespace" Label="Пространство имен" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" IsProviderRoot="False" NavigationActionLabel="Пространства имен" />
+    <Category Id="CodeSchema_Statement" Label="Оператор" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Оператор" />
+    <Category Id="CodeSchema_Type" Label="Тип" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Типы" />
+    <Category Id="Contains" Label="Содержит" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Содержится в" IsContainment="True" OutgoingActionLabel="Содержит" />
+  </Categories>
+  <Properties>
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsAbstract" Label="IsAbstract" Description="IsAbstract" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsFinal" Label="IsFinal" Description="IsFinal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="IsPublic" Description="IsPublic" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Progression.Layout.GraphDirection" />
+    <Property Id="Icon" Label="Значок" Description="Значок" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsDragSource" Label="IsDragSource" Description="IsDragSource" DataType="System.Boolean" />
+    <Property Id="IsHub" Label="Концентратор" Description="Узел входит в первые 25% наиболее подключаемых узлов.  Узлы, непосредственно не соединяющие эти концентраторы, скрыты для упрощения графа." DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Метка" Description="Отображаемая метка помечаемого объекта" DataType="System.String" />
+    <Property Id="Language" Label="Язык" Description="Язык" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Сборка" ValueType="Uri" />
+    <Name Id="GenericParameterCount" Label="Число универсальных параметров" ValueType="System.String" />
+    <Name Id="Name" Label="Имя" ValueType="System.String" />
+    <Name Id="Namespace" Label="Пространство имен" ValueType="System.String" />
+    <Name Id="ParentType" Label="Родительский тип" ValueType="System.Object" />
+    <Name Id="Type" Label="Тип" ValueType="System.Object" />
+  </QualifiedNames>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Настоятельно рекомендуется!" ToolTip="Узел является частью надежно соединенного компонента" ValueLabel="Узлы">
+      <Condition Expression="IsStronglyConnected" />
+      <Setter Property="Stroke" Value="#D02030" />
+      <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Настоятельно рекомендуется!" ToolTip="Узел является частью надежно соединенного компонента" ValueLabel="Ссылки">
+      <Condition Expression="IsCircularLink" />
+      <Setter Property="Stroke" Value="#D02030" />
+      <Setter Property="StrokeThickness" Value="2" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Интерфейс" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Interface')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+      <Setter Property="Icon" Value="pack://application:,,,/Microsoft.VisualStudio.Progression.VSPackage;component/Icons/Interface.png" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Перечисление" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Enum')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+      <Setter Property="Icon" Value="pack://application:,,,/Microsoft.VisualStudio.Progression.VSPackage;component/Icons/Enum.png" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Концентратор" ToolTip="Узел входит в первые 25% наиболее подключаемых узлов.  Узлы, непосредственно не соединяющие эти концентраторы, скрыты для упрощения графа." ValueLabel="True">
+      <Condition Expression="IsHub" />
+      <Setter Property="Background" Value="#FF008080" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Содержит" ValueLabel="True">
+      <Condition Expression="HasCategory('Contains')" />
+      <Setter Property="Background" Value="#FFC0C0C0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Класс" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Class')" />
+      <Setter Property="Background" Value="#FF288848" />
+      <Setter Property="Icon" Value="pack://application:,,,/Microsoft.VisualStudio.Progression.VSPackage;component/Icons/Class.png" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Пространство имен" ValueLabel="True">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#FF8998BC" />
+      <Setter Property="Icon" Value="pack://application:,,,/Microsoft.VisualStudio.Progression.VSPackage;component/Icons/Namespace.png" />
+    </Style>
+  </Styles>
+  <IdentifierAliases>
+    <Alias n="1" Id="Namespace=Kesco" />
+    <Alias n="2" Id="(@1)" />
+    <Alias n="3" Id="Namespace=Kesco.ComponentModel.DataAnnotations" />
+    <Alias n="4" Id="(@3)" />
+    <Alias n="5" Id="Namespace=Kesco.DataAccess" />
+    <Alias n="6" Id="(@5)" />
+    <Alias n="7" Id="Namespace=Kesco.DataAccess.Filtering" />
+    <Alias n="8" Id="(@7)" />
+    <Alias n="9" Id="(Namespace=Kesco.Logging)" />
+    <Alias n="10" Id="Namespace=Kesco.ObjectModel" />
+    <Alias n="11" Id="(@10)" />
+    <Alias n="12" Id="(Namespace=Kesco.Reflection)" />
+    <Alias n="13" Uri="Assembly=$(0c4d6de0-daf5-49d7-bc56-f79287332045.OutputPathUri)" />
+    <Alias n="14" Id="GenericParameterCount=2" />
+    <Alias n="15" Uri="Assembly=file:///C:/_PUBLISH/Log/Kesco.Log.dll" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="0c4d6de0-daf5-49d7-bc56-f79287332045.OutputPath" Value="C:\_PUBLISH\Web_Data\MVC\Kesco.BaseExtensions.dll" />
+    <Path Id="0c4d6de0-daf5-49d7-bc56-f79287332045.OutputPathUri" Value="file:///C:/_PUBLISH/Web_Data/MVC/Kesco.BaseExtensions.dll" />
+    <Path Id="64c8f921-dbf3-490a-ab1f-385eb1c41d53.OutputPath" Value="C:\_PUBLISH\Web_Data\MVC\Kesco.ApplicationServices.dll" />
+  </Paths>
+</DirectedGraph>

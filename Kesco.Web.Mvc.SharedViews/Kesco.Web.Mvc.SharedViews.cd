@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.Web.Mvc.SharedViews.dll&#xD;&#xA;Пространство имён: Kesco.Web.Mvc.SharedViews&#xD;&#xA;Инфраструктура">
+    <Position X="0.5" Y="0.5" Height="0.549" Width="13.458" />
+  </Comment>
+  <Comment CommentText="Базовый класс MvcApplication для всех MVC приложений">
+    <Position X="0.5" Y="1.319" Height="0.419" Width="3.493" />
+  </Comment>
+  <Comment CommentText="Определяет настройки приложения, доступные шаблонам">
+    <Position X="4.717" Y="1.335" Height="0.648" Width="2.846" />
+  </Comment>
+  <Comment CommentText="Регистрирует RazorGenerator ViewEngine для откомпилированных шаблонов представления">
+    <Position X="11.472" Y="1.346" Height="0.648" Width="2.474" />
+  </Comment>
+  <Comment CommentText="Базовые классы для страниц представлений">
+    <Position X="8.219" Y="1.337" Height="0.648" Width="2.846" />
+  </Comment>
+  <Comment CommentText="Регистрирует клиентские пакеты для скриптов и стилевых файлов">
+    <Position X="11.5" Y="3.5" Height="0.648" Width="2.529" />
+  </Comment>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Configuration">
+    <Position X="4.75" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.MvcApplication" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.SharedApplication&lt;S&gt;">
+    <Position X="0.5" Y="4.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAFAIQAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.SharedApplicationSettings">
+    <Position X="4.75" Y="6" Width="3" />
+    <Members>
+      <Property Name="ResourceHowSearch" Hidden="true" />
+      <Property Name="URI_person_create_juridical" Hidden="true" />
+      <Property Name="URI_person_create_natural" Hidden="true" />
+      <Property Name="URI_person_info" Hidden="true" />
+      <Property Name="URI_person_logo" Hidden="true" />
+      <Property Name="URI_person_search" Hidden="true" />
+      <Property Name="URI_resources_export1S" Hidden="true" />
+      <Property Name="URI_user_info" Hidden="true" />
+      <Property Name="URI_user_photo" Hidden="true" />
+      <Property Name="URI_user_search" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BAAAAgAAABAAAAAAAgAAgIAAAAAAAQBAEAAAAEABAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.SharedViewPage" Collapsed="true">
+    <Position X="8.25" Y="6.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.SharedViewPage&lt;S, TModel&gt;" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.SharedViewPage&lt;TModel&gt;" Collapsed="true">
+    <Position X="8.25" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.App_Start.BundleConfig">
+    <Position X="11.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.App_Start.RazorGeneratorMvcStart">
+    <Position X="11.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RazorGeneratorMvcStart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.WebViewPage&lt;TSettings, TModel&gt;">
+    <Position X="8.25" Y="2.25" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Application&lt;S&gt;">
+    <Position X="0.5" Y="2.25" Width="3.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Configuration&lt;TApplicationSettings&gt;">
+    <Position X="4.75" Y="2.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

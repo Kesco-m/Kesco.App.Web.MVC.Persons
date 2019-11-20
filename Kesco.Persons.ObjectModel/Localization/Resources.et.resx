@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Kesco_Persons_MDL_103" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="Kesco_Persons_MDL_249" xml:space="preserve">
+    <value>Eesnimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_250" xml:space="preserve">
+    <value>Eesnimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_251" xml:space="preserve">
+    <value>Eesnimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_252" xml:space="preserve">
+    <value>Eesnimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_253" xml:space="preserve">
+    <value>Keskmine nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_254" xml:space="preserve">
+    <value>Keskmine nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_255" xml:space="preserve">
+    <value>Keskmine nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_256" xml:space="preserve">
+    <value>Keskmine nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_265" xml:space="preserve">
+    <value>Perekonnanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_266" xml:space="preserve">
+    <value>Perekonnanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_267" xml:space="preserve">
+    <value>Perekonnanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_268" xml:space="preserve">
+    <value>Perekonnanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_269" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_270" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_271" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_272" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_273" xml:space="preserve">
+    <value>Isanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_274" xml:space="preserve">
+    <value>Isanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_275" xml:space="preserve">
+    <value>Isanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_276" xml:space="preserve">
+    <value>Isanimi</value>
+  </data>
+  <data name="Kesco_Persons_MDL_245" xml:space="preserve">
+    <value>Perekonnanimi </value>
+  </data>
+  <data name="Kesco_Persons_MDL_247" xml:space="preserve">
+    <value>Perekonnanimi </value>
+  </data>
+  <data name="Kesco_Persons_MDL_277" xml:space="preserve">
+    <value>Sugu</value>
+  </data>
+  <data name="Kesco_Persons_MDL_278" xml:space="preserve">
+    <value>Sugu</value>
+  </data>
+  <data name="Kesco_Persons_MDL_279" xml:space="preserve">
+    <value>Sugu</value>
+  </data>
+  <data name="Kesco_Persons_MDL_280" xml:space="preserve">
+    <value>Sugu</value>
+  </data>
+  <data name="Kesco_Persons_MDL_281" xml:space="preserve">
+    <value>OKONH</value>
+  </data>
+  <data name="Kesco_Persons_MDL_282" xml:space="preserve">
+    <value>OKONH</value>
+  </data>
+  <data name="Kesco_Persons_MDL_283" xml:space="preserve">
+    <value>OKONH</value>
+  </data>
+  <data name="Kesco_Persons_MDL_284" xml:space="preserve">
+    <value>OKONH</value>
+  </data>
+  <data name="Kesco_Persons_MDL_285" xml:space="preserve">
+    <value>NACE</value>
+  </data>
+  <data name="Kesco_Persons_MDL_165" xml:space="preserve">
+    <value>Sünnikuupäev</value>
+  </data>
+  <data name="Kesco_Persons_MDL_166" xml:space="preserve">
+    <value>Sünnikuupäev</value>
+  </data>
+  <data name="Kesco_Persons_MDL_167" xml:space="preserve">
+    <value>Sünnikuupäev</value>
+  </data>
+  <data name="Kesco_Persons_MDL_168" xml:space="preserve">
+    <value>Sünnikuupäev</value>
+  </data>
+  <data name="Kesco_Persons_MDL_169" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_170" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_171" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_172" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_161" xml:space="preserve">
+    <value>SWIFT</value>
+  </data>
+  <data name="Kesco_Persons_MDL_162" xml:space="preserve">
+    <value>SWIFT</value>
+  </data>
+  <data name="Kesco_Persons_MDL_163" xml:space="preserve">
+    <value>SWIFT</value>
+  </data>
+  <data name="Kesco_Persons_MDL_137" xml:space="preserve">
+    <value>INN</value>
+  </data>
+  <data name="Kesco_Persons_MDL_138" xml:space="preserve">
+    <value>INN</value>
+  </data>
+  <data name="Kesco_Persons_MDL_139" xml:space="preserve">
+    <value>INN</value>
+  </data>
+  <data name="Kesco_Persons_MDL_140" xml:space="preserve">
+    <value>INN</value>
+  </data>
+  <data name="Kesco_Persons_MDL_141" xml:space="preserve">
+    <value>Riigi registrinumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_142" xml:space="preserve">
+    <value>Riigi registrinumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_143" xml:space="preserve">
+    <value>Riigi registrinumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_144" xml:space="preserve">
+    <value>Riigi registrinumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_145" xml:space="preserve">
+    <value>OKPO</value>
+  </data>
+  <data name="Kesco_Persons_MDL_146" xml:space="preserve">
+    <value>OKPO</value>
+  </data>
+  <data name="Kesco_Persons_MDL_147" xml:space="preserve">
+    <value>OKPO</value>
+  </data>
+  <data name="Kesco_Persons_MDL_148" xml:space="preserve">
+    <value>OKPO</value>
+  </data>
+  <data name="Kesco_Persons_MDL_149" xml:space="preserve">
+    <value>BIС</value>
+  </data>
+  <data name="Kesco_Persons_MDL_150" xml:space="preserve">
+    <value>BIС</value>
+  </data>
+  <data name="Kesco_Persons_MDL_151" xml:space="preserve">
+    <value>BIС</value>
+  </data>
+  <data name="Kesco_Persons_MDL_152" xml:space="preserve">
+    <value>BIС</value>
+  </data>
+  <data name="Kesco_Persons_MDL_153" xml:space="preserve">
+    <value>Korrespondentkonto</value>
+  </data>
+  <data name="Kesco_Persons_MDL_154" xml:space="preserve">
+    <value>Korrespondentkonto</value>
+  </data>
+  <data name="Kesco_Persons_MDL_155" xml:space="preserve">
+    <value>Korrespondentkonto</value>
+  </data>
+  <data name="Kesco_Persons_MDL_156" xml:space="preserve">
+    <value>Korrespondentkonto</value>
+  </data>
+  <data name="Kesco_Persons_MDL_157" xml:space="preserve">
+    <value>BIС RKC</value>
+  </data>
+  <data name="Kesco_Persons_MDL_158" xml:space="preserve">
+    <value>BIС RKC</value>
+  </data>
+  <data name="Kesco_Persons_MDL_159" xml:space="preserve">
+    <value>BIС RKC</value>
+  </data>
+  <data name="Kesco_Persons_MDL_160" xml:space="preserve">
+    <value>BIС RKC</value>
+  </data>
+  <data name="Kesco_Persons_MDL_164" xml:space="preserve">
+    <value>SWIFT</value>
+  </data>
+  <data name="Kesco_Persons_MDL_286" xml:space="preserve">
+    <value>NACE</value>
+  </data>
+  <data name="Kesco_Persons_MDL_287" xml:space="preserve">
+    <value>NACE</value>
+  </data>
+  <data name="Kesco_Persons_MDL_288" xml:space="preserve">
+    <value>NACE</value>
+  </data>
+  <data name="Kesco_Persons_MDL_297" xml:space="preserve">
+    <value>Juriidiline aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_298" xml:space="preserve">
+    <value>Juriidiline aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_299" xml:space="preserve">
+    <value>Juriidiline aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_300" xml:space="preserve">
+    <value>Juriidiline aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_301" xml:space="preserve">
+    <value>Legal Address</value>
+  </data>
+  <data name="Kesco_Persons_MDL_302" xml:space="preserve">
+    <value>Legal Address</value>
+  </data>
+  <data name="Kesco_Persons_MDL_303" xml:space="preserve">
+    <value>Legal Address</value>
+  </data>
+  <data name="Kesco_Persons_MDL_293" xml:space="preserve">
+    <value>Railway ID</value>
+  </data>
+  <data name="Kesco_Persons_MDL_294" xml:space="preserve">
+    <value>Railway ID</value>
+  </data>
+  <data name="Kesco_Persons_MDL_295" xml:space="preserve">
+    <value>Railway ID</value>
+  </data>
+  <data name="Kesco_Persons_MDL_296" xml:space="preserve">
+    <value>Railway ID</value>
+  </data>
+  <data name="Kesco_Persons_MDL_304" xml:space="preserve">
+    <value>Legal Address</value>
+  </data>
+  <data name="Kesco_Persons_MDL_413" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_414" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_415" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_369" xml:space="preserve">
+    <value>Postiindeks</value>
+  </data>
+  <data name="Kesco_Persons_MDL_370" xml:space="preserve">
+    <value>Postiindeks</value>
+  </data>
+  <data name="Kesco_Persons_MDL_371" xml:space="preserve">
+    <value>Postiindeks</value>
+  </data>
+  <data name="Kesco_Persons_MDL_416" xml:space="preserve">
+    <value>Кommentaar</value>
+  </data>
+  <data name="Kesco_Persons_MDL_372" xml:space="preserve">
+    <value>Postiindeks</value>
+  </data>
+  <data name="Kesco_Persons_MDL_373" xml:space="preserve">
+    <value>Riigi/piirkond</value>
+  </data>
+  <data name="Kesco_Persons_MDL_374" xml:space="preserve">
+    <value>Riigi/piirkond</value>
+  </data>
+  <data name="Kesco_Persons_MDL_375" xml:space="preserve">
+    <value>Riigi/piirkond</value>
+  </data>
+  <data name="Kesco_Persons_MDL_376" xml:space="preserve">
+    <value>Riigi/piirkond</value>
+  </data>
+  <data name="Kesco_Persons_MDL_665" xml:space="preserve">
+    <value>Kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_666" xml:space="preserve">
+    <value>Kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_667" xml:space="preserve">
+    <value>Kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_668" xml:space="preserve">
+    <value>Kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_669" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_670" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_671" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_672" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_673" xml:space="preserve">
+    <value>Töötaja</value>
+  </data>
+  <data name="Kesco_Persons_MDL_674" xml:space="preserve">
+    <value>Töötaja</value>
+  </data>
+  <data name="Kesco_Persons_MDL_675" xml:space="preserve">
+    <value>Töötaja</value>
+  </data>
+  <data name="Kesco_Persons_MDL_676" xml:space="preserve">
+    <value>Töötaja</value>
+  </data>
+  <data name="Kesco_Persons_MDL_677" xml:space="preserve">
+    <value>nagu</value>
+  </data>
+  <data name="Kesco_Persons_MDL_678" xml:space="preserve">
+    <value>tikud</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_Name" xml:space="preserve">
+    <value>Kood mida isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_ShortName" xml:space="preserve">
+    <value>Kood Tööriistad</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_Description" xml:space="preserve">
+    <value>Määrab unikaalse numbri teema, et inimene võib olla.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_PersonTheme_ID_Prompt" xml:space="preserve">
+    <value>Sisesta Unikaalne teema.</value>
+  </data>
+  <data name="Kesco_Persons_MDL_649" xml:space="preserve">
+    <value>Kirjeldus</value>
+  </data>
+  <data name="Kesco_Persons_MDL_650" xml:space="preserve">
+    <value>Kirjeldus</value>
+  </data>
+  <data name="Kesco_Persons_MDL_651" xml:space="preserve">
+    <value>Kirjeldus</value>
+  </data>
+  <data name="Kesco_Persons_MDL_652" xml:space="preserve">
+    <value>Kirjeldus</value>
+  </data>
+  <data name="Kesco_Persons_MDL_401" xml:space="preserve">
+    <value>tel. laiendamine</value>
+  </data>
+  <data name="Kesco_Persons_MDL_402" xml:space="preserve">
+    <value>tel. laiendamine</value>
+  </data>
+  <data name="Kesco_Persons_MDL_403" xml:space="preserve">
+    <value>telefon laiendamine</value>
+  </data>
+  <data name="Kesco_Persons_MDL_404" xml:space="preserve">
+    <value>telefon laiendamine</value>
+  </data>
+  <data name="Kesco_Persons_MDL_357" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_358" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_359" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_360" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_409" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_410" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_411" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_412" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_353" xml:space="preserve">
+    <value>Tüüp kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_354" xml:space="preserve">
+    <value>Tüüp kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_355" xml:space="preserve">
+    <value>Tüüp kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_356" xml:space="preserve">
+    <value>Täpsustada, millist tüüpi kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_345" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_346" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_347" xml:space="preserve">
+    <value>Isik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_348" xml:space="preserve">
+    <value>Palun täpsustage isiku kontakt</value>
+  </data>
+  <data name="Kesco_Persons_MDL_365" xml:space="preserve">
+    <value>Riik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_366" xml:space="preserve">
+    <value>Riik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_367" xml:space="preserve">
+    <value>Riik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_368" xml:space="preserve">
+    <value>Riik</value>
+  </data>
+  <data name="Kesco_Persons_MDL_377" xml:space="preserve">
+    <value>Linn</value>
+  </data>
+  <data name="Kesco_Persons_MDL_378" xml:space="preserve">
+    <value>Linn</value>
+  </data>
+  <data name="Kesco_Persons_MDL_379" xml:space="preserve">
+    <value>Linn</value>
+  </data>
+  <data name="Kesco_Persons_MDL_380" xml:space="preserve">
+    <value>Linn</value>
+  </data>
+  <data name="Kesco_Persons_MDL_385" xml:space="preserve">
+    <value>Aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_386" xml:space="preserve">
+    <value>Aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_387" xml:space="preserve">
+    <value>Aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_388" xml:space="preserve">
+    <value>Aadress</value>
+  </data>
+  <data name="Kesco_Persons_MDL_389" xml:space="preserve">
+    <value>Riik Kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_390" xml:space="preserve">
+    <value>Riik Kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_391" xml:space="preserve">
+    <value>Telefoni riigi kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_392" xml:space="preserve">
+    <value>Sisestage riigi kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_393" xml:space="preserve">
+    <value>Piirkonna kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_394" xml:space="preserve">
+    <value>Piirkonna kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_395" xml:space="preserve">
+    <value>Piirkonna kood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_396" xml:space="preserve">
+    <value>Sisestage suunakood</value>
+  </data>
+  <data name="Kesco_Persons_MDL_397" xml:space="preserve">
+    <value>Kohalik telefoninumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_398" xml:space="preserve">
+    <value>Kohalik telefoninumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_399" xml:space="preserve">
+    <value>Kohalik telefoninumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_400" xml:space="preserve">
+    <value>Kohalik telefoninumber</value>
+  </data>
+  <data name="Kesco_Persons_MDL_601" xml:space="preserve">
+    <value>Märkus</value>
+    <comment>PersonLink.Description.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_602" xml:space="preserve">
+    <value>Märkus</value>
+    <comment>PersonLink.Description.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_603" xml:space="preserve">
+    <value>Märkus</value>
+    <comment>PersonLink.Description.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_604" xml:space="preserve">
+    <value>Märkus</value>
+    <comment>PersonLink.Description.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_605" xml:space="preserve">
+    <value>Allkirja andnud</value>
+    <comment>PersonLink.Parameter.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_Name" xml:space="preserve">
+    <value>Vanem</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_ShortName" xml:space="preserve">
+    <value>Vanem</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_Description" xml:space="preserve">
+    <value>Vanem</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ParentID_Prompt" xml:space="preserve">
+    <value>Vanem</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ChildID_Name" xml:space="preserve">
+    <value>Laps</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ChildID_ShortName" xml:space="preserve">
+    <value>Laps</value>
+  </data>
+  <data name="Kesco_Persons_MDL_Link_ChildID_Description" xml:space="preserve">
+    <value>Laps</value>
+  </data>
+  <data name="Kesco_Persons_MDL_477" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_478" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_479" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_480" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_481" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_482" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_483" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_177" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_179" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_181" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_182" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_183" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_484" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_585" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_586" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_587" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_588" xml:space="preserve">
+    <value>pärit</value>
+  </data>
+  <data name="Kesco_Persons_MDL_589" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_590" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_591" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_592" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_184" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_MDL_679" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_680" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_681" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_682" xml:space="preserve">
+    <value>OGRNLength1</value>
+    <comment>FormatRegistration.OGRNLength1.Prompt</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_683" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.Name</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_684" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.ShortName</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_685" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.Description</comment>
+  </data>
+  <data name="Kesco_Persons_MDL_686" xml:space="preserve">
+    <value>OGRNLength2</value>
+    <comment>FormatRegistration.OGRNLength2.Prompt</comment>
+  </data>
+</root>

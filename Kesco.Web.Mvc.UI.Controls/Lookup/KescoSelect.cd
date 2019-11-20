@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Kesco.Web.Mvc.UI.Fluent.KescoSelectBuilder">
+    <Position X="10" Y="1" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ABAgAAAEAAkAAAAAAAAQAAIAEAAAAACAAAAgAAIACAA=</HashCode>
+      <FileName>Lookup\Fluent\KescoSelectBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.KescoSelectLink">
+    <Position X="0.75" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAABAAAAAAAAAAAAAAACAEAAAA=</HashCode>
+      <FileName>Lookup\KescoSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.KescoSelectClientEvents">
+    <Position X="4" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAABAAAAAAAQAAAAAAAAAAICAAAAAAA=</HashCode>
+      <FileName>Lookup\KescoSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.KescoSelect">
+    <Position X="7.25" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EDAAAAAAAAkgAAAAAAAAAAIgAgAAoACACAAhgAAgCAA=</HashCode>
+      <FileName>Lookup\KescoSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.KescoSelectHtmlBuilder">
+    <Position X="10" Y="4.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Lookup\KescoSelectTextBoxHtmlBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Kesco.Web.Mvc.UI.KescoSelectButtons">
+    <Position X="4" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAA=</HashCode>
+      <FileName>Lookup\KescoSelect.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Kesco.Web.Mvc.UI.KescoSelectLinkShowCondition">
+    <Position X="0.75" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgABAAAAA=</HashCode>
+      <FileName>Lookup\KescoSelect.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

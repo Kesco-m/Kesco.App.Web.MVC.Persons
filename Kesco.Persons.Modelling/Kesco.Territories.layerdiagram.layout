@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerDiagram dslVersion="1.0.0.0" Id="aeba87be-a4bf-4769-8322-e71e57ff26cf" absoluteBounds="0, 0, 11, 8.5" name="Kesco.Territories">
+  <layerModelMoniker Id="0c5fe9fd-9da7-4e39-921e-da8ddc07e9bc" />
+  <nestedChildShapes>
+    <layerShape Id="c2cb71a9-769c-40f2-9f01-30b2980343f9" absoluteBounds="3, 1.875, 3, 0.75" customColor="161, 199, 231">
+      <layerMoniker Id="8a3b5f75-7ce4-4dce-9fb3-b97d5644cf52" />
+    </layerShape>
+    <layerShape Id="97be0855-573e-4c01-81d8-7ff15c9cf85c" absoluteBounds="3, 4.25, 2.625, 0.75" customColor="161, 199, 231">
+      <layerMoniker Id="036fe37b-1ca2-4a34-887c-d5f13c791164" />
+    </layerShape>
+    <layerShape Id="5766b33a-abe6-42ed-b983-2e818956fce5" absoluteBounds="7.125, 4.125, 2.375, 0.75" customColor="161, 199, 231">
+      <layerMoniker Id="c299ee77-ae22-4c89-980f-cb87332ba4c7" />
+    </layerShape>
+    <dependencyConnector edgePoints="[(4.3125 : 4.25); (4.3125 : 2.625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <dependencyFromLayerToLayerMoniker Id="2a6cd19f-8acd-4a2c-b699-25a79c135364" />
+      <relativeChildShapes />
+      <nodes>
+        <layerShapeMoniker Id="97be0855-573e-4c01-81d8-7ff15c9cf85c" />
+        <layerShapeMoniker Id="c2cb71a9-769c-40f2-9f01-30b2980343f9" />
+      </nodes>
+    </dependencyConnector>
+    <dependencyConnector edgePoints="[(5.625 : 4.5625); (7.125 : 4.5625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
+      <dependencyFromLayerToLayerMoniker Id="d4f7bc8d-43b1-4416-970d-e9da5f18c615" />
+      <relativeChildShapes />
+      <nodes>
+        <layerShapeMoniker Id="97be0855-573e-4c01-81d8-7ff15c9cf85c" />
+        <layerShapeMoniker Id="5766b33a-abe6-42ed-b983-2e818956fce5" />
+      </nodes>
+    </dependencyConnector>
+  </nestedChildShapes>
+</layerDiagram>

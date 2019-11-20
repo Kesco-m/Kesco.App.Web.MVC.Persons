@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="8df9e5aa-bca0-426d-9438-cdfdfcebeb67" name="Kesco.Persons.Controls.PersonSelect" linkedPackageId="7454439d-5064-4e3a-b749-7ded89e0a52e" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="cd3e468b-3b90-4eb9-9771-7f5c2f4eb1be">
+      <profileInstance Id="d1d82997-681c-49a8-98fc-728320f9c4aa" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="6128a233-a22d-4cd5-bca9-f531cadb5af8">
+      <profileInstance Id="23f48bee-7744-4950-82ce-1c548830c837" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <componentModelHasComponents>
+      <component Id="3893f473-519d-4b65-87f4-5aa870c740e7" name="PersonSelect" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a32fc183-3fd0-40f3-8eae-773a529e3843" />
+        <ownedAttributesInternal>
+          <part Id="3e6f8617-41b7-4e76-b99d-7f3ce5b09611" name="PersonSelectController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="true">
+            <elementDefinition Id="ee584234-1246-4289-a544-a01d9bd00087" />
+            <type_NamedElement>
+              <componentMoniker Id="77ec5fdd-92ca-4f96-8c88-a3275fd7e8d8" LastKnownName="Component1" />
+            </type_NamedElement>
+          </part>
+        </ownedAttributesInternal>
+      </component>
+    </componentModelHasComponents>
+    <componentModelHasComponents>
+      <component Id="77ec5fdd-92ca-4f96-8c88-a3275fd7e8d8" name="Component1" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="04e37561-8819-4372-b0ce-2d7dbe0ff867" />
+      </component>
+    </componentModelHasComponents>
+  </packagedElements>
+  <package Id="7454439d-5064-4e3a-b749-7ded89e0a52e" name="Kesco.Persons.Modelling">
+    <elementDefinition Id="b434b3e4-e8a1-4706-8633-2efc7b7e1f98" />
+  </package>
+</componentModel>

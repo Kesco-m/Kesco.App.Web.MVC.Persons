@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="f4731ae3-cd5d-4ddf-a016-3ee9d0730a10" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="0ec3c097-a301-4bad-9c87-624a63774795" name="Бизнес-объекты и их методы">
+      <childLayers>
+        <layer Id="fc14c04b-90f3-4d93-9766-a92712fb861e" name="Kesco.ObjectModel.ApplicationServices" />
+      </childLayers>
+    </layer>
+    <layer Id="29d2019f-1f65-47a6-babf-5a29ee25bc3f" name="Процессы над бизнес-объектами">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="a82da05c-987d-486d-8363-4742dcb63a17" direction="Forward">
+          <layerMoniker Id="70aab41e-9326-438f-9b15-abd2133716c0" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0fecdf78-28e9-4df5-bed7-3f2301b769c1" direction="Forward">
+          <layerMoniker Id="0ec3c097-a301-4bad-9c87-624a63774795" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="a180e048-2429-4523-9526-aa35e911cd4c" name="Kesco.BusinessLogic.ApplicationServices" />
+      </childLayers>
+    </layer>
+    <layer Id="70aab41e-9326-438f-9b15-abd2133716c0" name="Работа с базой данных">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="73e0c193-b29c-4b7b-b01b-66ab2e2f6360" direction="Forward">
+          <layerMoniker Id="66c6a8a4-b12c-4bef-af3c-93dc34c17dd7" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="ae5cb9eb-6100-427a-80c1-905f2a27e081" name="Kesco.DataAccess" />
+      </childLayers>
+    </layer>
+    <layer Id="66c6a8a4-b12c-4bef-af3c-93dc34c17dd7" name="Обработка ошибок">
+      <childLayers>
+        <layer Id="ab3f6b0d-f7e3-4547-ac03-70afa17b0571" name="Kesco.Log.dll" />
+      </childLayers>
+    </layer>
+    <layer Id="a56052e8-2363-4982-9377-63a25d76eead" name="Разбиение на фунциональные блоки для библиотеки Kesco.ApplicationServices" />
+  </layers>
+</layerModel>

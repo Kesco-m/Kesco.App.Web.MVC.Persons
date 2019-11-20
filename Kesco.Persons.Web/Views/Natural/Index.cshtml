@@ -1,0 +1,1233 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Naturals.ViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Localization
+@{
+	Model
+		.GetScriptCapabilities()
+		.DisableGridScript()
+		.DisableTreeScript();
+	ViewBag.Title = Model.PageTitle;
+    
+    string[] accessLevel = Model.EmployeeRoles.Split(',');
+	Layout = "~/Views/Shared/_Layout.cshtml";
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+     
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+}
+<style>
+	table.formTable td { padding: 4px; }
+</style>
+<div id="formContainer" style="overflow: auto;">
+	@{ Html.EnableClientValidation(); }
+	 
+	@using (Html.BeginForm("NaturalPersonForm", "Person", FormMethod.Post, new { id = "NaturalPersonForm", name = "NewJuridicalForm", onsubmit = "return false;" }))
+	{
+		@Html.ValidationSummary(true)
+		<table class="formTable" cellspacing="0" border="0" style="min-width: 700px;" cellpadding="4">
+		@* Отображаемое имя *@
+		<tr>
+			<td rowspan="30" style="width: 30px;">&nbsp;&nbsp;</td>
+			<td colspan="4" >
+
+				<b><span style="font-size: 16px;" data-bind="text: Model.Card.Nickname"></span></b>&nbsp;
+				<input style="visibility: hidden; width:1px; height:1px" type="submit" 
+					id="SubmitButton" />
+			</td>
+		</tr>
+		@* От/До *@
+		<tr data-bind="visible: ShowPersonRequisites">
+			<td colspan="4" align="right">
+				<table>
+					<tr>
+						<td>@(global::Resources.Resources.Kesco_Persons_Web_VW_133) </td>
+						<td align="right">@Html.LabelFor(m => m.Model.Card.From)</td>
+						<td style="width: 80px">@Html.EditorFor(m => m.Model.Card.From)</td>
+						<td align="right">@Html.LabelFor(m => m.Model.Card.To)</td>
+						<td style="width: 80px">@Html.EditorFor(m => m.Model.Card.To)</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		@* Страна регистрации *@
+		<tr data-bind="visible: ShowPersonData">
+			<td width="150px">
+				@Html.LabelFor(m => m.Model.Card.TerritoryID, new { @for = "Model_Card_TerritoryID___Autocomplete" }):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.TerritoryID)
+				@Html.ValidationMessageFor(m => m.Model.Card.TerritoryID)
+			</td>
+		</tr>
+		@* ФИО рус/лат *@
+		<tr data-bind="visible: ShowPersonRequisites" valign="top">
+			<td colspan="2" style="width: 310px; white-space: normal;">
+				<small>@(Resources.Views_JuridicalPerson_Requisites_NationalPassport)
+				<span id="TerritoryCaptionLat" 
+					data-bind="
+						dynamicLink: {
+							value: Model.Card.TerritoryID,
+							source: '@(Url.FullPathAction("GetItemLang", "TerritorySelect"))' 
+						}"
+					></span></small>
+			</td>
+			<td colspan="2" style="width: 310px;">
+				<small data-bind="
+						visible: Model.Card.LastNameLat() || Model.Card.FirstNameLat() || Model.Card.MiddleNameLat() 
+							|| (Model.Card.LastNameRus() && !LastNameRusIsInLat()) 
+							|| (Model.Card.FirstNameRus() && !FirstNameRusIsInLat()) 
+							|| (Model.Card.MiddleNameRus() && !MiddleNameRusIsInLat())
+					">@(Resources.Views_JuridicalPerson_Requisites_English)</small>
+			</td>
+		</tr>
+		@* Фамилия *@
+		<tr data-bind="visible: ShowPersonRequisites">
+			<td style="width: 150px; ">
+				@Html.LabelFor(m => m.Model.Card.LastNameRus):
+			</td>
+			<td style="width: 160px;">
+				@Html.EditorFor(m => m.Model.Card.LastNameRus)
+				@Html.ValidationMessageFor(m => m.Model.Card.LastNameRus)
+			</td>
+               	<td style="width: 10px;">
+                     <span data-bind="visible: (Model.Card.LastNameLat() || Model.Card.LastNameRus() && !LastNameRusIsInLat()) && Model.Card.LastNameLat() != Model.Card.LastNameRus() ">
+						<a href="javascript: translateName('lastName');" 
+                            ><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/right.png"/></a>
+                            </span>
+					</td>
+			<td style="width: 160px; ">
+				<span data-bind="visible: (Model.Card.LastNameLat() || Model.Card.LastNameRus() && !LastNameRusIsInLat()) && Model.Card.LastNameLat() != Model.Card.LastNameRus() ">
+				@Html.EditorFor(m => m.Model.Card.LastNameLat, new { Databinding = "latinOnly: true" })
+				@Html.ValidationMessageFor(m => m.Model.Card.LastNameLat)
+				</span>
+			</td>
+			<td style="width: 150px;">
+                <tr><span data-bind="visible: false && Model.Card.LastNameRus() && !LastNameRusIsInLat()">
+				&nbsp;@Html.LabelFor(m => m.Model.Card.LastNameLat):
+				</span>
+			</td>
+		</tr>
+
+		@* Имя *@
+		<tr data-bind="visible: ShowPersonRequisites">
+			<td style="">
+				@Html.LabelFor(m => m.Model.Card.FirstNameRus):
+			</td>
+			<td style="width: 160px;">
+				@Html.EditorFor(m => m.Model.Card.FirstNameRus)
+				@Html.ValidationMessageFor(m => m.Model.Card.FirstNameRus)
+			</td>
+              	<td style="width: 10px;">
+                    <span data-bind="visible: (Model.Card.FirstNameLat() || Model.Card.FirstNameRus() && !FirstNameRusIsInLat()) && Model.Card.FirstNameLat() != Model.Card.FirstNameRus() ">
+						<a href="javascript: translateName('firstName');" 
+						><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/right.png" 
+							/></a>
+                            </span>
+					</td>
+			<td style="width: 160px;">
+				<span data-bind="visible: (Model.Card.FirstNameLat() || Model.Card.FirstNameRus() && !FirstNameRusIsInLat()) && Model.Card.FirstNameRus() != Model.Card.FirstNameLat()">
+				@Html.EditorFor(m => m.Model.Card.FirstNameLat, new { Databinding = "latinOnly: true" })
+				@Html.ValidationMessageFor(m => m.Model.Card.FirstNameLat)
+				</span>
+			</td>
+      
+			<td style="">
+				<span data-bind="visible: false && Model.Card.FirstNameRus() && !FirstNameRusIsInLat()">
+					&nbsp;@Html.LabelFor(m => m.Model.Card.FirstNameLat):
+				</span>
+			</td>
+		</tr>
+		@* Отчество *@
+		<tr data-bind="visible: ShowPersonRequisites">
+			<td style="">
+				@Html.LabelFor(m => m.Model.Card.MiddleNameRus):
+			</td>
+			<td style="width: 160px;">
+				@Html.EditorFor(m => m.Model.Card.MiddleNameRus)
+				@Html.ValidationMessageFor(m => m.Model.Card.MiddleNameRus)
+			</td>
+               	<td style="width: 10px;">
+                    <span data-bind="visible: (Model.Card.MiddleNameLat() || Model.Card.MiddleNameRus() && !MiddleNameRusIsInLat()) && Model.Card.MiddleNameLat() != Model.Card.MiddleNameRus() ">
+						<a href="javascript: translateName('middleName');" 
+						><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/right.png" 
+							/></a>
+                            </span>
+					</td>
+			<td style="width: 160px;" >
+				<span data-bind="visible: (Model.Card.MiddleNameLat() || Model.Card.MiddleNameRus() && !MiddleNameRusIsInLat()) && Model.Card.MiddleNameRus() != Model.Card.MiddleNameLat()">
+				@Html.EditorFor(m => m.Model.Card.MiddleNameLat, new { Databinding = "latinOnly: true" })
+				@Html.ValidationMessageFor(m => m.Model.Card.MiddleNameLat)
+				</span>
+               </td>
+			<td style="" >
+				<span data-bind="visible: false && Model.Card.MiddleNameRus() && !MiddleNameRusIsInLat()">
+					&nbsp;@Html.LabelFor(m => m.Model.Card.MiddleNameLat):
+				</span>
+			</td>
+		</tr>
+        <tr>
+            <td></td>
+            <td  style="width: 160px;" >
+                <span style="display: none;" id="fioValidationMessage">
+                    <label style="COLOR: #ff0000; font-weight:100;  font-size: 10px;">@(Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_AtLeastTheNameMustBeSpecified)</label> 
+           </span>
+            </td>
+
+        </tr>
+          
+		@* Кличка *@
+		<tr valign="top" data-bind="if: ShowPersonRequisites">
+			<td width="150px">
+				@Html.LabelFor(m => m.Model.Card.Nickname, global::Resources.Resources.Kesco_Persons_Web_VW_136):
+              
+			</td>
+			<td colspan="3">
+				<select id="NicknameVariants" style="width: 100%;"  data-bind="
+						enable: NicknameVariants().length > 1,
+						value: Model.Card.Nickname,
+						jqOptions: NicknameVariants,
+						optionsValue: 'ID',
+						optionsText: 'Nickname',
+						required: true
+					"></select>  
+				@Html.ValidationMessageFor(m => m.Model.Card.Comment)
+			</td>
+		</tr>
+        <tr>
+            <td></td>
+            <td style="width: 200px;">
+                <span style="display: none;" id="nicknameValidationMessage">
+                      <label style="COLOR: #ff0000; font-weight:100;  font-size: 10px;">@(Kesco.Persons.Web.Localization.Resources.Models_JuridicalPersonCard_Nickname_Required)</label> 
+         </span>
+            </td>
+        </tr>
+		@* Пол *@
+		<tr data-bind="visible: ShowPersonRequisites">
+			<td>@Html.LabelFor(m => m.Model.Card.Sex):</td>
+			<td colspan="4" nowrap="nowrap" style="">
+				@Html.EditorFor(m => m.Model.Card.Sex)
+				@Html.ValidationMessageFor(m => m.Model.Card.Sex)
+			</td>
+		</tr>
+           <tr>
+            <td></td>
+            <td style="width: 200px;">
+                <span style="display: none;" id="sexValidationMessage">
+                  <label style="COLOR: #ff0000; font-weight:100;  font-size: 10px;">@(Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_SexMustBeSpecified)</label> 
+            </span>
+            </td>
+        </tr>
+		@* День рождения *@
+		<tr data-bind="visible: ShowPersonData"> 
+			<td >
+				@Html.LabelFor(m => m.Model.Card.Birthday):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.Birthday)
+			</td>
+		</tr>
+		@* Адрес регистрации *@
+		<tr data-bind="visible: ShowPersonRequisites() && (true || Model.Card.IncorporationFormID())">
+			<td>
+				@Html.LabelFor(m => m.Model.Card.AddressLegal):
+				<br />&nbsp;
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.AddressLegal)
+				<small>@(Resources.Views_JuridicalPerson_Requisites_Local) <span id="TerritoryCaptionLat2" 
+					data-bind="
+						dynamicLink: {
+							value: Model.Card.TerritoryID,
+							source: '@(Url.FullPathAction("GetItemLang", "TerritorySelect"))' 
+						}"
+					></span></small>
+				@Html.ValidationMessageFor(m => m.Model.Card.AddressLegal)
+			</td>
+		</tr>
+		@* Адрес регистрации латинский *@
+		<tr data-bind="visible: ShowPersonRequisites() && (Model.Card.AddressLegalLat() || Model.Card.AddressLegal() && !AddressLegalRusIsInLat()) && (true || Model.Card.IncorporationFormID())">
+			<td  style="border-bottom: 1px solid;">
+				<span style="display: none;">@Html.LabelFor(m => m.Model.Card.AddressLegalLat):
+				<br />&nbsp;</span>
+			</td>
+			<td colspan="3"  style="border-bottom: 1px solid;">
+				@Html.EditorFor(m => m.Model.Card.AddressLegalLat, new { Databinding = "latinOnly: true" })
+				<small>@(Resources.Views_JuridicalPerson_Requisites_English1)</small>
+				@Html.ValidationMessageFor(m => m.Model.Card.AddressLegalLat)
+			</td>
+		</tr>
+
+ 		@* Бизнес-проект *@
+		<tr data-bind="visible: HasRolesForBusinessProjects().length > 0"> 
+			<td width="150px">
+				@Html.LabelFor(m => m.Model.Card.BusinessProjectID, new { @for = "Model_Card_BusinessProjectID___Autocomplete" }):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.BusinessProjectID)
+			</td>
+		</tr>
+		@* Организационно-правовая форма *@
+		<tr data-bind="visible: ShowPersonRequisites" >
+ 			<td style="width: 150px;">
+				@Html.LabelFor(m => m.Model.Card.IncorporationFormID):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.IncorporationFormID)
+				@Html.ValidationMessageFor(m => m.Model.Card.IncorporationFormID)
+			</td>
+	   </tr>
+		@* ОГРН *@
+		<tr id="OGRNFields" data-bind="visible: ShowPersonData">
+			<td style="width: 150px;" >
+				@Html.LabelFor(m => m.Model.Card.OGRN, new Dictionary<string, object> {
+						{ "data-bind", "text: FormatRegistration.OGRNName" }
+					}):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.OGRN, new { width = 150 })
+              @*  (@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Length) <span id="OGRNlenghtField"></span>) *@
+				@Html.ValidationMessageFor(m => m.Model.Card.OGRN)
+			</td>
+		</tr>
+		@* ИНН *@
+		<tr data-bind="visible:ShowPersonData() && FormatRegistration.INNLength2()">
+			<td width="150px" >
+				@Html.LabelFor(m => m.Model.Card.INN, new Dictionary<string, object> {
+						{ "data-bind", "text: FormatRegistration.INNName" }
+				}):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.INN, new { width = 110 })
+				(@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Length) <span data-bind="text: FormatRegistration.INNLength2"></span>)
+				@Html.ValidationMessageFor(m => m.Model.Card.INN)
+			</td>
+		</tr>
+		@* ОКПО *@
+		<tr id="OKPOFields" data-bind="visible: ShowPersonData() && FormatRegistration.OKPOLength2() && window.ViewModel.Model.ShowReqFromIncForm != 'hideAllExINN' ">
+			<td width="150px" >
+				@Html.LabelFor(m => m.Model.Card.OKPO, new Dictionary<string, object> {
+						{ "data-bind", "text: FormatRegistration.OKPOName" }
+				}):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.OKPO, new { width = 110 }) 
+				(@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Length) <span data-bind="text: FormatRegistration.OKPOLength2"></span>)
+				@Html.ValidationMessageFor(m => m.Model.Card.OKPO)
+			</td>
+		</tr>
+		@*  Реквизиты ПБОЮЛ *@
+		<tr id="OKONHFields" data-bind="visible: ShowPersonRequisites() && Model.Card.IncorporationFormID() && ViewModel.Model.ShowReqFromIncForm != 'hideAllExINN' && ViewModel.Model.ShowReqFromIncForm != 'hideOKONH' ">
+			<td width="150px" >
+				@Html.LabelFor(m => m.Model.Card.OKONH):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.OKONH, new
+                {
+                    width = "50",
+                    maskOptions = "mask: '99999'"
+                }) 
+				@Html.ValidationMessageFor(m => m.Model.Card.OKONH)
+			</td>
+		</tr>
+		<tr id="OKVEDFields"  data-bind="visible: ShowPersonRequisites() && Model.Card.IncorporationFormID() && ViewModel.Model.ShowReqFromIncForm != 'hideAllExINN'">
+			<td>
+				@Html.LabelFor(m => m.Model.Card.OKVED):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.OKVED, new
+                {
+                    width = "150",
+                    maskOptions = "mask: '99999999'"
+                })
+				@Html.ValidationMessageFor(m => m.Model.Card.OKVED)
+			</td>
+		</tr>
+		<tr id="KPPFields" data-bind="visible: ShowPersonRequisites() && Model.Card.IncorporationFormID() && ViewModel.Model.ShowReqFromIncForm != 'hideAllExINN' ">
+			<td>
+				@Html.LabelFor(m => m.Model.Card.KPP):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.KPP, new { width = "150" })
+				@Html.ValidationMessageFor(m => m.Model.Card.KPP)
+			</td>
+		</tr>
+
+		<tr id="RwIDFields" data-bind="visible: ShowPersonRequisites() && Model.Card.IncorporationFormID() && ViewModel.Model.ShowReqFromIncForm != 'hideAllExINN' && ViewModel.Model.ShowReqFromIncForm != 'hideOKONH'">
+			<td>
+				@Html.LabelFor(m => m.Model.Card.RwID):
+			</td>
+			<td colspan="3">
+				@Html.EditorFor(m => m.Model.Card.RwID, new { width = "150" })
+				@Html.ValidationMessageFor(m => m.Model.Card.RwID)
+			</td>
+		</tr>
+        		@* Типы *@
+		<tr valign="top" data-bind="if: !Model.Card.PersonID()">
+			<td width="150px" style="border-top: 1px outset;" >
+				<span class="ui-icon ui-icon-script text-ui-icon">&nbsp;</span> @(global::Resources.Resources.Kesco_Persons_Web_VW_138)
+			</td>
+			<td colspan="3" style="border-top: 1px outset;" >
+				@Html.EditorFor(m => m.Model.PersonTypes)
+			</td>
+		</tr>
+
+		@* Ответственные сотрудники *@
+		<tr data-bind="if: !Model.Card.PersonID()">
+			<td style="border-top: 1px outset;" colspan="4">
+				<table>
+				<tr>
+					<td>
+                        <!-- Если секретарь или администратор лиц -->
+            			@if (accessLevel.Contains("11") || accessLevel.Contains("12"))
+                        {
+						@Html.Raw(String.Format(@"<a href='javascript: void(0);' onclick=""window.ViewModel.ChooseEmpls(getResponsibleIds());"">{0}</a>", global::Resources.Resources.Kesco_Persons_Web_VW_126));
+						} else {
+            
+						<span class="ui-icon ui-icon-person text-ui-icon">&nbsp;
+						</span>@(global::Resources.Resources.Kesco_Persons_Web_VW_126)
+                        }
+
+						
+						<!--
+						| <a href="javascript: void(0)" data-bind="
+								click: openChooseEmployeesDialog
+							" title="@(global::Resources.Resources.Kesco_Persons_Web_VW_1002)">
+							<span class="ui-icon ui-icon-plus text-ui-icon">&nbsp;</span>
+							@(global::Resources.Resources.Kesco_Persons_Web_VW_1002)</a>
+						//-->
+					</td>
+				</tr>
+				</table>
+				<table>
+				<tr>
+					<td style="width: 150px;">&nbsp;</td>
+					<td>
+						<table cellpadding="0" cellpadding="0">
+							<tbody data-bind="foreach: Model.ResponsibleEmployees">
+								<tr>
+									<td>
+                                        <!--   visible: ($data.ID()) != ViewModel.Model.CurrentEmployeeID(), -->
+                                         @if (accessLevel.Contains("11") || accessLevel.Contains("12"))
+                                         {
+                                             <a href="javascript: void(0);" data-bind="
+												click: $root.removeResponsibleEmployee
+											" title="@(global::Resources.Resources.Kesco_Persons_Web_VW_1001)"
+                                                 ><span class="ui-icon ui-icon-minus text-ui-icon">&nbsp;</span></a>
+                                         }
+										<a class="employeeControl" title="$data.FullName()" href="javascript: void(0)"
+											data-bind="
+												attr: { 
+													id: $data.ID(), 
+													'data-employee-id': $data.ID(), 
+													alt: $data.FullName(), 
+													title: $data.FullName()
+												},
+												click: function() { ViewModel.showUser($data.ID()); },
+												dynamicLink: { 
+													value: $data.ID(), 
+													source: '@(Url.Action("GetItem", "EmployeeSelect"))',
+													tooltipSource: '@(Configuration.AppSettings.URI_user_info)'
+												}
+										"></a>
+									</td>
+								</tr>
+							</tbody>
+							<tbody data-bind="visible: Model.ResponsibleEmployees().length == 0">
+								<td>
+                                    <span id="responsibleValidationMessage">
+                                        <label style="COLOR: #ff0000; font-weight:100;  font-size: 10px;">@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Validation_Responsible)</label> 
+                                    </span>
+                                   
+                                </td>
+							</tbody>
+						</table>
+
+					</td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		@* Примечание *@
+
+		<tr valign="top"  data-bind="visible: ShowPersonData">
+			<td width="150px" style="border-top: 1px outset;">
+				@Html.LabelFor(m => m.Model.Card.Comment):
+			</td>
+			<td colspan="3" style="border-top: 1px outset;">
+				@Html.EditorFor(m => m.Model.Card.Comment)
+				@Html.ValidationMessageFor(m => m.Model.Card.Comment)
+			</td>
+		</tr>
+
+		</table>
+    }
+
+</div>
+
+@*	Бизнес-правила для элементов управления выбора *@
+@{
+    Html.RegisterScript(@"
+		;(function(scope, $) {{
+			// поиск страна регистрации 
+			scope.ViewModel.Model.Card.TerritoryID.__SearchParameters.HowSearch(1); // начинается с
+			scope.ViewModel.Model.Card.TerritoryID.__SearchParameters.AreaIDs.push(2); // является страной
+
+			// поиск бизнес-проекта 
+			scope.ViewModel.Model.Card.BusinessProjectID.__SearchParameters.HowSearch(1); // начинается с
+
+		}})(window, jQuery);
+		
+	");
+}
+
+@section Header {
+	<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar"
+		style="padding: 2px;"
+		data-bind="visible: PageLoaded">
+		<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr valign="middle">
+			<td >&nbsp;
+				<button type="button" data-bind=" 
+						click: function() { ViewModel.Model.Confirmed(false); $('#SubmitButton').click(); },
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-disk' } } }
+					">@(global::Resources.Resources.GUI_Button_Save)</button>
+				<button type="button" data-bind="
+						click: Delete,
+						jqueryui: { widget: 'button', options: { disabled: !ViewModel.Model.Card.ID() || ViewModel.Model.CardsNumber()<=1, icons: { primary: 'ui-icon-trash' } } }
+					">@(global::Resources.Resources.GUI_Button_Delete)</button>
+				<button type="button" id="btnCancel" data-bind=" 
+						click: closeDialog, 
+						jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-cancel' } } }
+					">@(global::Resources.Resources.GUI_Button_Cancel)</button>
+			</td>
+			<td nowrap="nowrap" style="width: 30px;">
+				<button type="button" style=""
+						data-bind="jqueryui: { widget: 'button', options: { text: false, icons: { primary: 'ui-icon-help' }}}, click: showHelp"
+					>@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Help)</button>
+			</td>
+                 </tr>
+		</table>
+	</div>
+}
+
+
+@section Footer {
+
+@Html.CommonScriptCode("Natural_Footer",
+@<script>
+@{
+    bool isMvc = (Request["clr"] ?? "0") == "0";
+}
+    function showTranslateValidationErrors(name, hide) {
+        if(hide == true || hide == "true") hide = "hide";
+        if(hide == false || hide == "false") hide = "show";
+        if(name == 'firstName') { 
+               $('#Model_Card_FirstNameLat').qtip(hide);
+        }
+        if(name == "lastName") {
+                   $('#Model_Card_LastNameLat').qtip(hide);
+        }
+        if(name == "middleName") {
+                $('#Model_Card_MiddleNameLat').qtip(hide);
+        }
+    }
+
+
+    function translateName(name)
+    {
+        window.ViewModel.translateName(name);
+        showTranslateValidationErrors(name, false);
+       if(name == 'lastName') {
+            $('#Model_Card_LastNameLat').focus();
+       }
+        if(name == 'firstName') {
+            $('#Model_Card_FirstNameLat').focus();
+       }
+        if(name == 'middleName') {
+            $('#Model_Card_MiddleNameLat').focus();
+       }
+        
+    }
+
+    function returnResult(result) {
+
+		@if (isMvc)
+  {
+			@: var arr = []; arr.push(result);
+			@: closeDialogAndReturnValue(JSON.stringify(arr));
+		}
+  else
+  {
+			@: var retVal = result.value + String.fromCharCode(31) + result.label;
+			@: DialogPageReturn(retVal, 0);
+		}
+	}
+
+    function getResponsibleIds() {
+        var employeeControlIds = '';
+	    for (var i = 0; i < $('.employeeControl').length; i++) {{
+	            if(i == ($('.employeeControl').length - 1))
+		                {{ employeeControlIds+= $('.employeeControl')[i].id; }} 
+  	            else {{employeeControlIds+= $('.employeeControl')[i].id; employeeControlIds+= ','; }}  
+            }}
+
+        return employeeControlIds;
+    }
+    
+
+
+    function checkSexValid() {
+	    if(ViewModel.Model.Card.Sex() == null || ViewModel.Model.Card.Sex() == "") {
+	        sexValidationMessage.style.display = "table";
+        }
+	    else {
+            sexValidationMessage.style.display = "none";
+        }
+	}
+
+    function checkNicknameValid() {
+	    if(ViewModel.Model.Card.Nickname() == null || ViewModel.Model.Card.Nickname() == "") {
+	        nicknameValidationMessage.style.display = "table";
+        }
+	    else {
+            nicknameValidationMessage.style.display = "none";
+        }
+	}
+    
+
+     function checkFioValid() {
+        if((ViewModel.Model.Card.LastNameRus() == null || ViewModel.Model.Card.LastNameRus() == "") && 
+            (ViewModel.Model.Card.FirstNameRus() == null || ViewModel.Model.Card.FirstNameRus() == "") &&
+                (ViewModel.Model.Card.MiddleNameRus() == null || ViewModel.Model.Card.MiddleNameRus() == "")) 
+        {
+            fioValidationMessage.style.display = "table";
+        }
+         else 
+        {
+            fioValidationMessage.style.display = "none";
+        }
+     }
+
+    function setCountryFildEmpty() {
+             var countryField = document.getElementById('Model_Card_TerritoryID___Autocomplete');
+            if(countryField == null) return;
+                countryField.onfocusout = function() {
+                    if(countryField.value == null || countryField.value == "") {
+                        ViewModel.Model.Card.TerritoryID('');
+                    }
+                };
+        }
+    
+     function setBuissnesFieldEmpty() {
+             var buissnessField = document.getElementById('Model_Card_BusinessProjectID___Autocomplete');
+            if(buissnessField == null) return;
+                buissnessField.onfocusout = function() {
+                    if(buissnessField.value == null || buissnessField.value == "") {
+                        ViewModel.Model.Card.BusinessProjectID('');
+                    }
+                };
+        }
+
+	$(document).ready(function () {
+
+        @* Установка tooltip-ов для полей ФИО на латинице  *@
+        $('#Model_Card_LastNameLat').qtip({
+              content: {
+                  text: '@(Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_CheckSecondNameOnLat)',
+             },
+             position: {
+		          at: 'bottom left'
+		     },
+             style: {
+                 classes: 'qtip-light',
+                 wight: '50px'
+             },
+          show: '',
+	      hide: ''
+          });
+
+          $('#Model_Card_FirstNameLat').qtip({
+              content: {
+                  text: '@(Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_CheckFirstNameOnLat)',
+             },
+             position: {
+		          at: 'bottom left'
+		     },
+             style: {
+                 classes: 'qtip-light',
+                 wight: '50px'
+             },
+          show: '',
+	      hide: ''
+          });
+
+          $('#Model_Card_MiddleNameLat').qtip({
+              content: {
+                  text: '@(Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_CheckMiddleNameOnLat)',
+             },
+             position: {
+		          at: 'bottom left'
+		     },
+             style: {
+                 classes: 'qtip-light',
+                 wight: '50px'
+             },
+          show: '',
+	      hide: ''
+          });
+
+	    @* Организационно-правовая форма обновляет длину и маску для ОРГН 
+	    updateRegistrationFormat(window.ViewModel.Model.Card.TerritoryID());*@
+
+	    
+	    document.getElementById('Model_Card_LastNameLat').onfocusout = function() { showTranslateValidationErrors('lastName', true); };
+	    document.getElementById('Model_Card_FirstNameLat').onfocusout = function() { showTranslateValidationErrors('firstName', true); };
+	    document.getElementById('Model_Card_MiddleNameLat').onfocusout = function() { showTranslateValidationErrors('middleName', true); };
+
+
+
+        @* Проверка валидации *@
+	    document.getElementById('Model_Card_Sex__male').onclick = function() { sexValidationMessage.style.display = "none"; };
+	    document.getElementById('Model_Card_Sex__female').onclick = function() { sexValidationMessage.style.display = "none"; };
+	    var firstNameTextBox = document.getElementById('Model_Card_FirstNameRus');
+	    firstNameTextBox.onchange = function() { 
+	        if (firstNameTextBox.value != null && firstNameTextBox.value != "") {window.fioValidationMessage.style.display = "none";}
+	        if (firstNameTextBox.value == null || firstNameTextBox.value == ""){ window.ViewModel.Model.Card.FirstNameLat(null);}
+	    };
+	    var lastNameTextBox = document.getElementById('Model_Card_LastNameRus');
+	    lastNameTextBox.onchange = function() { 
+	        if (lastNameTextBox.value != null && lastNameTextBox.value != "") {window.fioValidationMessage.style.display = "none";}
+	        if (lastNameTextBox.value == null || lastNameTextBox.value == ""){ window.ViewModel.Model.Card.LastNameLat(null);}
+	    };
+	    var middleNameTextBox = document.getElementById('Model_Card_MiddleNameRus');
+	    middleNameTextBox.onchange = function() {
+	        if (middleNameTextBox.value != null && middleNameTextBox.value != "") {window.fioValidationMessage.style.display = "none";}
+	        if (middleNameTextBox.value == null || middleNameTextBox.value == ""){window.ViewModel.Model.Card.MiddleNameLat(null); }
+	    };
+
+		@* Задаем селектор для установки фокуса на соответствующий элемент ввода после загрузки всех свойств страницы *@
+		ViewModel.ControlNameToFocus = '@(Model.ShowPersonData ? "#Model_Card_TerritoryID___Autocomplete" : "#Model_Card_LastNameRus")';
+
+		ViewModel.prevVersionUrl = function() {
+			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
+			var value = url.substring(0, url.lastIndexOf('/') + 1);
+			@if (Model.Model.Card.PersonID != null)
+   {
+			    @: value += "Form/Edit/clientPerson.aspx?idClient=@(Model.Model.Card.PersonID)";
+			    }
+   else
+   {
+			    @: value += "Form/Edit/clientPersonAdd.aspx?clr=1";
+			    }
+
+			    return value;
+		    
+		    }
+
+        
+		$("#NaturalPersonForm").submit(function () {
+			// this - DOM element - form
+			var $form = $(this);
+
+			if ($form.valid()) {
+				window.ViewModel.Model.Confirmed(false);
+				window.ViewModel.save();
+			}
+		    if(ViewModel.Model.Card.PersonID() == null || ViewModel.Model.Card.PersonID() == "") {
+		       
+		        checkFioValid();
+		        checkNicknameValid();
+		        checkSexValid();
+		    }
+		    return false;
+		});
+
+	
+	    window.ViewModel.ChooseEmpls = function (responsibleIDs) {
+			$.ajax({
+				url: '@(Url.Action("Dispatch"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					command: 'chooseempls',
+					control: responsibleIDs,
+					model:  window.ko.mapping.toJS(window.ViewModel.Model)
+				}),
+				contentType: "application/json; charset=utf-8"
+			});
+		};
+
+
+		window.ViewModel.save = function () {
+			$.ajax({
+				url: '@(Url.Action("Dispatch"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					command: 'save',
+					control: null,
+					model:  window.ko.mapping.toJS(window.ViewModel.Model)
+				}),
+				contentType: "application/json; charset=utf-8"
+			});
+		};
+	    
+
+        window.ViewModel.translateName = function (name) {
+			$.ajax({
+				url: '@(Url.Action("Dispatch"))',
+				type: 'POST',
+				data: window.ko.toJSON({
+					command: 'translitName',
+					control: name,
+					model:  window.ko.mapping.toJS(window.ViewModel.Model)
+				}),
+				contentType: "application/json; charset=utf-8"
+			});
+		};
+
+		ViewModel.Delete = function () {
+			if(ViewModel.Model.Card.ID()==0) return;
+			confirmAction('@(global::Resources.Resources.Persons_Delete_Confirm_Title)', '@Html.Raw(global::Resources.Resources.Persons_Card_Delete_Confirm_Text)', '@(global::Resources.Resources.GUI_Button_Confirm)', function(){ 
+					$.ajax({
+						url: '@(Url.Action("Delete"))',
+						type: 'POST',
+						data: window.ko.toJSON({
+							model: ko.mapping.toJS(ViewModel.Model)
+						}),
+						contentType: "application/json; charset=utf-8",
+						complete: function() {
+						}
+					});
+				}, '@(global::Resources.Resources.GUI_Button_Cancel)', null, null);
+		};
+
+		ViewModel.removeResponsibleEmployee = function() {
+			//if (ko.mapping.toJS(this.ID) != ViewModel.Model.CurrentEmployeeID()) {
+				ViewModel.Model.ResponsibleEmployees.remove(this);
+			//}
+		};
+
+
+
+		// TODO: Make universary
+		ViewModel.openChooseEmployeesDialog = function() {
+			var selected = [];
+			var list = ko.mapping.toJS(ViewModel.Model.ResponsibleEmployees());
+			for(var i=0; i<list.length; i++) {
+				selected[i] = list[i].ID.toString();
+			}
+			selected = selected.join(",");
+			var callbackUrl = encodeURIComponent('@(Url.FullPathAction("DialogResult", "Default"))');
+			var title = encodeURIComponent('@(global::Resources.Resources.Kesco_Persons_Web_VW_1000)');
+			var url;
+			url = '@(Html.Raw(Configuration.AppSettings.URI_user_search))?@(Html.Raw(Configuration.URI_user_search_QS ?? "t=1"))&selectedid='+selected;
+			url = $.validator.format(url, callbackUrl, title);
+
+			openPopupWindow(url, null, function(result) {
+				if ($.isArray(result)) {
+					ViewModel.Model.ResponsibleEmployees.removeAll();
+					for(var i=0; i<result.length; i++)
+						ViewModel.Model.ResponsibleEmployees.push({ID: ko.observable(result[i].ID), FullName: ko.observable(result[i].Name) });
+				}
+			}, "wnd_ChooseEmployees", 800, 600);
+
+		  
+		};
+
+@{
+    ModelMetadata pmm = ViewData.ModelMetadata
+        .Properties.First(p => p.PropertyName == "Model")
+        .Properties.First(p => p.PropertyName == "Card");
+}
+
+		$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))').mask();
+		$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))').mask();
+		$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))').mask();
+
+       
+	  
+//	    var updateRegistrationFormat = function (tid) {
+//			function repeat(symbol, length) {
+//				var s="", len = 0+length;
+//				for (var i = 0; i < len; i++) s += symbol;
+//				return s;
+//			}
+//			var result = window.ViewModel.FormatRegistrations.filterByProperty("ID", tid || 0);
+//			var registrationFormat = window.ViewModel.FormatRegistration;
+//			if (result().length > 0) {
+//				format = result()[0];
+//                registrationFormat.OGRNLength2(format.OGRNLength2());
+//                registrationFormat.OGRNFormat2(format.OGRNFormat2());
+//				registrationFormat.OGRNName(format.OGRNName());
+//				registrationFormat.INNName(format.INNName());
+//				registrationFormat.INNLength2(format.INNLength2());
+//				registrationFormat.OKPOName(format.OKPOName());
+//				registrationFormat.OKPOLength2(format.OKPOLength2());
+//			} else {
+//				registrationFormat.OGRNName('@(pmm.Properties.First(p => p.PropertyName == "OGRN").GetDisplayName())');
+//				registrationFormat.INNName("");
+//				registrationFormat.INNLength2(0);
+//				registrationFormat.OGRNFormat2("####################");
+//			    registrationFormat.OGRNLength2(20);
+//				registrationFormat.OKPOName("");
+//				registrationFormat.OKPOLength2(0);
+//			}
+
+//			try {
+//				var multiplicator = 8;
+//				var len = 0;
+//			    var baseMask;
+//                
+//                len = registrationFormat.OGRNLength2();
+//                baseMask = registrationFormat.OGRNFormat2();
+//               
+
+//				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))')
+//					.mask("option", { mask: baseMask })
+//					.width(len*multiplicator).parent().width(len*multiplicator);
+
+//                    if(len == 0) {
+//                      document.getElementById("OGRNFields").style.display = "none";
+//                       
+//                    }
+//			        else {
+//                         document.getElementById("OGRNFields").style.display = "";
+//                    }
+//                     document.getElementById('OGRNlenghtField').innerText = len;
+//			    len = registrationFormat.INNLength2()?registrationFormat.INNLength2():12;
+//				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))')
+//					.mask("option", { mask: repeat("9", len) })
+//					.width(len*multiplicator).parent().width(len*multiplicator);
+
+//				len = registrationFormat.OKPOLength2()?registrationFormat.OKPOLength2():10;
+//				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))')
+//					.mask("option", { mask: repeat("9", len) })
+//					.width(len*multiplicator).parent().width(len*multiplicator);
+//			    
+//                
+//			} catch(e) { 
+//				if (window.console) console.log(e);
+//			}
+//		};
+	    
+
+        function clearFieldsWhenIncFormChanged(incFormName)
+	    {
+	        if(incFormName == 'Глава крестьянских (фермерских) хозяйств') {
+	            window.ViewModel.Model.Card.OKONH("");
+                window.ViewModel.Model.Card.RwID("");
+            }
+            else if(incFormName == 'Адвокат, учредивший адвокатский кабинет' || incFormName == 'Нотариус, занимающийся частной практикой') {
+	            window.ViewModel.Model.Card.OKONH("");
+                window.ViewModel.Model.Card.OGRN("");
+                window.ViewModel.Model.Card.OKPO("");
+                window.ViewModel.Model.Card.OKVED("");
+                window.ViewModel.Model.Card.KPP("");
+                window.ViewModel.Model.Card.RwID("");
+            }
+        }
+
+	    var showRequisitesFieldsFromIncForm = function (tid) {
+	        $('#Model_Card_IncorporationFormID-button span');
+	        var incFormName = $('#Model_Card_IncorporationFormID-button span')[0].innerText;
+	        if(incFormName == 'Глава крестьянских (фермерских) хозяйств') {
+                window.ViewModel.Model.ShowReqFromIncForm = 'hideOKONH'; 
+                $('#OKONHFields')[0].style.display = "none";
+                $('#RwIDFields')[0].style.display = "none";
+	            
+                if(window.ViewModel.ShowPersonRequisites() && window.ViewModel.Model.Card.IncorporationFormID())$('#OKVEDFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonRequisites() && window.ViewModel.Model.Card.IncorporationFormID())$('#KPPFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonData())$('#OGRNFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonData() && window.ViewModel.FormatRegistration.OKPOLength2()) $('#OKPOFields')[0].style.display = "";
+                clearFieldsWhenIncFormChanged(incFormName);
+            }
+            else if(incFormName == 'Адвокат, учредивший адвокатский кабинет' || incFormName == 'Нотариус, занимающийся частной практикой') {
+                window.ViewModel.Model.ShowReqFromIncForm = 'hideAllExINN';
+                $('#OGRNFields')[0].style.display = "none";
+                $('#OKPOFields')[0].style.display = "none";
+                $('#OKONHFields')[0].style.display = "none";
+                $('#OKVEDFields')[0].style.display = "none";
+                $('#KPPFields')[0].style.display = "none";
+                $('#RwIDFields')[0].style.display = "none";
+                clearFieldsWhenIncFormChanged(incFormName);
+            } else {
+                window.ViewModel.Model.ShowReqFromIncForm = '';
+                if(window.ViewModel.ShowPersonData())$('#OGRNFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonData() && window.ViewModel.FormatRegistration.OKPOLength2())$('#OKPOFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonRequisites() && window.ViewModel.Model.Card.IncorporationFormID())$('#OKONHFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonRequisites() && window.ViewModel.Model.Card.IncorporationFormID())$('#OKVEDFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonRequisites() && window.ViewModel.Model.Card.IncorporationFormID())$('#KPPFields')[0].style.display = "";
+                if(window.ViewModel.ShowPersonRequisites() && window.ViewModel.Model.Card.IncorporationFormID())$('#RwIDFields')[0].style.display = "";
+            }
+            
+        };
+
+	    var updateRegistrationFormat = function (tid) {
+			function repeat(symbol, length) {
+				var s="", len = 0+length;
+				for (var i = 0; i < len; i++) s += symbol;
+				return s;
+			}
+			var result = window.ViewModel.FormatRegistrations.filterByProperty("ID", tid || 0);
+			var registrationFormat = window.ViewModel.FormatRegistration;
+			if (result().length > 0) {
+				format = result()[0];
+				registrationFormat.OGRNFormat(format.OGRNFormat());
+				registrationFormat.OGRNName(format.OGRNName());
+				registrationFormat.INNName(format.INNName());
+				registrationFormat.INNLength2(format.INNLength2());
+				registrationFormat.OKPOName(format.OKPOName());
+				registrationFormat.OKPOLength2(format.OKPOLength2());
+			} else {
+				registrationFormat.OGRNName('@(pmm.Properties.First(p => p.PropertyName == "OGRN").GetDisplayName())');
+				registrationFormat.INNName("");
+				registrationFormat.INNLength2(0);
+				registrationFormat.OGRNFormat("####################");
+				registrationFormat.OKPOName("");
+				registrationFormat.OKPOLength2(0);
+			}
+
+			try {
+				var multiplicator = 8;
+				var len = registrationFormat.OGRNFormat().length;
+				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))')
+					.mask("option", { mask: registrationFormat.OGRNFormat() })
+					.width(len*multiplicator).parent().width(len*multiplicator);
+
+				len = registrationFormat.INNLength2()?registrationFormat.INNLength2():12;
+				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))')
+					.mask("option", { mask: repeat("9", len) })
+					.width(len*multiplicator).parent().width(len*multiplicator);
+
+				len = registrationFormat.OKPOLength2()?registrationFormat.OKPOLength2():10;
+				$('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))')
+					.mask("option", { mask: repeat("9", len) })
+					.width(len*multiplicator).parent().width(len*multiplicator);
+
+			    $('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OGRN"))')[0].maxLength = 200;
+			    $('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_INN"))')[0].maxLength = 200;
+			    $('#@(ViewData.TemplateInfo.GetFullHtmlFieldId("Model_Card_OKPO"))')[0].maxLength = 200;
+			} catch(e) { 
+				if (window.console) console.log(e);
+			}
+		};
+		updateRegistrationFormat(window.ViewModel.Model.Card.TerritoryID());
+        var testoption = function (id) {
+             if(window.ViewModel.Model.Card.IncorporationFormID() != 91 && window.ViewModel.Model.Card.Nickname() != null && window.ViewModel.Model.Card.Nickname().substring(0, 3) == "ИП ") {
+                window.ViewModel.Model.Card.Nickname91 = window.ViewModel.Model.Card.Nickname().substring(3, 200);
+                return;
+            }
+            //ViewModel.Model.Card.Nickname("");
+            var haveAllready = 0;
+            for (var i = 0; i < id.length; i++) {
+                if(id[i].ID == window.ViewModel.Model.Card.Nickname())haveAllready = 1;
+                if(id[i].Nickname == window.ViewModel.Model.Card.Nickname()) window.ViewModel.Model.Card.Nickname91 = id[i].ID;
+	        }
+            if(haveAllready != 0) window.ViewModel.Model.Card.Nickname91 = null;
+        }
+	    
+        var testnick = function (id) {
+            if(id == "") {
+                if (window.ViewModel.Model.Card.Nickname91 != null) {
+                    window.ViewModel.Model.Card.Nickname(window.ViewModel.Model.Card.Nickname91);
+                   }
+                 window.ViewModel.Model.Card.Nickname91 = null;
+            }
+
+        }
+	    ViewModel.Model.Card.Nickname.subscribe(testnick);
+	    window.ViewModel.Model.Card.IncorporationFormID.subscribe(showRequisitesFieldsFromIncForm);
+		window.ViewModel.Model.Card.TerritoryID.subscribe(updateRegistrationFormat);
+		window.ViewModel.NicknameVariants = window.ko.computed(function () {
+		    if(ViewModel.Model.Card.Nickname() != null && ViewModel.Model.Card.Nickname() != "") {
+		        checkNicknameValid();
+		    }
+		    var options = [];
+			var form = '';
+		    updateRegistrationFormat(window.ViewModel.Model.Card.TerritoryID());
+			if(ViewModel.Model.Card.IncorporationFormID()==91) form = 'ИП ';
+
+			function getSecondNames(fn, mn, lat) {
+				var secondNames = [];
+
+				if (fn)
+					if (mn.length > 0) {
+						secondNames.push("" + fn + " " + mn); // FirstName MiddleName
+
+						if (fn.length > 1 && mn.length > 1) {
+							secondNames.push("" + fn.substr(0, 1).toUpperCase() + ". " + mn.substr(0, 1).toUpperCase() + "."); // Initials: F. M.
+							if (lat)
+								secondNames.push("" + fn + " " + mn.substr(0, 1).toUpperCase() + "."); // Initials: F. M.
+						}
+					} else {
+						secondNames.push("" + fn); // FirstName
+
+						if (fn.length > 1)
+							secondNames.push("" + fn.substr(0, 1).toUpperCase() + "."); // Initials: F.
+					}
+
+				return secondNames;
+			}
+
+			var secondNames;
+
+			var fn = window.ViewModel.Model.Card.FirstNameRus(); fn = fn ? fn : "";
+			var mn = window.ViewModel.Model.Card.MiddleNameRus(); mn = mn ? mn : "";
+			var ln = window.ViewModel.Model.Card.LastNameRus(); ln = ln ? ln : "";
+
+			secondNames = getSecondNames(fn, mn);
+			var i;
+
+			if (ln || secondNames.length) {
+				if (secondNames.length)
+					for (i = 0; i < secondNames.length; i++)
+						if (ln) {
+							options.push({ ID: form + ln + " " + secondNames[i], Nickname: ln + " " + secondNames[i] });
+							options.push({ ID: form + secondNames[i] + " " + ln, Nickname: secondNames[i] + " " + ln });
+						} else
+							options.push({ ID: form + secondNames[i], Nickname: secondNames[i] });
+				else
+					options.push({ ID: form + ln, Nickname: ln });
+			}
+
+			fn = window.ViewModel.Model.Card.FirstNameLat(); fn = fn ? fn : "";
+			mn = window.ViewModel.Model.Card.MiddleNameLat(); mn = mn ? mn : "";
+			ln = window.ViewModel.Model.Card.LastNameLat(); ln = ln ? ln : "";
+			secondNames = getSecondNames(fn, mn, true);
+
+			if (ln || secondNames.length) {
+				if (options.length > 0)
+					options.push({ ID: null, Nickname: "----------------------------------------------" });
+				if (secondNames.length)
+					for (i = 0; i < secondNames.length; i++)
+						if (ln) {
+							options.push({ ID: form + ln + " " + secondNames[i], Nickname: ln + " " + secondNames[i] });
+							options.push({ ID: form + secondNames[i] + " " + ln, Nickname: secondNames[i] + " " + ln });
+						} else
+							options.push({ ID: form + secondNames[i], Nickname: secondNames[i] });
+				else
+					options.push({ ID: form + ln, Nickname: ln });
+			}
+
+			options.unshift({ID:'', Nickname:'@(global::Resources.Resources.Kesco_Persons_Web_VW_1005)'});
+
+
+			return options;
+		});
+//		window.ViewModel.NicknameVariant = window.ko.observable();  
+	    window.ViewModel.NicknameVariants.subscribe(testoption);
+        
+		@* Если меняется хотя бы одно поле из имён, сбросить кличку *@
+		function clearNickname() {
+		    if(window.ViewModel.NicknameVariants().length <= 1) {
+             window.ViewModel.Model.Card.Nickname("");
+		    }
+		}
+
+		window.ViewModel.Model.Card.FirstNameRus	= window.ViewModel.Model.Card.FirstNameRus.extend({ capitalize: true });
+		window.ViewModel.Model.Card.MiddleNameRus	= window.ViewModel.Model.Card.MiddleNameRus.extend({ capitalize: true });
+		window.ViewModel.Model.Card.LastNameRus		= window.ViewModel.Model.Card.LastNameRus.extend({ capitalize: true });
+
+		window.ViewModel.Model.Card.FirstNameLat	= window.ViewModel.Model.Card.FirstNameLat.extend({ capitalize: true });
+		window.ViewModel.Model.Card.MiddleNameLat	= window.ViewModel.Model.Card.MiddleNameLat.extend({ capitalize: true });
+		window.ViewModel.Model.Card.LastNameLat		= window.ViewModel.Model.Card.LastNameLat.extend({ capitalize: true });
+
+		@if (Model.ShowPersonRequisites)
+  {
+		@:	window.ViewModel.Model.Card.FirstNameRus.subscribe(clearNickname);
+		@:	window.ViewModel.Model.Card.MiddleNameRus.subscribe(clearNickname);
+		@:	window.ViewModel.Model.Card.LastNameRus.subscribe(clearNickname);
+		@:	window.ViewModel.Model.Card.FirstNameLat.subscribe(clearNickname);
+		@:	window.ViewModel.Model.Card.MiddleNameLat.subscribe(clearNickname);
+		@:	window.ViewModel.Model.Card.LastNameLat.subscribe(clearNickname);
+		@:	window.ViewModel.Model.Card.IncorporationFormID.subscribe(clearNickname);
+		}
+
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+        }
+
+
+		@if (!Model.Model.Card.ID.HasValue && Request["text"] != null && Request["text"] != "")
+        {
+		@:	var nameParts = getURLParameter('text').replace(/\s+/gi, " ").split(" ");
+		@:	window.ViewModel.Model.Card.LastNameRus(nameParts[0] || "");
+		@:	window.ViewModel.Model.Card.FirstNameRus(nameParts[1] || "");
+		@:	window.ViewModel.Model.Card.MiddleNameRus(nameParts[2] || "");
+		}
+
+		window.ViewModel.AddressLegalRusIsInLat = window.ko.computed(function () {
+			return checkLatSymbols(ViewModel.Model.Card.AddressLegal());
+		});
+
+		window.ViewModel.LastNameRusIsInLat = window.ko.computed(function () {
+			return checkLatSymbols(ViewModel.Model.Card.LastNameRus());
+		});
+
+		window.ViewModel.FirstNameRusIsInLat = window.ko.computed(function () {
+			return checkLatSymbols(ViewModel.Model.Card.FirstNameRus());
+		});
+
+		window.ViewModel.MiddleNameRusIsInLat = window.ko.computed(function () {
+			return checkLatSymbols(ViewModel.Model.Card.MiddleNameRus());
+		});
+
+		function adjustLatValue(value, targetObservable) {
+			if (checkLatSymbols(value)) targetObservable(value || "");
+		}
+
+		function checkLatSymbols(value) {
+		    
+			if (!$.trim(value || "")) return false;
+			var pattern = /^[\x00-\x7F]+$/;
+			return pattern.test(value);
+		}
+        
+		$("#Model_Card_FirstNameRus, #Model_Card_MiddleNameRus, #Model_Card_LastNameRus, #Model_Card_FirstNameLat, #Model_Card_MiddleNameLat, #Model_Card_LastNameLat")
+			.bind("keydown change", function() {
+				setNamesRequired()
+			})
+
+		function setNamesRequired() {
+			var $inputs = $("#Model_Card_FirstNameRus, #Model_Card_MiddleNameRus, #Model_Card_LastNameRus, #Model_Card_FirstNameLat, #Model_Card_MiddleNameLat, #Model_Card_LastNameLat");
+			var value = "";
+			$inputs.each(function() {
+				value = value || $(this).val();
+			});
+
+			if (value) {
+				$inputs.parent().removeClass("ui-state-highlight");
+			} else {
+				$inputs.parent().addClass("ui-state-highlight");
+			}
+		}
+
+        setTimeout(function() { showRequisitesFieldsFromIncForm(null); }, 100);
+		setTimeout(function() { setNamesRequired(); }, 100);
+         setTimeout(function() { setCountryFildEmpty(); }, 100);
+	    setTimeout(function() { setBuissnesFieldEmpty(); }, 100);
+		window.ViewModel.gotoPerson = function (param) {
+			window.location.href = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_form)" + "?id=" + param;
+		};
+
+		$(window).resize(function () {
+			$("#formContainer").height($("#dialogContentPane").height()-2);
+			$("#formContainer").width($("#dialogContentPane").width()-2);
+		});
+
+	});
+</script>
+)
+
+@Html.DisplayFor(m => m.Model.Card, "ChangedByInfo")
+}

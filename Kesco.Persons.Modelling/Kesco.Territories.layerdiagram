@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="0c5fe9fd-9da7-4e39-921e-da8ddc07e9bc" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="8a3b5f75-7ce4-4dce-9fb3-b97d5644cf52" name="Kesco.Territories">
+      <references>
+        <reference Id="98236445-0db2-423a-8621-a1e87f5a026c" name="Kesco.Territories">
+          <ArtifactNode Label="Kesco.Territories" Category="CodeSchema_Namespace" Id="(Namespace=Kesco.Territories)" />
+          <ExpandedNode Id="(Assembly=Kesco.Territories.ObjectModel)" Label="Kesco.Territories.ObjectModel.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Kesco.Territories.BusinessLogic)" Label="Kesco.Territories.BusinessLogic.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Kesco.Territories)" Label="Kesco.Territories" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="036fe37b-1ca2-4a34-887c-d5f13c791164" name="Kesco.Territories.BusinessLogic">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="2a6cd19f-8acd-4a2c-b699-25a79c135364" direction="Forward">
+          <layerMoniker Id="8a3b5f75-7ce4-4dce-9fb3-b97d5644cf52" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="d4f7bc8d-43b1-4416-970d-e9da5f18c615" direction="Forward">
+          <layerMoniker Id="c299ee77-ae22-4c89-980f-cb87332ba4c7" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="a27fb2b8-d228-41dd-9567-8b387a666684" name="Kesco.Territories.BusinessLogic">
+          <ArtifactNode Label="Kesco.Territories.BusinessLogic" Category="CodeSchema_Namespace" Id="(Namespace=Kesco.Territories.BusinessLogic)" />
+          <ExpandedNode Id="(Assembly=Kesco.Territories.BusinessLogic)" Label="Kesco.Territories.BusinessLogic.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Kesco.Territories.BusinessLogic)" Label="Kesco.Territories.BusinessLogic" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="c299ee77-ae22-4c89-980f-cb87332ba4c7" name="Kesco.Territories.ObjectModel">
+      <references>
+        <reference Id="a4ba79a8-bddb-45ea-80d9-ebd232e70dac" name="Kesco.Territories.ObjectModel">
+          <ArtifactNode Label="Kesco.Territories.ObjectModel" Category="CodeSchema_Namespace" Id="(Namespace=Kesco.Territories.ObjectModel)" />
+          <ExpandedNode Id="(Assembly=Kesco.Territories.ObjectModel)" Label="Kesco.Territories.ObjectModel.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Dsl.NamespaceUsedInAssembly" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Namespace=Kesco.Territories.ObjectModel)" Label="Kesco.Territories.ObjectModel" Category="CodeSchema_Namespace">
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

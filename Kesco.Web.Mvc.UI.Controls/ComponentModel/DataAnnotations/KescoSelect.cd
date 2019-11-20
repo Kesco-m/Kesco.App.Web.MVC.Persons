@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations.KescoSelectAdvancedSearchAttribute" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\KescoSelectAdvancedSearchAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations.KescoSelectLinkAttribute" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\KescoSelectLinkAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations.KescoSelectAttribute">
+    <Position X="8" Y="1.25" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAgpEAAAAQAAwUAAgFAAAAASACAAAAQAQAAE=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\KescoSelectAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations.KescoSelectCommandAttribute" Collapsed="true">
+    <Position X="2" Y="2" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAQAAAAAQAAAAABAAAAAAAAAAAAAAAABIAAAA=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\KescoSelectCommandAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations.KescoSelectDetailsAttribute" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentModel\DataAnnotations\KescoSelectDetailsAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

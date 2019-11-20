@@ -1,0 +1,88 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<System.Web.Mvc.HandleErrorInfo>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.Compression;
+@using Kesco.Web.Mvc.Compression.Resource;
+
+<!DOCTYPE html>
+<html>
+<head >
+    <title>@ViewBag.Title</title>
+	<link rel="icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" />
+	<link rel="shortcut icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" /> 
+	
+	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetCssStyle(GetUserThemeFolder()+"jquery-ui.css")))
+	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("jquery.js")))
+
+	<style type="text/css">
+		body {
+			overflow: hidden;	
+		}
+
+	</style>
+</head>
+<body>
+	<span id="wndSize" style="background-color: transparent; position: absolute; right: 42px; top: 3px; display: none;"></span>
+
+
+	@* Определим секцию для верхней части страницы *@
+	<div id="dialogHeader" style="padding-bottom: 5px;" >
+		@RenderSection("Header", required: false)
+	</div>
+
+	@* Основная область страницы *@
+	<div id="dialogContentPane" class="ui-widget-content" style="overflow: auto; padding: 2px; "
+		>
+		@RenderBody()
+	</div>
+
+	@* Определим секцию для нижней части страницы *@
+	<div id="dialogFooter" class="ui-widget" style="padding: 5px 5px 0px 5px; text-align: center; "
+		>&nbsp;
+		@RenderSection("Footer", required: false)
+	</div>
+
+	@* Инициализация модели представления и отрисовка страницы *@
+	@Html.RenderScripts()
+	<script language="javascript" type="text/javascript">
+		var __contentPaneResizing = false;
+		var __contentPaneResizingReset = null;
+
+		function resizeContentPane() {
+			var $window = $(window);
+
+			if (window.dialogWidth != null && window.dialogHeight != null) {
+				ViewModel.Params.Width = $window.width();
+				ViewModel.Params.Height = $window.height();
+			}
+
+			if (__contentPaneResizing) {
+				__contentPaneResizing = false;
+				return;
+			}
+			__contentPaneResizing = true;
+
+			var $header = $("#dialogHeader");
+			var $content = $("#dialogContentPane");
+			var $footer = $("#dialogFooter");
+
+			$content.width($header.outerWidth() - 6);
+			var height = $window.height() - $header.outerHeight() - $footer.outerHeight() - 15;
+			if (height > 0) {
+				$content.height(height);
+			}
+			$("#wndSize").html("width: " + $window.width() + " | height: " + $window.height() + " | header: " + $header.outerHeight() + " | footer: " + $footer.outerHeight() + " | content: " + ($content.outerHeight()));
+			clearTimeout(__contentPaneResizingReset);
+			__contentPaneResizingReset = setTimeout(function () {
+				__contentPaneResizing = false;
+			}, 50);
+		}
+
+		$(document).ready(function () {
+			var $window = $(window);
+			$window
+				.resize(resizeContentPane)
+				.resize();
+		});
+	</script>
+</body>
+</html>

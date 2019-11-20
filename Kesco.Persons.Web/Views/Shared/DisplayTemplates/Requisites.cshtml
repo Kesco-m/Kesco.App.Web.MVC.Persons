@@ -1,0 +1,216 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Requisites.Requisites>
+@using Resources
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models
+@using Kesco.Persons.Web.Models.Requisites
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.SharedViews
+@{ 
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string viewModelRequisites = "window.ViewModel." + name;
+}
+
+		<a href="javascript: void(0);" id="Requisites_Edit_Button_@(Model.ID)" data-bind="
+			attr: { 
+				alt: @(name).TerritoryID()?'':'@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Requisites_SpecifyCountryOfRegistration)',
+				title: @(name).TerritoryID()?'':'@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Requisites_SpecifyCountryOfRegistration)'
+			},
+			enable2: @(name).TerritoryID(),
+			click: editJuridicalRequisites
+		"><span class="ui-icon text-ui-icon" data-bind="
+				css: { 'ui-icon-pencil': @(name)_IsSpecified, 'ui-icon-plus': !@(name)_IsSpecified() }
+			"></span><span data-bind="
+				visible: !@(name)_IsSpecified()
+			">@(global::Resources.Resources.Kesco_Persons_Web_VW_142)</span></a>
+            </br>
+            <span id="requisitesValidationMessage" style="display: none">
+                 <label style="COLOR: #ff0000; font-weight:100; font-size: 10px;">@(Kesco.Persons.Web.Localization.Resources.Validation_JuridicalPerson_RequisitesMustBeSpecified)</label> 
+		</span>
+        <span style="font-style: italic" data-bind="
+			visible: @(name)_IsSpecified,
+			text: @(name)_ValidRange" ></span>
+	<table cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="2" data-bind="
+				style: { 'border-bottom': (@(name)_IsSpecified())?'1px solid;':'' }
+			"
+			>
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).IncorporationFormID() &&  @(name)_IsRussia()">
+        <td>
+			@Html.LabelFor(m => m.IncorporationFormID):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.IncorporationFormID)
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).ShortNameRus">
+        <td>
+			@Html.LabelFor(m => m.ShortNameRus):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.ShortNameRus)
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).ShortNameLat">
+        <td>
+			@Html.LabelFor(m => m.ShortNameLat):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.ShortNameLat)
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).FullName() &&  @(name)_IsRussia()">
+        <td>
+			@Html.LabelFor(m => m.FullName):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.FullName)
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).OKONH() &&  @(name)_IsRussia()">
+        <td>
+			@Html.LabelFor(m => m.OKONH):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.OKONH)
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).OKVED() &&  @(name)_IsRussia()">
+        <td>
+			@Html.LabelFor(m => m.OKVED):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.OKVED)
+        </td>
+    </tr>
+    <tr data-bind="visible: @(name).KPP() &&  @(name)_IsRussia()">
+        <td>
+			@Html.LabelFor(m => m.KPP):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.KPP)
+        </td>
+    </tr>
+            
+    <tr data-bind="visible: @(name).RwID">
+        <td>
+			@Html.LabelFor(m => m.RwID):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.RwID)
+        </td>
+    </tr>
+            
+    <tr data-bind="visible: @(name).AddressLegal">
+        <td>
+			@Html.LabelFor(m => m.AddressLegal):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.AddressLegal)
+        </td>
+    </tr>
+            
+    <tr data-bind="visible: @(name).AddressLegalLat">
+        <td>
+			@Html.LabelFor(m => m.AddressLegalLat):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.AddressLegalLat)
+        </td>
+    </tr>
+            
+    <tr data-bind="visible: @(name).ShortNameRusGenitive">
+        <td>
+			@Html.LabelFor(m => m.ShortNameRusGenitive):
+		</td>
+        <td>
+			@Html.DisplayFor(m => m.ShortNameRusGenitive)
+        </td>
+    </tr>
+</table>
+
+@Html.CommonScriptCode("Persons_Requisites_Methods",
+@<script>
+     function setRequisitesValid(flag) {
+	    var validationMsg = document.getElementById('requisitesValidationMessage');
+         if(flag == true || flag == "true") {
+         if(validationMsg != null && validationMsg != "") validationMsg.style.display = "none";
+             
+         }
+          if(flag == false || flag == "false") {
+         if(validationMsg != null && validationMsg != "") validationMsg.style.display = "table";
+              
+         }
+	}
+
+     $(document).ready(function () {
+         @(viewModelRequisites)_IsSpecified = window.ko.computed(function () {
+             setRequisitesValid(true);
+             return @(viewModelRequisites).ShortNameRus() || @(viewModelRequisites).ShortNameLat();
+         }, window.ViewModel);
+
+         		@* Вычисляет признак, что территория является  *@
+         @(viewModelRequisites)_IsRussia = window.ko.computed(function () {
+             return @(viewModelRequisites).TerritoryID() == @(Kesco.Territories.ObjectModel.Territory.Russia);
+         }, window.ViewModel);
+
+         		@* Вычисляет фразу для обозначения периода действия реквизитов *@
+         @(viewModelRequisites)_ValidRange = window.ko.computed(function () {
+             var d1  = @(viewModelRequisites).From(), d2 = @(viewModelRequisites).To();
+             var phrases = [];
+             if (@(viewModelRequisites).ShortNameRus() || @(viewModelRequisites).ShortNameLat()) {
+                 phrases.push('@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Requisites_Valid)');
+
+                 if (d1) {
+                     phrases.push('@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Requisites_Valid_From)');
+                     phrases.push(d1);
+                 }
+
+                 if (d2) {
+                     phrases.push('@(Kesco.Persons.Web.Localization.Resources.Views_JuridicalPerson_Requisites_Valid_To)');
+                     phrases.push(d2);
+                 }
+             }
+             return phrases.join(" ");
+			
+         }, window.ViewModel);
+
+         // TODO: Сделать универсально
+         // 1) параметр путь к объекту в модели, строка
+         window.ViewModel.editJuridicalRequisites = function () {
+             var areaID = @(viewModelRequisites).TerritoryID();
+             if (!areaID) {
+                 alertMessage('&nbsp;&nbsp;', '@Resources.Persons_Requisites_SpecifyPersonRegistrationCountry', 'OK');
+                 return;
+             }
+             var callbackUrl = encodeURIComponent('@Url.FullPathAction("DialogResult", "Default")');
+             var url = '@(Url.FullPathAction("Index","Requisites"))?areaID={1}&return=1&mvc=1&callbackKey=c1&callbackUrl={0}';
+             url = $.validator.format(url, callbackUrl, areaID);
+
+             window.openPopupWindow(url, 
+                 {	@* контекст запроса *@
+                     type: 'POST',
+                     callbackUrl: callbackUrl,
+                     Requisites: ko.mapping.toJS(@(viewModelRequisites))
+                 }, 
+                 function (val) { @* функция возврата *@
+                     if (val) {
+                         						@* val[0] - Requisites *@
+                         window.ko.mapping.fromJS({ 
+                             Model: {
+                                 Card: { 
+                                     Requisites: window.ko.mapping.toJS(val[0]) 
+                                 } 
+                             }
+                         }, window.ViewModel);
+                         setTimeout(function() { $("#Requisites_Edit_Button_@(Model.ID)").get(0).focus() }, 200)
+                     }
+                 }, "Requisites", 730, 500
+             );
+         };
+
+     });
+ </script>)

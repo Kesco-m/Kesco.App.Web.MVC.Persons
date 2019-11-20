@@ -1,0 +1,2 @@
+robocopy "C:\PROJECTS\Kesco\Kesco.Territories\Kesco.Territories.Controls\bin" "C:\_PUBLISH\Web_Data\MVC" "Kesco.Territories.*.dll" "Kesco.Territories.*.pdb" "Kesco.Territories.*.xml" /S /XD .svn /R:1
+dir %TEMP% > nul

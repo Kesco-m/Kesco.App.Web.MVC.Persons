@@ -1,0 +1,15 @@
+.tableTypes td
+{
+	border: 1px solid 
+}
+
+.tableTypes
+{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.tableTypes .themeTd{
+	border-collapse: collapse;
+	width: 75%;
+}

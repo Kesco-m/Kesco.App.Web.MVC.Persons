@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GUI_Button_Cancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="GUI_Button_Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1000" xml:space="preserve">
+    <value>Выбор ответственного сотрудника</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1001" xml:space="preserve">
+    <value>Удалить из критерия поиска</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1002" xml:space="preserve">
+    <value>Выбрать список ответственных сотрудников</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1003" xml:space="preserve">
+    <value>Выбрать список типов лиц как критерий поиска по лицам</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1004" xml:space="preserve">
+    <value>Выбор типа лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1005" xml:space="preserve">
+    <value>Выберите вид представления псевдонима...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_101" xml:space="preserve">
+    <value>Найдено: </value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_102" xml:space="preserve">
+    <value>лиц</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_103" xml:space="preserve">
+    <value>названия лиц</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_104" xml:space="preserve">
+    <value>реквизиты лиц</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_105" xml:space="preserve">
+    <value>контакты лиц</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_106" xml:space="preserve">
+    <value>содержат</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_107" xml:space="preserve">
+    <value>начинаются с</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_108" xml:space="preserve">
+    <value>поиск</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_109" xml:space="preserve">
+    <value>Использовать ограничения по типам лиц при поиске.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_110" xml:space="preserve">
+    <value>Показывать только</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_111" xml:space="preserve">
+    <value>организации</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_112" xml:space="preserve">
+    <value>банки</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_113" xml:space="preserve">
+    <value>физические лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_114" xml:space="preserve">
+    <value>Использовать ограничения по проверке лиц бухгалтерией при поиске</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_115" xml:space="preserve">
+    <value>Достоверность лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_116" xml:space="preserve">
+    <value>проверенные</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_117" xml:space="preserve">
+    <value>не проверенные</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_118" xml:space="preserve">
+    <value>Бизнес-проект</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_119" xml:space="preserve">
+    <value>только по</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_120" xml:space="preserve">
+    <value>работающие по любому бизнес-проекту</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_121" xml:space="preserve">
+    <value>включая подпроекты</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_122" xml:space="preserve">
+    <value>Страна регистрации</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_122_1" xml:space="preserve">
+    <value>Использовать ограничения по стране регистрации при поиске</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_123" xml:space="preserve">
+    <value>Организационно-правовая форма</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_123_1" xml:space="preserve">
+    <value>Использовать ограничения по организационно-правовой форме при поиске</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_124" xml:space="preserve">
+    <value>Выберите...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_125" xml:space="preserve">
+    <value>не указана</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_126" xml:space="preserve">
+    <value>Ответственные сотрудники</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_127" xml:space="preserve">
+    <value>Использовать ограничения по ответственным сотрудникам при поиске</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_128" xml:space="preserve">
+    <value>отсутствуют</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_129" xml:space="preserve">
+    <value>Типы лиц</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_130" xml:space="preserve">
+    <value>отсутствуют</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_131" xml:space="preserve">
+    <value>Использовать ограничения по типам лиц при поиске</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_132" xml:space="preserve">
+    <value>включая подтипы</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_133" xml:space="preserve">
+    <value>Данные действительны</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_134" xml:space="preserve">
+    <value>Создание физического лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_135" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_136" xml:space="preserve">
+    <value>Сохранить как</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_137" xml:space="preserve">
+    <value>Ответственный сотрудник</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_138" xml:space="preserve">
+    <value>Укажите типы</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_139" xml:space="preserve">
+    <value>поля, обязательные для заполнения</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_140" xml:space="preserve">
+    <value>Создание юридического лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_141" xml:space="preserve">
+    <value>Псевдоним</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_142" xml:space="preserve">
+    <value>введите реквизиты</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_143" xml:space="preserve">
+    <value>данная организация является банком</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_144" xml:space="preserve">
+    <value>Добавление реквизитов юридического лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_145" xml:space="preserve">
+    <value>длина</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_146" xml:space="preserve">
+    <value>Реквизиты</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_147" xml:space="preserve">
+    <value>Убрать ограничения на поиск</value>
+  </data>
+  <data name="Persons_Search_PageTitle" xml:space="preserve">
+    <value>Поиск по справочнику лиц</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1006" xml:space="preserve">
+    <value>ответственные сотрудники</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1007" xml:space="preserve">
+    <value>&lt;не назначены&gt;</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1012" xml:space="preserve">
+    <value>Перейти к старой версии</value>
+  </data>
+  <data name="EditorTemplate_RequiredFields_Message" xml:space="preserve">
+    <value> поля, обязательные для заполнения</value>
+  </data>
+  <data name="EditorTemplate_ResourceField_CreateNew" xml:space="preserve">
+    <value> Создание нового ресурса</value>
+  </data>
+  <data name="EditorTemplate_UniqueID_NewEntry_Title" xml:space="preserve">
+    <value>Новая запись</value>
+  </data>
+  <data name="GUI_Button_AssignResourceToPersons" xml:space="preserve">
+    <value> Назначение ресурсов</value>
+  </data>
+  <data name="GUI_Button_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="GUI_Button_Copy" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="GUI_Button_Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="GUI_Button_Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="GUI_Button_Edit" xml:space="preserve">
+    <value> Редактировать</value>
+  </data>
+  <data name="GUI_Button_Help" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="GUI_Button_OK" xml:space="preserve">
+    <value> ОК</value>
+  </data>
+  <data name="GUI_Button_Refresh" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="GUI_Button_Select" xml:space="preserve">
+    <value>Выберите</value>
+  </data>
+  <data name="GUI_Button_ShowCashFlowTypeList" xml:space="preserve">
+    <value>Обзор типов</value>
+  </data>
+  <data name="GUI_Button_View" xml:space="preserve">
+    <value>Просмотреть</value>
+  </data>
+  <data name="GUI_Message_AjaxRequestError" xml:space="preserve">
+    <value>Произошла ошибка при выполнении действия на сервере.</value>
+  </data>
+  <data name="GUI_Message_Loading" xml:space="preserve">
+    <value>Загрузка ...</value>
+  </data>
+  <data name="GUI_Message_Refreshing" xml:space="preserve">
+    <value>Обновление...</value>
+  </data>
+  <data name="Persons_Search_Form_Condition_Contains" xml:space="preserve">
+    <value> содержит</value>
+  </data>
+  <data name="Persons_Search_Form_Condition_StartsWith" xml:space="preserve">
+    <value> начинается с</value>
+  </data>
+  <data name="Persons_Search_Form_NameLabel" xml:space="preserve">
+    <value> Имя</value>
+  </data>
+  <data name="Persons_Search_Form_SearchButton_Caption" xml:space="preserve">
+    <value> Поиск</value>
+  </data>
+  <data name="Persons_Search_FoundMore" xml:space="preserve">
+    <value> Найдено более 100 ресурсов, которые соответствуют определенным критериям. &lt;br&gt;&lt;br&gt; Просьба уточнить, поиске делового критериям.</value>
+  </data>
+  <data name="Persons_Search_FoundMoreTitle" xml:space="preserve">
+    <value> Найдено более 100 ресурсов</value>
+  </data>
+  <data name="Persons_Search_NotFound" xml:space="preserve">
+    <value>Не найдено ресурсов, которые соответствуют заданным критериям. &lt;br&gt;&lt;br&gt; Уточните критерии поиска.</value>
+  </data>
+  <data name="Persons_Search_NotFoundTitle" xml:space="preserve">
+    <value> Ресурсов не найдено.</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguage" xml:space="preserve">
+    <value> Показать имя:</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguageEn" xml:space="preserve">
+    <value> EN</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguageRu" xml:space="preserve">
+    <value> RU</value>
+  </data>
+  <data name="Persons_Search_SortBy" xml:space="preserve">
+    <value> Сортировать по:</value>
+  </data>
+  <data name="Persons_Search_SortBy_Alphabetically" xml:space="preserve">
+    <value> в алфавитном порядке</value>
+  </data>
+  <data name="Persons_Search_SortBy_Position" xml:space="preserve">
+    <value> позиции в дереве</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1008" xml:space="preserve">
+    <value>контакты</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1009" xml:space="preserve">
+    <value>данные юридического лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1010" xml:space="preserve">
+    <value>данные физического лица</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1011" xml:space="preserve">
+    <value>Создание ...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_2000" xml:space="preserve">
+    <value>Контакт</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_2001" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="Kesco_Persons_ContactTypeField_OptionsCaption" xml:space="preserve">
+    <value>Укажите тип контакта</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_Warning" xml:space="preserve">
+    <value>При создании лица в справочнике найдены похожие лица.&lt;br&gt; Проверьте, нет ли среди найденных лиц создаваемого лица.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_Title" xml:space="preserve">
+    <value>Возможные дубликаты лица</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_ContinueEditingButton" xml:space="preserve">
+    <value>Продолжить редактирование</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_ConfirmCreatingButton" xml:space="preserve">
+    <value>Создаваемое лицо не является ни одним из найденных.</value>
+  </data>
+  <data name="Kesco_Persons_Create_DuplicateNicknames" xml:space="preserve">
+    <value>Лицо с таким псевдонимом уже существует.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2100" xml:space="preserve">
+    <value>Укажите срок действия данных.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2101" xml:space="preserve">
+    <value>Неправильно указано время действия данных.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2102" xml:space="preserve">
+    <value>Выберите вид представления псевдонима...</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2103" xml:space="preserve">
+    <value>Укажите пол.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2104" xml:space="preserve">
+    <value>Темы</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2104a" xml:space="preserve">
+    <value>Типы</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2105" xml:space="preserve">
+    <value>Выбор типов</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2106" xml:space="preserve">
+    <value>В каталогах</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2107" xml:space="preserve">
+    <value>Каталоги</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2108" xml:space="preserve">
+    <value>Это оно</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2109" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2110" xml:space="preserve">
+    <value>Адрес (лат.)</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2111" xml:space="preserve">
+    <value>Досье</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2112" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2113" xml:space="preserve">
+    <value>Если среди найденных лиц создаваемого лица нет, Вы не сможете самостоятельно создать данное лицо. Обратитесь за помощью к секретарям или к администратору.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2200" xml:space="preserve">
+    <value>Укажите реквизиты.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2201" xml:space="preserve">
+    <value>Необходимо в реквизитах заполнить русское или латинское название юр. лица.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2202" xml:space="preserve">
+    <value>Укажите типы лица.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2203" xml:space="preserve">
+    <value>Начиная c</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2204" xml:space="preserve">
+    <value>по</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2205" xml:space="preserve">
+    <value>Реквизиты</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2206" xml:space="preserve">
+    <value>Подтверждаю</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2207" xml:space="preserve">
+    <value>Укажите срок действия реквизитов.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2208" xml:space="preserve">
+    <value>Неправильно указано время действия данных.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2209" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2210" xml:space="preserve">
+    <value>Длина ИНН не соответствует формату</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2211" xml:space="preserve">
+    <value>Длина ОКПО не соответствует формату</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2212" xml:space="preserve">
+    <value>Если ОКОНХ указан, то его длина должна быть равна 5</value>
+  </data>
+  <data name="Kesco_Persons_Search_1000" xml:space="preserve">
+    <value>Доп. ограничения</value>
+  </data>
+  <data name="Kesco_Persons_Search_1001" xml:space="preserve">
+    <value>Лица с реквизитами, действующими на</value>
+  </data>
+  <data name="Kesco_Persons_Search_1002" xml:space="preserve">
+    <value>Лица, зарегистрированные в странах участниках таможенного союза</value>
+  </data>
+  <data name="Kesco_Persons_Search_1003" xml:space="preserve">
+    <value>Лица, не зарегистрированные в странах участниках таможенного союза</value>
+  </data>
+  <data name="Kesco_Persons_Search_1004" xml:space="preserve">
+    <value>Лица, связанные с</value>
+  </data>
+  <data name="Kesco_Persons_Search_1005" xml:space="preserve">
+    <value>Работники</value>
+  </data>
+  <data name="Kesco_Persons_Search_1006" xml:space="preserve">
+    <value>Места работы</value>
+  </data>
+  <data name="Kesco_Persons_Search_1007" xml:space="preserve">
+    <value>Подчиненные организации</value>
+  </data>
+  <data name="Kesco_Persons_Search_1008" xml:space="preserve">
+    <value>Головные организации</value>
+  </data>
+  <data name="Kesco_Persons_Search_1009" xml:space="preserve">
+    <value>Представители</value>
+  </data>
+  <data name="Kesco_Persons_Search_1010" xml:space="preserve">
+    <value>Руководители</value>
+  </data>
+  <data name="Kesco_Persons_Search_1011" xml:space="preserve">
+    <value>Собственность</value>
+  </data>
+  <data name="Kesco_Persons_Search_1012" xml:space="preserve">
+    <value>Владельцы</value>
+  </data>
+  <data name="Kesco_Choosen_NoResultsMatch" xml:space="preserve">
+    <value>Не найдено совпадений.</value>
+  </data>
+  <data name="Persons_Dossier_PageTitle" xml:space="preserve">
+    <value>Досье</value>
+  </data>
+  <data name="Persons_Dossier_PageTitle2" xml:space="preserve">
+    <value>{1} №{0}</value>
+  </data>
+  <data name="Persons_Dossier_Menu_AddToPerson" xml:space="preserve">
+    <value>Добавить лицу</value>
+  </data>
+  <data name="Persons_Dossier_Menu_ChangedBy" xml:space="preserve">
+    <value>вносившие изменения</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Docs" xml:space="preserve">
+    <value>искать документы лица в архиве</value>
+  </data>
+  <data name="Persons_Dossier_Menu_NewInd" xml:space="preserve">
+    <value>создать физическое</value>
+  </data>
+  <data name="Persons_Dossier_Menu_NewJur" xml:space="preserve">
+    <value>создать юридическое</value>
+  </data>
+  <data name="Persons_Dossier_Menu_OldProps" xml:space="preserve">
+    <value>недействующие реквизиты</value>
+  </data>
+  <data name="Persons_Dossier_Menu_StoreOldProps" xml:space="preserve">
+    <value>недействующие реквизиты, склады/счета</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Person" xml:space="preserve">
+    <value>Лицо</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Search" xml:space="preserve">
+    <value>искать лица</value>
+  </data>
+  <data name="Persons_Dossier_Menu_View" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="GUI_Button_Confirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="Persons_Dossier_CardFrom" xml:space="preserve">
+    <value>начиная с </value>
+  </data>
+  <data name="Persons_Dossier_CardNotValid" xml:space="preserve">
+    <value>на текущий момент - не действительны</value>
+  </data>
+  <data name="Persons_Dossier_CardTo" xml:space="preserve">
+    <value>по </value>
+  </data>
+  <data name="Persons_Dossier_CardValid" xml:space="preserve">
+    <value>действуют</value>
+  </data>
+  <data name="Persons_Dossier_Actuality" xml:space="preserve">
+    <value>Актуальность</value>
+  </data>
+  <data name="Persons_Dossier_ActualityNotChecked" xml:space="preserve">
+    <value>не проверялась</value>
+  </data>
+  <data name="Persons_Dossier_Checked" xml:space="preserve">
+    <value>проверено</value>
+  </data>
+  <data name="Persons_Dossier_PersonNotFound" xml:space="preserve">
+    <value>Лицо №{0} не найдено или недоступно!</value>
+  </data>
+  <data name="Persons_Dossier_NoData" xml:space="preserve">
+    <value>отсутствуют</value>
+  </data>
+  <data name="Persons_Dossier_SyncUser" xml:space="preserve">
+    <value>синхронизировать данные</value>
+  </data>
+  <data name="Persons_Link_Child_Type1" xml:space="preserve">
+    <value>Работник</value>
+  </data>
+  <data name="Persons_Link_Child_Type2" xml:space="preserve">
+    <value>Подчиненная организация</value>
+  </data>
+  <data name="Persons_Link_Child_Type3" xml:space="preserve">
+    <value>Представитель</value>
+  </data>
+  <data name="Persons_Link_Child_Type4" xml:space="preserve">
+    <value>Собственность</value>
+  </data>
+  <data name="Persons_Link_Parent_Type1" xml:space="preserve">
+    <value>Место работы</value>
+  </data>
+  <data name="Persons_Link_Parent_Type2" xml:space="preserve">
+    <value>Головная организация</value>
+  </data>
+  <data name="Persons_Link_Parent_Type3" xml:space="preserve">
+    <value>Руководитель</value>
+  </data>
+  <data name="Persons_Link_Parent_Type4" xml:space="preserve">
+    <value>Владелец</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PageTitle" xml:space="preserve">
+    <value>Удаление и замена лица</value>
+  </data>
+  <data name="Persons_Dossier_Delete_Button_PerformDeleting" xml:space="preserve">
+    <value>Выполнить удаление</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PersonID_Label" xml:space="preserve">
+    <value>удаляется</value>
+  </data>
+  <data name="Persons_Dossier_Delete_ReplacePersonID_Label" xml:space="preserve">
+    <value>c заменой на</value>
+  </data>
+  <data name="Persons_Link_Parameter0" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Persons_Link_Parameter1" xml:space="preserve">
+    <value>Первая</value>
+  </data>
+  <data name="Persons_Link_Parameter2" xml:space="preserve">
+    <value>Вторая</value>
+  </data>
+  <data name="Persons_Link_Description" xml:space="preserve">
+    <value>Должность</value>
+  </data>
+  <data name="Persons_Link_Parameter" xml:space="preserve">
+    <value>Право подписи</value>
+  </data>
+  <data name="Persons_Dossier_Menu_3" xml:space="preserve">
+    <value>работника</value>
+  </data>
+  <data name="Persons_Dossier_Menu_4" xml:space="preserve">
+    <value>место работы</value>
+  </data>
+  <data name="Persons_Dossier_Menu_5" xml:space="preserve">
+    <value>головную организацию</value>
+  </data>
+  <data name="Persons_Dossier_Menu_6" xml:space="preserve">
+    <value>представителя (помощника)</value>
+  </data>
+  <data name="Persons_Dossier_Menu_7" xml:space="preserve">
+    <value>подчиненную организацию</value>
+  </data>
+  <data name="Persons_Dossier_Menu_8" xml:space="preserve">
+    <value>руководителя</value>
+  </data>
+  <data name="Persons_Dossier_Menu_9" xml:space="preserve">
+    <value>владельца</value>
+  </data>
+  <data name="Persons_Dossier_Menu_10" xml:space="preserve">
+    <value>в собственность</value>
+  </data>
+  <data name="Persons_Dossier_Menu_11" xml:space="preserve">
+    <value>счет</value>
+  </data>
+  <data name="Persons_Dossier_Menu_12" xml:space="preserve">
+    <value>предоставление банковских услуг</value>
+  </data>
+  <data name="Persons_Dossier_Menu_13" xml:space="preserve">
+    <value>предоставление услуг хранения</value>
+  </data>
+  <data name="Persons_Dossier_Menu_14" xml:space="preserve">
+    <value>склад</value>
+  </data>
+  <data name="Persons_Dossier_Menu_15" xml:space="preserve">
+    <value>свидетельство на опт. реал. НП</value>
+  </data>
+  <data name="Persons_Dossier_Menu_16" xml:space="preserve">
+    <value>бухгалтерский учёт Abacus</value>
+  </data>
+  <data name="Persons_Dossier_Menu_17" xml:space="preserve">
+    <value>бухгалтерский учёт 1С</value>
+  </data>
+  <data name="Persons_Dossier_Menu_18" xml:space="preserve">
+    <value>экспорт в Aspect</value>
+  </data>
+  <data name="Persons_Dossier_Menu_1" xml:space="preserve">
+    <value>контакт</value>
+  </data>
+  <data name="Persons_Dossier_Menu_2" xml:space="preserve">
+    <value>реквизиты</value>
+  </data>
+  <data name="Persons_Dossier_Section_7" xml:space="preserve">
+    <value>работники</value>
+  </data>
+  <data name="Persons_Dossier_Section_8" xml:space="preserve">
+    <value>места работы</value>
+  </data>
+  <data name="Persons_Dossier_Section_9" xml:space="preserve">
+    <value>головные организации</value>
+  </data>
+  <data name="Persons_Dossier_Section_10" xml:space="preserve">
+    <value>представители (помощники)</value>
+  </data>
+  <data name="Persons_Dossier_Section_11" xml:space="preserve">
+    <value>подчиненные организации</value>
+  </data>
+  <data name="Persons_Dossier_Section_12" xml:space="preserve">
+    <value>руководители</value>
+  </data>
+  <data name="Persons_Dossier_Section_13" xml:space="preserve">
+    <value>владельцы</value>
+  </data>
+  <data name="Persons_Dossier_Section_14" xml:space="preserve">
+    <value>собственность</value>
+  </data>
+  <data name="Persons_Dossier_Section_15" xml:space="preserve">
+    <value>счета</value>
+  </data>
+  <data name="Persons_Dossier_Section_16" xml:space="preserve">
+    <value>предоставление банковских услуг</value>
+  </data>
+  <data name="Persons_Dossier_Section_17" xml:space="preserve">
+    <value>предоставление услуг хранения</value>
+  </data>
+  <data name="Persons_Dossier_Section_18" xml:space="preserve">
+    <value>склады</value>
+  </data>
+  <data name="Persons_Dossier_Section_19" xml:space="preserve">
+    <value>свидетельство на опт. реал. НП</value>
+  </data>
+  <data name="Persons_Dossier_Section_5" xml:space="preserve">
+    <value>контакты</value>
+  </data>
+  <data name="Persons_Dossier_Section_6" xml:space="preserve">
+    <value>реквизиты</value>
+  </data>
+  <data name="Persons_Dossier_Section_1" xml:space="preserve">
+    <value>данные юридического лица</value>
+  </data>
+  <data name="Persons_Dossier_Section_2" xml:space="preserve">
+    <value>данные физического лица</value>
+  </data>
+  <data name="Persons_Dossier_Section_3" xml:space="preserve">
+    <value>ответственные сотрудники</value>
+  </data>
+  <data name="Persons_Dossier_Section_4" xml:space="preserve">
+    <value>типы лица - контрагента</value>
+  </data>
+  <data name="Persons_Link_Delete_Confirm_Text" xml:space="preserve">
+    <value>Удаление целесообразно в случае, если данная информация была занесена неправильно!&lt;br&gt;Если данная информация правильная, но на данный момент не действует - воспользуйтесь ограничением срока действия!&lt;br&gt;&lt;br&gt;Вы уверены, что хотите удалить данную информацию?</value>
+  </data>
+  <data name="Persons_Contact_Delete_Confirm_Text" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить данный контакт?</value>
+  </data>
+  <data name="Persons_Link_NotFound" xml:space="preserve">
+    <value>Связь №{0} не найдена!</value>
+  </data>
+  <data name="Persons_Contact_ChooseCity" xml:space="preserve">
+    <value>Выбор населенного пункта</value>
+  </data>
+  <data name="Persons_Contact_ChooseCountry" xml:space="preserve">
+    <value>Выбор страны</value>
+  </data>
+  <data name="Persons_Delete_Confirm_Title" xml:space="preserve">
+    <value>Подтвердите удаление</value>
+  </data>
+  <data name="Persons_Requisites_SpecifyPersonRegistrationCountry" xml:space="preserve">
+    <value>Укажите страну регистрации лица!!!</value>
+  </data>
+  <data name="Persons_Requisites_ShortNameRusGenitive_AddOn" xml:space="preserve">
+    <value>(для документов)</value>
+  </data>
+  <data name="EditorTemplate_ContactTypeField_OptionsCaption" xml:space="preserve">
+    <value>- Выберите тип контакта -</value>
+  </data>
+  <data name="Persons_Contact_NotFound" xml:space="preserve">
+    <value>Контакт №{0} не найден!</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Print" xml:space="preserve">
+    <value>Печать карточки лица</value>
+  </data>
+  <data name="Persons_Card_Delete_Confirm_Text" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить данную карточку лица?</value>
+  </data>
+  <data name="Persons_Dossier_EmployeeHasNoPost" xml:space="preserve">
+    <value>сотрудник не имеет должности в штатном расписании</value>
+  </data>
+  <data name="Persons_Dossier_NoEmployee" xml:space="preserve">
+    <value>лицо не введено в справочник сотрудников</value>
+  </data>
+  <data name="Dossier_PrivatePerson_Label" xml:space="preserve">
+    <value>(для сотрудника лицо является личным)</value>
+  </data>
+  <data name="Dossier_PrivatePerson_SetRemoveSignPrivate" xml:space="preserve">
+    <value>Установить/снять признак, что для данного сотрудника лицо является личным.</value>
+  </data>
+  <data name="Persons_Natural_SaveErrorWhileSavingPersonTypes" xml:space="preserve">
+    <value>Возникла ошибка в процессе назначения лицу типов: 
+ - {0}</value>
+  </data>
+  <data name="Persons_Natural_SaveErrorWhileSavingResps" xml:space="preserve">
+    <value>Возникла ошибка в процессе назначения ответсвенных сотрудников:
+ - {0}</value>
+  </data>
+  <data name="Persons_Contact_PleaseSpecifyPerson" xml:space="preserve">
+    <value>- для создания контакта необходимо указать лицо!</value>
+  </data>
+  <data name="GUI_Button_Synchronize" xml:space="preserve">
+    <value>Синхронизировать</value>
+  </data>
+  <data name="Persons_Synchronize_DifferencesHeader" xml:space="preserve">
+    <value>В данные физического лица будут внесены изменения на основании данных о сотруднике холдинга</value>
+  </data>
+  <data name="Persons_Synchronize_Differences_Requisites" xml:space="preserve">
+    <value>Реквизиты</value>
+  </data>
+  <data name="Persons_Dossier_CardNotRestricted" xml:space="preserve">
+    <value>не ограничено</value>
+  </data>
+  <data name="Persons_Dossier_RefreshSection" xml:space="preserve">
+    <value>Обновить секцию</value>
+  </data>
+  <data name="Persons_Dossier_ShowHideSection" xml:space="preserve">
+    <value>Показать/скрыть секцию</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalButtonOkCaption" xml:space="preserve">
+    <value>Да, подтверждаю</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalCaption" xml:space="preserve">
+    <value>Подтверждение актуальности контакта</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalDialogFirst" xml:space="preserve">
+    <value>Вы подтверждаете, что контакты лица</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalDialogSecond" xml:space="preserve">
+    <value>актуальны и полностью Вами проверены?</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Is_Checked" xml:space="preserve">
+    <value>Актуальность проверена</value>
+  </data>
+  <data name="Persons_Doisser_SynchronizeData" xml:space="preserve">
+    <value>Синхронизировать данные</value>
+  </data>
+</root>

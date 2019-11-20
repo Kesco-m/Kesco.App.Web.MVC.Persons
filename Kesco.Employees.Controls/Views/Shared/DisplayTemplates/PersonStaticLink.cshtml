@@ -1,0 +1,35 @@
+﻿@inherits Kesco.Employees.Controls.SiteViewPage<int?>
+@using Kesco.Employees.Controls
+@using Kesco.Employees.Controls.ComponentModel
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	ModelMetadata metaData = ViewData.ModelMetadata;
+	string initialLabel = ((string)ViewData["InitialLabel"]) ?? String.Empty;
+	string tooltipPositionMy = ((string)ViewData["TooltipPositionMy"]) ?? String.Empty;
+	string tooltipPositionAt = ((string)ViewData["TooltipPositionAt"]) ?? String.Empty;
+    string cssClass = (ViewData["CssClass"] == null) ? String.Empty : ViewData["CssClass"].ToString();
+    string personid = (ViewData["personid"] == null) ? String.Empty : ViewData["personid"].ToString();
+    cssClass = ("personStaticLink " + cssClass).Trim();
+    
+
+    Html.RegisterCommonScriptCode("personStaticLink", @"
+		$(document).on('click', 'a.personStaticLink', function() {
+			window.ViewModel.showPerson($(this).data('person-id'));
+		});
+
+		$(document).on('mouseenter', 'a.personStaticLink', function() {
+			var $this = $(this);
+			if (!$this.data('qtip')) {
+				$this.initToolTip(function() {
+					var uri = Env.URI_person_info;
+						uri = uri.replace('/0', '/' + $this.data('person-id'));
+					return uri;
+				}, $(document.body)).qtip('show');
+			}
+		});
+	");
+}
+<a class="@(cssClass)" data-person-id="@(personid)" href="javascript: void(0)" data-tip-pos-my="@(tooltipPositionMy)" data-tip-pos-at="@(tooltipPositionAt)"
+	>@Html.Raw(initialLabel)</a>
+		  

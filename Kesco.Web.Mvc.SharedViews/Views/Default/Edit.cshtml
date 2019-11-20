@@ -1,0 +1,145 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.SharedViews.Models.IndexViewModel>
+@{
+    ViewBag.Title = "Редактирование документа";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="@(ViewData.TemplateInfo.HtmlFieldPrefix)__Container" style="overflow: auto;">
+@using (Html.BeginForm("Save", null, FormMethod.Post, new { id = ViewData.TemplateInfo.HtmlFieldPrefix+"__Form"}))
+{
+	Html.EnableClientValidation();
+    @Html.EditorFor(x => x.Model)
+	<hr />
+	<button type="submit" id="@(ViewData.TemplateInfo.HtmlFieldPrefix)__Submit" style="display: none;" >Сохранить</button>
+	<script type="text/javascript">
+
+		window.handleRequest_Dummy_ResponsibleEmployeePhone = function(request) {
+			request.employeeID = ViewModel.Model.ResponsibleEmployeeID();
+		}
+
+		window.handleRequest_Dummy_ResponsibleEmployeeEmail = function(request) {
+			request.employeeID = ViewModel.Model.ResponsibleEmployeeID();
+		}
+
+		window.handleRequest_Dummy_ResponsibleEmployeeMsn = function(request) {
+			request.employeeID = ViewModel.Model.ResponsibleEmployeeID();
+		}
+
+		function dispatchCommand_Dummy_ResponsibleID(command) {
+			dispatchCommand_EmployeeControl("Dummy_ResponsibleID", command)
+		}
+
+		function dispatchCommand_Dummy_SignedBy(command) {
+			dispatchCommand_EmployeeControl("Dummy_SignedBy", command)
+		}
+
+		function dispatchCommand_EmployeeControl(controlID, command) {
+			var $lookup = $("#"+controlID);
+			var url; 
+			var callbackUrl = encodeURIComponent('@(Url.FullPathAction("DialogResult", "Default"))');
+			var item = $lookup.selectBox("getValue");
+			switch(command) {
+				case 'advSearch':
+					if (window.console) console.log("advSearch", item);
+					url = "@(Configuration.AppSettings.URI_user_search)?return=1&clid=62&mvc=1&callbackKey=c1&callbackUrl={0}&search={1}";
+					url = $.validator.format(url, callbackUrl, encodeURIComponent(item.label));
+					openPopupWindow(url, null, function(result) {
+							if (result) {
+								var item = $.isArray(result) ? result[0] : result;
+								$lookup.selectBox("setValue", item);
+							}
+						}, 'EmployeeLookup', 800, 600, { centerScreen: 1 });
+					return false;
+					break;
+				case 'view':
+					url = '@(Configuration.AppSettings.URI_user_form)?id={0}';
+					url = $.validator.format(url, "" + item.value);
+					openPopupWindow(url, null, null, 'wndPerson_' + controlID, 800, 600, { close: false });
+					break;
+				default:
+					break;
+			}
+		}	
+	</script>
+}
+</div>
+
+<script type="text/javascript" language="javascript">
+	$(function () {
+		@* 
+			Обработчик события изменения размера окна 
+		*@
+		$(window).resize(function() {
+			var $parent = $("#dialogContentPane");
+			$("#@(ViewData.TemplateInfo.HtmlFieldPrefix)__Container").width($parent.width())
+			$("#@(ViewData.TemplateInfo.HtmlFieldPrefix)__Container").height($parent.height())
+		});
+
+		$("#@(ViewData.TemplateInfo.HtmlFieldPrefix)__Form").submit(function () {
+			if ($(this).valid()) { // Проверка валидности формы
+				$.ajax({ // выполнить  Ajax запрос
+					url: this.action,
+					type: "POST",
+					dataType: "json",
+					data: ko.toJSON({
+                        Model: ko.mapping.toJS(ViewModel.Model)
+                    }),
+					contentType: 'application/json; charset-utf8',
+					success: function (response) {
+						if (response.status == "ok") {
+							window.location = "@(Url.Action("Index", "Default"))";
+							return;
+						}
+						if (response.status == "error") {
+							ajaxError(response.error.Content || response.error, response.error_details.Errors || response.error_details);
+							return;
+						}
+					}
+				});
+			}
+			return false;
+		});
+
+		ViewModel.Model.ResponsibleEmployeeID.subscribe(function(newValue) {
+			if (!newValue) {
+				$("#Model_ResponsibleEmployeePhone").selectBox("setValue", { value: "", label: ""});
+				$("#Model_ResponsibleEmployeeEmail").selectBox("setValue", { value: "", label: ""});
+				$("#Model_ResponsibleEmployeeMsn").selectBox("setValue", { value: "", label: ""});
+			}
+		});
+
+	});
+
+	function ajaxError(errMsg, errDetails) {
+		var errDetails2 = "<ul>";
+		$.map(errDetails, function(item, index) {
+				if (item) {
+					if (item.ErrorMessage) {
+						errDetails2 += "<li>"+(item.ErrorMessage || item.Exception.Message)+"</li>";
+					} else if (item.Errors) {
+						$.map(item.Errors, function(err) {
+							errDetails2 += "<li>"+(err.ErrorMessage || err.Exception.Message)+"</li>";
+						});
+					}
+				}
+			});
+		errDetails2 += "</ul>";
+		alertMessage("Ошибка приложения N1", ""+errMsg+""+errDetails2+"", "OK");
+	}
+
+</script>
+
+@section Header {
+    <button type="button" data-bind="jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-disk' } }}, 
+		click: function() {
+			$('#@(ViewData.TemplateInfo.HtmlFieldPrefix)__Submit').click();
+		}
+		" >Сохранить</button>
+&nbsp;
+}
+
+@section Footer {
+	@Html.DisplayFor(m => m.Model,"ChangedByInfo")
+	&nbsp;
+}

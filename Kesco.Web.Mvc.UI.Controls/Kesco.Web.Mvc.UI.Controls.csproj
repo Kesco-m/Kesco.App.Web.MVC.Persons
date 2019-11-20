@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{74F7678F-70A3-4441-BF17-E7B75B3F80E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kesco.Web.Mvc.UI.Controls</RootNamespace>
+    <AssemblyName>Kesco.Web.Mvc.UI.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Kesco.Web.Mvc.UI.Controls.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Kesco.Web.Mvc.UI.Controls.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BLToolkit.4">
+      <HintPath>..\_Assemblies\BLToolkit.4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>c:\_PUBLISH\.AssemblyCache\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc">
+      <HintPath>..\_Assemblies\RazorGenerator.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Templating">
+      <HintPath>..\_Assemblies\RazorGenerator.Templating.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\_Assemblies\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\_Assemblies\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Base\ControlBase.cs" />
+    <Compile Include="Base\ControlBuilderBase.cs" />
+    <Compile Include="Base\DialogLinkItem.cs" />
+    <Compile Include="Base\KescoGridModelBase.cs" />
+    <Compile Include="ButtonBar\Fluent\KescoButtonBarBuilder.cs" />
+    <Compile Include="ButtonBar\KescoButtonBar.cs" />
+    <Compile Include="ButtonBar\KescoButtonBarHtmlBuilder.cs" />
+    <Compile Include="ButtonBar\KescoButtonBarItem.cs" />
+    <Compile Include="Chart\Extensions\ListExtensions.cs" />
+    <Compile Include="Chart\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Chart\Extensions\PublicListExtensions.cs" />
+    <Compile Include="ComponentModel\DataAnnotations\KescoSelectAdvancedSearchAttribute.cs" />
+    <Compile Include="ComponentModel\DataAnnotations\KescoSelectAttribute.cs" />
+    <Compile Include="ComponentModel\DataAnnotations\KescoSelectCommandAttribute.cs" />
+    <Compile Include="ComponentModel\DataAnnotations\KescoSelectLinkAttribute.cs" />
+    <Compile Include="ComponentModel\DataAnnotations\KescoSelectDetailsAttribute.cs" />
+    <Compile Include="ComponentModel\DataAnnotations\KescoSelectSearchParametersAttribute.cs" />
+    <Compile Include="DataAccess\IKescoSelectAccessor.cs" />
+    <Compile Include="DatePicker\Fluent\KescoDatePickerBuilder.cs" />
+    <Compile Include="DatePicker\KescoDatePicker.cs" />
+    <Compile Include="DatePicker\KescoDatePickerHtmlBuilder.cs" />
+    <Compile Include="DateRange\Fluent\KescoDateRangeBuilder.cs" />
+    <Compile Include="DateRange\KescoDateRange.cs" />
+    <Compile Include="DateRange\KescoDateRangeHtmlBuilder.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\HashtableExtensions.cs" />
+    <Compile Include="Grid\Dialogs\AddDialogSettings.cs" />
+    <Compile Include="Grid\AjaxCallBackMode.cs" />
+    <Compile Include="Grid\AppearanceSettings.cs" />
+    <Compile Include="Grid\AutoCompleteDisplayMode.cs" />
+    <Compile Include="Grid\AutoCompleteMode.cs" />
+    <Compile Include="Chart\ChartAxisLabelSettings.cs" />
+    <Compile Include="Chart\ChartAxisType.cs" />
+    <Compile Include="Chart\ChartBaseAxisSettings.cs" />
+    <Compile Include="Chart\ChartCrossHairSettings.cs" />
+    <Compile Include="Chart\ChartGridLineDashStyle.cs" />
+    <Compile Include="Chart\ChartHorizontalAlign.cs" />
+    <Compile Include="Chart\ChartLegendLayout.cs" />
+    <Compile Include="Chart\ChartLegendSettings.cs" />
+    <Compile Include="Chart\ChartPlotLineSettings.cs" />
+    <Compile Include="Chart\ChartPoint.cs" />
+    <Compile Include="Chart\ChartSeriesSettings.cs" />
+    <Compile Include="Chart\ChartTitleSettings.cs" />
+    <Compile Include="Chart\ChartToolTipSettings.cs" />
+    <Compile Include="Chart\ChartType.cs" />
+    <Compile Include="Chart\ChartVerticalAlign.cs" />
+    <Compile Include="Chart\ChartXAxisSettings.cs" />
+    <Compile Include="Chart\ChartYAxisSettings.cs" />
+    <Compile Include="Chart\ChartZoomType.cs" />
+    <Compile Include="Grid\Formatters\CheckBoxFormatter.cs" />
+    <Compile Include="Grid\ClientSideEvents.cs" />
+    <Compile Include="Grid\CompiledOn.cs" />
+    <Compile Include="Grid\Formatters\CurrencyFormatter.cs" />
+    <Compile Include="Grid\Formatters\CustomFormatter.cs" />
+    <Compile Include="Grid\JQGridHeaderGroup.cs" />
+    <Compile Include="Grid\JQGridTreeExpandData.cs" />
+    <Compile Include="Grid\JQTreeView.cs" />
+    <Compile Include="Grid\Json\JsonTreeResponse.cs" />
+    <Compile Include="Grid\Json\JsonSearchToolBar.cs" />
+    <Compile Include="Grid\TreeGridSettings.cs" />
+    <Compile Include="Grid\Validators\CustomValidator.cs" />
+    <Compile Include="Grid\DataTypeNotSetException.cs" />
+    <Compile Include="Grid\DatePickerDisplayMode.cs" />
+    <Compile Include="Grid\Validators\DateValidator.cs" />
+    <Compile Include="Grid\Dialogs\DeleteDialogSettings.cs" />
+    <Compile Include="Grid\EditActionIconsSettings.cs" />
+    <Compile Include="Grid\EditActionIconsClientSideEvents.cs" />
+    <Compile Include="Grid\Dialogs\EditDialogSettings.cs" />
+    <Compile Include="Grid\EditType.cs" />
+    <Compile Include="Grid\Formatters\EmailFormatter.cs" />
+    <Compile Include="Grid\Validators\EmailValidator.cs" />
+    <Compile Include="Grid\GridUtil.cs" />
+    <Compile Include="Grid\GroupField.cs" />
+    <Compile Include="Grid\GroupSettings.cs" />
+    <Compile Include="Grid\GroupSummaryType.cs" />
+    <Compile Include="Grid\HierarchyMode.cs" />
+    <Compile Include="Grid\HierarchySettings.cs" />
+    <Compile Include="Grid\HtmlHelperExtensions.cs" />
+    <Compile Include="Grid\IEnumerableExtensions.cs" />
+    <Compile Include="Grid\Formatters\IntegerFormatter.cs" />
+    <Compile Include="Grid\Validators\IntegerValidator.cs" />
+    <Compile Include="Grid\JQAutoComplete.cs" />
+    <Compile Include="Grid\JQAutoCompleteEx.cs" />
+    <Compile Include="Grid\JQAutoCompleteExRenderer.cs" />
+    <Compile Include="Grid\JQAutoCompleteRenderer.cs" />
+    <Compile Include="Chart\JQChart.cs" />
+    <Compile Include="Chart\JQChartRenderer.cs" />
+    <Compile Include="Grid\JQDatePicker.cs" />
+    <Compile Include="Grid\JQDatePickerRenderer.cs" />
+    <Compile Include="Grid\JQGrid.cs" />
+    <Compile Include="Grid\JQGridColumn.cs" />
+    <Compile Include="Grid\Formatters\JQGridColumnFormatter.cs" />
+    <Compile Include="Grid\JQGridDataResolvedEventArgs.cs" />
+    <Compile Include="Grid\JQGridDataResolvedEventHandler.cs" />
+    <Compile Include="Grid\Validators\JQGridEditClientSideValidator.cs" />
+    <Compile Include="Grid\JQGridEditData.cs" />
+    <Compile Include="Grid\JQGridEditFieldAttribute.cs" />
+    <Compile Include="Grid\JQGridRenderer.cs" />
+    <Compile Include="Grid\JQGridState.cs" />
+    <Compile Include="Grid\JQGridToolBarButton.cs" />
+    <Compile Include="Grid\JQTreeNode.cs" />
+    <Compile Include="Grid\JQTreeViewRenderer.cs" />
+    <Compile Include="Grid\Json\JsonAddDialog.cs" />
+    <Compile Include="Grid\Json\JsonColModel.cs" />
+    <Compile Include="Grid\Json\JsonCustomButton.cs" />
+    <Compile Include="Grid\Json\JsonDelDialog.cs" />
+    <Compile Include="Grid\Json\JsonEditDialog.cs" />
+    <Compile Include="Grid\Json\JsonMultipleSearch.cs" />
+    <Compile Include="Grid\Json\JsonResponse.cs" />
+    <Compile Include="Grid\Json\JsonRow.cs" />
+    <Compile Include="Grid\Json\JsonSearchDialog.cs" />
+    <Compile Include="Grid\Json\JsonToolBar.cs" />
+    <Compile Include="Grid\Formatters\LinkFormatter.cs" />
+    <Compile Include="Grid\Validators\MaxValueValidator.cs" />
+    <Compile Include="Grid\Validators\MinValueValidator.cs" />
+    <Compile Include="Grid\MultipleSearchRule.cs" />
+    <Compile Include="Grid\MultiSelectKey.cs" />
+    <Compile Include="Grid\MultiSelectMode.cs" />
+    <Compile Include="Grid\Formatters\NumberFormatter.cs" />
+    <Compile Include="Grid\Validators\NumberValidator.cs" />
+    <Compile Include="Grid\PagerSettings.cs" />
+    <Compile Include="Grid\RenderingMode.cs" />
+    <Compile Include="Grid\Validators\RequiredValidator.cs" />
+    <Compile Include="Grid\SearchDataType.cs" />
+    <Compile Include="Grid\SearchDialogSettings.cs" />
+    <Compile Include="Grid\SearchOperation.cs" />
+    <Compile Include="Grid\SearchToolBarSettings.cs" />
+    <Compile Include="Grid\SearchType.cs" />
+    <Compile Include="Grid\ShowOn.cs" />
+    <Compile Include="Grid\SortAction.cs" />
+    <Compile Include="Grid\SortDirection.cs" />
+    <Compile Include="Grid\SortIconsPosition.cs" />
+    <Compile Include="Grid\SortSettings.cs" />
+    <Compile Include="Grid\StringExtensions.cs" />
+    <Compile Include="Grid\TextAlign.cs" />
+    <Compile Include="Grid\Validators\TimeValidator.cs" />
+    <Compile Include="Grid\ToolBarAlign.cs" />
+    <Compile Include="Grid\ToolBarButtonPosition.cs" />
+    <Compile Include="Grid\ToolBarPosition.cs" />
+    <Compile Include="Grid\ToolBarSettings.cs" />
+    <Compile Include="Grid\TrirandNamespace.cs" />
+    <Compile Include="Grid\Validators\UrlValidator.cs" />
+    <Compile Include="Grid\Util.cs" />
+    <Compile Include="Grid\Json\JsonUtil.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="DataLinkBuilder.cs" />
+    <Compile Include="Infrastructure\IKescoSelectController.cs" />
+    <Compile Include="Infrastructure\KescoSelectBaseController.cs" />
+    <Compile Include="Localization\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Resources.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Fluent\KescoMenuBuilder.cs" />
+    <Compile Include="Menu\KescoCultureMenuItem.cs" />
+    <Compile Include="Menu\KescoMenu.cs" />
+    <Compile Include="Menu\KescoMenuHtmlBuilder.cs" />
+    <Compile Include="Menu\KescoMenuItem.cs" />
+    <Compile Include="Menu\KescoThemeMenuItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Select\Fluent\KescoSelectTextBoxBuilder.cs" />
+    <Compile Include="Select\KescoSelectTextBox.cs" />
+    <Compile Include="Select\KescoSelectTextBoxHtmlBuilder.cs" />
+    <Compile Include="Tabs\Fluent\KescoTabsBuilder.cs" />
+    <Compile Include="Tabs\KescoTabItem.cs" />
+    <Compile Include="Tabs\KescoTabs.cs" />
+    <Compile Include="Tabs\KescoTabsHtmlBuilder.cs" />
+    <Compile Include="ToolBar\KescoToolBarClientEvents.cs" />
+    <Compile Include="ToolBar\KescoToolBarHtmlBuilder.cs" />
+    <Compile Include="ToolBar\KescoToolBar.cs" />
+    <Compile Include="ToolBar\KescoToolBarButton.cs" />
+    <Compile Include="TreeView\Fluent\KescoTreeViewBuilder.cs" />
+    <Compile Include="TreeView\KescoTreeView.cs" />
+    <Compile Include="TreeView\KescoTreeViewHtmlBuilder.cs" />
+    <Compile Include="Lookup\Fluent\KescoSelectBuilder.cs" />
+    <Compile Include="Lookup\KescoSelect.cs" />
+    <Compile Include="Lookup\KescoSelectTextBoxHtmlBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources.et.resx" />
+    <EmbeddedResource Include="Localization\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComponentModel\DataAnnotations\KescoSelect.cd" />
+    <None Include="Lookup\KescoLookupTextBox.tacmpt" />
+    <None Include="Lookup\KescoLookupTextBox.tacmpt.diagram">
+      <DependentUpon>KescoLookupTextBox.tacmpt</DependentUpon>
+    </None>
+    <None Include="DatePicker\Kesco.Web.Mvc.UI.KescoDatePicker.cd" />
+    <None Include="DateRange\KescoWebMvcDateRange.cd" />
+    <None Include="Grid\Kesco.Web.Mvc.Grid.cd" />
+    <None Include="Lookup\KescoSelect.cd" />
+    <None Include="SampleTemplate.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </None>
+    <None Include="TreeView\Kesco.Web.Mvc.TreeView.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.BaseExtensions\Kesco.BaseExtensions.csproj">
+      <Project>{0C4D6DE0-DAF5-49D7-BC56-F79287332045}</Project>
+      <Name>Kesco.BaseExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ClassExtensions\Kesco.ClassExtensions.csproj">
+      <Project>{BE40DC15-64E2-4861-9148-A891932C123C}</Project>
+      <Name>Kesco.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Project>{1170B0D6-2512-474E-9C69-DEBB7EF5904A}</Project>
+      <Name>Kesco.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.DataAccess\Kesco.DataAccess.csproj">
+      <Project>{9E72B472-D36D-496F-9FF7-EE2CAEB26003}</Project>
+      <Name>Kesco.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+      <Name>Kesco.Lib.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Linq.Dynamic\Kesco.Linq.Dynamic.csproj">
+      <Project>{9E29EF27-3F61-46D5-AF6C-8E07E6C3107C}</Project>
+      <Name>Kesco.Linq.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Project>{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}</Project>
+      <Name>Kesco.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.UI\Kesco.Web.Mvc.UI.csproj">
+      <Project>{76AD79C0-57D1-42A0-B6F6-716D894813CC}</Project>
+      <Name>Kesco.Web.Mvc.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

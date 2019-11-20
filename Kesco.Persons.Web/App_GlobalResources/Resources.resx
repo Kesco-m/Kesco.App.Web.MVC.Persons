@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorTemplate_RequiredFields_Message" xml:space="preserve">
+    <value>required fields</value>
+  </data>
+  <data name="EditorTemplate_ResourceField_CreateNew" xml:space="preserve">
+    <value>Create new resource</value>
+  </data>
+  <data name="EditorTemplate_UniqueID_NewEntry_Title" xml:space="preserve">
+    <value>New entry</value>
+  </data>
+  <data name="GUI_Button_AssignResourceToPersons" xml:space="preserve">
+    <value>Assign Resource</value>
+  </data>
+  <data name="GUI_Button_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="GUI_Button_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="GUI_Button_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="GUI_Button_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="GUI_Button_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="GUI_Button_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="GUI_Button_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="GUI_Button_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="GUI_Button_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="GUI_Button_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="GUI_Button_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="GUI_Button_ShowCashFlowTypeList" xml:space="preserve">
+    <value>Browse Types</value>
+  </data>
+  <data name="GUI_Button_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="GUI_Message_AjaxRequestError" xml:space="preserve">
+    <value>Error occured while performing the action on the server.</value>
+  </data>
+  <data name="GUI_Message_Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="GUI_Message_Refreshing" xml:space="preserve">
+    <value>Refreshing...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1000" xml:space="preserve">
+    <value>Choose responsible employees</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1001" xml:space="preserve">
+    <value>Remove from the list</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1002" xml:space="preserve">
+    <value>Choose a list of responsilble employees as criteria of search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1003" xml:space="preserve">
+    <value>Choose a list of person's themes as criteria of search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1004" xml:space="preserve">
+    <value>Choose a theme of person</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1005" xml:space="preserve">
+    <value>Choose a kind of nickname to use...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_101" xml:space="preserve">
+    <value>Found: </value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_102" xml:space="preserve">
+    <value>persons</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_103" xml:space="preserve">
+    <value>names of persons</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_104" xml:space="preserve">
+    <value>requisites of persons</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_105" xml:space="preserve">
+    <value>contacts of persons</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_106" xml:space="preserve">
+    <value>contains</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_107" xml:space="preserve">
+    <value>starts with</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_108" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_109" xml:space="preserve">
+    <value>Use restrictions on the types of persons in the search.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_110" xml:space="preserve">
+    <value>Types of persons</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_111" xml:space="preserve">
+    <value>organizations</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_112" xml:space="preserve">
+    <value>banks</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_113" xml:space="preserve">
+    <value>individuals</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_114" xml:space="preserve">
+    <value>Use restrictions on checking accounts department officials in the search.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_115" xml:space="preserve">
+    <value>Veracity of person</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_116" xml:space="preserve">
+    <value>verified</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_117" xml:space="preserve">
+    <value>not verified</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_118" xml:space="preserve">
+    <value>Business project</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_119" xml:space="preserve">
+    <value>only on</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_120" xml:space="preserve">
+    <value>working on any business project</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_121" xml:space="preserve">
+    <value>including subprojects</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_122" xml:space="preserve">
+    <value>Country of registration</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_123" xml:space="preserve">
+    <value>Form of incorporation</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_124" xml:space="preserve">
+    <value>Select...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_125" xml:space="preserve">
+    <value>not specified</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_126" xml:space="preserve">
+    <value>Responsible employees</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_127" xml:space="preserve">
+    <value>Use restrictions on the responsible employees in the search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_128" xml:space="preserve">
+    <value>Not specified</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_129" xml:space="preserve">
+    <value>Themes of persons</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_130" xml:space="preserve">
+    <value>Not specified</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_131" xml:space="preserve">
+    <value>Use restrictions on the themes of persons in the search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_132" xml:space="preserve">
+    <value>including subtypes</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_133" xml:space="preserve">
+    <value>Information is valid</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_134" xml:space="preserve">
+    <value>Create individual person</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_135" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_136" xml:space="preserve">
+    <value>Save as</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_137" xml:space="preserve">
+    <value>Responsible employee</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_138" xml:space="preserve">
+    <value>Set types</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_139" xml:space="preserve">
+    <value>required fields</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_140" xml:space="preserve">
+    <value>Create juridical person</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_141" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_142" xml:space="preserve">
+    <value>enter the requisites</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_143" xml:space="preserve">
+    <value>this organization is a bank</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_144" xml:space="preserve">
+    <value>Adding requisites of the juridical person</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_145" xml:space="preserve">
+    <value>length</value>
+  </data>
+  <data name="Persons_Search_Form_Condition_Contains" xml:space="preserve">
+    <value>contains</value>
+  </data>
+  <data name="Persons_Search_Form_Condition_StartsWith" xml:space="preserve">
+    <value>starts with</value>
+  </data>
+  <data name="Persons_Search_Form_NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Persons_Search_Form_SearchButton_Caption" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Persons_Search_FoundMore" xml:space="preserve">
+    <value>Found more 100 resources that matched specified criteria.&lt;br&gt;&lt;br&gt;Please clarify a seach criteria.</value>
+  </data>
+  <data name="Persons_Search_FoundMoreTitle" xml:space="preserve">
+    <value>Found more 100 resources</value>
+  </data>
+  <data name="Persons_Search_NotFound" xml:space="preserve">
+    <value>No resource found that matches specified criteria. &lt;br&gt;&lt;br&gt;Please clarify a seach criteria.</value>
+  </data>
+  <data name="Persons_Search_NotFoundTitle" xml:space="preserve">
+    <value>No resource found.</value>
+  </data>
+  <data name="Persons_Search_PageTitle" xml:space="preserve">
+    <value>Persons search</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguage" xml:space="preserve">
+    <value>Show name in:</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguageEn" xml:space="preserve">
+    <value>EN</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguageRu" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="Persons_Search_SortBy" xml:space="preserve">
+    <value>Sort by:</value>
+  </data>
+  <data name="Persons_Search_SortBy_Alphabetically" xml:space="preserve">
+    <value>alphabetically</value>
+  </data>
+  <data name="Persons_Search_SortBy_Position" xml:space="preserve">
+    <value>position in tree</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1006" xml:space="preserve">
+    <value>responsible employees</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1007" xml:space="preserve">
+    <value>&lt;not specified&gt;</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1008" xml:space="preserve">
+    <value>contacts</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1009" xml:space="preserve">
+    <value>juridical person profile</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1010" xml:space="preserve">
+    <value>individual person profile</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1011" xml:space="preserve">
+    <value>Creating...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_2000" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Kesco_Persons_ContactTypeField_OptionsCaption" xml:space="preserve">
+    <value>Select a type...</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_Warning" xml:space="preserve">
+    <value>While creating of a individual person the similar ones were found in the directory. Please ensure there is no such user among listed below.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_Title" xml:space="preserve">
+    <value>Possible duplicates of the person</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_ContinueEditingButton" xml:space="preserve">
+    <value>Continue editing</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_ConfirmCreatingButton" xml:space="preserve">
+    <value>New person is not in the list.</value>
+  </data>
+  <data name="Kesco_Persons_Create_DuplicateNicknames" xml:space="preserve">
+    <value>Person with such nickname already exists</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2100" xml:space="preserve">
+    <value>Specify date</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2101" xml:space="preserve">
+    <value>Incorrect dates.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2102" xml:space="preserve">
+    <value>Specify nickname</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2103" xml:space="preserve">
+    <value>Specify sex of person.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2104" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2105" xml:space="preserve">
+    <value>Select theme</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2106" xml:space="preserve">
+    <value>In catalogs</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2107" xml:space="preserve">
+    <value>Catalogs</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2108" xml:space="preserve">
+    <value>This is it</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2200" xml:space="preserve">
+    <value>Specify requisites</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2201" xml:space="preserve">
+    <value>Specify russian or english person name in requisites.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2202" xml:space="preserve">
+    <value>Specify person themes.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2203" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2204" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2205" xml:space="preserve">
+    <value>Requisites</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2206" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2207" xml:space="preserve">
+    <value>Specify requisites dates</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2208" xml:space="preserve">
+    <value>Incorrect requisites dates</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2209" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_146" xml:space="preserve">
+    <value>Requisites</value>
+  </data>
+  <data name="Kesco_Persons_Search_1001" xml:space="preserve">
+    <value>Persons with requisites valid on</value>
+  </data>
+  <data name="Kesco_Persons_Search_1000" xml:space="preserve">
+    <value>Additional restrictions</value>
+  </data>
+  <data name="Kesco_Persons_Search_1002" xml:space="preserve">
+    <value>Persons registered with the participating countries of the customs union</value>
+  </data>
+  <data name="Kesco_Persons_Search_1003" xml:space="preserve">
+    <value>Persons not registered with the participating countries of the customs union</value>
+  </data>
+  <data name="Kesco_Persons_Search_1004" xml:space="preserve">
+    <value>Persons linked with</value>
+  </data>
+  <data name="Kesco_Persons_Search_1005" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="Kesco_Persons_Search_1006" xml:space="preserve">
+    <value>Workplaces</value>
+  </data>
+  <data name="Kesco_Persons_Search_1007" xml:space="preserve">
+    <value>Subordinate organizations</value>
+  </data>
+  <data name="Kesco_Persons_Search_1008" xml:space="preserve">
+    <value>Leading organizations</value>
+  </data>
+  <data name="Kesco_Persons_Search_1009" xml:space="preserve">
+    <value>Representatives</value>
+  </data>
+  <data name="Kesco_Persons_Search_1010" xml:space="preserve">
+    <value>Heads</value>
+  </data>
+  <data name="Kesco_Persons_Search_1011" xml:space="preserve">
+    <value>Ownership</value>
+  </data>
+  <data name="Kesco_Persons_Search_1012" xml:space="preserve">
+    <value>Owners</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2210" xml:space="preserve">
+    <value>INN length is not valid</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2211" xml:space="preserve">
+    <value>OKPO length is not valid</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2212" xml:space="preserve">
+    <value>In case of OKONH entry it's lenght is equal to 5</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2109" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2110" xml:space="preserve">
+    <value>Address (lat.)</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2111" xml:space="preserve">
+    <value>Dossier</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2104a" xml:space="preserve">
+    <value>Types</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_2001" xml:space="preserve">
+    <value>INN</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_122_1" xml:space="preserve">
+    <value>Use restrictions on country of registration in the search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_123_1" xml:space="preserve">
+    <value>Use restrictions on form of incorporation in the search</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_147" xml:space="preserve">
+    <value>Remove search restrictions</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2112" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2113" xml:space="preserve">
+    <value>If found among those persons not being created, you can not manually create the person. For assistance, contact the secretary or the administrator.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1012" xml:space="preserve">
+    <value>Previous version</value>
+  </data>
+  <data name="Kesco_Choosen_NoResultsMatch" xml:space="preserve">
+    <value>No results match</value>
+  </data>
+  <data name="Persons_Dossier_PageTitle" xml:space="preserve">
+    <value>Dossier</value>
+  </data>
+  <data name="Persons_Dossier_PageTitle2" xml:space="preserve">
+    <value>{1} №{0}</value>
+  </data>
+  <data name="Persons_Dossier_Menu_AddToPerson" xml:space="preserve">
+    <value>Add to person</value>
+  </data>
+  <data name="Persons_Dossier_Menu_ChangedBy" xml:space="preserve">
+    <value>changed by</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Docs" xml:space="preserve">
+    <value>search for person's docs in Archive</value>
+  </data>
+  <data name="Persons_Dossier_Menu_NewInd" xml:space="preserve">
+    <value>create physical</value>
+  </data>
+  <data name="Persons_Dossier_Menu_NewJur" xml:space="preserve">
+    <value>create juridical</value>
+  </data>
+  <data name="Persons_Dwarehouses / accountossier_Menu_OldProps" xml:space="preserve">
+    <value>inactive details</value>
+  </data>
+  <data name="Persons_Dossier_Menu_StoreOldProps" xml:space="preserve">
+    <value>inactive details, warehouses/accounts</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Person" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Search" xml:space="preserve">
+    <value>search for person</value>
+  </data>
+  <data name="Persons_Dossier_Menu_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="GUI_Button_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Persons_Dossier_CardFrom" xml:space="preserve">
+    <value>from </value>
+  </data>
+  <data name="Persons_Dossier_CardNotValid" xml:space="preserve">
+    <value>not actual right now</value>
+  </data>
+  <data name="Persons_Dossier_CardTo" xml:space="preserve">
+    <value>to </value>
+  </data>
+  <data name="Persons_Dossier_CardValid" xml:space="preserve">
+    <value>actual</value>
+  </data>
+  <data name="Persons_Dossier_Actuality" xml:space="preserve">
+    <value>Actuality</value>
+  </data>
+  <data name="Persons_Dossier_ActualityNotChecked" xml:space="preserve">
+    <value>not checked</value>
+  </data>
+  <data name="Persons_Dossier_Checked" xml:space="preserve">
+    <value>checked</value>
+  </data>
+  <data name="Persons_Dossier_PersonNotFound" xml:space="preserve">
+    <value>Person №{0} not found or is not accessible!</value>
+  </data>
+  <data name="Persons_Dossier_NoData" xml:space="preserve">
+    <value>no data</value>
+  </data>
+  <data name="Persons_Dossier_SyncUser" xml:space="preserve">
+    <value>synchronize data</value>
+  </data>
+  <data name="Persons_Link_Child_Type1" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="Persons_Link_Child_Type2" xml:space="preserve">
+    <value>Subordinate organization</value>
+  </data>
+  <data name="Persons_Link_Child_Type3" xml:space="preserve">
+    <value>Representative</value>
+  </data>
+  <data name="Persons_Link_Child_Type4" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="Persons_Link_Parent_Type1" xml:space="preserve">
+    <value>Job</value>
+  </data>
+  <data name="Persons_Link_Parent_Type2" xml:space="preserve">
+    <value>Head organization</value>
+  </data>
+  <data name="Persons_Link_Parent_Type3" xml:space="preserve">
+    <value>Head</value>
+  </data>
+  <data name="Persons_Link_Parent_Type4" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PageTitle" xml:space="preserve">
+    <value>Delete and replace a person</value>
+  </data>
+  <data name="Persons_Dossier_Delete_Button_PerformDeleting" xml:space="preserve">
+    <value>Perform deleting</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PersonID_Label" xml:space="preserve">
+    <value>will be deleted</value>
+  </data>
+  <data name="Persons_Dossier_Delete_ReplacePersonID_Label" xml:space="preserve">
+    <value>replace with</value>
+  </data>
+  <data name="Persons_Link_Parameter0" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Persons_Link_Parameter1" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="Persons_Link_Parameter2" xml:space="preserve">
+    <value>Secind</value>
+  </data>
+  <data name="Persons_Link_Description" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Persons_Link_Parameter" xml:space="preserve">
+    <value>Signing authority</value>
+  </data>
+  <data name="Persons_Dossier_Menu_3" xml:space="preserve">
+    <value>employee</value>
+  </data>
+  <data name="Persons_Dossier_Menu_4" xml:space="preserve">
+    <value>job</value>
+  </data>
+  <data name="Persons_Dossier_Menu_5" xml:space="preserve">
+    <value>parent organization</value>
+  </data>
+  <data name="Persons_Dossier_Menu_6" xml:space="preserve">
+    <value>representative (assistant)</value>
+  </data>
+  <data name="Persons_Dossier_Menu_7" xml:space="preserve">
+    <value>subordinate organization</value>
+  </data>
+  <data name="Persons_Dossier_Menu_8" xml:space="preserve">
+    <value>head</value>
+  </data>
+  <data name="Persons_Dossier_Menu_9" xml:space="preserve">
+    <value>owner</value>
+  </data>
+  <data name="Persons_Dossier_Menu_10" xml:space="preserve">
+    <value>ownership</value>
+  </data>
+  <data name="Persons_Dossier_Menu_11" xml:space="preserve">
+    <value>account</value>
+  </data>
+  <data name="Persons_Dossier_Menu_12" xml:space="preserve">
+    <value>provision of banking services</value>
+  </data>
+  <data name="Persons_Dossier_Menu_13" xml:space="preserve">
+    <value>storage services</value>
+  </data>
+  <data name="Persons_Dossier_Menu_14" xml:space="preserve">
+    <value>warehouse</value>
+  </data>
+  <data name="Persons_Dossier_Menu_15" xml:space="preserve">
+    <value>certificate for wholesale impl. of OP</value>
+  </data>
+  <data name="Persons_Dossier_Menu_16" xml:space="preserve">
+    <value>accounting Abacus</value>
+  </data>
+  <data name="Persons_Dossier_Menu_17" xml:space="preserve">
+    <value>accounting 1С</value>
+  </data>
+  <data name="Persons_Dossier_Menu_18" xml:space="preserve">
+    <value>export to Aspect</value>
+  </data>
+  <data name="Persons_Dossier_Menu_1" xml:space="preserve">
+    <value>contact</value>
+  </data>
+  <data name="Persons_Dossier_Menu_2" xml:space="preserve">
+    <value>details</value>
+  </data>
+  <data name="Persons_Dossier_Section_7" xml:space="preserve">
+    <value>employees</value>
+  </data>
+  <data name="Persons_Dossier_Section_8" xml:space="preserve">
+    <value>places of work</value>
+  </data>
+  <data name="Persons_Dossier_Section_9" xml:space="preserve">
+    <value>head offices</value>
+  </data>
+  <data name="Persons_Dossier_Section_10" xml:space="preserve">
+    <value>representatives (assistant)</value>
+  </data>
+  <data name="Persons_Dossier_Section_11" xml:space="preserve">
+    <value>subordinate organizations</value>
+  </data>
+  <data name="Persons_Dossier_Section_12" xml:space="preserve">
+    <value>managers</value>
+  </data>
+  <data name="Persons_Dossier_Section_13" xml:space="preserve">
+    <value>owners</value>
+  </data>
+  <data name="Persons_Dossier_Section_14" xml:space="preserve">
+    <value>property</value>
+  </data>
+  <data name="Persons_Dossier_Section_15" xml:space="preserve">
+    <value>accounts</value>
+  </data>
+  <data name="Persons_Dossier_Section_16" xml:space="preserve">
+    <value>providing banking services</value>
+  </data>
+  <data name="Persons_Dossier_Section_17" xml:space="preserve">
+    <value>storage services</value>
+  </data>
+  <data name="Persons_Dossier_Section_18" xml:space="preserve">
+    <value>warehouses</value>
+  </data>
+  <data name="Persons_Dossier_Section_19" xml:space="preserve">
+    <value>certificate for wholesale impl. of OP</value>
+  </data>
+  <data name="Persons_Dossier_Section_5" xml:space="preserve">
+    <value>contacts</value>
+  </data>
+  <data name="Persons_Dossier_Section_6" xml:space="preserve">
+    <value>details</value>
+  </data>
+  <data name="Persons_Dossier_Section_1" xml:space="preserve">
+    <value>details of juridical person</value>
+  </data>
+  <data name="Persons_Dossier_Section_2" xml:space="preserve">
+    <value>details of natural person</value>
+  </data>
+  <data name="Persons_Dossier_Section_3" xml:space="preserve">
+    <value>responsible staff</value>
+  </data>
+  <data name="Persons_Dossier_Section_4" xml:space="preserve">
+    <value>types of persons</value>
+  </data>
+  <data name="Persons_Link_Delete_Confirm_Text" xml:space="preserve">
+    <value>Appropriate in the case of removal, if the information was entered incorrectly!&lt;br&gt;If this information is correct, but at the moment does not work - use limited period!&lt;br&gt;&lt;br&gt;Are you sure you want to delete this information?</value>
+  </data>
+  <data name="Persons_Contact_Delete_Confirm_Text" xml:space="preserve">
+    <value>Are you sure you want to delete this contact?</value>
+  </data>
+  <data name="Persons_Link_NotFound" xml:space="preserve">
+    <value>Link №{0} not found!</value>
+  </data>
+  <data name="Persons_Contact_ChooseCity" xml:space="preserve">
+    <value>Choose the city</value>
+  </data>
+  <data name="Persons_Contact_ChooseCountry" xml:space="preserve">
+    <value>Choose the country</value>
+  </data>
+  <data name="Persons_Delete_Confirm_Title" xml:space="preserve">
+    <value>Confirm the deletion</value>
+  </data>
+  <data name="Persons_Requisites_SpecifyPersonRegistrationCountry" xml:space="preserve">
+    <value>Please specify a registration country of person!!!</value>
+  </data>
+  <data name="Persons_Requisites_ShortNameRusGenitive_AddOn" xml:space="preserve">
+    <value>(for documents)</value>
+  </data>
+  <data name="EditorTemplate_ContactTypeField_OptionsCaption" xml:space="preserve">
+    <value>- Choose a contact type -</value>
+  </data>
+  <data name="Persons_Contact_NotFound" xml:space="preserve">
+    <value>Contact №{0} not found!</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Persons_Card_Delete_Confirm_Text" xml:space="preserve">
+    <value>Are you sure you want to delete this person card?</value>
+  </data>
+  <data name="Persons_Dossier_EmployeeHasNoPost" xml:space="preserve">
+    <value>employee has no post in the staff list</value>
+  </data>
+  <data name="Persons_Dossier_NoEmployee" xml:space="preserve">
+    <value>no employee for this natural person</value>
+  </data>
+  <data name="Dossier_PrivatePerson_Label" xml:space="preserve">
+    <value>(personal for employee)</value>
+  </data>
+  <data name="Dossier_PrivatePerson_SetRemoveSignPrivate" xml:space="preserve">
+    <value>Add / remove a sign that the employee is a private person.</value>
+  </data>
+  <data name="Persons_Natural_SaveErrorWhileSavingPersonTypes" xml:space="preserve">
+    <value>Error occured while assigning person types: 
+- {0}</value>
+  </data>
+  <data name="Persons_Natural_SaveErrorWhileSavingResps" xml:space="preserve">
+    <value>Error occured while assigning of responsiable employee(s) to the person: 
+- {0}</value>
+  </data>
+  <data name="Persons_Contact_PleaseSpecifyPerson" xml:space="preserve">
+    <value>- please specify a person to create a new contact!</value>
+  </data>
+  <data name="GUI_Button_Synchronize" xml:space="preserve">
+    <value>Synchronize</value>
+  </data>
+  <data name="Persons_Synchronize_DifferencesHeader" xml:space="preserve">
+    <value>The individual data will be changed in according with the employee's data</value>
+  </data>
+  <data name="Persons_Synchronize_Differences_Requisites" xml:space="preserve">
+    <value>Requisites</value>
+  </data>
+  <data name="Persons_Dossier_CardNotRestricted" xml:space="preserve">
+    <value>not restricted</value>
+  </data>
+  <data name="Persons_Dossier_RefreshSection" xml:space="preserve">
+    <value>Refresh section</value>
+  </data>
+  <data name="Persons_Dossier_ShowHideSection" xml:space="preserve">
+    <value>Show/hide section</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalButtonOkCaption" xml:space="preserve">
+    <value>Yes, I confirm</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalCaption" xml:space="preserve">
+    <value>Confirmation of the relevance of contact</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalDialogFirst" xml:space="preserve">
+    <value>You acknowledge that the contact person</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalDialogSecond" xml:space="preserve">
+    <value>relevant and fully tested you?</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Is_Checked" xml:space="preserve">
+    <value>Actuality checked</value>
+  </data>
+  <data name="Persons_Doisser_SynchronizeData" xml:space="preserve">
+    <value>Synchronize data</value>
+  </data>
+</root>

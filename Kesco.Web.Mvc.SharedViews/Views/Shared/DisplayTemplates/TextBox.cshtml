@@ -1,0 +1,7 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    ModelMetadata meta = ViewData.ModelMetadata;
+}
+<span id="@(id)__Text" data-bind="text: @(name)"></span>

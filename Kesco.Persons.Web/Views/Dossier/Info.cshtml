@@ -1,0 +1,35 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc; 
+@using Kesco.Persons.Web.Models.Dossier;
+@{
+	var sectionID = Model.Section.ID.ToString();
+	var items = Model.ViewModel.GetContextItems(cxti => cxti.TabID == Model.Section.ID);
+	if (items.Count == 0) {
+		Html.DossierClientSideScript_HideSection(Model.Section.ID);
+		return;
+	}
+	var i = 0;
+}
+@foreach (var item in items) {
+	<tr class="dsl@(sectionID)">
+		@if (i++ == 0) {
+		<td colspan="2" style="padding-left: 20px;">
+			@Html.Raw(HL(item.Label))
+		</td>
+		<td class="changed" rowspan="@(items.Count)">
+			@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new {
+				TooltipPositionMy = "middle right", TooltipPositionAt = "middle left",
+				InitialLabel = HL(item.ChangedByFIO)
+			})
+			<span>@(item.ChangedDate)</span>
+		</td>
+		} else {
+			if (!String.IsNullOrEmpty(item.Caption)){
+			<td nowrap="nowrap" class="ui-label" style="padding-left: 20px;">@Html.Raw(Html.GetInfoLocalizedString(item.Caption, item.ID)):</td>
+			<td style="width: 90%;">&nbsp;@Html.Raw(HL(item.Label))</td>
+			} else{
+			<td colspan="2" style="padding-left: 20px;">@Html.Raw(HL(Html.GetInfoLocalizedString(item.Label)))</td>
+			}
+		}
+	</tr>
+}

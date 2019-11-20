@@ -1,0 +1,52 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.SharedViews.Models.SearchEntity.ViewModel>
+@using Kesco
+@using Kesco.Web.Mvc
+@{
+    ViewBag.Title = "Поисковик";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header {
+
+<div>
+	<span style="ui-widget-header">Поисковик:</span>
+	<select data-bind="
+			jqOptions: Entities,
+			optionsValue: 'EntityID',
+			optionsText: 'EntityName',
+			value: Model.EntityID,
+			optionsCaption: 'Выберите сущность...'
+		"></select>
+</div>
+}
+<div style="overflow: auto;">
+	<div id="tabs" class="tabs-bottom">
+	  <ul>
+		<li><a href="#tabs-1">Свойства</a></li>
+		<li><a href="#tabs-2">Параметры поиска</a></li>
+	  </ul>
+	  <div id="tabs-1">
+	@{ Html.EnableClientValidation(); }
+	@using (Html.BeginForm("SearchEntity", null, FormMethod.Post, new { id = "Entity__EditForm" })) {
+
+		@Html.EditorFor(m => m.Model.Entity)
+
+	}    
+	  </div>
+	  <div id="tabs-2">
+		<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+	  </div>
+	</div>
+</div>
+<div style="float: left; width: 50%;">
+
+@{
+	Html.RegisterScript(@"
+		$('#tabs').tabs({ heightStyle: 'fill' });
+		$(window).resize(function() {
+			var $parent = $('#dialogContentPane');
+			$('#tabs').height($parent.height()-10);
+		});
+	");
+}
+</div>

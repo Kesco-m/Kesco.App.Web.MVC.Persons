@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3b394013-e5b6-454a-aecc-2e23b497bc74" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="bf59a8a2-1bc5-430d-89d1-09171ddbc904" name="Бизнес-объекты и их методы">
+      <childLayers>
+        <layer Id="42130257-d241-4a4c-a6a3-8d4e7038fb04" name="Kesco.ObjectModel.Persons" />
+      </childLayers>
+    </layer>
+    <layer Id="d84248db-40a7-4a1e-83d1-b2b98f04e43d" name="Процессы над бизнес-объектами">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="12b8c3dd-f1ea-43a9-9a7e-28706b6d277c" direction="Forward">
+          <layerMoniker Id="9a80e032-59b6-49ff-803f-6dc7715ce189" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="14beff9a-886d-4b5e-bcee-72236a216281" direction="Forward">
+          <layerMoniker Id="bf59a8a2-1bc5-430d-89d1-09171ddbc904" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="930dc8eb-b1db-4a76-aaab-d5448222a1f5" name="Kesco.BusinessLogic.Persons" />
+      </childLayers>
+    </layer>
+    <layer Id="4b864b3a-0cac-4967-bbf5-3e537cda2eef" name="Интерфейс пользователя">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d530f7f0-3211-4135-bbfd-f71847f34155" direction="Forward">
+          <layerMoniker Id="bf59a8a2-1bc5-430d-89d1-09171ddbc904" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="cf3ac8b6-c6bf-4130-9ff3-050911d6c2e9" direction="Forward">
+          <layerMoniker Id="d84248db-40a7-4a1e-83d1-b2b98f04e43d" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="56f4a7b6-9fd8-456e-b5cc-d277f63a62d8" direction="Forward">
+          <layerMoniker Id="68e21134-d302-4f50-adf6-2c83d4164e97" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="4f2c049e-7e10-457b-8b77-5cc2313e320c" name="Kesco.Presentation.Persons" />
+      </childLayers>
+    </layer>
+    <layer Id="9a80e032-59b6-49ff-803f-6dc7715ce189" name="Работа с базой данных">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="4a4aeea3-2297-4924-bff5-dd327ce3bdd3" direction="Forward">
+          <layerMoniker Id="68e21134-d302-4f50-adf6-2c83d4164e97" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <childLayers>
+        <layer Id="5b3510ab-77d8-4ca8-a466-01f1005385f8" name="Kesco.DataAccess" />
+      </childLayers>
+    </layer>
+    <layer Id="68e21134-d302-4f50-adf6-2c83d4164e97" name="Обработка ошибок">
+      <childLayers>
+        <layer Id="92dca376-a57f-4529-b6a4-43f1854fcf53" name="Kesco.Log.dll" />
+      </childLayers>
+    </layer>
+    <layer Id="771195ca-6d7c-4092-b08d-8f5e0da5be3a" name="Разбиение на фунциональные блоки для библиотеки Kesco.DALC.Persons" />
+  </layers>
+</layerModel>

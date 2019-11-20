@@ -1,0 +1,66 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox
+@using Kesco.Web.Mvc
+@using Kesco.Persons.Controls
+@using Kesco.Persons.Controls.ComponentModel
+@{
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    ModelMetadata metaData = ViewData.ModelMetadata;
+
+    if (!metaData.AdditionalValues.ContainsKey(PersonContactSelectAttribute.AdditionalValuesKey_SelectBox))
+    {
+        throw new Exception(String.Format(
+                "Неверное использование шаблона PersonSelect. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+                metaData.PropertyName,
+				typeof(PersonContactSelectAttribute)
+            ));
+    }
+
+	var descriptor = metaData.AdditionalValues[PersonContactSelectAttribute.AdditionalValuesKey_SelectBox]
+		as PersonContactSelectAttribute;
+
+    if (descriptor == null)
+    {
+        throw new Exception(String.Format(
+            "Неверное использование шаблона PersonSelect. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+                metaData.PropertyName,
+				metaData.AdditionalValues[PersonContactSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+        ));
+    }
+
+    @* Выполним отрисовку основного KescoSelect *@
+    base.Execute();
+}
+@{
+	if (descriptor.Action != PersonContactAction.None) {
+        string image = String.Empty;
+        string call = String.Empty;
+		switch (descriptor.Action) {
+            case PersonContactAction.MakeCall: 
+                image = WebAssetImage("call.gif");
+                call = "ViewModel.makeCall(item.label)";
+                break;
+			case PersonContactAction.SendEmail: 
+                image = WebAssetImage("Email.gif");
+                call = "ViewModel.sendEmail(item.label)";
+                break;
+			case PersonContactAction.MSN: 
+                image = WebAssetImage("messenger.gif");
+                call = "ViewModel.openMessengerChat(item.label)";
+                break;
+        }
+    
+        Html.RegisterScript(String.Format(@"
+		    $('#{0}').selectBox('addButton', {{
+			    'data-bind': 'enabled: {1}',
+			    text: 'Info',
+			    image: '{2}',
+			    click: function () {{
+				    var $this = $(this);
+				    var item = $('#{0}').selectBox('getValue');
+                    {3}
+			    }}
+		    }});
+        ", id, name, image, call));
+    }
+}

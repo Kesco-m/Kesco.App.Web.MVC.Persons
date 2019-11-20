@@ -1,0 +1,43 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox
+@using Kesco
+@using Kesco.BusinessProjects.Controls
+@using Kesco.BusinessProjects.Controls.ComponentModel
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+
+	if (!metaData.AdditionalValues.ContainsKey(BusinessProjectSelectAttribute.AdditionalValuesKey_SelectBox)) {
+		throw new Exception(String.Format(
+				"Неверное использование шаблона BusinessProjectSelect. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+				metaData.PropertyName,
+				typeof(BusinessProjectSelectAttribute)
+			));
+	}
+
+	var descriptor = metaData.AdditionalValues[BusinessProjectSelectAttribute.AdditionalValuesKey_SelectBox]
+		as BusinessProjectSelectAttribute;
+
+	if (descriptor == null) {
+		throw new Exception(String.Format(
+			"Неверное использование шаблона BusinessProjectSelect. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+				metaData.PropertyName,
+				metaData.AdditionalValues[BusinessProjectSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+		));
+	}
+
+    @* Выполним отрисовку основного KescoSelect *@
+    base.Execute();
+}
+@{
+	
+	Html.RegisterScript(@"
+		
+		;(function(scope, $) {{
+			scope.ViewModel.{1}.__SearchParameters.MaxEntries({2}); // ограничим результат
+		}})(window, jQuery);
+		
+	".FormatWith(id, name, descriptor.AutocompleteLimit+1));
+}

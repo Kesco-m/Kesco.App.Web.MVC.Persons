@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8A7AA7F5-634E-4E27-99B4-6F689DE05DA2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kesco.Persons.BusinessLogic</RootNamespace>
+    <AssemblyName>Kesco.Persons.BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Kesco.Persons.BusinessLogic.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Kesco.Persons.BusinessLogic.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BLToolkit.4">
+      <HintPath>..\_Assemblies\BLToolkit.4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\Accounting.cs" />
+    <Compile Include="DataAccess\CaseAccessor.cs" />
+    <Compile Include="DataAccess\CatalogAccessor.cs" />
+    <Compile Include="DataAccess\ContactAccessor.cs" />
+    <Compile Include="DataAccess\ContactActualAccessor.cs" />
+    <Compile Include="DataAccess\ContactTypeAccessor.cs" />
+    <Compile Include="DataAccess\DB.cs" />
+    <Compile Include="DataAccess\DepartmentAccessor.cs" />
+    <Compile Include="DataAccess\DistributionCertificateAccessor.cs" />
+    <Compile Include="DataAccess\AbacusDB.cs" />
+    <Compile Include="DataAccess\PersonSimpleAccessor.cs" />
+    <Compile Include="DataAccess\RulePersonTypeAccessor.cs" />
+    <Compile Include="Persons\DateRange.cs" />
+    <Compile Include="Persons\DuplicateNicknameException.cs" />
+    <Compile Include="Persons\IndividualCardForSave.cs" />
+    <Compile Include="Persons\JuridicalCardForSave.cs" />
+    <Compile Include="Persons\PersonPosition.cs" />
+    <Compile Include="Persons\SaveAction.cs" />
+    <Compile Include="Persons\SaveIssue.cs" />
+    <Compile Include="Persons\SavePersonException.cs" />
+    <Compile Include="Dossier\PersonAccessLevel.cs" />
+    <Compile Include="Dossier\PersonMenuItems.cs" />
+    <Compile Include="DataAccess\FormatRegistrationAccessor.cs" />
+    <Compile Include="DataAccess\IncorporationFormAccessor.cs" />
+    <Compile Include="DataAccess\LogotypeAccessor.cs" />
+    <Compile Include="DataAccess\MenuItemAccessor.cs" />
+    <Compile Include="DataAccess\PersonAccessor.cs" />
+    <Compile Include="DataAccess\PersonCardJuridicalAccessor.cs" />
+    <Compile Include="DataAccess\PersonCardNaturalAccessor.cs" />
+    <Compile Include="DataAccess\PersonContactAccessor.cs" />
+    <Compile Include="DataAccess\PersonLinkAccessor.cs" />
+    <Compile Include="DataAccess\PersonLinkTypeAccessor.cs" />
+    <Compile Include="DataAccess\PersonThemeAccessor.cs" />
+    <Compile Include="DataAccess\PersonTypeAccessor.cs" />
+    <Compile Include="DataAccess\ResponsibleEmployeeAccessor.cs" />
+    <Compile Include="Localization\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repository.cs" />
+    <Compile Include="Search\PersonSearchParameters.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.ApplicationServices\Kesco.ApplicationServices.csproj">
+      <Project>{64c8f921-dbf3-490a-ab1f-385eb1c41d53}</Project>
+      <Name>Kesco.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ClassExtensions\Kesco.ClassExtensions.csproj">
+      <Project>{be40dc15-64e2-4861-9148-a891932c123c}</Project>
+      <Name>Kesco.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Project>{1170b0d6-2512-474e-9c69-debb7ef5904a}</Project>
+      <Name>Kesco.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.DataAccess\Kesco.DataAccess.csproj">
+      <Project>{9e72b472-d36d-496f-9ff7-ee2caeb26003}</Project>
+      <Name>Kesco.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Employees.ObjectModel\Kesco.Employees.ObjectModel.csproj">
+      <Project>{6217b3b3-2007-4ad7-8c8e-499178b15104}</Project>
+      <Name>Kesco.Employees.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+      <Name>Kesco.Lib.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Project>{195a7c92-ec1b-4af6-92b7-ba53cb643a16}</Project>
+      <Name>Kesco.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Persons.ObjectModel\Kesco.Persons.ObjectModel.csproj">
+      <Project>{38ab830f-a950-47fe-b439-2ec9204b6ac4}</Project>
+      <Name>Kesco.Persons.ObjectModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources.et.resx" />
+    <EmbeddedResource Include="Localization\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources.ru.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Установщик Windows 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

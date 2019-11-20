@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{992b5172-5694-4340-8aed-04bda1ef0f63}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>Kesco.Common.Modelling</Name>
+    <RootNamespace>Kesco.Common.Modelling</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="false" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="Graph.dgml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Kesco.Common.componentdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Kesco.Common.componentdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Kesco.Common.componentdiagram</DependentUpon>
+    </Content>
+    <Content Include="Kesco.Web.Mvc.SharedViews.StartAction.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Kesco.Web.Mvc.SharedViews.StartAction.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Kesco.Web.Mvc.SharedViews.StartAction.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\Kesco.Common.Modelling.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="LayerDiagram.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagram.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagram.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagram1.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagram1.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram1.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagram1.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram1.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="Kesco.Common.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="Kesco.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Kesco.Common.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="Kesco.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>Kesco.Common.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="Kesco.ApplicationServices.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.ClassExtensions\Kesco.ClassExtensions.csproj">
+      <Name>Kesco.ClassExtensions</Name>
+      <Project>{be40dc15-64e2-4861-9148-a891932c123c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Name>Kesco.ComponentModel</Name>
+      <Project>{1170b0d6-2512-474e-9c69-debb7ef5904a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.DataAccess\Kesco.DataAccess.csproj">
+      <Name>Kesco.DataAccess</Name>
+      <Project>{9e72b472-d36d-496f-9ff7-ee2caeb26003}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Name>Kesco.Lib.Log</Name>
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Linq.Dynamic\Kesco.Linq.Dynamic.csproj">
+      <Name>Kesco.Linq.Dynamic</Name>
+      <Project>{9e29ef27-3f61-46d5-af6c-8e07e6c3107c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Name>Kesco.ObjectModel</Name>
+      <Project>{195a7c92-ec1b-4af6-92b7-ba53cb643a16}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Utilities\Kesco.Utilities.csproj">
+      <Name>Kesco.Utilities</Name>
+      <Project>{2eba366e-5675-4c8d-bc2d-c3a2372508e4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.Compression\Kesco.Web.Mvc.Compression.csproj">
+      <Name>Kesco.Web.Mvc.Compression</Name>
+      <Project>{8bfcd8ad-127b-46c6-8eec-14eb8c7b314f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.SharedViews\Kesco.Web.Mvc.SharedViews.csproj">
+      <Name>Kesco.Web.Mvc.SharedViews</Name>
+      <Project>{202437b6-9919-4b9b-9351-7496ddcb280a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.UI\Kesco.Web.Mvc.UI.csproj">
+      <Name>Kesco.Web.Mvc.UI</Name>
+      <Project>{76ad79c0-57d1-42a0-b6f6-716d894813cc}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BLToolkit.4, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b1d3f6ab3aadaca3">
+      <Name>BLToolkit.4</Name>
+      <HintPath>..\..\..\..\_PUBLISH\Web_Data\MVC\BLToolkit.4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kesco.Employees.Controls, Version=1.0.6561.24267, Culture=neutral, PublicKeyToken=null">
+      <Name>Kesco.Employees.Controls</Name>
+      <HintPath>..\..\Kesco.Employees\Kesco.Employees.Controls\bin\Kesco.Employees.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Kesco.Persons.Controls, Version=1.0.6561.27407, Culture=neutral, PublicKeyToken=null">
+      <Name>Kesco.Persons.Controls</Name>
+      <HintPath>..\..\Kesco.Persons\Kesco.Persons.Controls\bin\Kesco.Persons.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Kesco.Zvonilka, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <Name>Kesco.Zvonilka</Name>
+      <HintPath>..\..\..\..\_PUBLISH\Web_Data\MVC\Kesco.Zvonilka.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <Name>Newtonsoft.Json</Name>
+      <HintPath>..\..\..\..\_PUBLISH\Web_Data\MVC\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Name>System.ComponentModel.DataAnnotations</Name>
+      <HintPath>..\..\..\..\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

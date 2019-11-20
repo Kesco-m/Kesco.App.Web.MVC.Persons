@@ -1,0 +1,13 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.SharedViews.Models.Dump.ViewModel>
+@using Kesco.Web.Mvc
+@{
+	ViewBag.Title = "Страница для тестирования";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="overflow:auto;">
+	<h2>Список загруженных сборок</h2>
+	@foreach (var asm in Model.Model.Assemblies) {
+    <div>@(asm.FullName) (@asm.ImageRuntimeVersion)</div>
+	}
+</div>

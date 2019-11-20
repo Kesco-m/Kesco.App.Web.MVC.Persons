@@ -1,0 +1,7 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<bool>
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    ModelMetadata meta = ViewData.ModelMetadata;
+}
+@Html.CheckBoxFor(m => m, new { style = "", data_bind = "checked: " + name })

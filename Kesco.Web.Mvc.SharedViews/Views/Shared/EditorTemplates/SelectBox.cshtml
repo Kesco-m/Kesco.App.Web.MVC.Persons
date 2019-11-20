@@ -1,0 +1,172 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<int?>
+@using FluentJson
+@using Kesco
+@using Kesco.DataAccess
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations
+@using Kesco.Web.Mvc.SharedViews
+@using Kesco.Web.Mvc.SharedViews.ComponentModel
+@using Kesco.Web.Mvc.SharedViews.Models
+@using Kesco.Web.Mvc.SharedViews.Controls
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+    
+	@* Проверим содержится ли аттрибут KescoSelectAttribute в коллекции дополнительных значений (AdditionalValues) *@
+	if (!metaData.AdditionalValues.ContainsKey(KescoSelectAttribute.AdditionalValuesKey_SelectBox)) {
+		throw new Exception(String.Format(
+				"Неверное использование шаблона SelectBox. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+				metaData.PropertyName,
+				typeof(KescoSelectAttribute)
+			));
+	}
+
+	var descriptor = metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBox]
+		as KescoSelectAttribute;
+
+	if (descriptor == null) {
+		throw new Exception(String.Format(
+			"Неверное использование шаблона SelectBox. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+				metaData.PropertyName,
+				metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+		));
+	}
+
+	Kesco.DataAccess.IAccessor accessor = BLToolkit.Reflection.TypeAccessor.CreateInstanceEx(
+			descriptor.EntityAccessorType
+		) as Kesco.DataAccess.IAccessor;
+	object searchParameters = null;
+	if (accessor != null) {
+		if (accessor is Kesco.DataAccess.IEntitySearchable) {
+			searchParameters = BLToolkit.Reflection.TypeAccessor.CreateInstanceEx(
+					((Kesco.DataAccess.IEntitySearchable)accessor).GetSearchParametersType()
+				);
+			if (metaData.AdditionalValues.ContainsKey(KescoSelectAttribute.AdditionalValuesKey_SelectBoxSearchParameters)) {
+				var searchParametersAttribute = metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBoxSearchParameters]
+					as KescoSelectSearchParametersAttribute;
+
+				if (searchParametersAttribute != null) {
+					BLToolkit.Mapping.Map.ObjectToObject(searchParametersAttribute, searchParameters);
+					searchParametersAttribute.CLID = descriptor.CLID;
+				}
+			}
+		}
+	}
+
+	// Получим начальные значения
+	string value = "";
+	string label = "";
+
+	if (Model.HasValue && Model.Value != 0 && descriptor.EntityAccessorType != null) {
+		value = Model.ToString();
+		label = String.Format("#{0}", value);
+		if (accessor != null) {
+			object entry = accessor.GetInstance(value);
+			if (entry != null) {
+				if (accessor is Kesco.Web.Mvc.UI.Controls.DataAccess.IKescoSelectAccessor) {
+					label = ((IKescoSelectAccessor)accessor).GetInstanceDisplayName(entry);
+				} else if (entry is Kesco.ObjectModel.IFriendlyNamed) {
+					label = ((Kesco.ObjectModel.IFriendlyNamed)entry).GetInstanceFriendlyName();
+				}
+			}
+		}
+	}
+
+
+	// Получаем массив команд.
+	var commands = new KescoSelectCommandAttribute[] { };
+	if (metaData.AdditionalValues.ContainsKey(KescoSelectAttribute.AdditionalValuesKey_SelectBoxCommands)) {
+		commands = metaData.AdditionalValues[KescoSelectAttribute.AdditionalValuesKey_SelectBoxCommands]
+			as KescoSelectCommandAttribute[] ?? new KescoSelectCommandAttribute[] { };
+	}
+
+	// Дескриптор получен, начинаем строить элемент управления SELECT
+	var selectBox = Html.KescoLookup(name, id).SelfInitialized(false).Value("", "")
+		.KeyField(descriptor.KeyField).DisplayField(descriptor.DisplayField)
+		.Value(value, label)
+		.Required(descriptor.IsRequired || metaData.IsRequired)
+		.Autocomplete(
+			Url.FullPathAction(descriptor.AutocompleteAction, descriptor.AutocompleteController),
+			descriptor.AutocompleteLimit)
+		.ShowSearchButton(descriptor.ShowSearchButton)
+		// Установим показывать кнопку просмотра только в том случае, если указано и есть команда 'view'
+		.ShowViewButton(descriptor.ShowSearchButton && commands.Any(c => c.Command == "view"))
+		.ClientEvents((events) => {
+			events.OnCommand = @" 
+                    function (event, ui) {{
+							var parameters = ko.toJS(ViewModel.{2}.__SearchParameters || {{}});
+							var $lookup = $('#{0}');
+							var item = $lookup.selectBox('getValue');
+							$lookup.selectBox('clearFocusing', true);
+							ui.item.parameters = $.extend(parameters, ui.item.parameters || {{ Search: encodeURIComponent(item.label) }});
+							var data = $.extend({{ control: '{0}', mode: 0 }}, ui.item || {{}});
+                            var url = '{1}';
+                            setTimeout(function() {{
+								$.ajax({{
+									type: 'POST',
+									url: url,
+									contentType: 'application/json; charset=utf-8',
+									data: ko.toJSON(data),
+									beforeSend: function() {{ }},
+									success: function( data, status ) {{ }},
+									error: function() {{ }},
+									complete: function () {{ 
+									}}
+								}});
+							}}, 10);
+					    
+		            }}".FormatWith(
+						id,
+						Url.FullPathAction("Dispatch", descriptor.AutocompleteController),
+						name
+					);
+			if (!String.IsNullOrWhiteSpace(descriptor.OnFormatItemClientFunction)) {
+				events.OnFormatItem = String.Format(@" function (item) {{
+						if ($.isFunction(window.{0})) return {0}(item);
+						return item.label;
+					}}", descriptor.OnFormatItemClientFunction);
+			}
+			if (!String.IsNullOrWhiteSpace(descriptor.OnRequestClientFunction)) {
+				events.OnRequest = String.Format(@" function (request) {{
+						if ($.isFunction(window.{0})) return {0}(request);
+					}}", descriptor.OnRequestClientFunction);
+			}
+		});
+
+	// Добавление команд/ссылок в меню.
+	var links = commands
+		.Where(c => c is KescoSelectLinkAttribute)
+		.Select(c => (KescoSelectLinkAttribute)c)
+		.OrderBy(c => c.SortOrder)
+		.All(c => {
+			selectBox.AddLink(
+					c.Command,
+					c.GetCommandText(),
+					c.CommandIcon,
+					c.ShowCondition
+				);
+			return true;
+		});
+
+	// Объединяем HTML атрибуты для элемента управления
+	var htmlAttributes = Html.MergeHtmlAttributes((object) ViewBag.HtmlAttributes);
+	// Укажим data-bind для библиотеки knockout
+	htmlAttributes["data-actual"] = true;
+	htmlAttributes.PrependInValue("data-bind", ",", "selectBox: " + name);
+
+	selectBox.HtmlAttributes(htmlAttributes);
+}
+@Html.Raw(selectBox.ToString())
+@{
+	
+	Html.RegisterScript(@"
+		
+		;(function(scope, $) {{
+			scope.ViewModel.{1}.__SearchParameters = {2};
+		}})(window, jQuery);
+		
+	".FormatWith(id, name, Knockout.ToViewModel(searchParameters)));
+}

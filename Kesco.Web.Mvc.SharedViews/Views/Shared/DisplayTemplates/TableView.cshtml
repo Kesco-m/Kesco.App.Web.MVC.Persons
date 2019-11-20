@@ -1,0 +1,49 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<IList>
+@using System.Collections
+@using System.Data
+@using Kesco.Web.Mvc.SharedViews.Localization
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("__table");
+	if (Model != null && Model.Count > 0) {
+		ModelMetadata metadata = ModelMetadataProviders.Current.GetMetadataForType(() => Model[0], Model[0].GetType());
+		var properties = ModelMetadata.FromLambdaExpression(m => m[0], ViewData)
+			.Properties
+			.Where(pm => pm.ShowForDisplay && !pm.IsComplexType && !ViewData.TemplateInfo.Visited(pm))
+			.OrderBy(pm => pm.Order);
+<text>
+<table id="@id" width="100%" >
+	<thead>
+		<tr>
+		@foreach (var property in properties) {
+			<th>@(String.IsNullOrEmpty(property.ShortDisplayName) ? property.GetDisplayName() : property.ShortDisplayName)</th>
+		}
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: @name">
+		<tr>
+      @foreach (var property in properties) {
+		  if (property.ModelType == typeof(DateTime)) {
+			<td data-bind="text: Globalize.format($data.@(property.PropertyName)().toLocalDate(), 'F', 'kesco')"></td>
+		  } else {
+			<td data-bind="text: @(property.PropertyName)"></td>
+		  }
+	  }
+        </tr>
+    </tbody>
+	<tbody data-bind="visible: @(name)().length == 0">
+		<tr data-bind="visible: @(name)().length == 0">
+			<td colspan="@properties.Count()" data-bind="">@Resources.ResourceView_NoData</td>
+        </tr>
+	</tbody>
+</table>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#@id").styleTable();
+});
+</script></text>
+	} else {
+		@Resources.ResourceView_NoData
+	}
+}
+

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{76AD79C0-57D1-42A0-B6F6-716D894813CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kesco.Web.Mvc</RootNamespace>
+    <AssemblyName>Kesco.Web.Mvc.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Kesco.Web.Mvc.UI.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Kesco.Web.Mvc.UI.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BLToolkit.4">
+      <HintPath>..\_Assemblies\BLToolkit.4.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\_Assemblies\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\_Assemblies\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>c:\_PUBLISH\.AssemblyCache\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComponentModel\DataAnnotations\ValidationResultsAttribute.cs" />
+    <Compile Include="Extensions\CultureInfoExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\EntityExtensions.cs" />
+    <Compile Include="Extensions\HttpContextBaseExtensions.cs" />
+    <Compile Include="Extensions\HttpSessionStateExtensions.cs" />
+    <Compile Include="Extensions\ViewDataDictionaryExtensions.cs" />
+    <Compile Include="Filtering\ConstantFilterSetting.cs" />
+    <Compile Include="Filtering\FilterSetting.cs" />
+    <Compile Include="Filtering\HiddenFilterSetting.cs" />
+    <Compile Include="Filtering\ListQSFilterSetting.cs" />
+    <Compile Include="Filtering\QSFilterSetting.cs" />
+    <Compile Include="Filtering\IntQSFilterSetting.cs" />
+    <Compile Include="Filtering\ArrayQSFilterSetting.cs" />
+    <Compile Include="Filtering\StringQSFilterSetting.cs" />
+    <Compile Include="Filtering\BooleanQSFilterSetting.cs" />
+    <Compile Include="Filtering\UniqueIdQSFilterSetting.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\AjaxEndpointAttribute.cs" />
+    <Compile Include="Infrastructure\AjaxRequestFilterAttribute.cs" />
+    <Compile Include="Infrastructure\CompressFilter.cs" />
+    <Compile Include="Infrastructure\ConfigurationT.cs" />
+    <Compile Include="Infrastructure\ControllerEx.cs" />
+    <Compile Include="Infrastructure\ControllerExtensions.cs" />
+    <Compile Include="Infrastructure\DefaultModelBinderEx.cs" />
+    <Compile Include="Infrastructure\ETagBasedCacheFilterAttribute.cs" />
+    <Compile Include="Infrastructure\ImageResult.cs" />
+    <Compile Include="Infrastructure\ModelControllerT.cs" />
+    <Compile Include="Infrastructure\NoCacheRequestFilterAttribute.cs" />
+    <Compile Include="Infrastructure\ScriptCapabilities.cs" />
+    <Compile Include="Infrastructure\CorporateCultureController.cs" />
+    <Compile Include="Infrastructure\UnityDependencyResolver.cs" />
+    <Compile Include="Infrastructure\UserContext.cs" />
+    <Compile Include="Infrastructure\ClientContextRequestFilterAttribute.cs" />
+    <Compile Include="Infrastructure\ValidationSupportedModelController.cs" />
+    <Compile Include="UI\ViewModelT.cs" />
+    <Compile Include="Json\Json.cs" />
+    <Compile Include="Localization\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Resources.ru.Designer.cs">
+      <DependentUpon>Resources.ru.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ModelBinding\DecimalModelBinder.cs" />
+    <Compile Include="ModelBinding\DoubleModelBinder.cs" />
+    <Compile Include="ModelBinding\ModelBinding.cs" />
+    <Compile Include="Providers\KescoDataAnnotationsModelMetadataProvider.cs" />
+    <Compile Include="Validation\EmailAddressPropertyValidator.cs" />
+    <Compile Include="Validation\FluentValidationExtensions.cs" />
+    <Compile Include="Validation\ModelValidatorRegistration.cs" />
+    <Compile Include="UI\ClientParametersBase.cs" />
+    <Compile Include="UI\DialogViewModel.cs" />
+    <Compile Include="UI\DropDownListExtensions.cs" />
+    <Compile Include="UI\LabelExtensions.cs" />
+    <Compile Include="Infrastructure\ApplicationSettingsT.cs" />
+    <Compile Include="UI\DialogResult.cs" />
+    <Compile Include="UI\DialogResultModel.cs" />
+    <Compile Include="UI\ViewMasterPageT.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Settings.cs" />
+    <Compile Include="Infrastructure\ApplicationEx.cs" />
+    <Compile Include="Json\JsonErrorResult.cs" />
+    <Compile Include="Json\JsonModelResultT.cs" />
+    <Compile Include="Json\JsonNetResult.cs" />
+    <Compile Include="Json\JsonResultEx.cs" />
+    <Compile Include="Json\JsonValueProviderFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\UrlExtensions.cs" />
+    <Compile Include="UI\ViewPageT.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ViewUserControlT.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\WebViewPageT.cs" />
+    <Compile Include="Validation\ObjectValidator.cs" />
+    <Compile Include="Validation\Rules\ModelClientValidationMinValueRule.cs" />
+    <Compile Include="Validation\Adapters\RemoteAttributeAdapter.cs" />
+    <Compile Include="Validation\Rules\ModelClientValidationMaxValueRule.cs" />
+    <Compile Include="Validation\Adapters\MinValueAttributeAdapter.cs" />
+    <Compile Include="Validation\Adapters\MaxValueAttributeAdapter.cs" />
+    <Compile Include="Validation\ValidationResults.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources.et.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Kesco.Web.Mvc.Localization</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Resources.ru.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.ApplicationServices\Kesco.ApplicationServices.csproj">
+      <Project>{64c8f921-dbf3-490a-ab1f-385eb1c41d53}</Project>
+      <Name>Kesco.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.BaseExtensions\Kesco.BaseExtensions.csproj">
+      <Project>{0c4d6de0-daf5-49d7-bc56-f79287332045}</Project>
+      <Name>Kesco.BaseExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ClassExtensions\Kesco.ClassExtensions.csproj">
+      <Project>{BE40DC15-64E2-4861-9148-A891932C123C}</Project>
+      <Name>Kesco.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Project>{1170B0D6-2512-474E-9C69-DEBB7EF5904A}</Project>
+      <Name>Kesco.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+      <Name>Kesco.Lib.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Linq.Dynamic\Kesco.Linq.Dynamic.csproj">
+      <Project>{9E29EF27-3F61-46D5-AF6C-8E07E6C3107C}</Project>
+      <Name>Kesco.Linq.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Project>{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}</Project>
+      <Name>Kesco.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Utilities\Kesco.Utilities.csproj">
+      <Project>{2EBA366E-5675-4C8D-BC2D-C3A2372508E4}</Project>
+      <Name>Kesco.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filtering\Kesco.Web.Mvc.UI.Filtering.cd" />
+    <None Include="Infrastructure\Kesco.Web.Mvc.Infrastructure.cd" />
+    <None Include="Kesco.Web.Mvc.UI.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

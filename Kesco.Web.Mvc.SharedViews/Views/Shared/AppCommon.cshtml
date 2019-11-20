@@ -1,0 +1,62 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<DialogViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.SharedViews
+@using Kesco.Web.Mvc.SharedViews.Localization
+@{ 
+	var scriptCapabilities = Model.GetScriptCapabilities();
+}
+<img src="@WebAssetImage("sandwatch.gif")" id="imgBusy" style="display: none; position: absolute; top: 1px; z-index: 2000;" />
+<text>
+<style>
+	.ui-equipment-type-20 { display: inline-block; width: 20px; height: 20px; background: url('@WebAssetImage("phoneDigital.gif")') center center no-repeat no-repeat; }
+	.ui-equipment-type-21 { display: inline-block; width: 20px; height: 20px; background: url('@WebAssetImage("phoneStandard.gif")') center center no-repeat no-repeat; }
+	.ui-equipment-type-24 { display: inline-block; width: 20px; height: 20px; background: url('@WebAssetImage("phoneDect.gif")') center center no-repeat no-repeat; }
+	.ui-equipment-type-30 { display: inline-block; width: 20px; height: 20px; background: url('@WebAssetImage("phoneIP.gif")') center center no-repeat no-repeat; }
+</style>
+
+
+<div id="PhoneCalling_Dialog" title2="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.PhoneCalling_Dialog_Title)" style="display: none;">
+	<form onsubmit="return false;">
+
+	</form>
+</div>
+@{
+	Html.RegisterExternalScript("ScriptController_AppEnv", Url.Action("AppEnv", "Script"));
+	Html.RegisterExternalScript("ScriptController_AppCommon", Url.Action("AppCommon", "Script"));
+}
+@* Объявим модель представления среди внешних скриптов *@
+@Html.ExternalScript("Shared_ViewModel",
+@<script>
+    var kesco_ip = '@(Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? Request.ServerVariables["REMOTE_ADDR"])';
+	; (function (scope, $, undefined) {
+		var env = window.Env || {}; scope.Env = env; env.scriptCapabilities = @(Html.Raw(Kesco.Web.Mvc.Json.Serialize(scriptCapabilities, true)));
+
+		// Сделать глобальной
+		var vm = scope.ViewModel || {};	scope.ViewModel = vm;
+
+		// Установим данные для модели представления
+		ko.mapping.fromJS(@(Html.Raw((Kesco.Web.Mvc.Json.Serialize(Model, true) ?? String.Empty).Replace("<script", "<scr\"+\"ipt").Replace("</script", "</scr\"+\"ipt"))), {}, vm);
+
+		vm.dispatchModelCommand = function (command, control, replaceOptions) {
+			
+			var requestOptions = $.extend({
+					url: '@(Url.Action("Dispatch"))',
+					type: 'POST',
+					data: window.ko.toJSON({
+						command: command,
+						control: control || null,
+						model: ko.mapping.toJS(vm.Model)
+					}),
+					contentType: "application/json; charset=utf-8"
+				},
+				replaceOptions || {}
+			);
+
+			return $.ajax(requestOptions);
+		}
+
+	})(window, jQuery);
+
+</script>)
+
+

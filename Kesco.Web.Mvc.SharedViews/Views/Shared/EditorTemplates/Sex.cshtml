@@ -1,0 +1,18 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<char?>
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.SharedViews.Localization
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+}
+<table>
+<tr nowrap="nowrap">
+	<td><input type="radio" name="@(ViewData.TemplateInfo.HtmlFieldPrefix)" id="@(id)__male" value="М" data-bind="
+			checked: @(ViewData.TemplateInfo.HtmlFieldPrefix)
+		"/></td>
+	<td><label for="@(id)__male">@Resources.Kesco_Web_Mvc_SharedApp_LBL_20000</label></td>
+	<td><input type="radio" name="@(ViewData.TemplateInfo.HtmlFieldPrefix)" id="@(id)__female" value="Ж" data-bind="
+			checked: @(ViewData.TemplateInfo.HtmlFieldPrefix)
+		"/></td>
+	<td><label for="@(id)__female">@Resources.Kesco_Web_Mvc_SharedApp_LBL_20001</label></td>
+</tr>
+</table>

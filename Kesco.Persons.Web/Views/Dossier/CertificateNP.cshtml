@@ -1,0 +1,35 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc;
+@using Kesco.Persons.Web.Models.Dossier;
+@using Resources;
+@{
+	int personID = Model.ViewModel.Model.PersonID;
+	string url = Model.Section.GetURL(Model.ViewModel.Model.PersonID);
+	int accessLevel = (int)Model.ViewModel.AccessLevel;
+	var sectionID = Model.Section.ID.ToString();
+	var currentAccess = Model.AccessGranted;
+	var items = Model.ViewModel.GetContextItems(cxti => cxti.TabID == Model.Section.ID);
+
+	if (items.Count == 0) {Html.DossierClientSideScript_HideSection(Model.Section.ID);}
+
+}
+@foreach (var item in items) {
+	<tr class="hoverable dsl@(sectionID)">
+		<td colspan="2" style="width:90%; padding-left: 20px;">
+			@if (currentAccess > 0){
+			<a href="javascript: void(0);"
+				onclick="openPopupWindow('@(url + "&id=" + item.ID + "&sectionId=" + sectionID)', null, null, 'wndEditCertificate_@(item.ID)', 850, 600);"
+				title="@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Edit_Edit)">
+				<span class="ui-icon ui-icon-pencil text-ui-icon"></span>
+			</a>
+			}
+			@Html.Raw(HL(item.Label))
+		</td>
+		<td class="changed">
+			@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new { 
+				TooltipPositionMy = "middle right", TooltipPositionAt = "middle left",
+				InitialLabel = HL(item.ChangedByFIO) })
+			<span>@(item.ChangedDate)</span>
+		</td>
+	</tr>
+}

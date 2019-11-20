@@ -1,0 +1,120 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.DialogViewModel>
+@{
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVerRequest;
+    } 
+}
+@using Kesco.Web.Mvc
+
+<!DOCTYPE html>
+<html>
+<head >
+    <title>@ViewBag.Title</title>
+	<link rel="icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" />
+	<link rel="shortcut icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" /> 
+	
+	@* Определим скрипты и CSS стили *@
+	@Html.Partial("PageHeadSection", (object) Model)
+
+	<style type="text/css" media="screen">
+		body { overflow: hidden; }
+		.field-validation-error { display: block !important; }
+		#wndSize{ display: none; position: absolute; right: 42px; top: 3px; background-color: transparent; }
+		#dialogHeader { padding-bottom: 5px; }
+		#dialogContentPane { overflow: hidden; padding: 2px;  }
+		#dialogFooter { padding: 5px 5px 0px 5px; text-align: center; }
+	</style>
+
+	<style type="text/css" media="print"> 
+		#wndSize{ position: absolute; left:-1000px; }
+		#dialogContentPane { overflow: auto; height:auto !important; }
+	</style>
+</head>
+<body>
+	<span id="wndSize"></span>
+
+	@* Выводим форму возврата результата *@
+	@Html.Partial("DialogResultForm")
+
+	@* Определим общую модель и скрипты на стороне клиента *@
+	@Html.Partial("AppCommon", (object) Model)
+	
+	@* Определим секцию для верхней части страницы *@
+	<div id="dialogHeader" style="display: none;" data-bind="visible: PageLoaded">
+		@RenderSection("Header", required: false)
+	</div>
+
+	@* Основная область страницы *@
+	<div id="dialogContentPane" class="ui-widget-content" style="display: none;" data-bind="visible: PageLoaded">
+		@RenderBody()
+	</div>
+
+	@* Определим секцию для нижней части страницы *@
+	<div id="dialogFooter" class="ui-widget"  style="display: none;" data-bind="visible: PageLoaded">&nbsp;
+		@RenderSection("Footer", required: false)
+	</div>
+       
+	@Html.RenderScripts()       	
+    @Html.WriteEnums()
+	@Html.WriteScriptBlocks()    
+	<script language="javascript" type="text/javascript">
+		
+        @* Ищет параметр в URL *@
+        function getUrlParameter(sParam)
+        {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++) 
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) 
+                {
+                    return sParameterName[1];
+                }
+            }
+            return null;
+        } 
+
+		@* Инициализация модели представления и отрисовка страницы *@
+	    $(document).ready(function () {
+	        $("input").attr("autocomplete", "off");
+	        ViewModel.PageLoaded(true);
+	        if (window.console) console.log("Binding starting...", new Date());
+	        ko.applyBindings(ViewModel);
+	        if (window.console) console.log("Binding stopped.", new Date());
+	        if (ViewModel.ControlNameToFocus && $(ViewModel.ControlNameToFocus).filter(":visible").get(0))
+	            $(ViewModel.ControlNameToFocus).filter(":visible").get(0).focus();
+	        setTimeout(function () {
+	            $(window).resize();
+	        }, 100);
+	    });
+
+		@* Освобождение модели представления при выгрузке страницы *@
+	    ko.unapplyBindings = function ($node, remove) {
+	        // unbind events
+	        $node.find("*").each(function () {
+	            $(this).unbind();
+	        });
+
+	        // Remove KO subscriptions and references
+	        if (remove) {
+	            ko.removeNode($node[0]);
+	        } else {
+	            ko.cleanNode($node[0]);
+	        }
+	    };
+
+
+	    $(window)
+    	    .on("beforeunload", function() {saveSettings();})
+    	    .unload(function () {
+    	        ko.unapplyBindings($(window.document.body), false);
+    	    });
+	</script>
+     
+</body>
+</html>

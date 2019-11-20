@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="a1aee3ea-3536-4580-9f3f-4a321abb99b1" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <comments>
+    <comment Id="bbec61f5-75b5-4b58-9387-960bc5cc0847" name="Comment1">
+      <body>Диаграмма слоёв для элемента управления Выбор Лица</body>
+    </comment>
+  </comments>
+  <layers>
+    <layer Id="84955e98-fea0-4a32-97df-f00dbd334444" name="PersonSelect Control">
+      <childLayers>
+        <layer Id="e1477682-d654-4a16-8b01-127448100aa9" name="Controller">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="d064f234-da6c-45aa-842b-a2166d2397b1" direction="Forward">
+              <layerMoniker Id="ae37d52b-1fa0-4036-a119-a0e993d9c080" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="bc625c42-2a3f-419b-bf32-c91660824238" direction="Forward">
+              <layerMoniker Id="5b3a6322-7f13-4adb-b4a0-5e365a0d148f" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="cff4a083-485e-4400-a2d5-6ac250d90ebd" direction="Forward">
+              <layerMoniker Id="779bebed-0d43-4f6f-a007-c53bdf58be84" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="61ca6a11-fd27-4116-b343-5bf7e81446d1" direction="Forward">
+              <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="9f64a838-194b-4231-a8a3-a63f271eb39b" name="PersonSelectController">
+              <ArtifactNode Label="PersonSelectController" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.Controllers Type=PersonSelectController)" />
+              <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.Controllers Type=PersonSelectController)" Label="PersonSelectController" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="73928663-2fd0-4a8b-8b6e-b72b348fc5cf" name="CreateNatural">
+              <ArtifactNode Label="CreateNatural" Category="CodeSchema_Method" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.Controllers Type=PersonSelectController Member=(Name=CreateNatural OverloadingParameters=[(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.0/mscorlib.dll&quot; Namespace=System Type=(Name=Nullable GenericParameterCount=1 GenericArguments=[(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.0/mscorlib.dll&quot; Namespace=System Type=Int32)])),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.0/mscorlib.dll&quot; Namespace=System Type=String)]))" />
+              <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.Controllers Type=PersonSelectController Member=(Name=CreateNatural OverloadingParameters=[(Assembly=mscorlib Namespace=System Type=(Name=Nullable GenericParameterCount=1 GenericArguments=[(Assembly=mscorlib Namespace=System Type=Int32)])),(Assembly=mscorlib Namespace=System Type=String)]))" Label="CreateNatural" Category="CodeSchema_Method">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="779bebed-0d43-4f6f-a007-c53bdf58be84" name="Data Accessor">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="a10bd618-2be2-4b73-acf0-6790e37b8694" direction="Forward">
+              <layerMoniker Id="5b3a6322-7f13-4adb-b4a0-5e365a0d148f" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="8942077d-b1f0-47bb-9bb9-3572ffb79d7f" direction="Forward">
+              <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="0b40b096-57af-40e5-b843-0186fd38f1df" name="PersonSelectAccessor">
+              <ArtifactNode Label="PersonSelectAccessor" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.DataAccess Type=PersonSelectAccessor)" />
+              <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.DataAccess Type=PersonSelectAccessor)" Label="PersonSelectAccessor" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="f5af741c-9717-4deb-bd58-7b1a85455a90" name="Data Annotation">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="54e71aa4-ffd8-4458-9681-6f6a60ce3b5b" direction="Bidirectional">
+              <layerMoniker Id="779bebed-0d43-4f6f-a007-c53bdf58be84" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="7c5cd0b8-162e-4364-9f9a-932c0bfb007d" name="PersonSelectAttribute">
+              <ArtifactNode Label="PersonSelectAttribute" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.ComponentModel Type=PersonSelectAttribute)" />
+              <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.ComponentModel Type=PersonSelectAttribute)" Label="PersonSelectAttribute" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+            <reference Id="38cec5c7-2302-4550-b81f-15204399f03b" name="PersonSelectSearchParameters">
+              <ArtifactNode Label="PersonSelectSearchParameters" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.ComponentModel Type=PersonSelectSearchParameters)" />
+              <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.ComponentModel Type=PersonSelectSearchParameters)" Label="PersonSelectSearchParameters" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="70239894-015a-4e43-aa2d-114eb95f37b0" name="Presentation">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="867734cf-b084-4674-9cef-4ffe0ac6620f" direction="Forward">
+              <layerMoniker Id="5b3a6322-7f13-4adb-b4a0-5e365a0d148f" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="c26c8927-04bc-4b2a-a465-f7d298e758dc" direction="Forward">
+              <layerMoniker Id="ae37d52b-1fa0-4036-a119-a0e993d9c080" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <childLayers>
+            <layer Id="46798a46-4d28-4546-a3b5-fbd512c6c538" name="Display Template">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="4457a2dc-9879-47b3-b7c2-3e3ea5f81234" direction="Forward">
+                  <layerMoniker Id="f5af741c-9717-4deb-bd58-7b1a85455a90" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="56783211-fc0b-49b7-981f-5de88280827b" direction="Forward">
+                  <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="c57d48a0-6047-4e36-a2f6-b30742e1ee8d" name="PersonSelect">
+                  <ArtifactNode Label="PersonSelect" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.Views.Shared.DisplayTemplates Type=PersonSelect)" />
+                  <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.Views.Shared.DisplayTemplates Type=PersonSelect)" Label="PersonSelect" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+            <layer Id="837c4c12-2a59-416d-91c7-1e408ce657f9" name="Editor Template">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="11de4530-46a8-4ae9-b4cf-4573013b7b97" direction="Forward">
+                  <layerMoniker Id="f5af741c-9717-4deb-bd58-7b1a85455a90" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
+              <references>
+                <reference Id="3de186bc-fd28-4e4d-bedf-a9b0ddaf3abc" name="PersonSelect">
+                  <ArtifactNode Label="PersonSelect" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Persons.Controls.dll Namespace=Kesco.Persons.Controls.Views.Shared.EditorTemplates Type=PersonSelect)" />
+                  <ExpandedNode Id="(Assembly=Kesco.Persons.Controls Namespace=Kesco.Persons.Controls.Views.Shared.EditorTemplates Type=PersonSelect)" Label="PersonSelect" Category="CodeSchema_Class">
+                    <LinkCategory Ref="Represents" />
+                  </ExpandedNode>
+                </reference>
+              </references>
+            </layer>
+          </childLayers>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="5b3a6322-7f13-4adb-b4a0-5e365a0d148f" name="Kesco.DALC.Persons">
+      <childLayers>
+        <layer Id="baaaeee2-542f-4173-ae69-493614413631" name="Person Accessor">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="40b59539-8445-4d5e-9431-37da63e1687d" direction="Forward">
+              <layerMoniker Id="a900c8c0-0c61-4da2-b933-6b1eca720b5c" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="3958f9a7-2168-46d5-a62f-057544353801" direction="Forward">
+              <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="931d1992-43a5-47d4-94da-8cd579ef9ae4" name="PersonAccessor">
+              <ArtifactNode Label="PersonAccessor" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.DALC.Persons.dll Namespace=Kesco.DALC.Persons.Logic Type=PersonAccessor)" />
+              <ExpandedNode Id="(Assembly=Kesco.DALC.Persons Namespace=Kesco.DALC.Persons.Logic Type=PersonAccessor)" Label="PersonAccessor" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="a900c8c0-0c61-4da2-b933-6b1eca720b5c" name="Person">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="1adde9f4-a46c-4a64-8c9b-b4291cb0480b" direction="Forward">
+              <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="c5e10e8a-978e-4527-bcc0-439d965c63db" name="Person">
+              <ArtifactNode Label="Person" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.DALC.Persons.dll Namespace=Kesco.DALC.Persons.Model Type=Person)" />
+              <ExpandedNode Id="(Assembly=Kesco.DALC.Persons Namespace=Kesco.DALC.Persons.Model Type=Person)" Label="Person" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="93df4586-ddf5-4b22-a265-50f2a1908124" name="Search &#xD;&#xA;Parameters">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="9e93d64d-b3da-44e9-9700-a229a8692678" direction="Forward">
+              <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="253671f1-762c-4bb9-b5d8-d0d15aa604dc" name="PersonAccessor.SearchParameters">
+              <ArtifactNode Label="PersonAccessor.SearchParameters" Category="CodeSchema_Class" Id="(Assembly=../../../../_PUBLISH/Web_Data/MVC/Kesco.DALC.Persons.dll Namespace=Kesco.DALC.Persons.Logic Type=(Name=SearchParameters ParentType=PersonAccessor))" />
+              <ExpandedNode Id="(Assembly=Kesco.DALC.Persons Namespace=Kesco.DALC.Persons.Logic Type=(Name=SearchParameters ParentType=PersonAccessor))" Label="PersonAccessor.SearchParameters" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="ae37d52b-1fa0-4036-a119-a0e993d9c080" name="Kesco.Web.Mvc.SharedViews">
+      <childLayers>
+        <layer Id="1cf10f23-e3de-4cbe-8ceb-e514230c78af" name="SelectBox">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="e95ba3ad-35fc-4a5a-a0e9-644bf114894e" direction="Forward">
+              <layerMoniker Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="0da25ba9-61d4-417c-ba7e-cf972fcd9cbb" name="SelectBox">
+              <ArtifactNode Label="SelectBox" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Controls/bin/Kesco.Web.Mvc.SharedViews.dll Namespace=Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates Type=SelectBox)" />
+              <ExpandedNode Id="(Assembly=Kesco.Web.Mvc.SharedViews Namespace=Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates Type=SelectBox)" Label="SelectBox" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+    <layer Id="fccbeb0f-ae6e-40b1-bf1d-856ba00c93e5" name="Kesco.BaseExtensions.dll">
+      <childLayers>
+        <layer Id="45a8aefb-dee5-495d-aee8-fa5f0b05d798" name="EntitySearchParameters">
+          <references>
+            <reference Id="c826e797-2a5a-487b-a58c-5d0598be9081" name="EntitySearchParameters">
+              <ArtifactNode Label="EntitySearchParameters" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Web/bin/Kesco.BaseExtensions.dll Namespace=Kesco.DataAccess Type=EntitySearchParameters)" />
+              <ExpandedNode Id="(Assembly=Kesco.BaseExtensions Namespace=Kesco.DataAccess Type=EntitySearchParameters)" Label="EntitySearchParameters" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="fe6f0af0-04de-4ea0-b977-db6403c6f436" name="EntityAccessor&lt;A,D,T,S,TID&gt;">
+          <references>
+            <reference Id="55ae745e-578d-4fab-a409-acf8cb936952" name="EntityAccessor&lt;A,D,T,S,TID&gt;">
+              <ArtifactNode Label="EntityAccessor&lt;A,D,T,S,TID&gt;" Category="CodeSchema_Class" Id="(Assembly=../Kesco.Persons.Web/bin/Kesco.BaseExtensions.dll Namespace=Kesco.DataAccess Type=(Name=EntityAccessor GenericParameterCount=5))" />
+              <ExpandedNode Id="(Assembly=Kesco.BaseExtensions Namespace=Kesco.DataAccess Type=(Name=EntityAccessor GenericParameterCount=5))" Label="EntityAccessor&lt;A,D,T,S,TID&gt;" Category="CodeSchema_Class">
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+    </layer>
+  </layers>
+</layerModel>

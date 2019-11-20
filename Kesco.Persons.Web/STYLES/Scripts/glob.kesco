@@ -1,0 +1,252 @@
+Все данные, такие как числа, валюта, дата, время, чьё представление может отличаться в зависимости от региональных настроек клиента, 
+должны быть представлены в соответсвии с установленными параметрами корпоративной культуры.
+
+Параметры корпоративной культуры задаются в конфигурационных файлах приложения в разделе настроек приложения '''appSettings'''. 
+
+== Web.config ==
+Ниже приведены текущие настройки
+<pre>
+<appSettings>
+	...
+		<!-- ПАРАМЕТРЫ КОРПОРАТИВНОЙ КУЛЬТУРЫ //-->
+		<add key="Culture.EnglishName" value="Corporate Culture Settings"/>
+		<add key="Culture.NativeName" value="Корпоративные настройки культуры"/>
+
+		<!-- ФОРМАТИРОВАНИЕ ЧИСЛОВЫХ ДАННЫХ - целые и дробные числа, проценты, валюта 
+			Для указания расположения в шаблоне элементов введены следующие соглашения:
+				'n' - указывает положение цифр числа, включая разделители дробной части и разрядов
+				'-' - указывает положение знака, указывающее, что число отрицательное
+				'%' - указывает положение знака, указывающее, что число выражено в процентах.
+				'$' - указывает положение знака, обозначающее валюту. //-->
+		<!-- Форматирование целых и дробных чисел //-->
+		<!-- Шаблон положительного числа //-->
+		<add key="Culture.Number.PositivePattern" value="n"/>
+		<!-- Шаблон отрицательного числа, один из "(n)|-n|- n|n-|n -" //-->
+		<add key="Culture.Number.NegativePattern" value="-n"/>
+		<!-- Количество разрядов дробной части для отображения по умолчанию //-->
+		<add key="Culture.Number.Decimals" value="2"/>
+		<!-- Знак, разделяющий целую и дробную части //-->
+		<add key="Culture.Number.DecimalSeparator" value=","/>
+		<!-- Знак, разделяющий разряды числа //-->
+		<add key="Culture.Number.GroupSeparator" value=" "/>
+
+		<!-- Форматирование чисел, представляющих процент //-->
+		<add key="Culture.Percent.PositivePattern" value="n%"/>
+		<add key="Culture.Percent.NegativePattern" value="-n%"/>
+		<add key="Culture.Percent.Decimals" value="2"/>
+		<add key="Culture.Percent.DecimalSeparator" value=","/>
+		<add key="Culture.Percent.GroupSeparator" value=" "/>
+		<!-- Знак, указывающее, что число выражено в процентах //-->
+		<add key="Culture.Percent.Symbol" value="%"/>
+
+		<!-- Форматирование чисел, представляющих валюту //-->
+		<add key="Culture.Currency.PositivePattern" value="n$"/>
+		<add key="Culture.Currency.NegativePattern" value="-n$"/>
+		<add key="Culture.Currency.Decimals" value="2"/>
+		<add key="Culture.Currency.DecimalSeparator" value=","/>
+		<add key="Culture.Currency.GroupSeparator" value=" "/>
+		<add key="Culture.Currency.Symbol" value="р."/>
+
+		<!-- ФОРМАТИРОВАНИЕ ДАТЫ/ВРЕМЕНИ - 
+			Для указания расположения в шаблоне элементов даты/времени используються стандартые обозначения
+			Дополнительно:
+				'/' - указывает положение знака, используемый для разделения частей даты.
+				':' - указывает положение знака, используемый для разделения частей времени.
+			//-->
+		<add key="Culture.DateTime.DatePartsSeparator" value="."/>
+		<add key="Culture.DateTime.TimePartsSeparator" value=":"/>
+		<add key="Culture.DateTime.AM" value=""/>
+		<add key="Culture.DateTime.PM" value=""/>
+
+		<!-- Предопределённые шаблоны форматирования //-->
+		<!-- 'd' - шаблон представления даты в краткой форме  //-->
+		<add key="Culture.DateTime.ShortDatePattern" value="dd/M/yyyy"/>
+		<!-- 'D' - шаблон представления даты в полной форме //-->
+		<add key="Culture.DateTime.LongDatePattern" value="dddd, MMMM dd, yyyy"/>
+		<!-- 't' - шаблон представления времени в краткой форме //-->
+		<add key="Culture.DateTime.ShortTimePattern" value="H:mm tt"/>
+		<!-- 'T' - шаблон представления времени в полной форме //-->
+		<add key="Culture.DateTime.LongTimePattern" value="H:mm:ss tt"/>
+		<!-- 'f' - шаблон представления даты в полной форме и времени в краткой форме //-->
+		<add key="Culture.DateTime.LongDateShortTimePattern" value="dd/MM/yyyy H:mm"/>
+		<!-- 'F' - шаблон представления даты и времени в полной форме //-->
+		<add key="Culture.DateTime.FullDateTimePattern" value="dd/MM/yyyy H:mm:ss"/>
+
+		<!-- 'M' - шаблон представления месяц/день //-->
+		<add key="Culture.DateTime.MonthDayPattern" value="MMMM dd"/>
+		<!-- 'Y' - шаблон представления месяц/год //-->
+		<add key="Culture.DateTime.MonthYearPattern" value="yyyy MMMM"/>
+
+	...
+</appSettings>
+</pre>
+
+== Библиотека Globalize.js ==
+Для отображения чисел, дат и времени на стороне клиента используется JS-библиотека [https://github.com/jquery/globalize Globalize], которая предоставляет комплексное решение для парсинга и форматирования чисел и дат. 
+=== Исходные файлы ===
+Данная библиотека находиться в папке MVC/Styles/Scripts/globalize.js и MVC/Styles/Scripts/cultures/*.js
+
+=== Использование === 
+ &lt;!-- Подключить библиотеку Globalize.js //--&gt;
+ <script src="/виртуальная директория/Styles/Scripts/globalize.js" type="text/javascript"></script>
+ 
+ &lt;!-- Подключить корпоративную культуры //--&gt;
+ <script src="/виртуальная директория/Styles/Scripts/cultures/globalize.culture.kesco.js" type="text/javascript">
+ 
+ &lt;!-- Подключить настройки культуры 'ru' //--&gt;
+ <script src="/виртуальная директория/Styles/Scripts/cultures/globalize.culture.ru.js" type="text/javascript">
+ 
+ &lt;!-- Подключить настройки культуры 'ru-RU' //--&gt;
+ <script src="/виртуальная директория/Styles/Scripts/cultures/globalize.culture.ru-RU.js" type="text/javascript">
+
+=== API ===
+==== Globalize.addCultureInfo ====
+Globalize.addCultureInfo( cultureName, extendCultureName, info ) - Этот метод позволяет создать новую культуру, основанную на существующей культуры или добавить к существующей информации культуре.
+
+Ниже пример с определением настройек русской культуры
+<pre>
+Globalize.addCultureInfo( "ru", "default", {
+	name: "ru",
+	englishName: "Russian",
+	nativeName: "русский",
+	language: "ru",
+	numberFormat: {
+		",": " ",
+		".": ",",
+		negativeInfinity: "-бесконечность",
+		positiveInfinity: "бесконечность",
+		percent: {
+			pattern: ["-n%","n%"],
+			",": " ",
+			".": ","
+		},
+		currency: {
+			pattern: ["-n$","n$"],
+			",": " ",
+			".": ",",
+			symbol: "р."
+		}
+	},
+	calendars: {
+		standard: {
+			"/": ".",
+			firstDay: 1,
+			days: {
+				names: ["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"],
+				namesAbbr: ["Вс","Пн","Вт","Ср","Чт","Пт","Сб"],
+				namesShort: ["Вс","Пн","Вт","Ср","Чт","Пт","Сб"]
+			},
+			months: {
+				names: ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь",""],
+				namesAbbr: ["янв","фев","мар","апр","май","июн","июл","авг","сен","окт","ноя","дек",""]
+			},
+			monthsGenitive: {
+				names: ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря",""],
+				namesAbbr: ["янв","фев","мар","апр","май","июн","июл","авг","сен","окт","ноя","дек",""]
+			},
+			AM: null,
+			PM: null,
+			patterns: {
+				d: "dd.MM.yyyy",
+				D: "d MMMM yyyy 'г.'",
+				t: "H:mm",
+				T: "H:mm:ss",
+				f: "d MMMM yyyy 'г.' H:mm",
+				F: "d MMMM yyyy 'г.' H:mm:ss",
+				Y: "MMMM yyyy"
+			}
+		}
+	}
+});
+</pre>
+
+==== Globalize.cultures ==== 
+Globalize.cultures является отображением кодов культур на объектов с инфомацией о культуре. 
+Например, Globalize.cultures.ru - это объект, представляющий полное определение нейтральной русской культуры. 
+
+Обратите внимание, что основной файл globalize.js включает в себя только определение нейтральной английской культуры. 
+Для использования дополнительной культуры, вы должны включить соответсвущий файл со сценарием, содержащий определение культуры. 
+Например,
+ &lt;!-- Подключить настройки культуры 'ru-RU' //--&gt;
+ <script src="/виртуальная директория/Styles/Scripts/cultures/globalize.culture.ru-RU.js" type="text/javascript">
+ &lt;!-- Далее в скрипте можно использовать
+ 		Globalize.cultures['ru-RU'] - объект со всеми настройками русской культуры
+ 		Globalize.cultures['ru-RU'].numberFormat - настройки для форматирования числовой информации в русской культуре.
+ //--&gt;
+
+==== Globalize.culture ====
+Приложению, которое поддерживает глобализацию и/или локализацию, необходимо иметь способ определения и установки предпочтений пользователей. 
+Автоматическое определение соответствующей культуры полезно, но хорошей практикой является предоставление возможности предлагать 
+пользователю выбор.
+
+'''Globalize.culture([selector])''' позволяет установить наиболее подходящую культуру для пользователя, которая будет использоваться.
+Методу можно передать массив с кодами культур, которые необходимо использовать в порядке предпочтения
+Если подходящая культура неопределена (не подгружена), будет использоваться нейтральная английскай культура.
+Например
+ // Установим предпочитаемой русскую культуру.
+ Globalize.culture("ru"); 
+ // Установим предпочитаемой одну из французских культур в порядке определения их.
+ Globalize.culture([ "fr-CA", "fr-BE", "fr" ]); 
+Если параметр '''selector''' не передан, метод возвращает текущую предпочитаемую культуру
+ // Установим предпочитаемой русскую культуру.
+ Globalize.culture("ru"); 
+ // Какая текущая предпочитаемая культура
+ alert(Globalize.culture()); // ru
+
+Cтрока, переданная в параметре selector, может также содержать шаблону, определёному в RFC2616 секция 14.4. 
+Это означает, что культура может включать в себя значение «качество», указывающее оценку предпочтения пользователя данного языка.
+ Globalize.culture( "en;q=0.4, ru;q=0.5, tt-RU" );
+
+==== Globalize.findClosestCulture ====
+'''Globalize.findClosestCulture( selector )''' данный метод действует как '''Globalize.culture''', 
+возвращая ближайшую предпочитаемую культуру, но не устанавливая её.
+
+==== Globalize.format ====
+'''Globalize.format(value, format, culture)''' форматирует число или дату/времени в соответсвии с заданным форматом и заданой культурой.
+ // Установим предпочитаемой русскую культуру.
+ Globalize.culture("ru");
+ // Число
+ Globalize.format( 1234.567, "n"); 			// "1 234,57"
+ Globalize.format( 1234.567, "n", "en"); 	// "1,234.57"
+ Globalize.format( 1234.567, "n1"); 		// "1 234,6"
+ Globalize.format( 1234.567, "n1", "en"); 	// "1,234.6"
+ Globalize.format( 1234.567, "n0"); 		// "1 235"
+ Globalize.format( 1234.567, "n0", "en"); 	// "1,235"
+ 
+ Globalize.format( 1234.56, "c"); 			// 1 234,56р.
+ Globalize.format( 1234.56, "c", "en"); 	// $1,234.56
+ 
+ // Дата/время
+ Globalize.format( new Date(1955,10,5), "yyyy/MM/dd" ); 			// "1955.11.05"
+ Globalize.format( new Date(1955,10,5), "yyyy/MM/dd", "en"); 		// "1955/11/05"
+ Globalize.format( new Date(1955,10,5), "dddd MMMM d, yyyy" ); 		// "Суббота Ноябрь 5, 1955"
+ Globalize.format( new Date(1955,10,5), "dddd MMMM d, yyyy", "en"); // "Saturday November 5, 1955"
+ Globalize.format( new Date(1955,10,5, 2, 34, 56), "F" ); 			// "5 Ноября 1955 г. 2:34:56"
+ Globalize.format( new Date(1955,10,5, 2, 34, 56), "F", "en"); 		// "Saturday, November 5, 1955 2:34:56 AM"
+ 
+==== Globalize.parseInt ====
+Globalize.parseInt( value, radix, culture ) разбирает строку, представляющую целое число в заданном основании (10 по умолчанию),
+учитывая любое правило форматирования, установленное для заданной культуры (или текущей, если не задано).
+ // Установим предпочитаемой русскую культуру.
+ Globalize.culture("ru");
+ Globalize.parseInt( "1 234,56" ); // 1234
+ Globalize.parseInt( "1,234.56", 10, "en" ); // 1234
+
+==== Globalize.parseFloat ====
+Globalize.parseFloat( value, radix, culture ) разбирает строку, представляющую дробное число в заданном основании (10 по умолчанию),
+учитывая любое правило форматирования, установленное для заданной культуры (или текущей, если не задано).
+ // Установим предпочитаемой русскую культуру.
+ Globalize.culture("ru");
+ Globalize.parseInt( "1 234,56" ); // 1234.56
+ Globalize.parseInt( "1,234.56", 10, "en" ); // 1234.56
+
+==== Globalize.parseDate ====
+Globalize.parseDate( value, formats, culture ) разбирает строку, представляющую дату в заданном основании (10 по умолчанию),
+учитывая любое из заданных форматов (или форматов указанной культуры). Если культура не указана, то используется текущая предпочитаемая.
+
+ Globalize.culture( "en" );
+ Globalize.parseDate( "1/2/2003" ); // 2 января 2003
+ Globalize.culture( "ru" );
+ Globalize.parseDate( "1.2.2003" ); // 1 февраля 2003
+ Globalize.culture( "fr" );
+ Globalize.parseDate( "1/2/2003" ); // 1 февраля 2003

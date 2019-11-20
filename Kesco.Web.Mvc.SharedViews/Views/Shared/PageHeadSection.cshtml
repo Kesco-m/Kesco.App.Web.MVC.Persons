@@ -1,0 +1,168 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.DialogViewModel>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.Compression;
+@using Kesco.Web.Mvc.Compression.Resource;
+@{
+    var ii = 0;
+	var scriptCapabilites = Model.GetScriptCapabilities();
+    string culture = string.IsNullOrEmpty(System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag) ? "en" : System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag;
+	var key = String.Empty;
+	var list = new List<string>();
+}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+
+	@* Подключаем стили jQueryUI и плагинов *@
+	<!-- ~/css/jquery.ui/ @GetUserThemeFolder() //-->
+
+	
+	
+	@Html.Raw(Html.CompositeScriptResource_CompositeScript(new List<string>(){ 
+			WebAssetCssStyle(GetUserThemeFolder() + "jquery-ui.css") 
+		}, 
+		"uiTheme_" + UserTheme,
+		Kesco.Web.Mvc.Compression.Resource.ResourceType.CSS,
+		"uiTheme"))
+
+	@Html.Raw(Html.CompositeScriptResource_CompositeScript(
+		new List<string>(){
+				//WebAssetCssStyle(GetUserThemeFolder()+"jquery-ui.css"),
+				WebAssetCssStyle("jquery-ui-selectmenu.css"),
+				WebAssetCssStyle("jquery-ui-jqgrid.css"),
+				WebAssetCssStyle("jquery.qtip.min.css"),
+				WebAssetCssStyle("kesco-ui.css"),
+                WebAssetCssStyle("Kesco.SetActualContactWindow.css")
+		},
+		"KescoAppStyles", // +UserTheme
+		Kesco.Web.Mvc.Compression.Resource.ResourceType.CSS))
+
+	@{
+		// Подключаем Globalize.js
+		key = "KescoGlobalize" + culture;
+		list = new List<string>(){
+					WebAssetScript("globalize.js"),
+					WebAssetScript("cultures/globalize.culture.kesco.js"),
+					WebAssetScript(String.Format("cultures/globalize.culture.{0}.js", culture.Substring(0, 2)))
+			};
+		if (culture.Substring(0, 2) != culture)
+		{
+			list.Add(WebAssetScript(String.Format("cultures/globalize.culture.{0}.js", culture)));
+		}
+		Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+				list,
+				key,
+				Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+			));
+	}
+	@* Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("knockout.js"))) *@
+	@*	Подключаем скрипты: jQuery, jQuery UI, Knockout и плагины *@
+	@{
+		key = "KescoJQueryBase1";
+		list = new List<string>(){
+				WebAssetScript("knockout.js"),
+				WebAssetScript("jquery.js"),
+				WebAssetScript("knockout.bindingHandlers.js"),
+				WebAssetScript("knockout.mapping.js"),
+				WebAssetScript("knockout.command.js"),
+				WebAssetScript("knockout.dirtyFlag.js"),
+				WebAssetScript("json2.js"),
+				WebAssetScript("jquery-ui.js"),
+				WebAssetScript("jquery.busy.min.js"),
+				WebAssetScript("jquery-ui-i18n.min.js"),
+				WebAssetScript("jquery.validate.js"),
+				WebAssetScript("jquery.validate.unobtrusive.js ")
+		};
+		Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+				list,
+				key,
+				Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+			));
+		
+	}   
+	
+	@*	Подключаем дополнительные jQuery плагины *@
+	@{
+		key = "KescoJQueryAddOn1_" + culture.Substring(0, 2);
+		list = new List<string>(){
+				WebAssetScript("jquery.mousewheel.min.js"),
+				WebAssetScript("jquery.ui.selectmenu.js"),
+				WebAssetScript("jquery.cookie.js"),
+				WebAssetScript("jquery.hotkeys.min.js"),
+				WebAssetScript("jquery.form.js"),
+				WebAssetScript("jquery.qtip.min.js"),
+				WebAssetScript("jquery.ui.mask.js"),
+                WebAssetScript("jquery.ui.menubar.js")
+		};
+		Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+				list,
+				key,
+				Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+			));
+	}
+	
+	@*	Подключаем jsTree *@
+	@if (scriptCapabilites.LoadTreeScript) {
+		 key = "KescoJQueryJSTree";
+		 list = new List<string>(){
+				WebAssetScript("jquery.jstree.js")
+			};
+		 Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+				 list,
+				 key,
+				 Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+			 ));
+	}
+	
+	@*Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("jquery.ui.menubar.js"))) *@
+
+	@*	Подключаем jqGrid *@
+	@if (scriptCapabilites.LoadGridScript) {
+		 key = "KescoJQueryGrid1_" + culture;
+		 list = new List<string>(){
+				WebAssetScript(String.Format("i18n/grid.locale-{0}.js", culture)),
+				WebAssetScript("jquery.jqGrid.src.js")
+			};
+		 Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+				 list,
+				 key,
+				 Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+			 ));
+	}
+	
+    
+    @*	Подключаем Silverlight *@
+	@{
+        key = "Silverlight";
+        list = new List<string>(){
+				WebAssetScript("silverlight.js")
+		};
+        Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+                list,
+                key,
+                Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+            ));
+	}
+        
+	@*	Подключаем собственные скрипты *@
+	@{
+		key = "KescoJsFramework1";
+		list = new List<string>(){
+				WebAssetScript("kesco.common.js"),
+				WebAssetScript("kesco.srv4js.js"),
+				WebAssetScript("kesco.controls.js"),
+				WebAssetScript("kesco.select.js"),
+				WebAssetScript("kesco.decor.js"),
+				WebAssetScript("kesco.qtip.js"),
+				WebAssetScript("kesco.spinner.js"),
+				WebAssetScript("kesco.dialog.js"),
+				WebAssetScript("kesco.daterange.js"),
+				WebAssetScript("Kesco.SetActualContactWindow.js")
+		};
+		Html.RegisterExternalScript(key, Html.CompositeScriptResource_CompositeScript(
+				list,
+				key,
+				Kesco.Web.Mvc.Compression.Resource.ResourceType.JS
+			));
+	}
+   

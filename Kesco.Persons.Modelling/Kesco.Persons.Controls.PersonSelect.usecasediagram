@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="af560f69-4bee-410e-8ac0-c9ccabc6e402" name="Элемент управления Выбор лица (PersonSelect)" linkedPackageId="cf8f716c-b754-4f5b-8417-fbb8016edf83" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <description>Отображает диаграмму вариантов использования элемента управления Выбор Лица</description>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="04d1f6c0-f9ee-4790-bf9a-adea1d42d965" name="Пользователь" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="80d5c86e-663e-407b-8a55-d835aca1c602" />
+        <targetEnds>
+          <association Id="ae429790-f803-4b09-8b94-107fbad0947b" isDerived="false" sourceEndRoleName="Пользователь" targetEndRoleName="Выбор из списка лиц" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fe83fe09-25cd-4b45-b77a-9421afb3d57c" LastKnownName="Выбор лица" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="aa31f493-b79d-49d2-92a2-a78dcef2c47f" name="Пользователь" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2d1e925d-7ef1-4503-bfa9-69d0ac25ae6c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b99d64d6-99ef-4dd1-8826-95f0e9939231" name="Выбор из списка лиц" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8eff4e31-2032-4836-8cc4-1079c56d69d5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="f7972591-1254-46d0-a5f3-db0dfb380f7f" name="realization" profile="StandardProfileL2">
+                <elementDefinition Id="db96f3ad-9436-46ca-b26d-f4468d6e2502" />
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="3f3e0a7a-7c4c-4061-a0f7-299eff9a714e" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="19dc7803-b717-4df1-8e5e-338f49f068dd" name="Элемент управления Выбор лица (PersonSelect)" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="bb4ab5ed-2a86-4c63-b107-7560773a3851">
+            <elementDefinition Id="580b90f2-ee3f-4ac1-8d2a-9cdab66ba262" />
+            <body>Пользователь может ввести стороку для более точного поиска соответствий</body>
+            <annotatedElements>
+              <useCaseMoniker Id="d408507f-9814-451e-970c-a65bac66a790" LastKnownName="Ввести строку поиска" />
+            </annotatedElements>
+          </comment>
+          <comment Id="0c80f0ef-ff8c-4d33-9f0b-f1eda862e60d">
+            <elementDefinition Id="0858776f-d7ee-4530-9ff1-5580b08a70d1" />
+            <body>Запрос может быть выполнен по нажатию клавишы ENTER или по нажатию кнопки поиска</body>
+            <annotatedElements>
+              <useCaseMoniker Id="f56ac37c-8a06-4bfb-9f8a-5179fa0a6113" LastKnownName="Поиск" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance Id="83bf6f10-7fea-4959-b61e-5a4862d2a792" name="process" profile="StandardProfileL2">
+            <elementDefinition Id="78a59f14-cef2-458d-a150-1355063b7d15" />
+          </stereotypeInstance>
+          <stereotypeInstance Id="5df6ed20-a4c8-4199-a7f7-a2f446142539" name="buildComponent" profile="StandardProfileL3">
+            <elementDefinition Id="89264a1d-07f5-4f32-8c9c-3c8efd97884e" />
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <elementDefinition Id="780f9d50-0207-4794-b640-e125b709dbe5" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="fe83fe09-25cd-4b45-b77a-9421afb3d57c" name="Выбор лица" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="11e152c4-4c4d-4c91-b77c-a0f6b137fcfd" />
+        <extendedCases>
+          <extend Id="6f2805cd-a968-4ea6-a02a-3d9e1ce857af">
+            <useCaseMoniker Id="7c41ea15-a5b4-4b9f-9ce8-ad21ba2b40f6" LastKnownName="Расширенный поиск" />
+            <elementDefinition Id="ec023d3c-3f0c-4f65-b66d-97876343d27e" />
+          </extend>
+          <extend Id="18aea3a2-5946-4e9c-a7a7-47690ef06a35">
+            <useCaseMoniker Id="8f3abf24-fe91-4300-8dd5-17254eec5598" LastKnownName="Создание юридического лица" />
+            <elementDefinition Id="beb99339-a8d6-4d9b-826b-ca5c61519f7c" />
+          </extend>
+          <extend Id="10fefa18-399c-490b-87c8-929a2d082e47">
+            <useCaseMoniker Id="cfb856bf-a575-4e94-805b-42a84d2237fb" LastKnownName="Создание физического лица" />
+            <elementDefinition Id="74149843-ca44-4a16-94f5-700c39e692f5" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="d928f0f8-783e-4181-b379-928934375557">
+            <useCaseMoniker Id="f56ac37c-8a06-4bfb-9f8a-5179fa0a6113" LastKnownName="Поиск" />
+            <elementDefinition Id="1fb19c24-5378-469d-8eb0-379404c3d965" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="19dc7803-b717-4df1-8e5e-338f49f068dd" LastKnownName="Элемент управления Выбор лица (PersonSelect)" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="f56ac37c-8a06-4bfb-9f8a-5179fa0a6113" name="Поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="037a448b-a1d3-40a5-9dfb-973d4afba772" />
+        <targetEnds>
+          <association Id="e29e2c62-a2a1-4581-8f0d-f6809110f1e4" isDerived="false" sourceEndRoleName="Ввод строки поиска" targetEndRoleName="PersonSelectController" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="d0ef9e27-0566-404c-8c09-d0c444642aca" LastKnownName="PersonSelect&#xD;&#xA;Controller" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="99359e04-c87f-4cad-800e-342e7702d102" name="Ввод строки поиска" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c30ee96a-9f0d-4680-8956-8209834f6837" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1ae74416-6cdc-4957-849d-61cb791b4ddc" name="PersonSelectController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c532a92f-309c-4ae4-a913-1645791b57e7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="a6b08f07-ef69-4d58-ab30-b4ac0980b6ce" name="realization" profile="StandardProfileL2">
+                <elementDefinition Id="d0549bb2-5c5a-4aee-a92d-fa42646f894f" />
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="29c0fa7f-9347-4c52-8df1-6e71ca3e398a" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="3e4316f2-884e-49d1-952d-94d37f338a3e">
+            <useCaseMoniker Id="d408507f-9814-451e-970c-a65bac66a790" LastKnownName="Ввести строку поиска" />
+            <elementDefinition Id="57331798-4381-4c94-a34f-e1ee8c17959c" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="19dc7803-b717-4df1-8e5e-338f49f068dd" LastKnownName="Элемент управления Выбор лица (PersonSelect)" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="7c41ea15-a5b4-4b9f-9ce8-ad21ba2b40f6" name="Расширенный поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fca341d3-a55a-4a2c-9e57-f2bc4c4ac8aa" />
+        <subjects>
+          <subsystemMoniker Id="19dc7803-b717-4df1-8e5e-338f49f068dd" LastKnownName="Элемент управления Выбор лица (PersonSelect)" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="8f3abf24-fe91-4300-8dd5-17254eec5598" name="Создание юридического лица" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c2c02425-575e-435d-b5fe-4f95ff5e9481" />
+        <subjects>
+          <subsystemMoniker Id="19dc7803-b717-4df1-8e5e-338f49f068dd" LastKnownName="Элемент управления Выбор лица (PersonSelect)" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="cfb856bf-a575-4e94-805b-42a84d2237fb" name="Создание физического лица" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1cca400d-2175-4a4c-b8f1-5a0e3dc82828" />
+        <subjects>
+          <subsystemMoniker Id="19dc7803-b717-4df1-8e5e-338f49f068dd" LastKnownName="Элемент управления Выбор лица (PersonSelect)" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="7751192d-62a4-47e0-9248-ef905f14bd3d" name="Приложение Persons" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="40f17af6-b63e-4ce4-a922-990aade65b25" />
+        <targetEnds>
+          <association Id="6c0c31e2-3ea1-475e-9026-dd74384ff80f" isDerived="false" sourceEndRoleName="Приложение Persons" targetEndRoleName="Расширенный поиск" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7c41ea15-a5b4-4b9f-9ce8-ad21ba2b40f6" LastKnownName="Расширенный поиск" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d9e11773-2222-4c17-8706-4d109aa01482" name="Приложение Persons" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="62fff998-03ef-481f-bc95-3151d141e975" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="27b24343-d5cc-49db-9db2-63f3c83fa344" name="Расширенный поиск" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="87a5587d-0238-4007-842e-49ce72d6073c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3fdfd6b9-1dc2-440f-b106-6964004ceece" />
+          </association>
+          <association Id="1adae7bb-42b2-45ff-846c-3249dcdd7df6" isDerived="false" sourceEndRoleName="Приложение Persons" targetEndRoleName="Создание юридического лица" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8f3abf24-fe91-4300-8dd5-17254eec5598" LastKnownName="Создание юридического лица" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="210f779c-b1b8-4611-90b0-bae2f26e70a8" name="Приложение Persons" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="814c2c4b-67fe-46b7-b534-e260041b8c39" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dd3d2c22-efe1-46c1-805f-435ec7f917ec" name="Создание юридического лица" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="eaa03618-799b-4aa9-a9e4-7bc44170f0cb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="95b54677-2c42-45c5-a0a8-257b1e75f5f5" />
+          </association>
+          <association Id="536309b9-3b47-4249-8dbb-aa26cbbd93aa" isDerived="false" sourceEndRoleName="Приложение Persons" targetEndRoleName="Создание физического лица" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="cfb856bf-a575-4e94-805b-42a84d2237fb" LastKnownName="Создание физического лица" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ee138720-c63f-4531-b742-f30a1a393712" name="Приложение Persons" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f8696f9d-2e9a-446a-a3ae-b86a5da0f88c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="eb8a5177-5839-499e-a761-4315faf8e44d" name="Создание физического лица" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="19167962-8e28-4325-b44c-0dc789547a05" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="057fa6fd-7f1c-496d-b0f0-0f6a2c19c5c0" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d0ef9e27-0566-404c-8c09-d0c444642aca" name="PersonSelect&#xD;&#xA;Controller" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5b7a4bb3-a4c0-40c3-942f-27429b439d34" />
+        <targetEnds>
+          <association Id="941c98e8-11f3-4908-96d7-786848690230" isDerived="false" sourceEndRoleName="PersonSelectController" targetEndRoleName="Выбор варианта из списка " isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fe83fe09-25cd-4b45-b77a-9421afb3d57c" LastKnownName="Выбор лица" />
+            <description>Результаты поиска</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d239c223-572f-403a-89e3-fc32bd0b321f" name="PersonSelectController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="75b6d575-cdf2-4254-b2ab-5863001b5fc6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="89110e9d-c9d7-4e93-8866-7b0c505a01e8" name="Выбор варианта из списка " isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="647d5f02-3651-4155-bcfd-28fd42c9a4e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="31633913-de00-4edf-8ca2-f0e8e1c249ed" name="realization" profile="StandardProfileL2">
+                <elementDefinition Id="3c270871-b9d5-4ea5-bf04-ab797c2d4cb5" />
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="d85bc28d-2016-4651-becf-1455bb1f984c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="d408507f-9814-451e-970c-a65bac66a790" name="Ввести строку поиска" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="71ba6e10-187b-4e2a-bbf0-dceea2483039" />
+        <targetEnds>
+          <association Id="95b0babf-f7ad-41de-8528-d880c8d440a4" isDerived="false" sourceEndRoleName="UseCase1" targetEndRoleName="PersonSelectController" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="d0ef9e27-0566-404c-8c09-d0c444642aca" LastKnownName="PersonSelect&#xD;&#xA;Controller" />
+            <description>Поиск по строке</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7312de51-c82a-445b-9383-4b158058ac82" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ec6ea663-ad46-4069-8ce0-b22dc80d7004" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c9632ea0-3ca6-4445-a96b-849d2cd53a35" name="PersonSelectController" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ef5e76e2-53d3-4b19-91e0-2e655c0dd935" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="607e3e45-b5f7-47de-879c-aa4bb930bb20" name="realization" profile="StandardProfileL2">
+                <elementDefinition Id="0d94a2bf-0730-4ae6-bd55-e78bf365aa73" />
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="7bbdf3f0-5d9b-4cb6-b59d-88f2cf782063" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="19dc7803-b717-4df1-8e5e-338f49f068dd" LastKnownName="Элемент управления Выбор лица (PersonSelect)" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="cf8f716c-b754-4f5b-8417-fbb8016edf83" name="Kesco.Persons.Modelling">
+    <elementDefinition Id="b434b3e4-e8a1-4706-8633-2efc7b7e1f98" />
+    <profileInstances>
+      <packageHasProfileInstances Id="d527236a-91d2-4660-85a3-eab48d9692df">
+        <profileInstance Id="9d742ce8-dd18-426a-b33d-9aabb257c83d" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="b112afea-ebeb-421a-9a3b-57698da1cc45">
+        <profileInstance Id="e171f5d6-05ad-4859-915c-62ad01d92aa8" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

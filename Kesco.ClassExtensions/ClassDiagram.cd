@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.ClassExtensions.dll&#xD;&#xA;Пространство имён: Kesco&#xD;&#xA;Назначение: Методы-расширения для соответсвующих типов.">
+    <Position X="0.5" Y="0.5" Height="0.688" Width="9.023" />
+  </Comment>
+  <Class Name="Kesco.EnumerableExtensions">
+    <Position X="0.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enumerable\IEnumerableTExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.TypeExtensions">
+    <Position X="4" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Reflection\TypeExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.StringExtensions">
+    <Position X="0.5" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAACAAAAAAAAAQABIAIgAAAAgQBACAA=</HashCode>
+      <FileName>String\StringExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

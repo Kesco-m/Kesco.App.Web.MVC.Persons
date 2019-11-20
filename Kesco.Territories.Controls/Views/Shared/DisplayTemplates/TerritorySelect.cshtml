@@ -1,0 +1,30 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.DisplayTemplates.SelectBox
+
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Territories.Controls
+@using Kesco.Territories.Controls.ComponentModel
+@{
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    ModelMetadata metaData = ViewData.ModelMetadata;
+
+	Dictionary<string, object> htmlAttributes = new Dictionary<string, object>();
+	if (ViewBag.HtmlAttributes != null) {
+		if (ViewBag.HtmlAttributes is IDictionary<string, object>) {
+			htmlAttributes.Merge((IDictionary<string, object>) ViewBag.HtmlAttributes);
+		} else {
+			htmlAttributes.Merge((object) ViewBag.HtmlAttributes);
+		}
+	}
+	
+	htmlAttributes.PrependInValue("class", " ", "territory");
+	
+	ViewBag.HtmlAttributes = htmlAttributes;
+		
+	@* Выполним отрисовку основного KescoSelect *@
+	base.Execute();
+
+}
+	
+		  

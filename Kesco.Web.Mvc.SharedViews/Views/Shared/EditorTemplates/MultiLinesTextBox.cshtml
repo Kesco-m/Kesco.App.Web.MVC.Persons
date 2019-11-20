@@ -1,0 +1,15 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@{
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	ModelMetadata meta = ViewData.ModelMetadata;
+	int rows = 2;
+	List<string> databindings = new List<string>();
+	databindings.Add("decoration: true");
+	databindings.Add((meta.IsRequired ? "valueEx: " : "value: ") + name);
+
+	if (ViewData["Lines"] != null) rows = Int32.Parse(ViewData["Lines"].ToString());
+
+	if (ViewData["Databinding"] != null) databindings.Add(ViewData["Databinding"].ToString());
+}
+@Html.TextAreaFor(Model => Model, new { style = "width: 99%;", rows = rows, data_bind = String.Join(", ", databindings) })

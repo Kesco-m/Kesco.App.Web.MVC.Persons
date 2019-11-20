@@ -1,0 +1,54 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.DisplayTemplates.SelectBox
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Employees.Controls
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+
+	Dictionary<string, object> htmlAttributes = new Dictionary<string, object>();
+	if (ViewBag.HtmlAttributes != null) {
+		if (ViewBag.HtmlAttributes is IDictionary<string, object>) {
+			htmlAttributes.Merge((IDictionary<string, object>) ViewBag.HtmlAttributes);
+		} else {
+			htmlAttributes.Merge((object) ViewBag.HtmlAttributes);
+		}
+	}
+	
+	htmlAttributes.PrependInValue("class", " ", "employee");
+	
+	ViewBag.HtmlAttributes = htmlAttributes;
+		
+	@* Выполним отрисовку основного KescoSelect *@
+	base.Execute();
+
+}
+@{
+	
+	Html.RegisterCommonScriptCode("EmployeeSelectDisplayControl", () => @"
+		!(function() {{ var env = window.Env || {{}}; window.Env = env; env.URI_user_info = env.URI_user_info || '{0}'; }})();
+
+		function EmployeeSelectDisplayControl_TooltipSource(ev) {{
+			var uri = Env.URI_user_info;
+			var item = $(this).dynamicLink('getValue');
+			if (item && item.value)
+				uri = uri.replace('/0', '/' + item.value);
+			return uri;
+		}}
+
+		$(document).on('click', 'a.employee', function(ev) {{
+				var value = $(this).dynamicLink('getValue');
+				window.ViewModel.showUser(value.value);
+			}});
+
+		$('a.employee')
+			.one('mouseenter', function(ev) {{
+				var $this = $(this);
+				$this.initToolTip(EmployeeSelectDisplayControl_TooltipSource, $(document.body));
+				setTimeout(function() {{ $this.mouseenter(); }}, 10);
+			}});
+
+	".FormatWith(Kesco.Employees.Controls.Configuration.AppSettings.URI_user_info));
+	
+}		  

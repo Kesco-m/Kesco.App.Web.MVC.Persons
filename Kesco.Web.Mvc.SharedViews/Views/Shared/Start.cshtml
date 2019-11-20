@@ -1,0 +1,49 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage
+@using Kesco.Web.Mvc.Compression;
+@using Kesco.Web.Mvc.Compression.Resource;
+@using Kesco.Web.Mvc.SharedViews.Localization;
+<!DOCTYPE html>
+<html>
+<head >
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+	@{ string culture = System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag; }
+
+	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("jquery.js")))
+	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("json2.min.js")))
+
+</head>
+<body style="background: #EEE url('@WebAssetImage("SandWatch.gif")') no-repeat scroll center; min-height: 300px;">
+	<form id="launchForm" method="post">
+		<input type="hidden" name="clientContext" id="clientContext" value="" />
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var w = window.opener;
+			var request;
+
+			try {
+				if (w && !w.closed && w.$ && w.$.windowManager) {
+					request = w.$.windowManager.getContext(window.self);
+					request.type = request.type || "POST";
+					if (window.console) console.log(request);
+					if (request.type == "GET") {
+						window.location.href = request.url;
+					} else {
+						var $form = $("#launchForm").attr({
+							action: request.url,
+							method: request.type || "POST"
+						});
+						$("#clientContext").val(request.context);
+						setTimeout(function () { $form.submit(); }, 50);
+					}
+				}
+			} catch (e) {
+				alert(e.Message);
+			}
+
+		});
+	</script>
+</body>
+</html>

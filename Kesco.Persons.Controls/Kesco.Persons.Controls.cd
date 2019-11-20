@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Пространство имён: Kesco.Persons.Controls&#xD;&#xA;&#xD;&#xA;Реализация элемента управления &quot;Выбор лица&quot;">
+    <Position X="1.271" Y="0.5" Height="0.646" Width="16.446" />
+  </Comment>
+  <Comment CommentText="Контроллер элемента управления &quot;Выбор лица&quot;, основанный на элементе управления KescoSelect, наследуется от базового контроллера KescoSelectBaseController&lt;A, T, S, TID&gt;.&#xD;&#xA;">
+    <Position X="6.205" Y="1.304" Height="1.062" Width="3.221" />
+  </Comment>
+  <Comment CommentText="Проводник данных для элемента управления &quot;Выбор лица&quot; реализует интерфейс IKescoSelectAccessor и наследуется от PersonAccessor">
+    <Position X="9.736" Y="1.321" Height="0.573" Width="4.554" />
+  </Comment>
+  <Comment CommentText="PersonSelectAttribute используется для аннотирования свойств модели представления, указывая, что свойство будет отображаться элементом управления &quot;Выбор лица&quot;">
+    <Position X="1.25" Y="1.281" Height="0.573" Width="4.554" />
+  </Comment>
+  <Comment CommentText="Пример использования:&#xD;&#xA;&#xD;&#xA;Модель представления Document.cs&#xD;&#xA;public class Document : TrackableEntity&lt;Document, int&gt; {&#xD;&#xA;	...&#xD;&#xA;	[PersonSelect(CLID=62)]&#xD;&#xA;	public int ShipperID { get; set;}&#xD;&#xA;	....&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;Представление Document.cshtml&#xD;&#xA;@model Document&#xD;&#xA;.....&#xD;&#xA;&lt;div id=&quot;container&quot; style=&quot;overflow: auto;&quot;&gt;&#xD;&#xA;&lt;h3&gt;Форма редактирования&lt;/h3&gt;&#xD;&#xA;@using (var form = Html.BeginForm())&#xD;&#xA;{&#xD;&#xA;    @Html.EditorForModel();&#xD;&#xA;}&#xD;&#xA;&lt;hr /&gt;&#xD;&#xA;&lt;h3&gt;Просмотр&lt;/h3&gt;&#xD;&#xA;@using (var form = Html.BeginForm())&#xD;&#xA;{&#xD;&#xA;    @Html.DisplayForModel();&#xD;&#xA;}&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;....&#xD;&#xA;">
+    <Position X="1.243" Y="6.263" Height="5.578" Width="4.572" />
+  </Comment>
+  <Comment CommentText="Представление элемента управления &quot;Выбор лица&quot; представлено соответсвующими шаблонами просмотра и редактирования">
+    <Position X="14.788" Y="1.376" Height="0.75" Width="2.96" />
+  </Comment>
+  <Comment CommentText="Шаблон в режиме&#xD;&#xA; просмотра (только для чтения)&#xD;&#xA;/Views/Shared/DisplayTemplates/PersonSelect.cshtml">
+    <Position X="14.726" Y="2.655" Height="0.531" Width="3.002" />
+  </Comment>
+  <Comment CommentText="Шаблон в режиме редактирования&#xD;&#xA;~/Views/Shared/EditorTemplates/PersonSelect.cshtml">
+    <Position X="14.75" Y="7.75" Height="0.531" Width="3.294" />
+  </Comment>
+  <Class Name="Kesco.Persons.Controls.ComponentModel.PersonSelectAttribute">
+    <Position X="1.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentModel\PersonSelectAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Persons.Controls.Controllers.PersonSelectController">
+    <Position X="6.25" Y="8" Width="3.25" />
+    <Members>
+      <Method Name="GetCorporateCultureSettings" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAABBBAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAA=</HashCode>
+      <FileName>Controllers\PersonSelectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations.KescoSelectAttribute">
+    <Position X="3.75" Y="2" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Persons.Controls.DataAccess.PersonSelectAccessor">
+    <Position X="12" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAACAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>DataAccess\PersonSelectAccessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor">
+    <Position X="10" Y="4.5" Width="3.25" />
+    <NestedTypes>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.SearchParameters" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonDossierSection" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonsDossierMenuItem" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonsDossierMenuParameters" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.SaveIssue" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonTypeForSave" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.DuplicateNicknameException" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.JuridicalCardForSave" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonsDossierContextParameters" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonDossierContext" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.IndividualCardForSave" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Kesco.DALC.Persons.Logic.PersonAccessor.SaveIndividualException" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Enum Name="Kesco.DALC.Persons.Logic.PersonAccessor.PersonSaveAction" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Persons.Controls.Views.Shared.DisplayTemplates.PersonSelect">
+    <Position X="14.75" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Shared\DisplayTemplates\PersonSelect.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Persons.Controls.Views.Shared.EditorTemplates.PersonSelect">
+    <Position X="14.75" Y="8.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Shared\EditorTemplates\PersonSelect.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Persons.Controls.SiteViewPage&lt;TModel&gt;" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Persons.Controls.SiteViewPage&lt;TSettings, TModel&gt;" Collapsed="true">
+    <Position X="14.75" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.SharedViewPage&lt;TModel&gt;" Collapsed="true">
+    <Position X="14.75" Y="11.75" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox" Collapsed="true">
+    <Position X="14.75" Y="10.5" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UI.Infrastructure.KescoSelectBaseController&lt;A, T, S, TID&gt;">
+    <Position X="6.25" Y="2.75" Width="3.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.DataAccess.EntityAccessor&lt;A, D, T, S, TID&gt;">
+    <Position X="10.25" Y="8.75" Width="3.5" />
+    <NestedTypes>
+      <Class Name="Kesco.DataAccess.EntityAccessor&lt;A, D, T, S, TID&gt;.DbQuery" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Kesco.Web.Mvc.UI.Controls.DataAccess.IKescoSelectAccessor">
+    <Position X="9.75" Y="2.25" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

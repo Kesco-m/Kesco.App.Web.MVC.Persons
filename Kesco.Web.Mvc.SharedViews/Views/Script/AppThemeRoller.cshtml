@@ -1,0 +1,143 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage
+ 
+	$(document).ready(function() {
+
+		var active;
+		var menu = $( "<ul></ul>" )
+			.addClass( "ui-autocomplete" )
+			.appendTo( $(document.body) )
+			.menu({
+				focus: function (e, ui) {
+					active = ui;
+				},
+				select: function(event, ui) {
+					var item = ui.item.data( "item");
+					$.ajax({
+    					url: Env.URI_Default_ChangeTheme,
+    					cache: false,
+						type: 'POST',
+						data: {
+							theme: item
+						}
+						, error: function (xhr, status, errorThrown) {
+							alert("Error");
+    					}
+						, success: function (response) {
+							if (response.status == "ok") {
+								Env.Theme = response.model.theme;
+								$("#uiTheme").attr({ href: response.model.css + "?v=" + Env.ResourceCompositionVersion });
+								menu.find("a").each(function(index, item) {
+									var $a = $(this);
+									if ($a.attr("data-theme") == Env.Theme) $a.html("<b>" + $a.text() + "</b>");
+									else $a.html($a.attr("data-theme"));
+								})
+								//refreshPage();
+							} else if (response.status == "error") {
+								alert(response.error.Content || response.error);
+							}
+						}
+					});
+				}, 
+				blur: function (e, ui) {
+					active = null;
+					ui;
+				}
+			})
+			.zIndex($("#themeRollerBtn").zIndex() + 1)
+			.css({ top: 0, left: 0 })
+			.width(100)
+			.hide();
+
+///*
+		$([/*"lufthansa", "oldstyle" , "rose", "bluesky", "green" */ "classic", "humanity", "lightness", "redmond", "sunny"])
+			.map(function(index, item) {
+				var label = item;
+				if (item == Env.Theme) {
+					label = "<b>"+item+"</b>";
+				}
+				$( "<li></li>" )
+					.data("item", item)
+					.append( 
+							$( "<a></a>" )
+								.attr({ 'data-theme': item })
+								.html(label)
+						)
+					.appendTo( menu );
+			});
+
+		menu.menu("refresh");
+
+			var suppressKeyPress;
+//*/
+			$( "#themeRollerBtn" )
+				.button({
+					text: false,
+					icons: {
+						primary: "kui-icon-application_view_tile"
+					}
+				})
+				.click(function() {
+					$(this).next().focus().click();
+					//window.location.reload();
+					return false;
+				})
+				.next()
+					.button( {
+						text: false,
+						icons: {
+							primary: "ui-icon-triangle-1-s"
+						}
+					})
+					.keydown(function (event) {
+						var self = this;
+						suppressKeyPress = false;
+						var keyCode = $.ui.keyCode;
+						switch( event.keyCode ) {
+						case keyCode.UP:
+							menu.menu("previous");
+							// prevent moving cursor to beginning of text field in some browsers
+							event.stopPropagation();
+							event.preventDefault();
+							break;
+						case keyCode.DOWN:
+							menu.menu("next");
+							// prevent moving cursor to end of text field in some browsers
+							event.stopPropagation();
+							event.preventDefault();
+							break;
+						case keyCode.TAB:
+						case keyCode.ESCAPE:
+							//menu.menu("deactivate", event );
+							menu.hide();
+							break;
+						case keyCode.NUMPAD_ENTER:
+						case keyCode.ENTER:
+							if (active) {
+								menu.menu('select', event);
+							}
+							self.click();
+							event.stopPropagation();
+							event.preventDefault();
+							break;
+						default: 
+							break;
+						}
+					})
+					.click(function(e) {
+						$(document).one('click', function() {
+							if (menu.is(':visible')) {
+								menu.hide();
+							}
+						});
+						menu.toggle().position({
+							of: this,
+							my: "right top",
+							at: "right bottom"
+						});
+						e.preventDefault();
+						return false;
+					})
+					.parent()
+						.buttonset();
+
+	});

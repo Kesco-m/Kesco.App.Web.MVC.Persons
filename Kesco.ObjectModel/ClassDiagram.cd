@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.ObjectModel.dll&#xD;&#xA;Пространство имён: Kesco.ObjectModel&#xD;&#xA;Назначение: Интерфейсы и классы для описания сущностей.">
+    <Position X="0.5" Y="0.5" Height="0.688" Width="9.023" />
+  </Comment>
+  <Comment CommentText="Интерфейс для сущности, &#xD;&#xA;поддерживающая информацию когда и кем были сделаны последние изменения&#xD;&#xA;">
+    <Position X="6.49" Y="3.865" Height="0.573" Width="2.408" />
+  </Comment>
+  <Comment CommentText=" Класс является базовым для объектов базы данных,  поддерживающих отслеживание последних изменений.">
+    <Position X="3.958" Y="3.854" Height="0.531" Width="2.033" />
+  </Comment>
+  <Comment CommentText="интерфейс, возвращающий текстовое представление уникального идентификатора">
+    <Position X="3.104" Y="1.625" Height="0.677" Width="1.731" />
+  </Comment>
+  <Comment CommentText="интерфейс для объекта, &#xD;&#xA;поддерживающего уникальный идентификатор">
+    <Position X="5.062" Y="1.74" Height="0.604" Width="1.96" />
+  </Comment>
+  <Comment CommentText="Интерфейс для получения отображаемого имени сущности.">
+    <Position X="7.25" Y="1.75" Height="0.594" Width="2.096" />
+  </Comment>
+  <Comment CommentText="Класс декларирует сущность с уникальным кодом.">
+    <Position X="0.5" Y="1.583" Height="0.74" Width="2.096" />
+  </Comment>
+  <Comment CommentText="Класс является базовым для объектов базы данных,  поддерживающих отслеживание последних изменений.">
+    <Position X="0.5" Y="5.719" Height="0.594" Width="2.262" />
+  </Comment>
+  <Comment CommentText="Класс является базовым для объектов базы данных,  образующих древовидную структуру и поддерживающих отслеживание последних изменений.">
+    <Position X="3.979" Y="6.188" Height="0.552" Width="5.231" />
+  </Comment>
+  <Class Name="Kesco.ObjectModel.Entity&lt;T, TID&gt;">
+    <Position X="0.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAABAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.ObjectModel.TrackableTreeEntity&lt;T, TID&gt;">
+    <Position X="4" Y="7" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAAQA=</HashCode>
+      <FileName>TrackableTreeEntityT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.ObjectModel.TrackableEntity&lt;T, TID&gt;">
+    <Position X="0.5" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>TrackableEntityT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.ObjectModel.Trackable&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="4" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>TrackableT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Kesco.ObjectModel.IFriendlyNamed">
+    <Position X="7.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFriendlyNamed.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.ITrackableEntity">
+    <Position X="6.5" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAAA=</HashCode>
+      <FileName>ITrackableEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.IUnique">
+    <Position X="3.5" Y="2.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUnique.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.IUniqueID&lt;T&gt;">
+    <Position X="5.25" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IUniqueIDT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.ObjectModel.ITreeEntity">
+    <Position X="7.5" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAQAAQA=</HashCode>
+      <FileName>ITreeEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

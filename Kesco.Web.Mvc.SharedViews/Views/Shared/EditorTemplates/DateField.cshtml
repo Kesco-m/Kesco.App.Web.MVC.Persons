@@ -1,0 +1,15 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<DateTime?>
+@using Kesco.Web.Mvc.UI
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+}
+<input type="text" size="10" style="width: 80px;" name="@(ViewData.TemplateInfo.HtmlFieldPrefix)" 
+	id="@(id)"
+	data-bind="decoration: { width: '100px' },  
+		datepicker: @(ViewData.TemplateInfo.HtmlFieldPrefix), 
+		datepickerOptions: { 
+			constrainInput: true, 
+			changeMonth: true,
+			changeYear: true,
+			stepMonths: 1
+		}" />

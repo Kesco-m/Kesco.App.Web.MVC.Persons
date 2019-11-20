@@ -1,0 +1,621 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.ViewModel>
+@using System.Linq
+@using Resources
+@using Kesco
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models.Dossier
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@{
+	Model
+		.GetScriptCapabilities()
+		.DisableGridScript()
+		.DisableTreeScript();
+	ViewBag.Title = Model.DocumentTitle;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+    int accessLevel = (int)Model.AccessLevel;
+    int employeeID = (int) Model.Model.EmployeeID;
+	Dictionary<int, String> content = new Dictionary<int, String>();
+}
+
+
+@if ((int)Model.AccessLevel == 0){
+	<button type="button" data-bind="
+		click: closeDialog,
+		jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon-close' } } }
+	">@Resources.GUI_Button_Close</button>
+} else {
+<div id="DossierContainer">
+	 @if (Model.Model.EmployeeID != 0) {
+			@Html.CommonScriptCode("Dossier_UserInfo",
+				@<script>
+
+                    function AddLoc() {
+                        var path = '@(Configuration.AppSettings.URI_location_search)&WorkPlace=1&return=1';
+                        try { $.removeCookie("RetVal"); } catch(e) {}
+                        try {
+
+                            DialogPageOpen(path, "dialogHeight: 500px; dialogWidth: 400px;", function (result) {
+                                //alert(result);
+                                ViewModel.request("@(Url.Action("SaveEmployeeWorkplace", "EmployeeSelect"))", {
+                                    id: @(Model.Model.EmployeeID),
+                                    workPlaceID: result.split('%1F')[0]
+                                }).always(function() {
+                                    UpdateUserProxy();
+                                });
+                            });
+
+                        } catch (e) { }
+
+                    }
+
+                    function UpdateUserProxy() {
+                        $('#ifrUser').html("...").load('@(Url.Action("UserProxy"))?id=@( Model.Model.EmployeeID)', function(responseText, status, xhr) {
+                            //ko.applyBindings(ViewModel, document.getElementById("ifrUser"));
+						
+                            var $changedByField = $("#empCardLink_ChangedBy");
+                            var value = $changedByField.data('employee-id');
+                            $changedByField.employee({
+                                container: $(document.body)
+                            }).employee("option", "value", value);
+
+                        });
+                    }
+
+                    (function() { UpdateUserProxy(); })();
+
+                </script>)
+			@: <div id="ifrUser" style="width:100%;" src="@(Url.Action("UserProxy"))?id=@(Model.Model.EmployeeID)">...</div>
+
+
+		if (false & (int) Model.AccessLevel > 1) { // пока отключено по указанию АВЛ
+			@: <div style="margin-top: 10px; clear: both;"><button id="syncUser" type="button" data-bind="
+			@: 		jqueryui: { widget: 'button', options: { icons: { primary: 'ui-icon ui-icon-transferthick-e-w' } } },
+			@: 		click: function(){
+			@: 			$.ajax({
+			@: 				url: '@(Url.Action("SyncUser", new { personId = Model.Model.PersonID, userId = Model.Model.EmployeeID }))',
+			@: 				type: 'POST',
+			@: 				contentType: 'application/json; charset=utf-8',
+			@: 				complete: function () {}
+			@: 			});
+			@: 		}"
+			@: 	>@Resources.Persons_Dossier_SyncUser</button></div>
+		}
+	 }
+	@if (Model.Person != null) {
+		using (Html.BeginForm("Dossier", "Dossier", FormMethod.Post, new { id = "PersonDossierForm", name = "PersonDossierForm", onsubmit = "return false;" })) {
+			Html.ValidationSummary(true);
+		}
+		<table class="dossier" style="overflow: auto; width:100%;" cellspacing="0">
+		<tbody>
+			<tr>
+				<td colspan="3">
+					@if (Model.Model.HasLogotypes) {
+					@: <img src="@(Configuration.AppSettings.URI_person_logo)?id=@(Model.Person.ID)&h=50" vspace="5" hspace="5" height="50px" align="right" />
+					}
+					@* Проверено *@
+					<table>
+						<tr>
+							<td>
+								<span data-bind=" css: { 'lock': CheckedBy(), 'unlock': !CheckedBy() } "></span>
+							</td>
+							<td>
+								<a href="javascript: void(0)" 
+									class="checked"
+									data-bind="
+										css: {
+											'checked': Model.Verified(),
+											'not-checked': !Model.Verified()
+										},
+										click: function () {
+											if(ViewModel.AccessLevel()==4){
+												ViewModel.Model.Confirmed(false);
+												ViewModel.dispatchModelCommand('personchecked');
+											}
+										}
+									">
+								</a>
+							</td>
+							<td data-bind="">
+								@Resources.Persons_Dossier_Checked
+							</td>
+							<td data-bind="visible: Model.Verified">
+								@Html.DisplayFor(m => m.CheckedBy, "Employee", new { UseViewModelBinding = true })
+								<span data-bind="text: CheckedDate"></span>
+							</td>
+						</tr>
+                       
+					</table>
+                    <tr>
+                     <td>
+
+                        @if (accessLevel > 7 && employeeID != 0)
+                        {
+                            <button onclick="synchronizeData()" value="Синхронизировать данные" style="width: 200px;"> @(global::Resources.Resources.Persons_Doisser_SynchronizeData)</button>
+                        }
+                  </td>
+                  </tr>
+				</td>
+			</tr>
+			</tbody>
+		@foreach (var section in Model.Sections) {
+			bool bToggle = true; // (section.ID == 5 || section.ID == 6 || section.ID > 10);
+			int toggle = (bToggle) ? 1 : 0;
+			string icon = (bToggle) ? " ui-icon-triangle-1-e " : " ui-icon-triangle-1-s ";
+			var sectionContext = new DossierSectionContext { Section = section, ViewModel = Model };
+
+			content.Add(
+					section.ID,
+					Html.Partial(String.IsNullOrEmpty(section.ViewName) ? "DefaultSectionView" : section.ViewName, sectionContext)
+						.ToString().CompressHtml()
+				);
+			<tbody>
+			<tr id="trsect@(section.ID)">
+				<td colspan="3" style="height: 10px;"></td>
+			</tr>
+			<tr id="sect@(section.ID)" data-access="@(sectionContext.AccessGranted)">
+				<td colspan="3" style="border-top: solid 1px gray;" class="ui-widget-header">
+                    
+                                  
+					<table>
+						<tr>
+							<td align="right"><a class="sectionToggle" data-toggle="@(toggle)" href="#" onclick="toggleSection(@(section.ID)); return false;" 
+								title="@(global::Resources.Resources.Persons_Dossier_ShowHideSection)"
+								><span class="ui-icon @(icon)"></span></a>&nbsp;</td>
+							<td><img src='/styles/@(section.Image)' /></td>
+							<td>
+
+								@if (!String.IsNullOrEmpty(section.ListEditCommand) && sectionContext.AccessGranted > 0) {
+									@Html.Raw(String.Format(@"<a href='javascript: void(0);' onclick=""ViewModel.dispatchModelCommand('{1}', '{2}');"">{0}</a>", section.Caption, section.ListEditCommand, section.ID));
+								} else {
+            
+									@Html.Raw(section.Caption);
+                                }
+							</td>
+							<td align="right"><a class="sectionRefresh" href="javascript: void(0);" 
+								title="@(global::Resources.Resources.Persons_Dossier_RefreshSection)" 
+								style="@((bToggle) ? "display: none" : "")"
+								data-section-id="@(section.ID)" data-bind="
+									command: refreshSection
+								"><span class="ui-icon ui-icon-refresh"></span></a>&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			</tbody>
+  }
+		<tbody>
+			<tr>
+				<td colspan="3" style="height: 10px;"></td>
+			</tr>
+		</tbody>
+	</table>
+ }
+ 
+
+</div>
+}
+
+@section Header {
+	@if ((int)Model.AccessLevel != 0)
+ {
+<style type="text/css">
+    #DossierContainer 
+    {
+        height: 100%;
+        overflow: auto;
+    }
+    table.dossier td {
+        padding: 1px;
+    }
+    .changed {
+        font-size:xx-small;
+        vertical-align:top;
+        width:250px;
+        white-space: nowrap;
+    }
+    .contact {
+        font-size:xx-small;
+        /*vertical-align:top;*/
+    }
+    a.resourceRef { cursor: pointer; }
+</style>
+<style type="text/css" media="print">
+    #dialogHeader, #dialogFooter {
+        display: none;
+    }
+    #dialogContentPane, #DossierContainer{
+        overflow: auto;
+        height:auto !important;
+        width: auto;
+        border: 0;
+    }
+</style>
+     if (Model.Person != null)
+     {
+<div data-bind="visible:Model.PersonMainMenu()" style="width: 100%;float: left;">
+	@Html.Partial("Menu", Model.MenuItems, new ViewDataDictionary() { { "PersonID", Model.Model.PersonID }, { "AccessLevel", (int)Model.AccessLevel }, { "Verified", Model.Model.Verified }, { "IsBProject", Model.Model.IsBProject} })
+</div>
+     }
+<div style="clear: both;"></div>
+ }
+}
+
+@section Footer {
+    <style>
+        a.ui-hover-visible { visibility: hidden; opacity: 0.5; }
+        .ui-state-hover a.ui-hover-visible { visibility: visible !important; }
+        .ui-state-hover a.ui-hover-visible:hover { opacity: 1; }
+    </style>
+    @{
+        string refreshSectionAsyncCalls = String.Empty;
+
+        if (content.Count > 0)
+        {
+            // создаём цепочку асинхронных операций используя $.when()
+            var sectionsToShow = (Model.Params.PersonDSections ?? String.Empty).Split(new string[] {","}, StringSplitOptions.RemoveEmptyEntries);
+            refreshSectionAsyncCalls = String.Format("\t\t$.when({0});", String.Join(
+                ", ",
+                content
+                    .Where(pair => sectionsToShow.Contains(pair.Key.ToString()))
+                    .Select(pair => String.Format("toggleSection({0})", pair.Key))
+                )
+                );
+        }
+
+    }
+    
+    @Html.CommonScriptCode("Dossier_BankStores",
+        @<script>
+            function showPersonStores(idPerson) {
+
+                var url = "@(Configuration.AppSettings.URI_store_person)?personId=" + idPerson;
+                 window.open(url,
+                     "_storePerson" + idPerson,
+                     "scrollbars = yes,height=450,width=650,resizable = yes,toolbar=no,menubar=no,location=no");
+
+             }
+
+         </script>)
+
+    @if ((int) Model.AccessLevel != 0 && Model.Person != null)
+    {
+        @Html.CommonScriptCode("Dossier_ToggleSection",
+            @<script>
+
+
+                 function synchronizeData() {
+
+                     $.ajax({
+                         url: '@(Url.Action("SyncUser"))?personId=' +
+                             ViewModel.Model.PersonID() +
+                             '&userId=' +
+                             ViewModel.Model.EmployeeID(),
+                         type: 'POST',
+                         contentType: 'application/json; charset=utf-8',
+                         complete: function() {}
+                     });
+                 }
+
+                 
+                 function toggleSection(sectionID) {
+                     var deferred = $.Deferred(); // asyncOperation
+                     var link = $("#sect" + sectionID + " a.sectionToggle");
+                     if (link && link.length) {
+                         var toggle = link.data('toggle');
+                         var visibleSections =
+                         (ViewModel.Params
+                             .@((Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Natural) ? "PersonDSectionsN" : "PersonDSectionsJ")() ||
+                             "").split(",");
+                         if (visibleSections.length == 1 && visibleSections[0] == "") visibleSections.splice(0, 1);
+                         if (toggle == "1") {
+                             var lines = $("tr.dsl" + sectionID);
+                             if (lines.length == 0) {
+                                 link.addClass("busy");
+                                 refreshSection(sectionID, true)
+                                     .done(function() {
+                                         link.data('toggle', "0");
+                                         link.find("span.ui-icon").removeClass("ui-icon-triangle-1-e")
+                                             .addClass("ui-icon-triangle-1-s");
+                                         $("#sect" + sectionID + " a.sectionRefresh").show();
+                                     })
+                                     .always(function() {
+                                         link.removeClass("busy");
+                                         deferred
+                                             .resolve(); // всегда ресолвим, чтобы не прерывать цепочку асинхронных операций
+                                     });
+                             } else {
+                                 $("tr.dsl" + sectionID).show();
+                                 link.find("span.ui-icon").removeClass("ui-icon-triangle-1-e")
+                                     .addClass("ui-icon-triangle-1-s");
+                                 $("#sect" + sectionID + " a.sectionRefresh").show();
+                                 link.data('toggle', "0");
+                                 deferred.resolve();
+                             }
+                             if ($.inArray(sectionID.toString(), visibleSections) < 0)
+                                 visibleSections.push(sectionID.toString());
+                         } else {
+                             var idx = $.inArray(sectionID.toString(), visibleSections);
+                             if (idx >= 0)
+                                 visibleSections.splice(idx, 1);
+
+                             $("tr.dsl" + sectionID).hide();
+                             link.data('toggle', "1");
+                             link.find("span.ui-icon").removeClass("ui-icon-triangle-1-s")
+                                 .addClass("ui-icon-triangle-1-e");
+                             $("#sect" + sectionID + " a.sectionRefresh").hide();
+                             deferred.resolve(); // всегда ресолвим, чтобы не прерывать цепочку асинхронных операций
+                         }
+                         ViewModel.Params
+                             .@((Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Natural) ? "PersonDSectionsN" : "PersonDSectionsJ")(
+                                 visibleSections.join(","));
+                     } else {
+                         deferred.resolve(); // всегда ресолвим, чтобы не прерывать цепочку асинхронных операций
+                     }
+                     return deferred;
+                 }
+
+
+                 function refreshSection(sectionID, usePreloaded, forceReload) {
+                     var lines = $(".dsl" + sectionID).fadeTo('fast', 0.4);
+                     var deferred;
+                     if (usePreloaded && ViewModel.SectionContent['S' + sectionID]) {
+                         deferred = ViewModel.SectionContent['S' + sectionID];
+                         delete ViewModel.SectionContent[sectionID];
+                     } else {
+                         deferred = ViewModel.request('@(Url.Action("refreshSection"))',
+                             {
+                                 personID: @(Model.Model.PersonID),
+                                 sectionID: sectionID,
+                                 forceReload: !!forceReload
+                             });
+                     }
+                     return $.when(deferred)
+                         .done(function(response) {
+
+                             lines.remove();
+
+                             $("#sect" + sectionID).after(response);
+
+                             refreshSectionControls('.dsl' + sectionID);
+
+                             lines = $(".dsl" + sectionID);
+                             if (lines.length < 1)
+                                 $('#trsect' + sectionID).parent("tbody").remove();
+                         })
+                         .always(function() {
+                             $(".dsl" + sectionID).fadeIn();
+                         });
+
+                 }
+
+//    $.ajax({
+//					url: '@(Url.Action("Save"))',
+//					type: 'POST',
+//					data: window.ko.toJSON({
+//						docview: '@((Request["docview"] != null) ? Request["docview"] : "")',
+//						control: null,
+//						model: ko.mapping.toJS(ViewModel.Model)
+//					}),
+//					contentType: "application/json; charset=utf-8",
+//					complete: function() {
+//					    
+//					}
+//				});
+
+
+                 function setLoadinPanelToSection(sectionID) {
+                     $(".dsl" + sectionID).remove();
+                     if ($('#loading-panel') != null) {
+                         $('#loading-panel')[0].style.display = '';
+                         var hrefs = $('#sect' + sectionID + ' a');
+                         for (i = 0; i < hrefs.length; i++) {
+                             {
+                                 hrefs[i].disabled = true;
+                             }
+                         }
+                         if ($('#sect' + sectionID + ' .sectionRefresh') != null) {
+                             $('#sect' + sectionID + ' .sectionRefresh')[0].style.display = 'none';
+                         }
+                     }
+                     if ($('#loading-panel') == null || $('#sect' + sectionID + ' .sectionRefresh') == null) {
+                         window.location.href = location.href;
+                     }
+                 }
+
+                 function refreshSectionControls(ancestor) {
+                     setTimeout(function() {
+                             var documentBody = $(document.body);
+                             $(ancestor + ' .changed').toggle(window.ViewModel.Params.PersonChange() == 1);
+                         },
+                         10);
+                 };
+
+//     function refreshSectionControls(ancestor) {
+//		setTimeout(function() {
+//			var documentBody =  $(document.body);
+//			$(ancestor+' .changed').toggle(window.ViewModel.Params.PersonChange() == 1);
+//		}, 10);
+//	};
+                 ;
+                 (function(vm) {
+
+                     vm.saveTypes = function(typeIDs, sectionID) {
+                         setLoadinPanelToSection(sectionID);
+                         window.ViewModel.request('@(Url.Action("SavePersonTypes", "PersonTypesAsync"))?personID=' +
+                             window.ViewModel.Model.PersonID() +
+                             '&typeIDs=' +
+                             typeIDs +
+                             '&sectionID=' +
+                             sectionID);
+                     };
+
+                     vm.clearTypes = function(sectionID) {
+                         setLoadinPanelToSection(sectionID);
+                         window.ViewModel.request('@(Url.Action("SavePersonTypes", "PersonTypesAsync"))?personID=' +
+                             window.ViewModel.Model.PersonID() +
+                             '&sectionID=' +
+                             sectionID);
+                     };
+
+
+                     vm.refreshSection = ko.asyncCommand({
+                         execute: function(bindingContext, ev, callback) {
+                             var $link = $(ev.originalTarget || ev.srcElement).closest("a");
+                             if (!$link.length) {
+                                 if ($.isFunction(callback)) callback.apply(this);
+                                 return;
+                             }
+                             var sectionID = $link.data("section-id");
+                             if (sectionID) {
+                                 refreshSection(sectionID).always(callback);
+                             } else callback.apply(this);
+                         },
+
+                         canExecute: function(isExecuting) {
+                             return !vm.Processing() && !isExecuting
+                         }
+                     });
+
+                     $(document).on("click",
+                         "a.personality",
+                         function() {
+                             if (vm.Processing()) return;
+                             var $link = $(this);
+                             $link.addClass("busy");
+                             vm
+                                 .request(
+                                     '@(Url.Action("SetResponsiblePersonality"))',
+                                     {
+                                         sectionID: $link.data("section-id"),
+                                         personID: $link.data("person-id"),
+                                         employeeID: $link.data("employee-id"),
+                                         isPersonal: $link.data("personality") != "0"
+                                     }
+                                 )
+                                 .always(function() { $link.removeClass("busy"); })
+                         });
+
+
+                 })(ViewModel);
+
+
+                 $(document).ready(function() {
+                     ViewModel.SectionContent = {};
+                     ViewModel.PageLoaded.subscribe(function(newValue) {
+                         if (newValue) {
+                             @foreach (var pair in content)
+                             {
+                                 @:	ViewModel.SectionContent["S@(pair.Key)"] = @Html.Raw(Kesco.Web.Mvc.Json.Serialize(pair.Value.ToString()));
+                             }
+                             setTimeout(function() {
+                                     @(refreshSectionAsyncCalls)
+                                 },
+                                 100);
+                         }
+                     });
+                 });
+
+             </script>)
+        @Html.CommonScriptCode("Dossier_Utils",
+            @<script>
+                 Date.prototype.toLocalDate = function() {
+                     this.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                     return this;
+                 }
+
+
+                 $(document).ready(function() {
+                     window.document.title =
+                         '@(Html.Raw(String.Format(Resources.Persons_Dossier_PageTitle2, Model.Model.PersonID, Model.Person.Nickname).Replace("'", @"\'")))';
+
+                     $(window).resize(function() {
+                         $("#DossierContainer").height($("#dialogContentPane").height());
+                         $("#DossierContainer").width($("#dialogContentPane").width());
+                     });
+
+                     $("#bar1").menubar({
+                         position: {
+                             within: $("#dialogHeader").add(window).first()
+                         }
+                     });
+
+                     $(document).on("mouseenter", "tr.hoverable", function() { $(this).addClass("ui-state-hover"); });
+                     $(document).on("mouseleave",
+                         "tr.hoverable",
+                         function() { $(this).removeClass("ui-state-hover"); });
+
+                     $(document).on("click",
+                         "a.resourceRef",
+                         function() { ViewModel.showResource($(this).data('id')); });
+
+                     toggleCheck();
+
+                     @if ((int) Model.AccessLevel < 4)
+                     {
+                         @: $('.checked,.not-checked').fadeTo(0, 0.4).css('cursor', 'vector');
+                     }
+
+                 });
+
+                 function toggleCheck() {
+                     $('#checkUserImg').attr('src', '/styles/@(Model.CheckedBy == null ? "Lock.gif" : "Unlock.gif")');
+                     $('#checkUserBox').attr('src',
+                             '/styles/@(Model.CheckedBy == null ? "CheckBoxChecked.gif" : "CheckBox.gif")')
+                         .click(function() { ViewModel.dispatchModelCommand('personchecked'); });
+                 }
+
+                 function getDefaultFullPathAction() {
+                     return '@(Url.FullPathAction("DialogResult", "Default"))';
+                 }
+
+                 function editContact(id, sectionId, hideOldVer) {
+                     var url = $.validator.format(
+                         decodeURI(
+                             '@(Url.FullPathAction("Index", "Contact", new {id = "{0}", idclient = "{1}", sectionId = "{2}", hideOldVer = "{3}"}))'),
+                         id || null,
+                         @(Model.Model.PersonID),
+                         sectionId || null,
+                         hideOldVer || null);
+                     openPopupWindow(url,
+                         null,
+                         function(result) {
+                             var record = null;
+                             if ($.isArray(result)) {
+                                 record = result[0];
+                                 window.location.href = location.href;
+                             }
+                         },
+                         "wndEditContact_" + id,
+                         850,
+                         600);
+                 }
+
+                 function editProps(id, context, sectionId, hideOldVer) {
+                     @if (Model.Person.PersonType == Kesco.Persons.ObjectModel.PersonCardType.Juridical)
+                     {
+                         // юр лицо
+                         @:var url = $.validator.format(decodeURI('@(Url.FullPathAction("Index", "Requisites", new {id = "{0}", type = 1, sectionId = "{1}", hideOldVer = "{2}"}))'), id, sectionId, hideOldVer);
+                     }
+                     else
+                     {
+                         // физ лицо
+                         @:var url = $.validator.format(decodeURI('@(Url.FullPathAction("Index", "Natural", new {id = "{0}", idClient = "{1}", type = 2, hideOldVer = "{2}", employerId = "{3}"}))'), id, ViewModel.Model.PersonID(), hideOldVer, ViewModel.Model.EmployeeID());
+                     }
+                     setTimeout(function() {
+                             openPopupWindow(url,
+                                 context,
+                                 function(result) {
+                                     window.location.href = location.href;
+                                     window.focus();
+                                 },
+                                 "wndEditRequisites_" + id + (new Date().valueOf().toString()),
+                                 850,
+                                 600);
+                         },
+                         50);
+                 }
+             </script>)
+    }
+}
+

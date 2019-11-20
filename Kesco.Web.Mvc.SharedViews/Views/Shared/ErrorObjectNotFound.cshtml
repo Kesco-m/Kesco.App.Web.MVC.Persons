@@ -1,0 +1,20 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<Kesco.Web.Mvc.SharedViews.Models.ErrorObjectNotFound>
+@using Kesco.Web.Mvc.SharedViews.Localization;
+
+@{
+	ViewBag.Title = Model.Model.Title;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ui-state-error ui-corner-all" style="margin: .7em .7em; padding: 0 .7em;">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+		<p>@Model.Model.Message</p>
+	</p>
+</div>
+
+@section Footer {
+<!--script type="text/javascript">
+	alertMessage(ViewModel.Model.Title(), ViewModel.Model.Message(), '@Resources.GUI_Button_OK');
+</script-->
+}

@@ -1,0 +1,89 @@
+﻿@using Kesco.Persons.Web
+@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Test.IndexViewModel>
+@{
+    Model
+        .GetScriptCapabilities()
+        .DisableGridScript()
+        .DisableTreeScript();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header {
+<style type="text/css">
+    #DossierContainer {
+        overflow: auto;
+    }
+    table.dossier td {
+        padding: 1px;
+    }
+    .changed {
+        font-size:xx-small;
+        vertical-align:top;
+        width:250px;
+        white-space: nowrap;
+    }
+    .contact {
+        font-size:xx-small;
+        /*vertical-align:top;*/
+    }
+    a.resourceRef { cursor: pointer; }
+
+    #dialogContentPane, #DossierContainer{
+        overflow: auto;
+        /*height:auto !important;*/
+        width: auto;
+        
+    }
+</style>
+}
+
+@section Footer {  
+<style>
+    a.ui-hover-visible { visibility: hidden; opacity: 0.5; }
+    
+    .ui-state-hover a.ui-hover-visible:hover { opacity: 1; }
+</style>
+}
+
+@using (Html.BeginForm())
+{
+    <div id="EmployeeInfo"></div>
+}
+
+
+
+@Html.CommonScriptCode("EmployeeInfo",
+@<script>
+     function UpdateUserProxy() {
+         $('#EmployeeInfo').html("...").load('@(Url.Action("UserProxy", "Dossier"))?id=@( ViewBag.EmployeeId)', function (responseText, status, xhr) {
+             var $changedByField = $("#empCardLink_ChangedBy");
+             var value = $changedByField.data('employee-id');
+             $changedByField.employee({
+                 container: $(document.body)
+             }).employee("option", "value", value);
+         });
+     }
+     
+     	function AddLoc() {
+		var path = '@(Configuration.AppSettings.URI_location_search)&WorkPlace=1&return=1';
+		try { $.removeCookie("RetVal"); } catch(e) {}
+		try {
+
+			DialogPageOpen(path, "dialogHeight: 500px; dialogWidth: 400px;", function (result) {
+				//alert(result);
+				ViewModel.request("@(Url.Action("SaveEmployeeWorkplace", "EmployeeSelect"))", {
+					id: @(ViewBag.EmployeeId),
+					workPlaceID: result.split('%1F')[0]
+				}).always(function() {
+					UpdateUserProxy();
+				});
+			});
+
+		} catch (e) { }
+
+		}
+
+     (function () { UpdateUserProxy();
+         document.title = '@( ViewBag.titleInfo)' })(); 
+
+</script>)

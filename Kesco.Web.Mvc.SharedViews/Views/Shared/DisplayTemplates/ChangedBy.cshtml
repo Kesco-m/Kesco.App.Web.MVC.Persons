@@ -1,0 +1,16 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<int?>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.SharedViews
+@using Kesco.Web.Mvc.SharedViews.Models
+@using Kesco.Web.Mvc.SharedViews.Controls
+
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+}
+
+<span><a id="@(id)__Link" href="javascript: void(0);" onclick="return false;"
+		data-tooltip-position-my="bottom right" data-tooltip-position-at="top center"
+		data-bind="employeeControl: { value: @(name) }"></a></span>
+

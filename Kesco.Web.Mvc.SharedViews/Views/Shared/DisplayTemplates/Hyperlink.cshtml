@@ -1,0 +1,31 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@using Kesco
+@{
+	ModelMetadata metadata = ViewData.ModelMetadata;
+	string contactIcon = (ViewData["contactIcon"] ?? String.Empty).ToString();
+	string phoneType = (ViewData["PhoneType"] ?? 
+			(metadata.AdditionalValues.ContainsKey("PhoneType") ? metadata.AdditionalValues["PhoneType"] : "")).ToString();
+}
+@if (String.IsNullOrEmpty(Model)) {
+	@: @ViewData.ModelMetadata.NullDisplayText
+} else {
+	var hyperlinks = @Model.GetUriList();
+	bool showContactIcon = !String.IsNullOrEmpty(contactIcon);
+	string contactIconTagBegin = (showContactIcon)
+						? @"<span style='position: relative; top: 0px; left: 0px; padding-left: 20px;' ><img src='{0}'  style='position: absolute; top: -2px; left: 1px; cursor: pointer;'   
+							title='{1}'
+							alt='{1}'
+							/>".FormatWith(
+							WebAssetImage(contactIcon), 
+							Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact
+						)
+						: String.Empty;
+	string contactIconTagEnd = (showContactIcon)
+		? @"</span>" : String.Empty;
+	foreach(var hyperlink in hyperlinks) {
+		@: @Html.Raw(contactIconTagBegin)<a href='@(hyperlink.Value)' target='_blank' 
+		@:		title='@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)'
+		@:		alt='@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)'
+		@: >@(hyperlink.Key)</a>@Html.Raw(contactIconTagEnd)
+	}
+}

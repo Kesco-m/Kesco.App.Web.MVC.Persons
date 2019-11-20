@@ -1,0 +1,2 @@
+robocopy "C:\PROJECTS\Kesco\Kesco.BusinessProjects\Kesco.BusinessProjects.Controls\bin" "C:\_PUBLISH\Web_Data\MVC" "Kesco.BusinessProjects.*.dll" "Kesco.BusinessProjects.*.pdb" "Kesco.BusinessProjects.*.xml" /S /XD .svn /R:1
+dir %TEMP% > nul

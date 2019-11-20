@@ -1,0 +1,100 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Card.ViewModel>
+@using Resources
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@using Kesco.Web.Mvc.UI.Controls
+@using Kesco.Persons.Web
+@using Kesco.Persons.Web.Models
+@{
+	Model
+		.GetScriptCapabilities()
+			.DisableGridScript()
+			.DisableTreeScript();
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="dialogContentPaneContainer" style="overflow: auto;">
+@Html.CommonScriptCode("Card_Init",
+@<script>
+		@* Расширим модель представления *@
+		(function(window, undefined) {
+		})(this);
+
+		$(document).ready(function () {
+
+			$(window).resize(function () {
+				$("#dialogContentPaneContainer").height($("#dialogContentPane").height());
+				$("#dialogContentPaneContainer").width($("#dialogContentPane").width());
+			});
+
+		});
+</script>)
+@{ Html.EnableClientValidation(); }
+
+@using (Html.BeginForm("Check", "Card", FormMethod.Post, new { id = "PageForm", name = "PageForm", onsubmit = "return false;" }))
+{
+	@Html.ValidationSummary(true)
+
+	@Html.HiddenFor(m => m.Model.PersonID)
+
+	<table class="formTable" cellspacing="0" cellpadding="4" border="0" style="min-width: 400px;">
+	<tr>
+		<td colspan="7" align="center">@(Kesco.Persons.Web.Localization.Resources.Views_Card_PageMessage):
+		<br />&nbsp;</td>
+	</tr>
+	<tr valign="top">
+		<td style="padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.From):
+			</div>
+		</td>
+		<td>&nbsp;</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.From)
+				@Html.ValidationMessageFor(m => m.Model.From)
+			</div>
+		</td>
+		<td>&nbsp;</td>
+		<td style="padding-top: 4px;">
+			<div class="editor-label">
+				@Html.LabelForEx(m => m.Model.To):
+			</div>
+		</td>
+		<td>&nbsp;</td>
+		<td>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Model.To)
+				@Html.ValidationMessageFor(m => m.Model.To)
+			</div>
+		</td>
+	</tr>
+	</table>
+}
+</div>
+
+
+@section Header {
+<div id="toolBar" class="ui-widget-header ui-corner-all kui-toolbar" style="padding: 2px;" data-bind="visible: PageLoaded">
+	<table cellspacing="0" cellpadding="0" border="0" style="margin-top: -2px;" width="100%">
+		<tr>
+			<td>
+				<button type="button" data-bind="
+						click: function() { setTimeout( function() { ViewModel.dispatchModelCommand('check'); }, 300); },
+						jqueryui: { widget: 'button', options: { disabled: Processing() , icons: { primary: 'ui-icon-check' } } }
+					">@(Resources.GUI_Button_Create)*</button>
+				<button type="button" data-bind="
+						click: closeDialog,
+						jqueryui: { widget: 'button', options: { disabled: Processing(), icons: { primary: 'ui-icon-cancel' } } }
+					">@Resources.GUI_Button_Cancel</button>
+			</td>
+		</tr>
+	</table>
+</div>
+}
+
+@section Footer { 
+<div style="text-align:left;">
+	<sup>*</sup> - @(Kesco.Persons.Web.Localization.Resources.Views_Card_PageMessageComment)
+</div>
+}

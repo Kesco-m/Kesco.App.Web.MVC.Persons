@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EditorTemplate_RequiredFields_Message" xml:space="preserve">
+    <value>kohustuslikud väljad</value>
+  </data>
+  <data name="EditorTemplate_ResourceField_CreateNew" xml:space="preserve">
+    <value> Loo uus ressurss</value>
+  </data>
+  <data name="EditorTemplate_UniqueID_NewEntry_Title" xml:space="preserve">
+    <value>Uus kanne</value>
+  </data>
+  <data name="GUI_Button_AssignResourceToPersons" xml:space="preserve">
+    <value> Määrata Allika</value>
+  </data>
+  <data name="GUI_Button_Cancel" xml:space="preserve">
+    <value> Tühistama</value>
+  </data>
+  <data name="GUI_Button_Close" xml:space="preserve">
+    <value> Lähedal</value>
+  </data>
+  <data name="GUI_Button_Copy" xml:space="preserve">
+    <value> Kopeeri</value>
+  </data>
+  <data name="GUI_Button_Create" xml:space="preserve">
+    <value> Looma</value>
+  </data>
+  <data name="GUI_Button_Delete" xml:space="preserve">
+    <value> Kustutama</value>
+  </data>
+  <data name="GUI_Button_Edit" xml:space="preserve">
+    <value> Muuda</value>
+  </data>
+  <data name="GUI_Button_Help" xml:space="preserve">
+    <value> Aitama</value>
+  </data>
+  <data name="GUI_Button_OK" xml:space="preserve">
+    <value> OK</value>
+  </data>
+  <data name="GUI_Button_Refresh" xml:space="preserve">
+    <value> Värskenda</value>
+  </data>
+  <data name="GUI_Button_Save" xml:space="preserve">
+    <value> Välja arvatud</value>
+  </data>
+  <data name="GUI_Button_Select" xml:space="preserve">
+    <value> Vali</value>
+  </data>
+  <data name="GUI_Button_ShowCashFlowTypeList" xml:space="preserve">
+    <value> Sirvi tüübid</value>
+  </data>
+  <data name="GUI_Button_View" xml:space="preserve">
+    <value> Vaata</value>
+  </data>
+  <data name="GUI_Message_AjaxRequestError" xml:space="preserve">
+    <value> Viga täitmisel tegevus server.</value>
+  </data>
+  <data name="GUI_Message_Loading" xml:space="preserve">
+    <value> Loading ...</value>
+  </data>
+  <data name="GUI_Message_Refreshing" xml:space="preserve">
+    <value> Värskendav ...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1000" xml:space="preserve">
+    <value>Vali vastutavad töötajad</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1001" xml:space="preserve">
+    <value>Eemalda nimekirjast</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1002" xml:space="preserve">
+    <value>Vali nimekirja responsilble töötajate kriteeriumide otsing</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1003" xml:space="preserve">
+    <value>Vali nimekirja isiku teemasid kriteeriumid otsing</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1004" xml:space="preserve">
+    <value>Vali teema isik</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1005" xml:space="preserve">
+    <value>Vali mingi hüüdnimi kasutada ...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_101" xml:space="preserve">
+    <value> Leiti:</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_102" xml:space="preserve">
+    <value> isikute</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_103" xml:space="preserve">
+    <value> isikute nimed</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_104" xml:space="preserve">
+    <value> rekvisiidid isikute</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_105" xml:space="preserve">
+    <value> kontaktide isikute</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_106" xml:space="preserve">
+    <value> sisaldab</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_107" xml:space="preserve">
+    <value> algab</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_108" xml:space="preserve">
+    <value> otsi</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_109" xml:space="preserve">
+    <value> Kasuta piirangud tüüpi inimeste otsing.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_110" xml:space="preserve">
+    <value> Tüüpi isikud</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_111" xml:space="preserve">
+    <value> organisatsioonid</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_112" xml:space="preserve">
+    <value> pangad</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_113" xml:space="preserve">
+    <value> inimesed</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_114" xml:space="preserve">
+    <value> Kasuta piiranguid kontrollida raamatupidamise osakonna ametnikud otsing.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_115" xml:space="preserve">
+    <value> Õigsust inimene</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_116" xml:space="preserve">
+    <value> tõendatud</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_117" xml:space="preserve">
+    <value> ei kontrollita</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_118" xml:space="preserve">
+    <value> Äriprojekt</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_119" xml:space="preserve">
+    <value> ainult</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_120" xml:space="preserve">
+    <value> kallal iga äriprojekt</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_121" xml:space="preserve">
+    <value> sealhulgas alaprojekti</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_122" xml:space="preserve">
+    <value>Registreerimisriigi</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_123" xml:space="preserve">
+    <value>Vorm asutamise</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_124" xml:space="preserve">
+    <value> Vali ...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_125" xml:space="preserve">
+    <value>Täpsustage, mis vormis ...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_126" xml:space="preserve">
+    <value> Vastutavad töötajad</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_127" xml:space="preserve">
+    <value> Kasuta piirangud vastutavad töötajad otsing</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_128" xml:space="preserve">
+    <value> Pole täpsustatud</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_129" xml:space="preserve">
+    <value> Teemad isikute</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_130" xml:space="preserve">
+    <value> Pole täpsustatud</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_131" xml:space="preserve">
+    <value> Kasuta piirangud teemad isikute otsing</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_132" xml:space="preserve">
+    <value> sealhulgas alatüübid</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_133" xml:space="preserve">
+    <value> Informatsioon kehtib</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_134" xml:space="preserve">
+    <value> Loo eraisik</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_135" xml:space="preserve">
+    <value> Sünnipäev</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_136" xml:space="preserve">
+    <value> Salvesta</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_137" xml:space="preserve">
+    <value> Vastutav töötaja</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_138" xml:space="preserve">
+    <value> Seadke tüüpi</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_139" xml:space="preserve">
+    <value> kohustuslikud väljad</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_140" xml:space="preserve">
+    <value> Loo juriidiline isik</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_141" xml:space="preserve">
+    <value> Hüüdnimi</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_142" xml:space="preserve">
+    <value>sisestage rekvisiidid</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_143" xml:space="preserve">
+    <value>see organisatsioon on pank</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_144" xml:space="preserve">
+    <value>Lisades rekvisiidid juriidiline isik</value>
+  </data>
+  <data name="Persons_Search_Form_Condition_Contains" xml:space="preserve">
+    <value> sisaldab</value>
+  </data>
+  <data name="Persons_Search_Form_Condition_StartsWith" xml:space="preserve">
+    <value> algab</value>
+  </data>
+  <data name="Persons_Search_Form_NameLabel" xml:space="preserve">
+    <value> Nimi</value>
+  </data>
+  <data name="Persons_Search_Form_SearchButton_Caption" xml:space="preserve">
+    <value> Otsing</value>
+  </data>
+  <data name="Persons_Search_FoundMore" xml:space="preserve">
+    <value>Leitud rohkem 100 ressursse, et sobitada täpsustatud kriteeriumidele. &lt;br&gt;&lt;br&gt; Palun selgitada nende järel otsingukriteeriumitele vastavad.</value>
+  </data>
+  <data name="Persons_Search_FoundMoreTitle" xml:space="preserve">
+    <value> Leitud rohkem 100 ressursid</value>
+  </data>
+  <data name="Persons_Search_NotFound" xml:space="preserve">
+    <value>Ei ressurss leida, mis vastab määratletud kriteeriumidele. &lt;br&gt;&lt;br&gt; Palun selgitada nende järel otsingukriteeriumitele vastavad.</value>
+  </data>
+  <data name="Persons_Search_NotFoundTitle" xml:space="preserve">
+    <value>Ei ressurss leida.</value>
+  </data>
+  <data name="Persons_Search_PageTitle" xml:space="preserve">
+    <value>Isikud otsing</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguage" xml:space="preserve">
+    <value>Näita nimi:</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguageEn" xml:space="preserve">
+    <value>EN</value>
+  </data>
+  <data name="Persons_Search_ResourceNameLanguageRu" xml:space="preserve">
+    <value>RU</value>
+  </data>
+  <data name="Persons_Search_SortBy" xml:space="preserve">
+    <value> Sorteeri:</value>
+  </data>
+  <data name="Persons_Search_SortBy_Alphabetically" xml:space="preserve">
+    <value> tähestiku järgi</value>
+  </data>
+  <data name="Persons_Search_SortBy_Position" xml:space="preserve">
+    <value> positsiooni puu</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1006" xml:space="preserve">
+    <value>vastutavad töötajad</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1007" xml:space="preserve">
+    <value>&lt;ei ole määratud&gt;</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1008" xml:space="preserve">
+    <value> kontaktide</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1009" xml:space="preserve">
+    <value> juriidiline isik profiili</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1010" xml:space="preserve">
+    <value>Üksikisiku profiili</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1011" xml:space="preserve">
+    <value>Loomine ...</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_2000" xml:space="preserve">
+    <value> Kontakt</value>
+  </data>
+  <data name="Kesco_Persons_ContactTypeField_OptionsCaption" xml:space="preserve">
+    <value>Vali tüüp ...</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_Warning" xml:space="preserve">
+    <value>Luues ja üksikisiku sarnastest leiti kataloog. Veenduge, ei ole sellist kasutaja seas loetletud allpool.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_Title" xml:space="preserve">
+    <value>Võimalik duplikaate isiku</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_ContinueEditingButton" xml:space="preserve">
+    <value>Jätkata toimetamine</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_DuplicatesDialog_ConfirmCreatingButton" xml:space="preserve">
+    <value>Uus inimene ei ole nimekirjas.</value>
+  </data>
+  <data name="Kesco_Persons_Create_DuplicateNicknames" xml:space="preserve">
+    <value>Isiku alias on juba olemas.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2100" xml:space="preserve">
+    <value>Määrates tähtaja andmed.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2101" xml:space="preserve">
+    <value>Valesti märgitud kehtivusaja andmed.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2102" xml:space="preserve">
+    <value>Valige tüüp esindada hüüdnimi ...</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2103" xml:space="preserve">
+    <value>Täpsustage korrusel.</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2104" xml:space="preserve">
+    <value>Teemad</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2105" xml:space="preserve">
+    <value>Valides tüüpi</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2106" xml:space="preserve">
+    <value>Kataloogid</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2107" xml:space="preserve">
+    <value>Kataloogid</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2108" xml:space="preserve">
+    <value>See on see</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2200" xml:space="preserve">
+    <value>Täpsustage rekvisiidid</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2201" xml:space="preserve">
+    <value>Täpsustage vene või inglise isiku nime rekvisiidid.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2202" xml:space="preserve">
+    <value>Täpsustage isik teemad.</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2203" xml:space="preserve">
+    <value>Pärit</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2204" xml:space="preserve">
+    <value>kuni</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2205" xml:space="preserve">
+    <value>Requisites</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2206" xml:space="preserve">
+    <value>Nõustuma</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2207" xml:space="preserve">
+    <value>Täpsustage rekvisiidid kuupäevad</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2209" xml:space="preserve">
+    <value>Tühistama</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_146" xml:space="preserve">
+    <value>Rekvisiitidega</value>
+  </data>
+  <data name="Kesco_Persons_Search_1001" xml:space="preserve">
+    <value>Isikud, kellel rekvisiidid kehtivad</value>
+  </data>
+  <data name="Kesco_Persons_Search_1000" xml:space="preserve">
+    <value>Täiendavad piirangud</value>
+  </data>
+  <data name="Kesco_Persons_Search_1002" xml:space="preserve">
+    <value>Isikud registreeritud osalevate riikidega tolliliidu</value>
+  </data>
+  <data name="Kesco_Persons_Search_1003" xml:space="preserve">
+    <value>Isikud, kes ei registreeritud osalevate riikidega tolliliidu</value>
+  </data>
+  <data name="Kesco_Persons_Search_1004" xml:space="preserve">
+    <value>Isikud seotud</value>
+  </data>
+  <data name="Kesco_Persons_Search_1005" xml:space="preserve">
+    <value>Töötajad</value>
+  </data>
+  <data name="Kesco_Persons_Search_1006" xml:space="preserve">
+    <value>Töökohad</value>
+  </data>
+  <data name="Kesco_Persons_Search_1007" xml:space="preserve">
+    <value>Allorganisatsioonides</value>
+  </data>
+  <data name="Kesco_Persons_Search_1008" xml:space="preserve">
+    <value>Juhtivate organisatsioonide</value>
+  </data>
+  <data name="Kesco_Persons_Search_1009" xml:space="preserve">
+    <value>Esindajad</value>
+  </data>
+  <data name="Kesco_Persons_Search_1010" xml:space="preserve">
+    <value>Liidrid</value>
+  </data>
+  <data name="Kesco_Persons_Search_1011" xml:space="preserve">
+    <value>Kinnisvara</value>
+  </data>
+  <data name="Kesco_Persons_Search_1012" xml:space="preserve">
+    <value>Omanikud</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2210" xml:space="preserve">
+    <value>INN pikkus ei ole korrektne</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2211" xml:space="preserve">
+    <value>Okpo pikkus ei ole korrektne</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2212" xml:space="preserve">
+    <value>Kui on määratud IBAN, tema pikkus peab olema 5</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2109" xml:space="preserve">
+    <value>Aadress</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2110" xml:space="preserve">
+    <value>Aadress (ladina)</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2111" xml:space="preserve">
+    <value>Toimik</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2104a" xml:space="preserve">
+    <value>Liigid</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_2001" xml:space="preserve">
+    <value> INN</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_122_1" xml:space="preserve">
+    <value>Kasutage piirangud riik registreerimise otsing</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_123_1" xml:space="preserve">
+    <value>Kasutage piirangud vormis lisatavate otsing</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_147" xml:space="preserve">
+    <value>Eemalda otsing piirangud</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2112" xml:space="preserve">
+    <value>Lähedal</value>
+  </data>
+  <data name="Kesco_Persons_CreateIndividual_2113" xml:space="preserve">
+    <value>Kui nende seas, kes ei ole loonud, ei saa te luua käsitsi isik. Abi saamiseks pöörduge sekretäri või administraatoriga.</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_1012" xml:space="preserve">
+    <value>Eelmine versioon</value>
+  </data>
+  <data name="Kesco_Persons_Web_VW_145" xml:space="preserve">
+    <value>pikkus</value>
+  </data>
+  <data name="Kesco_Persons_CreateJuridical_2208" xml:space="preserve">
+    <value>Valesti märgitud kehtivusaja andmed.</value>
+  </data>
+  <data name="Kesco_Choosen_NoResultsMatch" xml:space="preserve">
+    <value>Ühtki vastet.</value>
+  </data>
+  <data name="Persons_Dossier_PageTitle" xml:space="preserve">
+    <value>Toimikutele</value>
+  </data>
+  <data name="Persons_Dossier_PageTitle2" xml:space="preserve">
+    <value>{1} №{0}</value>
+  </data>
+  <data name="Persons_Dossier_Menu_AddToPerson" xml:space="preserve">
+    <value> Lisa isik</value>
+  </data>
+  <data name="Persons_Dossier_Menu_ChangedBy" xml:space="preserve">
+    <value> teha muudatusi</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Docs" xml:space="preserve">
+    <value> otsi isiku Docs Arhiiv</value>
+  </data>
+  <data name="Persons_Dossier_Menu_NewInd" xml:space="preserve">
+    <value> luua kehalise</value>
+  </data>
+  <data name="Persons_Dossier_Menu_NewJur" xml:space="preserve">
+    <value> luua õiguslik</value>
+  </data>
+  <data name="Persons_Dossier_Menu_OldProps" xml:space="preserve">
+    <value> mitteaktiivsete andmed</value>
+  </data>
+  <data name="Persons_Dossier_Menu_StoreOldProps" xml:space="preserve">
+    <value>mitteaktiivsed andmed, laod/kontod</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Person" xml:space="preserve">
+    <value> Inimene</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Search" xml:space="preserve">
+    <value> otsima nägu</value>
+  </data>
+  <data name="Persons_Dossier_Menu_View" xml:space="preserve">
+    <value> Vaata</value>
+  </data>
+  <data name="GUI_Button_Confirm" xml:space="preserve">
+    <value>Kinnitama</value>
+  </data>
+  <data name="Persons_Dossier_CardFrom" xml:space="preserve">
+    <value> pärit </value>
+  </data>
+  <data name="Persons_Dossier_CardNotValid" xml:space="preserve">
+    <value> hetkel - ei kehti</value>
+  </data>
+  <data name="Persons_Dossier_CardTo" xml:space="preserve">
+    <value> edasi </value>
+  </data>
+  <data name="Persons_Dossier_CardValid" xml:space="preserve">
+    <value> tegutsema</value>
+  </data>
+  <data name="Persons_Dossier_Actuality" xml:space="preserve">
+    <value> Reaalsus</value>
+  </data>
+  <data name="Persons_Dossier_ActualityNotChecked" xml:space="preserve">
+    <value> ei ole testitud</value>
+  </data>
+  <data name="Persons_Dossier_Checked" xml:space="preserve">
+    <value> kontrollitud</value>
+  </data>
+  <data name="Persons_Dossier_PersonNotFound" xml:space="preserve">
+    <value> Isik №{0} ei leitud või pole kättesaadav!</value>
+  </data>
+  <data name="Persons_Dossier_NoData" xml:space="preserve">
+    <value> andmed puuduvad</value>
+  </data>
+  <data name="Persons_Dossier_SyncUser" xml:space="preserve">
+    <value> andmeid sünkroonida</value>
+  </data>
+  <data name="Persons_Link_Child_Type1" xml:space="preserve">
+    <value>Töötaja</value>
+  </data>
+  <data name="Persons_Link_Child_Type2" xml:space="preserve">
+    <value>Allorganisatsioon</value>
+  </data>
+  <data name="Persons_Link_Child_Type3" xml:space="preserve">
+    <value>Esindaja</value>
+  </data>
+  <data name="Persons_Link_Child_Type4" xml:space="preserve">
+    <value> Kinnisvara</value>
+  </data>
+  <data name="Persons_Link_Parent_Type1" xml:space="preserve">
+    <value> Töö</value>
+  </data>
+  <data name="Persons_Link_Parent_Type2" xml:space="preserve">
+    <value> Peaorganisatsioon</value>
+  </data>
+  <data name="Persons_Link_Parent_Type3" xml:space="preserve">
+    <value> Pea</value>
+  </data>
+  <data name="Persons_Link_Parent_Type4" xml:space="preserve">
+    <value> Omanik</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PageTitle" xml:space="preserve">
+    <value>Kustutada ja asendada isik</value>
+  </data>
+  <data name="Persons_Dossier_Delete_Button_PerformDeleting" xml:space="preserve">
+    <value>Tehakse kustutamine</value>
+  </data>
+  <data name="Persons_Dossier_Delete_PersonID_Label" xml:space="preserve">
+    <value>eemaldage</value>
+  </data>
+  <data name="Persons_Dossier_Delete_ReplacePersonID_Label" xml:space="preserve">
+    <value>asendamine</value>
+  </data>
+  <data name="Persons_Link_Parameter0" xml:space="preserve">
+    <value> mitte ükski</value>
+  </data>
+  <data name="Persons_Link_Parameter1" xml:space="preserve">
+    <value> esimene</value>
+  </data>
+  <data name="Persons_Link_Parameter2" xml:space="preserve">
+    <value> teine</value>
+  </data>
+  <data name="Persons_Link_Description" xml:space="preserve">
+    <value> ametikoht</value>
+  </data>
+  <data name="Persons_Link_Parameter" xml:space="preserve">
+    <value> allkirja andnud</value>
+  </data>
+  <data name="Persons_Dossier_Menu_3" xml:space="preserve">
+    <value>tootaja</value>
+  </data>
+  <data name="Persons_Dossier_Menu_4" xml:space="preserve">
+    <value>too</value>
+  </data>
+  <data name="Persons_Dossier_Menu_5" xml:space="preserve">
+    <value>peaorganisatsioon</value>
+  </data>
+  <data name="Persons_Dossier_Menu_6" xml:space="preserve">
+    <value>esindaja (assistent)</value>
+  </data>
+  <data name="Persons_Dossier_Menu_7" xml:space="preserve">
+    <value>allorganisatsioon</value>
+  </data>
+  <data name="Persons_Dossier_Menu_8" xml:space="preserve">
+    <value>pea</value>
+  </data>
+  <data name="Persons_Dossier_Menu_9" xml:space="preserve">
+    <value>omanik</value>
+  </data>
+  <data name="Persons_Dossier_Menu_10" xml:space="preserve">
+    <value>omandioigus</value>
+  </data>
+  <data name="Persons_Dossier_Menu_11" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="Persons_Dossier_Menu_12" xml:space="preserve">
+    <value>pangateenuste osutamine</value>
+  </data>
+  <data name="Persons_Dossier_Menu_13" xml:space="preserve">
+    <value>hoiuteenused</value>
+  </data>
+  <data name="Persons_Dossier_Menu_14" xml:space="preserve">
+    <value>ladu</value>
+  </data>
+  <data name="Persons_Dossier_Menu_15" xml:space="preserve">
+    <value>sertifikaadi hulgimuuk. rakendamise OP</value>
+  </data>
+  <data name="Persons_Dossier_Menu_16" xml:space="preserve">
+    <value>raamatupidamine Abacus</value>
+  </data>
+  <data name="Persons_Dossier_Menu_17" xml:space="preserve">
+    <value>raamatupidamine 1С</value>
+  </data>
+  <data name="Persons_Dossier_Menu_18" xml:space="preserve">
+    <value>eksport Aspect</value>
+  </data>
+  <data name="Persons_Dossier_Menu_1" xml:space="preserve">
+    <value>kontakt</value>
+  </data>
+  <data name="Persons_Dossier_Menu_2" xml:space="preserve">
+    <value>detailid</value>
+  </data>
+  <data name="Persons_Dossier_Section_7" xml:space="preserve">
+    <value> tootajad</value>
+  </data>
+  <data name="Persons_Dossier_Section_8" xml:space="preserve">
+    <value> tookoht</value>
+  </data>
+  <data name="Persons_Dossier_Section_9" xml:space="preserve">
+    <value> peakontorid</value>
+  </data>
+  <data name="Persons_Dossier_Section_10" xml:space="preserve">
+    <value> esindajad (abistaja)</value>
+  </data>
+  <data name="Persons_Dossier_Section_11" xml:space="preserve">
+    <value>allorganisatsioonides</value>
+  </data>
+  <data name="Persons_Dossier_Section_12" xml:space="preserve">
+    <value> juhid</value>
+  </data>
+  <data name="Persons_Dossier_Section_13" xml:space="preserve">
+    <value> omanike</value>
+  </data>
+  <data name="Persons_Dossier_Section_14" xml:space="preserve">
+    <value> kinnisvara</value>
+  </data>
+  <data name="Persons_Dossier_Section_15" xml:space="preserve">
+    <value> raamatupidamise</value>
+  </data>
+  <data name="Persons_Dossier_Section_16" xml:space="preserve">
+    <value> pangateenuste osutamiseks</value>
+  </data>
+  <data name="Persons_Dossier_Section_17" xml:space="preserve">
+    <value> hoiuteenused</value>
+  </data>
+  <data name="Persons_Dossier_Section_18" xml:space="preserve">
+    <value> laod</value>
+  </data>
+  <data name="Persons_Dossier_Section_19" xml:space="preserve">
+    <value> sertifikaadi hulgimuuk. rakendamise OP</value>
+  </data>
+  <data name="Persons_Dossier_Section_5" xml:space="preserve">
+    <value> sidemed</value>
+  </data>
+  <data name="Persons_Dossier_Section_6" xml:space="preserve">
+    <value> detailid</value>
+  </data>
+  <data name="Persons_Dossier_Section_1" xml:space="preserve">
+    <value> uksikasjad juriidiline isik</value>
+  </data>
+  <data name="Persons_Dossier_Section_2" xml:space="preserve">
+    <value> uksikasjad fuusiline isik</value>
+  </data>
+  <data name="Persons_Dossier_Section_3" xml:space="preserve">
+    <value> vastutav personal</value>
+  </data>
+  <data name="Persons_Dossier_Section_4" xml:space="preserve">
+    <value> tuupi inimesi - vastaspoole</value>
+  </data>
+  <data name="Persons_Contact_Delete_Confirm_Text" xml:space="preserve">
+    <value>Kas olete kindel, et soovite kustutada selle kontakti?</value>
+  </data>
+  <data name="Persons_Link_NotFound" xml:space="preserve">
+    <value> Side №{0} ei leitud!</value>
+  </data>
+  <data name="Persons_Contact_ChooseCity" xml:space="preserve">
+    <value>Vali linn</value>
+  </data>
+  <data name="Persons_Contact_ChooseCountry" xml:space="preserve">
+    <value>Vali riik</value>
+  </data>
+  <data name="Persons_Delete_Confirm_Title" xml:space="preserve">
+    <value>Kustutamise kinnitamiseks</value>
+  </data>
+  <data name="Persons_Requisites_SpecifyPersonRegistrationCountry" xml:space="preserve">
+    <value>Palun täpsustage registreerimine riigi isik!</value>
+  </data>
+  <data name="Persons_Requisites_ShortNameRusGenitive_AddOn" xml:space="preserve">
+    <value>(dokumentide)</value>
+  </data>
+  <data name="EditorTemplate_ContactTypeField_OptionsCaption" xml:space="preserve">
+    <value>- Vali kontakttüüpi -</value>
+  </data>
+  <data name="Persons_Contact_NotFound" xml:space="preserve">
+    <value>Võta №{0} ei leitud!</value>
+  </data>
+  <data name="Persons_Dossier_Menu_Print" xml:space="preserve">
+    <value>Trükkima</value>
+  </data>
+  <data name="Persons_Link_Delete_Confirm_Text" xml:space="preserve">
+    <value>Sobivad puhul eemaldamine, kui andmed on sisestatud valesti! Mascus Kui see info on õige, kuid hetkel ei tööta - kasutada piiratud! &lt;br&gt; Kas olete kindel, et soovite kustutada selle teabe ?</value>
+  </data>
+  <data name="Persons_Card_Delete_Confirm_Text" xml:space="preserve">
+    <value>Kas olete kindel, et soovite kustutada selle inimese kaardi?</value>
+  </data>
+  <data name="Persons_Dossier_EmployeeHasNoPost" xml:space="preserve">
+    <value>töötaja ei ole ametikohale personali nimekirja</value>
+  </data>
+  <data name="Persons_Dossier_NoEmployee" xml:space="preserve">
+    <value>Ükski töötaja selle füüsilise isiku</value>
+  </data>
+  <data name="Dossier_PrivatePerson_Label" xml:space="preserve">
+    <value>(sest töötaja üksus on isiklik)</value>
+  </data>
+  <data name="Dossier_PrivatePerson_SetRemoveSignPrivate" xml:space="preserve">
+    <value>Lisa / eemalda märk sellest, et töötaja on eraisik.</value>
+  </data>
+  <data name="Persons_Natural_SaveErrorWhileSavingPersonTypes" xml:space="preserve">
+    <value>Tekkis viga samas määrates isiku tüüpi:
+ - {0}</value>
+  </data>
+  <data name="Persons_Natural_SaveErrorWhileSavingResps" xml:space="preserve">
+    <value>Tekkis viga samas määrates of responsiable töötaja (te) isiku: 
+ - {0}</value>
+  </data>
+  <data name="Persons_Contact_PleaseSpecifyPerson" xml:space="preserve">
+    <value>- palun täpsustage isik luua uue kontakti!</value>
+  </data>
+  <data name="GUI_Button_Synchronize" xml:space="preserve">
+    <value>Sünkroniseerima</value>
+  </data>
+  <data name="Persons_Synchronize_DifferencesHeader" xml:space="preserve">
+    <value>Üksikandmeid muutunud vastavalt koos töötaja andmed</value>
+  </data>
+  <data name="Persons_Synchronize_Differences_Requisites" xml:space="preserve">
+    <value>Rekvisiidid</value>
+  </data>
+  <data name="Persons_Dossier_RefreshSection" xml:space="preserve">
+    <value>värskenda osa</value>
+  </data>
+  <data name="Persons_Dossier_ShowHideSection" xml:space="preserve">
+    <value>Näita/varja osa</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalButtonOkCaption" xml:space="preserve">
+    <value>Jah, ma kinnitada</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalCaption" xml:space="preserve">
+    <value>Kinnitus tekst kontakt</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalDialogFirst" xml:space="preserve">
+    <value>Te tunnistate, et kontaktisik</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Checked_modalDialogSecond" xml:space="preserve">
+    <value>asjakohased ja täielikult testitud sa oled?</value>
+  </data>
+  <data name="Persons_Doisser_Actuality_Is_Checked" xml:space="preserve">
+    <value>Tegelikkus kontrollida</value>
+  </data>
+  <data name="Persons_Doisser_SynchronizeData" xml:space="preserve">
+    <value>Andmete sünkroonimine</value>
+  </data>
+</root>

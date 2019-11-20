@@ -1,0 +1,53 @@
+﻿@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc; 
+@using Kesco.Persons.Web.Models.Dossier;
+@using Resources;
+@{
+	int personID = Model.ViewModel.Model.PersonID;
+	int accessLevel = (int) Model.ViewModel.AccessLevel;
+	var sectionID = Model.Section.ID.ToString();
+	var currentAccess = Model.AccessGranted;
+	var items = Model.ViewModel.GetContextItems(cxti => cxti.TabID == Model.Section.ID);
+}
+@if (items.Count == 0) {
+<tr class="hoverable dsl@(sectionID)"><td colspan="4">@Resources.Persons_Dossier_NoData</td></tr>
+} else {
+	var comparer = StringComparer.OrdinalIgnoreCase;
+	items.Sort((x, y) => comparer.Compare(x.Label, y.Label));
+	foreach (var item in items) { 
+<tr class="hoverable dsl@(sectionID)">
+	<td colspan="2">
+		&nbsp;
+		@if (accessLevel >= 2 && currentAccess > 0) {
+		<a id="Dossier_Responsible_Personal_@(item.ID)" 
+				href="javascript: void(0);" 
+				class="personality @((item.Order == 0) ? "" : "ui-hover-visible")" 
+				data-section-id="@(sectionID)" 
+				data-person-id="@(personID)" 
+				data-employee-id="@(item.ID)" 
+				data-personality="@(item.Order)"
+				title="@(Resources.Dossier_PrivatePerson_SetRemoveSignPrivate)"
+			><span class="ui-icon ui-icon-flag text-ui-icon" ></span></a>
+		} else {
+		<a id="Dossier_Responsible_Personal_@(item.ID)" 
+			href="javascript: void(0);" class="@((item.Order == 0) ? "" : "ui-hover-visible")"><span class="ui-icon ui-icon-flag text-ui-icon" ></span></a>
+		}
+		@Html.DisplayFor(m => item.ID, "EmployeeStatic", new {
+			TooltipPositionMy = "middle left",
+			TooltipPositionAt = "middle right",
+			InitialLabel = HL(item.Label)
+		}) 
+		@if (item.Order == 0) {
+		<span class="clGray" style="display: inline-block">@(Resources.Dossier_PrivatePerson_Label)</span>
+		}
+	</td>
+	<td class="changed">
+		@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new {
+			TooltipPositionMy = "middle right",
+			TooltipPositionAt = "middle left",
+			InitialLabel = HL(item.ChangedByFIO)
+		}) <span>@(item.ChangedDate)</span>
+	</td>
+</tr>
+	}
+}

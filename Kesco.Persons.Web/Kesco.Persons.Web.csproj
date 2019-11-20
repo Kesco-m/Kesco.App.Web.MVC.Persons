@@ -1,0 +1,1042 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EDCB6EA5-7051-42CA-95CE-5B57F9CFE8CC}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kesco.Persons.Web</RootNamespace>
+    <AssemblyName>Kesco.Persons.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BLToolkit.4, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b1d3f6ab3aadaca3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\BLToolkit.4.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentJson">
+      <HintPath>..\_Assemblies\FluentJson.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\_Assemblies\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\_Assemblies\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\_Assemblies\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcJqGrid">
+      <HintPath>..\_Assemblies\MvcJqGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\_Assemblies\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RazorGenerator.Mvc.2.4.9\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Templating">
+      <HintPath>..\_Assemblies\RazorGenerator.Templating.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Kesco.Web.Mvc.SharedViews\bin\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\_Assemblies\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Resources.Designer.cs" />
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Controllers\AssetsController.cs" />
+    <Compile Include="Controllers\CardController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DossierController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\JuridicalController.cs" />
+    <Compile Include="Controllers\LinkController.cs" />
+    <Compile Include="Controllers\NaturalController.cs" />
+    <Compile Include="Controllers\NaturalDuplicatesController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PersonTypesAsyncController.cs" />
+    <Compile Include="Controllers\RequisitesController.cs" />
+    <Compile Include="Controllers\ScriptsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SynchronizeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Resources.Designer.cs" />
+    <Compile Include="Models\Card\ClientSettings.cs" />
+    <Compile Include="Models\Card\DataModel.cs" />
+    <Compile Include="Models\Card\Validator.cs" />
+    <Compile Include="Models\Card\ViewModel.cs" />
+    <Compile Include="Models\ContactAssistantModel.cs" />
+    <Compile Include="Models\Contact\ClientParameters.cs" />
+    <Compile Include="Models\Contact\Contact.cs" />
+    <Compile Include="Models\Contact\ContactsValidator.cs" />
+    <Compile Include="Models\Contact\DataModel.cs" />
+    <Compile Include="Models\Contact\ViewModel.cs" />
+    <Compile Include="Models\Dossier\Delete\ViewModel.cs" />
+    <Compile Include="Models\Dossier\DossierSectionExtensions.cs" />
+    <Compile Include="Models\Dossier\DossierViewModel.cs" />
+    <Compile Include="Models\Dossier\MenuItemExtensions.cs" />
+    <Compile Include="Models\IndividualViewModel.cs" />
+    <Compile Include="Models\Juridicals\ClientSettings.cs" />
+    <Compile Include="Models\Juridicals\PersonCard.cs" />
+    <Compile Include="Models\Juridicals\PersonCardValidator.cs" />
+    <Compile Include="Models\Juridicals\PersonModel.cs" />
+    <Compile Include="Models\Juridicals\PersonModelValidator.cs" />
+    <Compile Include="Models\Juridicals\ViewModel.cs" />
+    <Compile Include="Models\Link\ClientParameters.cs" />
+    <Compile Include="Models\Link\PersonLink.cs" />
+    <Compile Include="Models\Link\PersonLinkValidator.cs" />
+    <Compile Include="Models\Link\ViewModel.cs" />
+    <Compile Include="Models\NaturalDuplicates\ClientSettings.cs" />
+    <Compile Include="Models\NaturalDuplicates\Duplicate.cs" />
+    <Compile Include="Models\NaturalDuplicates\DuplicatesModel.cs" />
+    <Compile Include="Models\NaturalDuplicates\ViewModel.cs" />
+    <Compile Include="Models\Naturals\ClientSettings.cs" />
+    <Compile Include="Models\Naturals\PersonCard.cs" />
+    <Compile Include="Models\Naturals\PersonCardValidator.cs" />
+    <Compile Include="Models\Naturals\PersonModel.cs" />
+    <Compile Include="Models\Naturals\PersonModelValidator.cs" />
+    <Compile Include="Models\Naturals\ViewModel.cs" />
+    <Compile Include="Models\PersonCardViewModel.cs" />
+    <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\RequisitesViewModel.cs" />
+    <Compile Include="Models\Requisites\ClientSettings.cs" />
+    <Compile Include="Models\Requisites\Requisites.cs" />
+    <Compile Include="Models\Requisites\RequisitesValidator.cs" />
+    <Compile Include="Models\Requisites\ViewModel.cs" />
+    <Compile Include="Models\Search\Filtering\BusinessProjectFilterSetting.cs" />
+    <Compile Include="Models\Search\Filtering\PersonAreaFilterSetting.cs" />
+    <Compile Include="Models\Search\Filtering\PersonHowSearchFilterSetting.cs" />
+    <Compile Include="Models\Search\Filtering\PersonSelectTopFilterSetting.cs" />
+    <Compile Include="Models\Search\Filtering\PersonThemesFilterSetting.cs" />
+    <Compile Include="Models\Search\Filtering\PersonUsersFilterSetting.cs" />
+    <Compile Include="Models\Search\SearchResultViewModel.cs" />
+    <Compile Include="Models\Search\SearchViewModel.cs" />
+    <Compile Include="Models\Synchronize\ClientParameters.cs" />
+    <Compile Include="Models\Synchronize\DataModel.cs" />
+    <Compile Include="Models\Synchronize\Differences.cs" />
+    <Compile Include="Models\Synchronize\ViewModel.cs" />
+    <Compile Include="Models\Test\IndexViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="srv.asmx.cs">
+      <DependentUpon>srv.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Card\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contact\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\CertificateNP.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificateNP.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Contacts.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contacts.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\DefaultSectionView.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultSectionView.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Delete.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delete.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Info.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Info.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Links.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Links.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\LinksEmpls.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinksEmpls.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Menu.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\PersonTypes.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonTypes.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Props.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Props.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\ResponsibleEmpls.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResponsibleEmpls.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dossier\Stores.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Stores.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Juridical\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Link\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NaturalDuplicates\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Natural\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Requisites\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\DisplayTemplates\Object.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Object.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\DisplayTemplates\Requisites.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Requisites.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\EditorTemplates\BusinessProjectField.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessProjectField.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\EditorTemplates\ContactTypeField.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactTypeField.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\EditorTemplates\PersonField.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonField.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\EditorTemplates\PersonLinkParameter.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonLinkParameter.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\EditorTemplates\TerritoryField.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TerritoryField.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout2.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout2.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Synchronize\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="srv.asmx" />
+    <Content Include="STYLES\Css\ellipsis-xbl.xml" />
+    <Content Include="STYLES\Css\images\ajax-loader.gif" />
+    <Content Include="STYLES\Css\images\arrow.png" />
+    <Content Include="STYLES\Css\images\Attention.gif" />
+    <Content Include="STYLES\Css\images\CheckBox.gif" />
+    <Content Include="STYLES\Css\images\CheckBoxChecked.gif" />
+    <Content Include="STYLES\Css\images\chosen-sprite.png" />
+    <Content Include="STYLES\Css\images\Copy.gif" />
+    <Content Include="STYLES\Css\images\Delete.gif" />
+    <Content Include="STYLES\Css\images\Edit.gif" />
+    <Content Include="STYLES\Css\images\file.gif" />
+    <Content Include="STYLES\Css\images\flags.png" />
+    <Content Include="STYLES\Css\images\folder-closed.gif" />
+    <Content Include="STYLES\Css\images\folder.gif" />
+    <Content Include="STYLES\Css\images\icon_sprites.png" />
+    <Content Include="STYLES\Css\images\Lock.gif" />
+    <Content Include="STYLES\Css\images\minus.gif" />
+    <Content Include="STYLES\Css\images\New.gif" />
+    <Content Include="STYLES\Css\images\plus.gif" />
+    <Content Include="STYLES\Css\images\right.png" />
+    <Content Include="STYLES\Css\images\Sim.gif" />
+    <Content Include="STYLES\Css\images\treeview-black-line.gif" />
+    <Content Include="STYLES\Css\images\treeview-black.gif" />
+    <Content Include="STYLES\Css\images\treeview-default-line.gif" />
+    <Content Include="STYLES\Css\images\treeview-default.gif" />
+    <Content Include="STYLES\Css\images\treeview-famfamfam-line.gif" />
+    <Content Include="STYLES\Css\images\treeview-famfamfam.gif" />
+    <Content Include="STYLES\Css\images\treeview-gray-line.gif" />
+    <Content Include="STYLES\Css\images\treeview-gray.gif" />
+    <Content Include="STYLES\Css\images\treeview-red-line.gif" />
+    <Content Include="STYLES\Css\images\treeview-red.gif" />
+    <Content Include="STYLES\Css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="STYLES\Css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="STYLES\Css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="STYLES\Css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="STYLES\Css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="STYLES\Css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="STYLES\Css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="STYLES\Css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="STYLES\Css\images\ui-icons_222222_256x240.png" />
+    <Content Include="STYLES\Css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="STYLES\Css\images\ui-icons_454545_256x240.png" />
+    <Content Include="STYLES\Css\images\ui-icons_888888_256x240.png" />
+    <Content Include="STYLES\Css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="STYLES\Css\images\Unlock.gif" />
+    <Content Include="STYLES\Css\images\Warning.gif" />
+    <Content Include="STYLES\Css\jquery-ui-chosen.css" />
+    <Content Include="STYLES\Css\jquery-ui-jqgrid.css" />
+    <Content Include="STYLES\Css\jquery-ui-multiselect.css" />
+    <Content Include="STYLES\Css\jquery-ui-numeric.css" />
+    <Content Include="STYLES\Css\jquery-ui-selectmenu.css" />
+    <Content Include="STYLES\Css\jquery-ui-timeentry.css" />
+    <Content Include="STYLES\Css\jquery-ui.css" />
+    <Content Include="STYLES\Css\jquery.qtip.min.css" />
+    <Content Include="STYLES\Css\jquery.tooltip.css" />
+    <Content Include="STYLES\Css\kesco-ui.css" />
+    <Content Include="STYLES\Css\Kesco.LoadingPanel.css" />
+    <Content Include="STYLES\Css\Kesco.PersonTypesTable.css" />
+    <Content Include="STYLES\Css\Kesco.SetActualContactWindow.css" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\animated-overlay.gif" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_flat_0_EDE6E6_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_flat_75_8ABBEB_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_flat_75_fafafa_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_glass_75_EDE6E6_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-bg_inset-soft_85_3399ff_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-icons_003366_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-icons_0033FF_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-icons_222222_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-bluesky\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-green\images\animated-overlay.gif" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_0_333333_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_100_2c7029_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_100_A0EA99_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_15_A0EA99_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_65_f7f7f7_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_75_f3d8d8_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_flat_75_f7f7f7_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-bg_glass_55_FFFF66_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-icons_2c7029_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-icons_4ac50d_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-icons_cc1111_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-green\images\ui-icons_FFF_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-green\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_glass_100_f5f0e5_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_glass_25_cb842e_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_glass_70_ede4d4_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_highlight-hard_100_f4f0ec_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_highlight-hard_65_fee4bd_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_highlight-hard_75_f5f5b5_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-bg_inset-soft_100_f4f0ec_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-icons_c47a23_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-icons_cb672b_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-icons_f08000_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-icons_f35f07_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-icons_ff7519_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-humanity\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-lightness\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\animated-overlay.gif" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_65_EFEFEF_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_75_D4D0C8_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_75_e3e1de_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_75_EFEFEF_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_75_fafafa_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_flat_95_fef1ec_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-icons_212121_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-icons_222222_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-icons_454545_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-icons_555555_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-oldstyle\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_222222_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-redmond\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\animated-overlay.gif" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_flat_0_333333_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_flat_100_f6f6f6_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_flat_15_cc4444_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_flat_65_ffffff_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_flat_75_f3d8d8_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_flat_75_f7f7f7_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_glass_55_FFFF66_1x400.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-bg_highlight-hard_100_eeeeee_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-icons_cc1111_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-icons_cc2222_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-rose\jquery-ui.css" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_diagonals-medium_20_d34d17_40x40.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_gloss-wave_45_817865_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_gloss-wave_60_fece2f_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_gloss-wave_70_ffdd57_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_gloss-wave_90_fff9e5_500x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_highlight-soft_100_feeebd_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-bg_inset-soft_30_ffffff_1x100.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_3d3d3d_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_bd7b00_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_d19405_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_eb990f_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_ed9f26_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_fadc7a_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\images\ui-icons_ffe180_256x240.png" />
+    <Content Include="STYLES\Css\themes\ui-sunny\jquery-ui.css" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.de-AT.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.de-CH.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.de-DE.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.de-LI.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.de-LU.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.de.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-029.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-AU.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-BZ.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-CA.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-GB.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-IE.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-IN.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-JM.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-MY.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-NZ.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-PH.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-SG.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-TT.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-US.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-ZA.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en-ZW.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.en.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-AR.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-BO.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-CL.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-CO.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-CR.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-DO.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-EC.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-ES.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-GT.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-HN.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-MX.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-NI.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-PA.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-PE.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-PR.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-PY.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-SV.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-US.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-UY.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es-VE.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.es.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.et-EE.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.et.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr-BE.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr-CA.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr-CH.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr-FR.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr-LU.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr-MC.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.fr.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.it-CH.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.it-IT.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.it.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.kesco.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.ru-RU.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.ru.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.culture.tt-RU.js" />
+    <Content Include="STYLES\Scripts\cultures\globalize.cultures.js" />
+    <Content Include="STYLES\Scripts\globalize.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-de.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-en-US.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-en.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-es.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-et-EE.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-et.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-fr.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-ru-RU.js" />
+    <Content Include="STYLES\Scripts\i18n\grid.locale-ru.js" />
+    <Content Include="STYLES\Scripts\i18n\jquery.timeentry-de.js" />
+    <Content Include="STYLES\Scripts\i18n\jquery.timeentry-en.js" />
+    <Content Include="STYLES\Scripts\i18n\jquery.timeentry-fr.js" />
+    <Content Include="STYLES\Scripts\i18n\jquery.timeentry-ru.js" />
+    <Content Include="STYLES\Scripts\jquery-ui-i18n.min.js" />
+    <Content Include="STYLES\Scripts\jquery-ui-numeric.js" />
+    <Content Include="STYLES\Scripts\jquery-ui-timepicker-addon.js" />
+    <Content Include="STYLES\Scripts\jquery-ui.js" />
+    <Content Include="STYLES\Scripts\jquery.autocomplete.min.js" />
+    <Content Include="STYLES\Scripts\jquery.busy.min.js" />
+    <Content Include="STYLES\Scripts\jquery.common.js" />
+    <Content Include="STYLES\Scripts\jquery.cookie.js" />
+    <Content Include="STYLES\Scripts\jquery.cookie.min.js" />
+    <Content Include="STYLES\Scripts\jquery.databind.min.js" />
+    <Content Include="STYLES\Scripts\jquery.datalink.js" />
+    <Content Include="STYLES\Scripts\jquery.form.js" />
+    <Content Include="STYLES\Scripts\jquery.form.min.js" />
+    <Content Include="STYLES\Scripts\jquery.global.min.js" />
+    <Content Include="STYLES\Scripts\jquery.hotkeys.min.js" />
+    <Content Include="STYLES\Scripts\jquery.jqGrid.min.js" />
+    <Content Include="STYLES\Scripts\jquery.jqGrid.src.js" />
+    <Content Include="STYLES\Scripts\jquery.jqGrid.src2.js" />
+    <Content Include="STYLES\Scripts\jquery.js" />
+    <Content Include="STYLES\Scripts\jquery.jstree.js" />
+    <Content Include="STYLES\Scripts\jquery.layout.min.js" />
+    <Content Include="STYLES\Scripts\jquery.meio.mask.min.js" />
+    <Content Include="STYLES\Scripts\jquery.mousewheel.min.js" />
+    <Content Include="STYLES\Scripts\jquery.qtip.min.js" />
+    <Content Include="STYLES\Scripts\jquery.signalR.js" />
+    <Content Include="STYLES\Scripts\jquery.signalR.min.js" />
+    <Content Include="STYLES\Scripts\jquery.timeentry.min.js" />
+    <Content Include="STYLES\Scripts\jquery.tooltip.js" />
+    <Content Include="STYLES\Scripts\jquery.tooltip.min.js" />
+    <Content Include="STYLES\Scripts\jquery.ui.chosen.min.js" />
+    <Content Include="STYLES\Scripts\jquery.ui.mask.js" />
+    <Content Include="STYLES\Scripts\jquery.ui.menubar.js" />
+    <Content Include="STYLES\Scripts\jquery.ui.numeric.min.js" />
+    <Content Include="STYLES\Scripts\jquery.ui.selectmenu.js" />
+    <Content Include="STYLES\Scripts\jquery.ui.selectmenu.min.js" />
+    <Content Include="STYLES\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="STYLES\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="STYLES\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="STYLES\Scripts\jquery.validate.js" />
+    <Content Include="STYLES\Scripts\jquery.validate.min.js" />
+    <Content Include="STYLES\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="STYLES\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="STYLES\Scripts\json2.js" />
+    <Content Include="STYLES\Scripts\json2.min.js" />
+    <Content Include="STYLES\Scripts\kesco.buttonbar.js" />
+    <Content Include="STYLES\Scripts\kesco.common.js" />
+    <Content Include="STYLES\Scripts\kesco.controls.js" />
+    <Content Include="STYLES\Scripts\kesco.datalink.js" />
+    <Content Include="STYLES\Scripts\kesco.daterange.js" />
+    <Content Include="STYLES\Scripts\kesco.decor.js" />
+    <Content Include="STYLES\Scripts\kesco.dialog.js" />
+    <Content Include="STYLES\Scripts\kesco.form.js" />
+    <Content Include="STYLES\Scripts\kesco.numeric.js" />
+    <Content Include="STYLES\Scripts\kesco.qtip.js" />
+    <Content Include="STYLES\Scripts\kesco.select.js" />
+    <Content Include="STYLES\Scripts\Kesco.SetActualContactWindow.js" />
+    <Content Include="STYLES\Scripts\kesco.spinner.js" />
+    <Content Include="STYLES\Scripts\kesco.srv4js.js" />
+    <Content Include="STYLES\Scripts\kesco.styleTable.js" />
+    <Content Include="STYLES\Scripts\kesco.themeroller.js" />
+    <Content Include="STYLES\Scripts\knockout.bindingHandlers.js" />
+    <Content Include="STYLES\Scripts\knockout.command.js" />
+    <Content Include="STYLES\Scripts\knockout.debug.js" />
+    <Content Include="STYLES\Scripts\knockout.dirtyFlag.js" />
+    <Content Include="STYLES\Scripts\knockout.editables.js" />
+    <Content Include="STYLES\Scripts\knockout.js" />
+    <Content Include="STYLES\Scripts\knockout.mapping.js" />
+    <Content Include="STYLES\Scripts\MicrosoftAjax.js" />
+    <Content Include="STYLES\Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="STYLES\Scripts\MicrosoftMvcJQueryValidation.js" />
+    <Content Include="STYLES\Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="STYLES\Scripts\Silverlight.js" />
+    <Content Include="STYLES\Scripts\themes\classic\d.png" />
+    <Content Include="STYLES\Scripts\themes\classic\dot_for_ie.gif" />
+    <Content Include="STYLES\Scripts\themes\classic\style.css" />
+    <Content Include="STYLES\Scripts\themes\classic\throbber.gif" />
+    <Content Include="STYLES\Scripts\themes\default\d.gif" />
+    <Content Include="STYLES\Scripts\themes\default\d.png" />
+    <Content Include="STYLES\Scripts\themes\default\style.css" />
+    <Content Include="STYLES\Scripts\themes\default\throbber.gif" />
+    <Content Include="Views\Shared\DisplayTemplates\DialogResult.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\PositiveInteger.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Card\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Contact\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\CertificateNP.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CertificateNP.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Contacts.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Contacts.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\DefaultSectionView.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DefaultSectionView.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Delete.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Delete.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Info.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Info.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Links.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Links.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\LinksEmpls.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>LinksEmpls.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Menu.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Menu.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\PersonTypes.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PersonTypes.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Props.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Props.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\ResponsibleEmpls.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ResponsibleEmpls.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Dossier\Stores.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Stores.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Employee\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Juridical\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Link\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\NaturalDuplicates\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Natural\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Requisites\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Search\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\DisplayTemplates\Object.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Object.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\DisplayTemplates\Requisites.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Requisites.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\BusinessProjectField.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>BusinessProjectField.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\ContactTypeField.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>ContactTypeField.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\PersonField.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PersonField.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\PersonLinkParameter.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>PersonLinkParameter.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\EditorTemplates\PersonTypes.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PersonTypesList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TerritoryField.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>TerritoryField.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Shared\_Layout2.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout2.generated.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Synchronize\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="STYLES\Scripts\glob.kesco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Resources.et.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resources.et2.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\Resources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resources2.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\Resources.ru.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resources.ru2.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Localization\Resources.et.resx" />
+    <EmbeddedResource Include="Localization\Resources.resx" />
+    <EmbeddedResource Include="Localization\Resources.ru.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kesco.ApplicationServices\Kesco.ApplicationServices.csproj">
+      <Project>{64c8f921-dbf3-490a-ab1f-385eb1c41d53}</Project>
+      <Name>Kesco.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.BaseExtensions\Kesco.BaseExtensions.csproj">
+      <Project>{0c4d6de0-daf5-49d7-bc56-f79287332045}</Project>
+      <Name>Kesco.BaseExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.BusinessProjects.BusinessLogic\Kesco.BusinessProjects.BusinessLogic.csproj">
+      <Project>{c5c006b4-2ee2-4ad1-b338-b6c7f6ff2bfa}</Project>
+      <Name>Kesco.BusinessProjects.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.BusinessProjects.Controls\Kesco.BusinessProjects.Controls.csproj">
+      <Project>{a42273f8-0046-4d30-8639-899edd9b2a57}</Project>
+      <Name>Kesco.BusinessProjects.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.BusinessProjects.ObjectModel\Kesco.BusinessProjects.ObjectModel.csproj">
+      <Project>{c7ed894e-1a28-4fe0-86eb-8a1ba341b860}</Project>
+      <Name>Kesco.BusinessProjects.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ClassExtensions\Kesco.ClassExtensions.csproj">
+      <Project>{be40dc15-64e2-4861-9148-a891932c123c}</Project>
+      <Name>Kesco.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ComponentModel\Kesco.ComponentModel.csproj">
+      <Project>{1170b0d6-2512-474e-9c69-debb7ef5904a}</Project>
+      <Name>Kesco.ComponentModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.DataAccess\Kesco.DataAccess.csproj">
+      <Project>{9e72b472-d36d-496f-9ff7-ee2caeb26003}</Project>
+      <Name>Kesco.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Employees.BusinessLogic\Kesco.Employees.BusinessLogic.csproj">
+      <Project>{07d069e2-7d7b-4bf1-b509-e3fec0a7cefc}</Project>
+      <Name>Kesco.Employees.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Employees.Controls\Kesco.Employees.Controls.csproj">
+      <Project>{41159393-55b8-4285-885a-3a07beb49668}</Project>
+      <Name>Kesco.Employees.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Employees.ObjectModel\Kesco.Employees.ObjectModel.csproj">
+      <Project>{6217b3b3-2007-4ad7-8c8e-499178b15104}</Project>
+      <Name>Kesco.Employees.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Lib.Log\Kesco.Lib.Log.csproj">
+      <Project>{fc924b22-160a-4f7f-98eb-63e420de694e}</Project>
+      <Name>Kesco.Lib.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Linq.Dynamic\Kesco.Linq.Dynamic.csproj">
+      <Project>{9e29ef27-3f61-46d5-af6c-8e07e6c3107c}</Project>
+      <Name>Kesco.Linq.Dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.ObjectModel\Kesco.ObjectModel.csproj">
+      <Project>{195a7c92-ec1b-4af6-92b7-ba53cb643a16}</Project>
+      <Name>Kesco.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Persons.BusinessLogic\Kesco.Persons.BusinessLogic.csproj">
+      <Project>{8a7aa7f5-634e-4e27-99b4-6f689de05da2}</Project>
+      <Name>Kesco.Persons.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Persons.Controls\Kesco.Persons.Controls.csproj">
+      <Project>{133e63ba-83ec-4fb8-badf-8d13dcc3cbad}</Project>
+      <Name>Kesco.Persons.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Persons.ObjectModel\Kesco.Persons.ObjectModel.csproj">
+      <Project>{38ab830f-a950-47fe-b439-2ec9204b6ac4}</Project>
+      <Name>Kesco.Persons.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Territories.BusinessLogic\Kesco.Territories.BusinessLogic.csproj">
+      <Project>{42e9c594-1c25-4501-a421-4697edb76b01}</Project>
+      <Name>Kesco.Territories.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Territories.Controls\Kesco.Territories.Controls.csproj">
+      <Project>{89c27911-8685-4454-a6c4-e06415afe096}</Project>
+      <Name>Kesco.Territories.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Territories.ObjectModel\Kesco.Territories.ObjectModel.csproj">
+      <Project>{62c764ef-3080-49fe-a707-b44eb9a33ed0}</Project>
+      <Name>Kesco.Territories.ObjectModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Utilities\Kesco.Utilities.csproj">
+      <Project>{2eba366e-5675-4c8d-bc2d-c3a2372508e4}</Project>
+      <Name>Kesco.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.Compression\Kesco.Web.Mvc.Compression.csproj">
+      <Project>{8bfcd8ad-127b-46c6-8eec-14eb8c7b314f}</Project>
+      <Name>Kesco.Web.Mvc.Compression</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.SharedViews\Kesco.Web.Mvc.SharedViews.csproj">
+      <Project>{202437b6-9919-4b9b-9351-7496ddcb280a}</Project>
+      <Name>Kesco.Web.Mvc.SharedViews</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.UI.Controls\Kesco.Web.Mvc.UI.Controls.csproj">
+      <Project>{74f7678f-70a3-4441-bf17-e7b75b3f80e5}</Project>
+      <Name>Kesco.Web.Mvc.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kesco.Web.Mvc.UI\Kesco.Web.Mvc.UI.csproj">
+      <Project>{76ad79c0-57d1-42a0-b6f6-716d894813cc}</Project>
+      <Name>Kesco.Web.Mvc.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>33663</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/MVC/Persons</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if  "$(ConfigurationName)" == "Release"  $(SolutionDir)_Application.cmd $(SolutionDir) $(ProjectName)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

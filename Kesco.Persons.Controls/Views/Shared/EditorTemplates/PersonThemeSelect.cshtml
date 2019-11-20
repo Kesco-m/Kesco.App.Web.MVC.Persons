@@ -1,0 +1,164 @@
+﻿
+@inherits Kesco.Web.Mvc.SharedViews.Views.Shared.EditorTemplates.SelectBox
+
+@using Kesco
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI.ComponentModel.DataAnnotations
+@using Kesco.Persons.Controls.ComponentModel;
+@{
+    string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+    string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+    string viewModelPersonThemes = "window.ViewModel." + name;
+    ModelMetadata metaData = ViewData.ModelMetadata;
+    //ViewData.ModelMetadata.Model = "16, 17, 20";
+    if (!metaData.AdditionalValues.ContainsKey(PersonThemeSelectAttribute.AdditionalValuesKey_SelectBox))
+    {
+        throw new Exception(String.Format(
+                "Неверное использование шаблона IncorporationFormSelectAttribute. Ожидаемый атрибут-дескриптор '{1}' не найден для свойства {0}.",
+                metaData.PropertyName,
+                typeof(PersonThemeSelectAttribute)
+            ));
+    }
+   
+    var descriptor = metaData.AdditionalValues[PersonThemeSelectAttribute.AdditionalValuesKey_SelectBox]
+        as PersonThemeSelectAttribute;
+   
+    if (descriptor == null)
+    {
+        throw new Exception(String.Format(
+            "Неверное использование шаблона IncorporationFormSelectAttribute. Атрибут-дескриптор для свойства '{0}' имеет неверный тип {1}.",
+                metaData.PropertyName,
+                metaData.AdditionalValues[PersonThemeSelectAttribute.AdditionalValuesKey_SelectBox].GetType()
+        ));
+    }
+
+    base.Execute();
+    
+ <script>
+            function CheckPersonThemes(currentThemeID, selectedPersonThemesIds) {
+                $.ajax({
+                    url: '@(Url.Action("CheckPersonThemes", "PersonThemeSelect"))',
+                    type: 'POST',
+                    data: window.ko.toJSON({
+                        currentThemeID: currentThemeID,
+                        selectedPersonThemesIds: selectedPersonThemesIds
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    complete: function () {
+
+                    }
+                });
+            }
+
+            function CheckPersonThemesFromModal(themesIDs) {
+                $.ajax({
+                    url: '@(Url.Action("CheckPersonThemesFromModal", "PersonThemeSelect"))',
+                    type: 'POST',
+                    data: window.ko.toJSON({
+                        themesIDs: themesIDs
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    complete: function () {
+
+                    }
+                });
+            }
+ </script>
+  
+    
+    <br />
+    <table id="themesList">
+        <tr>
+            <td style="width: 3%;"></td>
+            <td style="width: 3%;"></td>
+            <td style="width: 34%;"> <label>Типы</label></td>
+            <td>  <label>Каталог(и)</label></td>
+        </tr>
+    </table>
+
+
+    Html.RegisterScript(String.Format(@"
+
+ViewModel.updateTypeField = function(themeID){{
+var selectedPersonThemesIds = '';
+for (var i = 0; i < $('.selectedPersonThemes').length; i++) {{
+	if(i == ($('.selectedPersonThemes').length - 1))
+		    {{ selectedPersonThemesIds += $('.selectedPersonThemes')[i].id; }} 
+  	else {{selectedPersonThemesIds += $('.selectedPersonThemes')[i].id; selectedPersonThemesIds += ','; }}  
+}}
+CheckPersonThemes(themeID, selectedPersonThemesIds); 
+}}
+
+ViewModel.checkPersonThemesFromModal = function(themeIDs)
+{{
+    CheckPersonThemesFromModal(themeIDs);
+}}
+
+ViewModel.getAllSelectedThemes = function(){{
+var selectedPersonThemesIds = '';
+for (var i = 0; i < $('.selectedPersonThemes').length; i++) {{
+	if(i == ($('.selectedPersonThemes').length - 1))
+		    {{ selectedPersonThemesIds += $('.selectedPersonThemes')[i].id; }} 
+  	else {{selectedPersonThemesIds += $('.selectedPersonThemes')[i].id; selectedPersonThemesIds += ','; }}  
+}}
+return selectedPersonThemesIds;
+
+}}
+
+ViewModel.removeTypeField = function(themeID){{
+    var arrayThemesIDs = themeID.split(',');
+    for (var i = 0; i < arrayThemesIDs.length; i++) {{
+        if($('#'+arrayThemesIDs[i]+'tr').length != 0){{  $('#'+arrayThemesIDs[i]+'tr').remove(); }}
+    }}        
+
+    var selectedPersonTypesIds = '';
+    for (var i = 0; i < $('.selectedPersonTypes').length; i++) {{
+	    if(i == ($('.selectedPersonTypes').length - 1))
+		        {{ selectedPersonTypesIds += $('.selectedPersonTypes')[i].id; }} 
+  	    else {{selectedPersonTypesIds += $('.selectedPersonTypes')[i].id; selectedPersonTypesIds += ','; }}  
+    }}
+    ViewModel.renderAllTypesAndThemes(selectedPersonTypesIds);
+}}
+
+function isIE () {{
+  var myNav = navigator.userAgent.toLowerCase();
+  return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+}}
+
+
+     $(window).load(function () {{ 
+        if($('#{1}___Autocomplete')[0] != null){{
+
+        $('#{1}___Autocomplete')[0].onfocusout = function(s){{ 
+            if (isIE () == 8 || isIE () == 7)
+                     {{
+                        if(event.toElement != null && event.toElement.className != 'ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-active'){{ this.value = ''; }} 
+                     }} 
+                else {{ 
+                        if(s.relatedTarget != null && s.relatedTarget.className != 'ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-active'){{ this.value = ''; }} 
+                     }} 
+          }}
+        }}
+        {0}.subscribe(function(newValue){{
+            if(newValue == '')return;
+            var selectedPersonThemesIds = '';
+            for (var i = 0; i < $('.selectedPersonThemes').length; i++) {{
+	            if(i == ($('.selectedPersonThemes').length - 1))
+		                {{ selectedPersonThemesIds += $('.selectedPersonThemes')[i].id; }} 
+  	            else {{selectedPersonThemesIds += $('.selectedPersonThemes')[i].id; selectedPersonThemesIds += ','; }}  
+            }}
+            CheckPersonThemes(newValue, selectedPersonThemesIds); 
+            var selectBoxTheme = $('#{1}').selectBox()[0];
+            var textBoxTheme = $('#{1}___Autocomplete');
+            textBoxTheme[0].value = '';
+            selectBoxTheme.value = '';
+            {0}('');
+        }})
+    }})
+    ", viewModelPersonThemes, id));
+         
+}
+
+
+
+

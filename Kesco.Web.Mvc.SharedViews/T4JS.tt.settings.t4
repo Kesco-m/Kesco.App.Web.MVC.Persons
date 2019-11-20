@@ -1,0 +1,32 @@
+﻿<#+
+/*
+		Settings used by the T4JS.tt file
+*/
+
+// This is the JavaScript namespace that will be used for the generated script.
+const string JavaScriptNamespace = "app.net";
+
+// This is the name of the object containing the generated action method endpoints.
+// It assumes the namespace above i.e. "app.net.endpoints"
+const string JavaScriptEndpointObject = "endpoints";
+
+// This is a prefix that will be placed in front of your generated paths.  This is
+// used when you're running in a virtual directory or are using custom route prefixes.
+const string RoutePrefix = "/";
+
+// The relative path to and name of the output JavaScript file. 
+const string ScriptFileName = "endpoints.js";
+
+// This is the Namespace of the AjaxEndpoint attribute used to decorate your controller action methods.
+// Change it to a namespace that's consistent with your app.
+const string AttributeNamespace = "App.Web.Attributes";
+
+// The folder under the project that contains the areas
+const string AreasFolder = "Areas";
+
+// The folder under the project that contains the controllers
+const string ControllersFolder = "Controllers";
+
+// This turns off the readme file once you've got the hang of T4JS
+const bool GenerateReadme = true;
+#>

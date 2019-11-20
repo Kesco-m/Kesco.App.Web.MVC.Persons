@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Сборка: Kesco.Web.Mvc.UI&#xD;&#xA;Пространство имён: Kesco.Web.Mvc.Infrastracture">
+    <Position X="0.5" Y="0.5" Height="0.381" Width="14.73" />
+  </Comment>
+  <Comment CommentText="Классы для описания различных типов настроек">
+    <Position X="0.5" Y="1.06" Height="0.325" Width="7.803" />
+  </Comment>
+  <Comment CommentText="абстрактный класс для настроек">
+    <Position X="0.5" Y="1.556" Height="0.325" Width="2.04" />
+  </Comment>
+  <Comment CommentText="Базовый класс для настроек приложения">
+    <Position X="6.032" Y="1.594" Height="0.481" Width="2.252" />
+  </Comment>
+  <Comment CommentText="Базовые класс конфигурации приложения">
+    <Position X="8.5" Y="7.5" Height="0.336" Width="3.369" />
+  </Comment>
+  <Comment CommentText="Базовый класс приложения">
+    <Position X="8.438" Y="1.073" Height="0.794" Width="3.369" />
+  </Comment>
+  <Comment CommentText="Базовый класс контроллера">
+    <Position X="12.206" Y="1.078" Height="0.794" Width="3.056" />
+  </Comment>
+  <Comment CommentText="Базовый класс контроллера для модели">
+    <Position X="12.232" Y="7.626" Height="0.794" Width="3.056" />
+  </Comment>
+  <Comment CommentText="Базовый класс контроллера с поддержкой валидации">
+    <Position X="12.229" Y="10.32" Height="0.794" Width="3.056" />
+  </Comment>
+  <Class Name="Kesco.Web.Mvc.ControllerEx">
+    <Position X="12.25" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EgAQAAAQQDAoAgEAAACAAQAAAAAAAACAABAEEoMAAAg=</HashCode>
+      <FileName>Infrastructure\ControllerEx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.CacheSettings">
+    <Position X="4.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ApplicationSettings">
+    <Position X="6" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAgDAAAAAAAAABAAEAAIwCAACAAAAAQBAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Infrastructure\Settings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.UserContext">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAgAUAQQAACAAAgAAQAAAIAIBAAAAAIAAAE=</HashCode>
+      <FileName>Infrastructure\UserContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Application&lt;S&gt;" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="4" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAQAAAAAQAAAAAAAAAQAAAAAAAAABAAAAQAA=</HashCode>
+      <FileName>Infrastructure\ApplicationEx.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.DateTimeSettings">
+    <Position X="3.75" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAEABAEAABBFMAAAAAAAAACAAAAAAAABAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.NumberSettings">
+    <Position X="0.75" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAAAAASEgAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.NumberWithSymbolSettings">
+    <Position X="0.75" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.CultureSettings">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAEAAAAAACAAAAEQAAAAACAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationSettingsT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Configuration&lt;TApplicationSettings&gt;">
+    <Position X="8.5" Y="8" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAQAAAAAAAAAAAAAAAAAAACAAAAQAA=</HashCode>
+      <FileName>Infrastructure\ConfigurationT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ModelController&lt;TDataModel&gt;">
+    <Position X="12.25" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ModelControllerT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Infrastructure.ValidationSupportedModelController&lt;TViewModel&gt;">
+    <Position X="12.25" Y="11.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ValidationSupportedModelController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Kesco.Web.Mvc.ILocalized">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationEx.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kesco.Web.Mvc.IThemeable">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\ApplicationEx.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -1,0 +1,110 @@
+﻿
+@inherits Kesco.Persons.Web.SiteViewPage<Kesco.Persons.Web.Models.Dossier.DossierSectionContext>
+@using Kesco.Web.Mvc; 
+@using Kesco.Persons.Web.Models.Dossier;
+@using Resources;
+@{
+    int ii = 0;
+	int personID = Model.ViewModel.Model.PersonID;
+	int accessLevel = (int)Model.ViewModel.AccessLevel;
+	var sectionID = Model.Section.ID.ToString();
+	var currentAccess = Model.AccessGranted;
+	var groups = Model.ViewModel.GetContextItemsGroup(cxti => cxti.TabID == Model.Section.ID, cxti => cxti.Caption);
+    var doisserSection = Model.Section;
+	if (groups.Count == 0) {Html.DossierClientSideScript_HideSection(Model.Section.ID);}
+    var modalCaption = Resources.Persons_Doisser_Actuality_Checked_modalCaption;
+    var modalDialogFirst = Resources.Persons_Doisser_Actuality_Checked_modalDialogFirst;
+    var modalDialogSecond = Resources.Persons_Doisser_Actuality_Checked_modalDialogSecond;
+    var modalButtonOkCaption = Resources.Persons_Doisser_Actuality_Checked_modalButtonOkCaption;
+    var ParameterNone = Resources.Persons_Link_Parameter0;
+   
+    /* Ищем в URL параметр hideOldVer, пишем его в сессию. Требуется для скрытия кнопки "Открыть в старой версии"  */
+    string hideOldVerRequest = HttpContext.Current.Request["hideOldVer"];
+    var hideOldVerSession = HttpContext.Current.Session["hideOldVer"];
+    string hideOldVer = "false";
+
+    if (!String.IsNullOrEmpty(hideOldVerRequest))
+    {
+        HttpContext.Current.Session["hideOldVer"] = hideOldVer = hideOldVerRequest;
+    }
+    else if (hideOldVerSession != null)
+    {
+        hideOldVer = hideOldVerSession.ToString();
+    }
+    
+}
+
+
+<tr class="dsl@(sectionID)">
+	<td colspan="3">
+    
+    @if (accessLevel > 0)
+    {
+        <a href="javascript:ContactActualWIndow.RenderWindow( @(sectionID), '@(modalCaption)', '@(modalDialogFirst)', '@(modalDialogSecond)', '@(modalButtonOkCaption)', '@(ParameterNone)' )"> @(Resources.Persons_Doisser_Actuality_Is_Checked) :</a>
+    }
+    else
+    {
+       @Resources.Persons_Doisser_Actuality_Is_Checked @Html.Raw(":")  
+    }  
+
+	@if (Model.ViewModel.ContactActuality == null || Model.ViewModel.ContactActuality.ChangedBy == null)
+ {
+		@Resources.Persons_Dossier_ActualityNotChecked
+ }
+ else
+ {
+		@Html.DisplayFor(m => m.ViewModel.ContactActuality.ChangedBy, "EmployeeStatic", new
+{
+    TooltipPositionMy = "middle right",
+    TooltipPositionAt = "middle left",
+    InitialLabel = HL(Model.ViewModel.ContactActualityChangedBy.GetInstanceFriendlyName())
+})
+		<span>@((Model.ViewModel.ContactActuality.ChangedDate.HasValue ? (Model.ViewModel.ContactActuality.ChangedDate.Value.FromUtcToClient().ToString("F")) : ""))</span>
+ }
+	</td>
+</tr>
+@foreach (var type in groups)
+{
+    int i = 0;
+    foreach (var item in type.Items)
+    {
+	<tr class="hoverable dsl@(sectionID)">
+        <td style="width: 180px; padding-left: 20px;" class="ui-label" nowrap="nowrap">
+          @if (i++ == 0)
+            {
+                @Html.Raw(type.Caption + ":")
+            }
+        </td>
+		<td>
+			@if (accessLevel >= 2 && currentAccess > 0)
+   {
+			<a href="javascript: void(0);" onclick="editContact(@(item.ID), @(sectionID), @(hideOldVer))"
+				title="@(Kesco.Web.Mvc.UI.Controls.Localization.Resources.GUI_Menu_Edit_Edit)"
+				><span class="ui-icon ui-icon-pencil text-ui-icon"></span>
+			</a>
+   }
+@{
+   string text = item.LinkText, phone = "";
+   if (item.Order >= 20 && item.Order <= 39 && text.Contains((char)31))
+   {
+       string[] strArr = text.Split(new char[] { (char)31 });
+       text = strArr[0];
+       phone = strArr[1];
+      // @Html.Raw("["  + text + "->" + phone + "]")
+   }
+		@: @Html.DisplayFor(m => text, GetControlNameByContactType(item.Order), new { PhoneNumber = phone, })
+		@Html.Raw(HL(item.Label))
+}
+		</td>
+		<td class="changed">
+			@Html.DisplayFor(m => item.ChangedBy, "EmployeeStatic", new
+{
+    TooltipPositionMy = "middle right",
+    TooltipPositionAt = "middle left",
+    InitialLabel = HL(item.ChangedByFIO)
+}) 
+			<span>@(item.ChangedDate)</span>
+		</td>
+	</tr>
+	}
+}

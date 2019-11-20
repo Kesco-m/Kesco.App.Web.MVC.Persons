@@ -1,0 +1,18 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<int?>
+@using Kesco
+@using Kesco.ObjectModel
+@using Kesco.Web.Mvc.SharedViews.Localization
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+@Html.TextBoxFor(Model => Model, new { 
+		@readonly = "1", 
+		style = "width: 50px; border: 0px solid transparent; background: transparent; margin-top: 2px;", 
+		data_bind = "visible: {0}() && {0}() != '0', value: {0}".FormatWith(name)
+	})
+<div style="border: 0px solid black; margin-top: 2px;" data-bind="
+		visible: !@(name) || @(name)() == '0'
+	"> @Resources.Kesco_Web_Mvc_SharedApp_EditorTemplate_UniqueID_NewEntry</div>

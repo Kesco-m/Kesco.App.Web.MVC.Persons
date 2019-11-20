@@ -1,0 +1,85 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
+@{ 
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metadata = ViewData.ModelMetadata;
+
+	string value = Model ?? "";
+	string label = Model ?? "";
+
+	// Переданы ли доступные типы контактов
+	string contactType = ""; 
+	if (metadata.AdditionalValues["EmployeeContactControl.ContactType"] != null) {
+		contactType = metadata.AdditionalValues["EmployeeContactControl.ContactType"].ToString();
+	}
+
+	// Получить идентификатор скрипта
+	string scriptID = "EmployeeContact_HandleFormatItem"; 
+	if (metadata.AdditionalValues["EmployeeContactControl.ScriptID"] != null) {
+		scriptID = metadata.AdditionalValues["EmployeeContactControl.ScriptID"].ToString();
+	}
+
+}
+
+<div style="width: 300px;">
+@Html.Raw(Html.KescoLookup(name, id).SelfInitialized(false)
+	.KeyField("Contact").DisplayField("Contact").Value(value, label)
+	.Autocomplete(Url.FullPathAction("LookupEmployeeContact", "Default"), 8)
+	.ClientContext(new { @type = contactType })
+	.ClientEvents((events) => {
+			events.OnCommand = String.Format(@" function (event, ui) {{
+					if ($.isFunction(window.dispatchCommand_{0})) dispatchCommand_{0}(ui.item.command);
+					else alert('Не установлен обработчик комманд для элемента управления выбора контакта лица ({0})');
+				}}", id);
+			events.OnRequest = String.Format(@" function (request) {{
+					if ($.isFunction(window.handleRequest_{0})) handleRequest_{0}(request);
+				}}", id);
+			events.OnFormatItem = String.Format(@" function (item) {{
+					if ($.isFunction(window.{0})) return {0}(item);
+					return item.label;
+				}}", scriptID);
+		})
+	.ShowSearchButton()
+	.ShowViewButton(false)
+		.HtmlAttributes(ViewBag.HtmlAttributes ?? new { data_bind = "selectBox: "+name })
+	.ToString())
+</div>
+@{
+    if (!String.IsNullOrEmpty(contactType) && contactType != "0") {
+        string image = String.Empty;
+        string call = String.Empty;
+        switch (contactType)
+        {
+            case "-1": 
+                image = WebAssetImage("PhoneStandard.gif");
+                call = "ViewModel.makeCall(item.value)";
+                break;
+            case "-2": 
+                image = WebAssetImage("Email.gif");
+                call = "ViewModel.sendEmail(item.value)";
+                break;
+            case "-3": 
+                image = WebAssetImage("messenger.gif");
+                call = "ViewModel.openMessengerChat(item.value)";
+                break;
+        }
+    
+        Html.RegisterScript(String.Format(@"
+		    $('#{0}').selectBox('addButton', {{
+			    'data-bind': 'enabled: {1}',
+			    text: 'Info',
+			    image: '{2}',
+			    click: function () {{
+				    var $this = $(this);
+				    var item = $('#{0}').selectBox('getValue');
+                    if (item && item.value) {{
+                    {3}
+                    }}
+			    }}
+		    }});
+        ", id, name, image, call));
+    }
+}
+

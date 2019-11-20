@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Пример модели данных используемый в модели представления">
+    <Position X="4.51" Y="4.333" Height="0.458" Width="2.252" />
+  </Comment>
+  <Comment CommentText="Модель представление с поддержкой валидации">
+    <Position X="4.5" Y="2.781" Height="0.5" Width="2.252" />
+  </Comment>
+  <Comment CommentText="Реализация метода расширения у FluentValidation для обновления ValidationResults на основе модели данных ValidationResults">
+    <Position X="7.021" Y="3.458" Height="0.604" Width="2.002" />
+  </Comment>
+  <Comment CommentText="Базовый контроллер с поддержкой валидации">
+    <Position X="1.5" Y="2.781" Height="0.427" Width="2.762" />
+  </Comment>
+  <Comment CommentText="Аттрибут производный от UIHint для декларации представления по умолчанию для ValidationResults ">
+    <Position X="9.271" Y="4.979" Height="0.563" Width="2.242" />
+  </Comment>
+  <Comment CommentText="Контейнер для хранения результатов валидации декларируемый в модели предавления">
+    <Position X="9.271" Y="3.469" Height="0.479" Width="2.242" />
+  </Comment>
+  <Comment CommentText="Пример контроллера с поддержкой валидации">
+    <Position X="1.552" Y="4.354" Height="0.49" Width="2.7" />
+  </Comment>
+  <Comment CommentText="Пример представления с поддержкой валидации">
+    <Position X="4.542" Y="5.687" Height="0.417" Width="2.231" />
+  </Comment>
+  <Comment CommentText="Пример различных валидаторов инкапсулириющих необходимые проверки">
+    <Position X="7.021" Y="4.99" Height="0.542" Width="1.971" />
+  </Comment>
+  <Comment CommentText="Представление по умолчанию для отображения ValidationResults">
+    <Position X="9.26" Y="6.573" Height="0.344" Width="2.221" />
+  </Comment>
+  <Comment CommentText="					Диаграмма классов для пояснения принципа работы механизма валидации в Kesco.Common.dll">
+    <Position X="1.552" Y="0.5" Height="0.263" Width="9.94" />
+  </Comment>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Controllers.DefaultController" Collapsed="true">
+    <Position X="1.5" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CABAAcAEABAAAAAAAAAAAAAAAAAAAAASBAEgCAAEAAA=</HashCode>
+      <FileName>Controllers\DefaultController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ModelController&lt;TDataModel&gt;" Collapsed="true">
+    <Position X="1.5" Y="2" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ComponentModel.DataAnnotations.ValidationResultsAttribute" Collapsed="true">
+    <Position X="9.25" Y="7" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Models.Test.DataModel" Collapsed="true">
+    <Position X="4.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAIAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Test\Accessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Models.Test.ViewModelValidator" Collapsed="true">
+    <Position X="7" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Test\Accessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Models.Test.ViewModelValidator1" Collapsed="true">
+    <Position X="7" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Test\Accessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Models.Test.ViewModelValidator2" Collapsed="true">
+    <Position X="7" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Test\Accessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Models.Test.ViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="3.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQAIAAAAAACAAAAAAAAAAAABAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Test\Accessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Validation.FluentValidationExtensions" Collapsed="true">
+    <Position X="7" Y="4.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ViewModel&lt;TDataModel&gt;" Collapsed="true">
+    <Position X="4.5" Y="2" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.ControllerEx" Collapsed="true">
+    <Position X="1.5" Y="1" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Views.Shared.DisplayTemplates.ValidationResults" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Shared\DisplayTemplates\ValidationResults.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Infrastructure.ValidationSupportedModelController&lt;TViewModel&gt;" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.Validation.ValidationResults" Collapsed="true">
+    <Position X="9.25" Y="4.25" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kesco.Web.Mvc.SharedViews.Views.Default.Test" Collapsed="true">
+    <Position X="4.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Default\Test.generated.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Kesco.Web.Mvc.Infrastructure.IValidateResults">
+    <Position X="7" Y="2" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

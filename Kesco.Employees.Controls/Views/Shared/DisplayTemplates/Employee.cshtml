@@ -1,0 +1,43 @@
+﻿@inherits Kesco.Employees.Controls.SiteViewPage<int?>
+@using Kesco.Employees.Controls
+@using Kesco.Employees.Controls.ComponentModel
+@using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI.Controls.DataAccess
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+	ModelMetadata metaData = ViewData.ModelMetadata;
+	if (ViewData["ID"] != null) {id = ViewData["ID"].ToString();}
+	bool actual = false;
+	if (ViewData["Actual"] != null) {actual = ViewData["Actual"].ToString().ToLower() == "true";}
+	bool useViewModelBinding = false;
+	if (ViewData["UseViewModelBinding"] != null) {useViewModelBinding = ViewData["UseViewModelBinding"].ToString().ToLower() == "true";}
+	string initialLabel = ((string)ViewData["InitialLabel"]) ?? String.Empty;
+	string tooltipPositionMy = ((string)ViewData["TooltipPositionMy"]) ?? String.Empty;
+	string tooltipPositionAt = ((string)ViewData["TooltipPositionAt"]) ?? String.Empty;
+	string cssClass = ((string) ViewData["CssClass"]) ?? String.Empty;
+	string value = Model.HasValue?Model.ToString() : String.Empty;
+	if (!useViewModelBinding) {cssClass = "employeeControl " + cssClass;}
+	
+	Html.RegisterCommonScriptCode("employeeControl", @"
+		$(document).ready(function () {
+			setTimeout(function() {
+				if (window.console) console.log('employeeControl starting...'+new Date());
+				$('.employeeControl').each(function(index, item) {
+					$(this).employee({
+							container: $(document.body),
+							value: $(this).data('employee-id')
+						});
+				});
+				if (window.console) console.log('employeeControl finished. '+new Date());
+			}, 10);
+		});
+	");
+}
+<a id="@(id)__Link" class="@(cssClass)" href="#" onclick="return false;" data-tip-pos-my="@(tooltipPositionMy)" data-tip-pos-at="@(tooltipPositionAt)"
+	data-employee-id="@(value)"	data-actual="@(actual.ToString().ToLower())" 
+		@if (useViewModelBinding) {
+		@: data-bind="employeeControl: { value: @(name) } "
+		}		
+		>@(initialLabel)</a>
+		  

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Kesco.Persons.Controls.PersonSelect">
+  <componentModelMoniker Id="8df9e5aa-bca0-426d-9438-cdfdfcebeb67" />
+  <nestedChildShapes>
+    <componentShape Id="5008bd50-7449-4e00-ac3d-76ec068a4c6b" absoluteBounds="0.625, 0.875, 6.6041666666666679, 6.8" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+      <componentMoniker Id="3893f473-519d-4b65-87f4-5aa870c740e7" LastKnownName="PersonSelect" />
+      <nestedChildShapes>
+        <componentUseShape Id="b54fc194-a6e5-4381-a5da-7956a8edf100" absoluteBounds="4.833333333333333, 1.75, 2.0000000000000009, 0.95" customColor="161, 199, 231" whiteBoxBoundsHeight="0" whiteBoxBoundsWidth="0" blackBoxBoundsHeight="0" blackBoxBoundsWidth="0" whiteBoxTopEdgeShapesCount="0" whiteBoxRightEdgeShapesCount="0" whiteBoxBottomEdgeShapesCount="0" whiteBoxLeftEdgeShapesCount="0" blackBoxTopEdgeShapesCount="0" blackBoxRightEdgeShapesCount="0" blackBoxBottomEdgeShapesCount="0" blackBoxLeftEdgeShapesCount="0">
+          <partMoniker Id="3e6f8617-41b7-4e76-b99d-7f3ce5b09611" LastKnownName="PersonSelectController" />
+        </componentUseShape>
+      </nestedChildShapes>
+    </componentShape>
+  </nestedChildShapes>
+</componentDiagram>

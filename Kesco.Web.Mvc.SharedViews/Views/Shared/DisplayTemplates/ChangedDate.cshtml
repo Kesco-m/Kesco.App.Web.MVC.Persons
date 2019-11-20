@@ -1,0 +1,19 @@
+﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<DateTime?>
+@using FluentJson
+@using Kesco
+@{
+	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
+	string name = ViewData.TemplateInfo.HtmlFieldPrefix;
+
+	Html.RegisterScript(@"
+		
+		;(function(scope, $) {{
+			var observable = scope.ViewModel.{1};
+			observable.formatted = ko.computed(function () {{
+				return Globalize.format(new Date(observable()).toLocalDate(), 'F', 'kesco');
+			}});
+		}})(window, jQuery);
+		
+	".FormatWith(id, name));
+}
+<span data-bind="text: @(name).formatted"></span>
