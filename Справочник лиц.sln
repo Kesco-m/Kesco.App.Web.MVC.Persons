@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Web.Mvc.Compression", "Kesco.Web.Mvc.Compression\Kesco.Web.Mvc.Compression.csproj", "{8BFCD8AD-127B-46C6-8EEC-14EB8C7B314F}"
 EndProject
@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.DataAccess", "Kesco.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.ObjectModel", "Kesco.ObjectModel\Kesco.ObjectModel.csproj", "{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Kesco.Common.Modelling", "Kesco.Common.Modelling\Kesco.Common.Modelling.modelproj", "{992B5172-5694-4340-8AED-04BDA1EF0F63}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.ClassExtensions", "Kesco.ClassExtensions\Kesco.ClassExtensions.csproj", "{BE40DC15-64E2-4861-9148-A891932C123C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Utilities", "Kesco.Utilities\Kesco.Utilities.csproj", "{2EBA366E-5675-4C8D-BC2D-C3A2372508E4}"
@@ -26,8 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Linq.Dynamic", "Kesco.Linq.Dynamic\Kesco.Linq.Dynamic.csproj", "{9E29EF27-3F61-46D5-AF6C-8E07E6C3107C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Web.Mvc.UI.Controls", "Kesco.Web.Mvc.UI.Controls\Kesco.Web.Mvc.UI.Controls.csproj", "{74F7678F-70A3-4441-BF17-E7B75B3F80E5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Web.Mvc.Test", "Kesco.Web.Mvc.Test\Kesco.Web.Mvc.Test.csproj", "{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Lib.Log", "Kesco.Lib.Log\Kesco.Lib.Log.csproj", "{FC924B22-160A-4F7F-98EB-63E420DE694E}"
 EndProject
@@ -60,10 +56,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kesco.Persons.Web", "Kesco.Persons.Web\Kesco.Persons.Web.csproj", "{EDCB6EA5-7051-42CA-95CE-5B57F9CFE8CC}"
 EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug FW 3.5|Any CPU = Debug FW 3.5|Any CPU
 		Debug FW 3.5|x86 = Debug FW 3.5|x86
@@ -159,17 +151,6 @@ Global
 		{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}.ReleaseWithAdvancedLogging|Any CPU.ActiveCfg = Release|Any CPU
 		{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}.ReleaseWithAdvancedLogging|Any CPU.Build.0 = Release|Any CPU
 		{195A7C92-EC1B-4AF6-92B7-BA53CB643A16}.ReleaseWithAdvancedLogging|x86.ActiveCfg = Release|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Debug FW 3.5|Any CPU.ActiveCfg = Debug|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Debug FW 3.5|Any CPU.Build.0 = Debug|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Debug FW 3.5|x86.ActiveCfg = Debug|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.Release|x86.ActiveCfg = Release|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.ReleaseWithAdvancedLogging|Any CPU.ActiveCfg = Release|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.ReleaseWithAdvancedLogging|Any CPU.Build.0 = Release|Any CPU
-		{992B5172-5694-4340-8AED-04BDA1EF0F63}.ReleaseWithAdvancedLogging|x86.ActiveCfg = Release|Any CPU
 		{BE40DC15-64E2-4861-9148-A891932C123C}.Debug FW 3.5|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE40DC15-64E2-4861-9148-A891932C123C}.Debug FW 3.5|Any CPU.Build.0 = Debug|Any CPU
 		{BE40DC15-64E2-4861-9148-A891932C123C}.Debug FW 3.5|x86.ActiveCfg = Debug|Any CPU
@@ -218,18 +199,6 @@ Global
 		{74F7678F-70A3-4441-BF17-E7B75B3F80E5}.ReleaseWithAdvancedLogging|Any CPU.ActiveCfg = Release|Any CPU
 		{74F7678F-70A3-4441-BF17-E7B75B3F80E5}.ReleaseWithAdvancedLogging|Any CPU.Build.0 = Release|Any CPU
 		{74F7678F-70A3-4441-BF17-E7B75B3F80E5}.ReleaseWithAdvancedLogging|x86.ActiveCfg = Release|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Debug FW 3.5|Any CPU.ActiveCfg = Debug|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Debug FW 3.5|Any CPU.Build.0 = Debug|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Debug FW 3.5|x86.ActiveCfg = Debug|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.Release|x86.ActiveCfg = Release|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.ReleaseWithAdvancedLogging|Any CPU.ActiveCfg = Release|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.ReleaseWithAdvancedLogging|Any CPU.Build.0 = Release|Any CPU
-		{763CF04C-DEFB-4B6E-A52A-F5C36E20A2A2}.ReleaseWithAdvancedLogging|x86.ActiveCfg = Release|Any CPU
 		{FC924B22-160A-4F7F-98EB-63E420DE694E}.Debug FW 3.5|Any CPU.ActiveCfg = Debug|Any CPU
 		{FC924B22-160A-4F7F-98EB-63E420DE694E}.Debug FW 3.5|Any CPU.Build.0 = Debug|Any CPU
 		{FC924B22-160A-4F7F-98EB-63E420DE694E}.Debug FW 3.5|x86.ActiveCfg = Debug|x86
@@ -417,5 +386,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA7869FC-9E8C-41E1-B36D-0D770AEE1854}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

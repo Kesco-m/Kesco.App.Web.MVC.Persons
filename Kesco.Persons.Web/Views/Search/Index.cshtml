@@ -110,9 +110,10 @@
 		}
 
 		function prepareParams() {
-			var filterSettings = ko.mapping.toJS(ViewModel.filterSettings);
-
-			ViewModel.Params.PersonWhereSearch(joinIntArray(ko.toJS(filterSettings.PersonWhereSearch.Value)));
+		    var filterSettings = ko.mapping.toJS(ViewModel.filterSettings);
+		    if (filterSettings.PersonWhereSearch.Editable) {
+			    ViewModel.Params.PersonWhereSearch(joinIntArray(ko.toJS(filterSettings.PersonWhereSearch.Value)));
+			}
 			ViewModel.Params.PersonHowSearch(filterSettings.PersonHowSearch.Value);
 			ViewModel.Params.PersonType(joinIntArray(ko.toJS(filterSettings.PersonType.Value)));
 			ViewModel.Params.PersonCheck(joinIntArray(ko.toJS(filterSettings.Veracity.Value)));
@@ -323,13 +324,8 @@
 				};
 
 				@* Вычисление ссылки на старую версию приложения *@
-				@{
-					string url = Configuration.AppSettings.URI_person_search_old + Request.Url.Query;
-					url = Regex.Replace( Regex.Replace(url, "[?]search=[^&]*(&|$)", "?", RegexOptions.IgnoreCase), "&search=[^&]*(&|$)", "&", RegexOptions.IgnoreCase);
-				}
-				ViewModel.prevVersionUrl =  window.ko.computed(function () {
-					return "@(Html.Raw(url))" + (window.ViewModel.filterSettings.Search.Value() == "" ? "" : "@(Html.Raw(Request.Url.Query!="" ? "&" : "?"))search=" + window.ViewModel.filterSettings.Search.Value());
-				}, window.ViewModel);
+			
+                ViewModel.prevVersionUrl = "";
 
 				ViewModel.hasRolesForBProject = ViewModel.HasRolesForBProject().length > 0 ? true : false;
 
@@ -442,8 +438,7 @@
 					var url = '@Url.Action("Index", "Natural")' 
 						+ params 
 						+ "&text=" + encodeURIComponent(ViewModel.filterSettings.Search.Value())
-						+ "&callbackUrl=" + callbackUrl
-					    + "&hideOldVer=" + '@(hideOldVer)';
+						+ "&callbackUrl=" + callbackUrl;
 					openPopupWindow(url, null, function (result) {
 						var dialogResult = "";
 						var record = null;
@@ -471,7 +466,7 @@
 				ViewModel.newJuridical = function() {
 					openPopupWindow('@Url.Action("Index", "Juridical")' + params 
 					    + "&text=" + encodeURIComponent(ViewModel.filterSettings.Search.Value())
-					    + "&hideOldVer=" + '@(hideOldVer)', null, function (result) {
+					    , null, function (result) {
 						var dialogResult = "";
 						var record = "";
 						if (result) {

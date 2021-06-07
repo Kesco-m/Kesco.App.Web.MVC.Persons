@@ -219,13 +219,15 @@ namespace Kesco.Web.Mvc
 			}
 		}
 
-		/// <summary>
-		/// Saves the application settings.
-		/// </summary>
-		/// <param name="clid">The clid.</param>
-		/// <param name="settings">The settings.</param>
-		/// <returns></returns>
-		public ActionResult SaveApplicationSettings(int? clid, IDictionary<string, string> settings)
+        
+
+        /// <summary>
+        /// Saves the application settings.
+        /// </summary>
+        /// <param name="clid">The clid.</param>
+        /// <param name="settings">The settings.</param>
+        /// <returns></returns>
+        public ActionResult SaveApplicationSettings(int? clid, IDictionary<string, string> settings)
 		{
 
 			clid = clid ?? 0;

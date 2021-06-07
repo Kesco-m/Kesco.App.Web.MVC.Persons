@@ -159,7 +159,7 @@ WriteLiteral(@">
 				if (w && !w.closed && w.$ && w.$.windowManager) {
 					request = w.$.windowManager.getContext(window.self);
 					request.type = request.type || ""POST"";
-					if (window.console) console.log(request);
+					
 					if (request.type == ""GET"") {
 						window.location.href = request.url;
 					} else {

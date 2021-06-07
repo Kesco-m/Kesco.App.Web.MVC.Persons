@@ -17,13 +17,10 @@ namespace Kesco.Web.Mvc.Validation
 		/// </summary>
 		protected List<string> lastInvalidEmails = new List<string>();
 
-		public EmailAddressPropertyValidator()
-			: base(() => Kesco.Web.Mvc.Localization.Resources.EmailAddressPropertyValidator_EmailInvalid)
-		{
-			CustomMessageFormatArguments.Add((arg, obj) => {
-				return String.Join("; ", lastInvalidEmails);
-			});
-		}
+        public EmailAddressPropertyValidator() : base(Kesco.Web.Mvc.Localization.Resources.EmailAddressPropertyValidator_EmailInvalid) {
+                       
+        }
+
 
 		protected override bool IsValid(PropertyValidatorContext context)
 		{

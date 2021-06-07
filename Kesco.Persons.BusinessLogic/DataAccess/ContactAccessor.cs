@@ -64,7 +64,7 @@ SELECT DISTINCT value FROM Инвентаризация.dbo.fn_SplitInts( @ids )
 SELECT	X.КодКонтакта, X.КодЛица, NULL КодСвязиЛиц,
 	    NULL КодЛицаСвязи, '' НадписьЛица,
 	    NULL КодЛицаСвязанный,
-	    2 ПоКлиенту,
+	    2 ПоКлиенту, Типы.Icon,
 	    X.КодТипаКонтакта, CASE @Язык WHEN 'ru' THEN Типы.ТипКонтакта ELSE Типы.ТипКонтактаЛат END ТипКонтакта, X.Контакт,
 	    CASE WHEN X.КодТипаКонтакта BETWEEN 20 AND 39 THEN '+'+LTRIM(X.КонтактRL) ELSE '' END НомерМеждународный,
 	    ISNULL(X.Примечание, '') Примечание,
@@ -80,7 +80,7 @@ SELECT 	КодКонтакта, NULL КодЛица, NULL КодСвязиЛиц
 	    X.КодЛица КодЛицаСвязи,
 	    '(' + Л.Кличка + ')' НадписьЛица,
 	    CASE WHEN X.КодЛица = X.КодЛицаРодителя THEN X.КодЛицаПотомка ELSE X.КодЛицаРодителя END КодЛицаСвязанный,
-	    CASE WHEN @IdClient IN (X.КодЛицаРодителя, X.КодЛицаПотомка) THEN 1 ELSE 3 END ПоКлиенту,
+	    CASE WHEN @IdClient IN (X.КодЛицаРодителя, X.КодЛицаПотомка) THEN 1 ELSE 3 END ПоКлиенту, Типы.Icon,
 	    X.КодТипаКонтакта, CASE @Язык WHEN 'ru' THEN Типы.ТипКонтакта ELSE Типы.ТипКонтактаЛат END ТипКонтакта, X.Контакт,
 	    CASE WHEN X.КодТипаКонтакта BETWEEN 20 AND 39 THEN '+'+LTRIM(X.КонтактRL) ELSE '' END НомерМеждународный,
 	    ISNULL(X.Примечание, '') Примечание,
@@ -94,6 +94,7 @@ FROM (	SELECT	Контакты.*
 	            Инвентаризация.dbo.Сотрудники Сотрудники ON Сотрудники.КодСотрудника = X.Изменил
 ")]
         public abstract List<PersonLinkedContact> GetContactsForPersonLinks(string ids, int IdClient);
+
 
 
         /// <summary>

@@ -3,7 +3,39 @@ using BLToolkit.Validation;
 
 namespace Kesco.Web.Mvc
 {
+    /// <summary>
+    /// Стили приложения
+    /// </summary>
+    public class AppStyles
+    {
 
+        /// <summary>
+        /// Возвращает или устанавливает URI расположения папки с клиентскими скриптами.
+        /// </summary>
+        /// <value>
+        /// URI расположения папки с клиентскими скриптами.
+        /// </value>        
+        public static string URI_Styles_Scripts {  get { return "~/styles/scripts/"; } }
+
+        /// <summary>
+        /// Возвращает или устанавливает URI расположения папки со 
+        /// стиливыми CSS-файлами.
+        /// </summary>
+        /// <value>
+        /// URI папки со стиливыми CSS-файлами.
+        /// </value>
+        
+        public static string URI_Styles_Css { get { return "~/styles/css/"; } }
+
+        /// <summary>
+        /// Возвращает или устанавливает URI расположения папки с медиа-файлами.
+        /// </summary>
+        /// <value>
+        /// URI папки с медиа-файлами.
+        /// </value>
+
+        public static string URI_Styles { get { return "/styles/"; } } 
+    }
 	/// <summary>
 	/// Данный класс описывает настройки локализации дат/времени
 	/// на стороне клиента (браузер).
@@ -257,13 +289,30 @@ namespace Kesco.Web.Mvc
 	/// <typeparam name="T">Тип установок приложения</typeparam>
 	public abstract class ApplicationSettings: Settings
 	{
-		/// <summary>
-		/// Возвращает или устанавливает название приложения.
+
+        /// <summary>
+		/// Путь к скриптам
 		/// </summary>
 		/// <value>
-		/// Название приложения.
+		/// Путь к скриптам.
 		/// </value>
-		public abstract string AppName { get; protected internal set; }
+		public abstract string URI_styles_js { get; protected internal set; }
+
+        /// <summary>
+        /// Сборос кэша
+        /// </summary>
+        /// <value>
+        /// Сборос кэша.
+        /// </value>
+        public abstract string URI_styles_cache { get; protected internal set; }
+
+        /// <summary>
+        /// Возвращает или устанавливает название приложения.
+        /// </summary>
+        /// <value>
+        /// Название приложения.
+        /// </value>
+        public abstract string AppName { get; protected internal set; }
 
 		/// <summary>
 		/// Возвращает или устанавливает URI справки.
@@ -309,33 +358,7 @@ namespace Kesco.Web.Mvc
 		[Required]
 		public abstract string Email_Support { get; protected internal set; }
 
-		/// <summary>
-		/// Возвращает или устанавливает URI расположения папки с клиентскими скриптами.
-		/// </summary>
-		/// <value>
-		/// URI расположения папки с клиентскими скриптами.
-		/// </value>
-		[Required]
-		public abstract string URI_Styles_Scripts { get; protected internal set; }
-
-		/// <summary>
-		/// Возвращает или устанавливает URI расположения папки со 
-		/// стиливыми CSS-файлами.
-		/// </summary>
-		/// <value>
-		/// URI папки со стиливыми CSS-файлами.
-		/// </value>
-		[Required]
-		public abstract string URI_Styles_Css { get; protected internal set; }
-
-		/// <summary>
-		/// Возвращает или устанавливает URI расположения папки с медиа-файлами.
-		/// </summary>
-		/// <value>
-		/// URI папки с медиа-файлами.
-		/// </value>
-		[Required]
-		public abstract string URI_Styles { get; protected internal set; }
+        
 
 		/// <summary>
 		/// Возвращает или устанавливает URI получения proxy объектов для взаимодействия с зарегистрированными хабами.

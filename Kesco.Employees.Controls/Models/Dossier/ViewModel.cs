@@ -184,7 +184,8 @@ namespace Kesco.Employees.Controls.Models.Dossier.EmployeeInfo
 				EmployeeStatus = Employee.GetEmployeeStatus(Employee.Status);
 				LastPassage = Repository.Employees.GetEmployeeLastPassage(EmployeeID);
 				IsPersonAdministrator = Repository.Employees.BelongsToPersonAdministators(Employee.ID);
-                IsPersonCardAccess = Repository.Employees.BelongsToPersonCard(Employee.ID);
+                var listRoles = System.Configuration.ConfigurationManager.AppSettings["accessCardEmployee"];
+                IsPersonCardAccess = Repository.Employees.BelongsToPersonCard(Employee.ID, listRoles);
 
 				if (Employee.Status != 3) {
 					Contacts = Repository.Employees.GetEmployeeContacts(EmployeeID, null);

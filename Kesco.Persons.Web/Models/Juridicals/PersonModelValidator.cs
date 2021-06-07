@@ -14,11 +14,11 @@ namespace Kesco.Persons.Web.Models.Juridicals
 			if (checkRequisites)
 				RuleFor(r => r.PersonTypes.PersonTypeIDs)
 					.NotEmpty()
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_JuridicalPerson_MustSpecifyAtLeastOnePersonType);
             RuleFor(r => r.ResponsibleEmployees).Cascade(CascadeMode.StopOnFirstFailure)
                 .Must(ResponsibleEmployeesSpecified)
-                    .WithLocalizedMessage(() => Localization.Resources.Views_NaturalPerson_Validation_Responsible);
+                    .WithMessage( Localization.Resources.Views_NaturalPerson_Validation_Responsible);
 		}
 
 		protected bool MustSpecifyAtLeastOneType(List<int> list)

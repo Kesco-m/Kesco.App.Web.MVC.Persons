@@ -46,30 +46,7 @@
 			var centeredY,centeredX;
 			var wnd;
 			var wndName = this.generateWindowName(settings.windowNameSuffix);
-			if(settings.centerBrowser){
-				if ($.browser.msie) { //hacked together for IE browsers
-					centeredY = (window.screenTop - 120) + ((((document.documentElement.clientHeight + 120)/2) - (settings.height/2)));
-					centeredX = window.screenLeft + ((((document.body.offsetWidth + 20)/2) - (settings.width/2)));
-				} else {
-					_lastPositionY = centeredY = window.screenY + (((window.outerHeight/2) - (settings.height/2)));
-					_lastPositionX = centeredX = window.screenX + (((window.outerWidth/2) - (settings.width/2)));
-				}
-				wnd = window.self.open(settings.url, wndName, windowFeatures+',left=' + centeredX +',top=' + centeredY);
-			} else if(settings.centerScreen){
-				centeredY = (screen.height - settings.height)/2;
-				centeredX = (screen.width - settings.width)/2;
-				wnd = window.self.open(settings.url, wndName, windowFeatures+',left=' + centeredX +',top=' + centeredY);
-			} else {
-				_lastPositionX += 30;
-				_lastPositionY += 30;
-				if (_lastPositionX > ((screen.width - settings.width)/2)) _lastPositionX = 20;
-				if (_lastPositionY > ((screen.height - settings.height)/2)) _lastPositionY = 20;
-				_lastPositionX = settings.left || _lastPositionX;
-				_lastPositionY = settings.top || _lastPositionY;
-				//alert("url:"+settings.url+"\nname: "+wndName+"\nfeatures: "+windowFeatures+',left=' + _lastPositionX +',top=' + _lastPositionY);
-				wnd = window.self.open(settings.url, wndName, windowFeatures+',left=' + _lastPositionX +',top=' + _lastPositionY);
-			}
-
+            wnd = Kesco.windowOpen(settings.url, wndName, null, settings.control);           
 			var wndInfo = { window: wnd, settings: settings };
 				
 			_windows[wndName] = wndInfo;
@@ -114,7 +91,7 @@
 			if (wndInfo) {
 
  				if (wndInfo.settings.callback && $.isFunction(wndInfo.settings.callback)) {
-					if (window.console) console.log(wndInfo.settings.callback);
+					
 					var result = dialogResult?JSON.parse(dialogResult):dialogResult;
 					wndInfo.settings.callback(result);
 				}

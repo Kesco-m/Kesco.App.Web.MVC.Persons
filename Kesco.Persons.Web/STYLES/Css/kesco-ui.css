@@ -11,7 +11,7 @@ html {
 body
 {
 	background-color: #efefef;
-    font-size: 8pt;
+    font-size: 8.25pt;
     font-family: Verdana, Tahoma, Arial, Helvetica, Sans-Serif;
     margin: 5px;
     padding: 0;
@@ -28,7 +28,7 @@ html.busy, html.busy * {
 
 input, select, textarea
 {
-    font-size: 8pt;
+    font-size: 8.25pt;
     font-family: Verdana, Tahoma, Arial, Helvetica, Sans-Serif;
 }
 
@@ -353,7 +353,7 @@ tr.alternative-row {
 
 .text-box
 {
-	font-size: 8pt;
+	font-size: 8.25pt;
 	width: 30em;
 }
 

@@ -150,9 +150,9 @@ namespace Kesco.Web.Mvc
 		protected virtual string BuildAssemblyDependencyPart(ActionExecutingContext filterContext)
 		{
 
-			if (String.IsNullOrWhiteSpace(assemblyDependencyETag)) {
-				var v = filterContext.Controller.GetType().Assembly.GetName(false).Version;
-				assemblyDependencyETag = string.Format("A{0}{1}{2}{3}", v.Major, v.Minor, v.Build, v.Revision);
+            if (String.IsNullOrWhiteSpace(assemblyDependencyETag)) {
+                var v = filterContext.Controller.GetType().Assembly.GetName(false).Version;
+                assemblyDependencyETag = "A"+System.Configuration.ConfigurationManager.AppSettings["URI_styles_cache"];// string.Format("A{0}{1}{2}{3}", v.Major, v.Minor, v.Build, v.Revision);
 			}
 			return assemblyDependencyETag;
 		}

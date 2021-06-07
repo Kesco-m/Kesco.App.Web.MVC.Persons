@@ -21,9 +21,7 @@ namespace Kesco.Persons.Web {
 		public abstract string URI_bproject_search { get; protected set; }
 		public abstract string URI_person_synchronize { get; protected set; }
 
-		public abstract string URI_person_catalogs { get; protected set; }
-		public abstract string URI_person_search_old { get; protected set; }
-
+		
 		public abstract string URI_store_search { get; protected set; }
 		public abstract string URI_store_form { get; protected set; }
 

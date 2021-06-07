@@ -53,7 +53,7 @@ namespace Kesco.Persons.Web.Controllers
 								var resultAr = [];
 
 								for (var i = 0; i < result.length; i++) resultAr.push(result[i].value);
-                                if (window.console) console.log(resultAr.join(','));
+                               
 								window.ViewModel.Model.PersonThemes(resultAr.join(','));
 								
 								if (result.length > 0)

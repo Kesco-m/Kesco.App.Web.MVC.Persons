@@ -80,7 +80,16 @@ namespace Kesco.Employees.Controls.Controllers
         {
             var rq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
             rq.Method = "GET";
-            rq.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            var authHeader = HttpContext.Request.Headers["Authorization"];
+            if (authHeader != null && authHeader.StartsWith("Basic"))
+            {
+                rq.Headers.Add("Authorization", authHeader);
+            }
+            else
+                rq.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            
             System.Net.WebResponse rs = rq.GetResponse();
             System.IO.Stream stream = rs.GetResponseStream();
             if (stream != null)
@@ -99,8 +108,41 @@ namespace Kesco.Employees.Controls.Controllers
 		/// <returns>HTML-представление об сотруднике</returns>
 		public virtual string EmployeeInfo(int id)
 		{
-            string[] computerName = System.Net.Dns.GetHostEntry(Request.ServerVariables["remote_addr"]).HostName.Split(new Char[] { '.' });
-            string url = String.Format(@"{0}?lang={3}&id={1}&callerType=2&computerName={2}#", Configuration.URI_contacts, id, computerName[0], System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower());
+             var sb = new System.Text.StringBuilder();
+
+            sb.Append(Configuration.URI_contacts);            
+            sb.Append($"?cid={id}");
+            sb.Append("&ctype=2");
+            //sb.Append("&jq=1");
+
+            try
+            {
+                string[] computerName = null;
+                var hostName = Request.ServerVariables["remote_addr"];
+
+                if (string.IsNullOrEmpty(hostName))
+                {
+                    hostName = Request.UserHostName;
+                    if (string.IsNullOrEmpty(hostName))
+                        sb.Append($"&computerName=");
+                    else
+                        computerName = hostName.Split(new Char[] { '.' }); ;
+                }
+                else
+                    computerName = System.Net.Dns.GetHostEntry(hostName).HostName.Split(new Char[] { '.' });
+
+                if (computerName != null && computerName.Length > 0)
+                    sb.Append($"&computerName={computerName[0]}");
+
+            }
+            catch {
+                sb.Append($"&computerName=");
+            }
+                       
+            //string url = String.Format(@"{0}?lang={3}&id={1}&callerType=2&computerName={2}#", Configuration.URI_contacts, id, computerName[0], System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower());
+
+            var url = sb.ToString();
+
             string result = Proxy(url);
             string htmlResult = new Regex("<!--CSSBLOCK.+([^;])+ENDCSSBLOCK-->").Replace(result, "");
             htmlResult += String.Format(@"<script>$('a.phoneLink').click(function(event) {{ViewModel.showPhoneList($(this)[0].href);event.preventDefault();}});</script>");

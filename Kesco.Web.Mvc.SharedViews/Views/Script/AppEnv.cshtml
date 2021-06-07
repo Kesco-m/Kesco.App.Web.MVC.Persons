@@ -5,66 +5,67 @@
 
 ; (function (window, $, undefined) {
 	var Env = window.Env || {};
-	@* Установим переменные окружения для динамических скриптов *@
+@* Установим переменные окружения для динамических скриптов *@
 	Env.Theme = '@(UserContext.Current.Theme)';
-	Env.Culture = '@(System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag)';
-	Env.Domain = '@(Configuration.AppSettings.Domain)';
-	Env.AppName = '@(Configuration.AppSettings.AppName)';
-	Env.ClientHostAddress = '@Request.UserHostAddress';
+    Env.Culture = '@(System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag)';
+    Env.Domain = '@(Configuration.AppSettings.Domain)';
+    Env.AppName = '@(Configuration.AppSettings.AppName)';
+    Env.ClientHostAddress = '@Request.UserHostAddress';
 
-	Env.ResourceCompositionVersion = '@(CompositeResourceSettings.Version ?? String.Empty)';
+    Env.ResourceCompositionVersion = '@(CompositeResourceSettings.Version ?? String.Empty)';
 
-	Env.URI_WikiHelp = '@(Configuration.AppSettings.URI_WikiHelp)';
-	Env.URI_user_form = '@(Configuration.AppSettings.URI_user_form)';
-	Env.URI_user_info = '@(Configuration.AppSettings.URI_user_info)';
-	Env.URI_user_item = '@(Url.Action("GetItem", "EmployeeSelect"))'; @* приложение должно из настроек *@
+    Env.URI_WikiHelp = '@(Configuration.AppSettings.URI_WikiHelp)';
+    Env.URI_user_form = '@(Configuration.AppSettings.URI_user_form)';
+    Env.URI_user_info = '@(Configuration.AppSettings.URI_user_info)';
+    Env.URI_user_item = '@(Url.Action("GetItem", "EmployeeSelect"))'; @* приложение должно из настроек *@
 
-	Env.URI_person_form = '@(Configuration.AppSettings.URI_person_form)';
-	Env.URI_person_info = '@(Configuration.AppSettings.URI_person_info)';
-	Env.URI_person_item = '@(Url.Action("GetItem", "PersonSelect"))'; @* приложение должно из настроек *@
+    Env.URI_person_form = '@(Configuration.AppSettings.URI_person_form)';
+    Env.URI_person_info = '@(Configuration.AppSettings.URI_person_info)';
+    Env.URI_person_item = '@(Url.Action("GetItem", "PersonSelect"))'; @* приложение должно из настроек *@
 
-	Env.URI_resource_form = '@(Configuration.AppSettings.URI_resource_form)';
-    Env.URI_phones = '@(Configuration.AppSettings.URI_phones)';
-		
-	Env.URI_Default_Start = '@Url.FullPathAction("Start", "Default")';
-	Env.URI_Default_SaveApplicationSettings = '@Url.FullPathAction("SaveApplicationSettings", "Default")';
-	Env.URI_Default_RegisterClientError = '@Url.FullPathAction("RegisterClientError", "Default")';
-	Env.URI_Default_RegisterSilverlightError = '@Url.FullPathAction("RegisterSilverlightError", "Default")';
-	Env.URI_Default_ChangeTheme = '@Url.FullPathAction("ChangeTheme", "Default")';
-	Env.URI_Default_GetAvailablePhones = '@Url.FullPathAction("GetAvailablePhones", "Default")';
-	Env.URI_Default_MakeCall = '@Url.FullPathAction("MakeCall", "Default")';
-	Env.URI_Default_CheckCall = '@Url.FullPathAction("CheckCall", "Default")';
-	Env.URI_Default_CancelCall = '@Url.FullPathAction("CancelCall", "Default")';
+    Env.URI_resource_form = '@(Configuration.AppSettings.URI_resource_form)';
+    Env.URI_phones = '@Configuration.AppSettings.URI_phones';
+    Env.URI_contacts_caller = '@Configuration.AppSettings.URI_contacts_caller';
 
-	Env.Localization = Env.Localization || {};
-	Env.Localization.ClientSideViewModel_IncorrectEmail = '@Resources.Kesco_Web_Mvc_SharedApp_ClientSideViewModel_IncorrectEmail';
+    Env.URI_Default_Start = '@Url.FullPathAction("Start", "Default")';
+    Env.URI_Default_SaveApplicationSettings = '@Url.FullPathAction("SaveApplicationSettings", "Default")';   
+    Env.URI_Default_RegisterClientError = '@Url.FullPathAction("RegisterClientError", "Default")';
+    Env.URI_Default_RegisterSilverlightError = '@Url.FullPathAction("RegisterSilverlightError", "Default")';
+    Env.URI_Default_ChangeTheme = '@Url.FullPathAction("ChangeTheme", "Default")';
+    Env.URI_Default_GetAvailablePhones = '@Url.FullPathAction("GetAvailablePhones", "Default")';
+    Env.URI_Default_MakeCall = '@Url.FullPathAction("MakeCall", "Default")';
+    Env.URI_Default_CheckCall = '@Url.FullPathAction("CheckCall", "Default")';
+    Env.URI_Default_CancelCall = '@Url.FullPathAction("CancelCall", "Default")';
 
-	Env.Localization.PhoneCalling_Dialog_Title2 = '@Resources.PhoneCalling_Dialog_Title2';
-	Env.Localization.PhoneCalling_Dialog_PhoneCallState_Connecting = '@Resources.PhoneCalling_Dialog_PhoneCallState_Connecting';
-	Env.Localization.PhoneCalling_Dialog_PhoneCallState_Call = '@Resources.PhoneCalling_Dialog_PhoneCallState_Call';
-	Env.Localization.PhoneCalling_Dialog_Message_SpecifyPhoneToMakeACall = "@(Resources.PhoneCalling_Dialog_Message_SpecifyPhoneToMakeACall)";
+    Env.Localization = Env.Localization || {};
+    Env.Localization.ClientSideViewModel_IncorrectEmail = '@Resources.Kesco_Web_Mvc_SharedApp_ClientSideViewModel_IncorrectEmail';
 
-	Env.Localization.MakeCall_CallCannotBeEstablished = '@Resources.MakeCall_CallCannotBeEstablished';
-	Env.Localization.MakeCall_TryToCallFromAnotherPhone = '@Resources.MakeCall_TryToCallFromAnotherPhone';
+    Env.Localization.PhoneCalling_Dialog_Title2 = '@Resources.PhoneCalling_Dialog_Title2';
+    Env.Localization.PhoneCalling_Dialog_PhoneCallState_Connecting = '@Resources.PhoneCalling_Dialog_PhoneCallState_Connecting';
+    Env.Localization.PhoneCalling_Dialog_PhoneCallState_Call = '@Resources.PhoneCalling_Dialog_PhoneCallState_Call';
+    Env.Localization.PhoneCalling_Dialog_Message_SpecifyPhoneToMakeACall = "@(Resources.PhoneCalling_Dialog_Message_SpecifyPhoneToMakeACall)";
 
-	Env.Localization.CheckCall_Error = '@(Resources.CheckCall_Error)';
-	Env.Localization.CheckCall_Error_CallCancellationFailed = '@(Resources.CheckCall_Error_CallCancellationFailed)';
-		
-	Env.Localization.GUI_PhoneContact_ChooseAnotherPhone = '@(Resources.GUI_PhoneContact_ChooseAnotherPhone)';
-	Env.Localization.PhoneCalling_Dialog_Button_Call = '@(Resources.PhoneCalling_Dialog_Button_Call)';
+    Env.Localization.MakeCall_CallCannotBeEstablished = '@Resources.MakeCall_CallCannotBeEstablished';
+    Env.Localization.MakeCall_TryToCallFromAnotherPhone = '@Resources.MakeCall_TryToCallFromAnotherPhone';
 
-	Env.Localization.GUI_Button_Close = '@(Resources.GUI_Button_Close)';
-	Env.Localization.GUI_Button_OK = '@(Resources.GUI_Button_OK)';
-	Env.Localization.GUI_Button_FinishCall = '@(Resources.GUI_Button_FinishCall)';
+    Env.Localization.CheckCall_Error = '@(Resources.CheckCall_Error)';
+    Env.Localization.CheckCall_Error_CallCancellationFailed = '@(Resources.CheckCall_Error_CallCancellationFailed)';
 
-	Env.Localization.Ajax_Alert_Title_ApplicationError = "@(Kesco.Localization.Resources.Ajax_Alert_Title_ApplicationError)";
-	Env.Localization.Ajax_Alert_Message_RequestError = '@(Kesco.Localization.Resources.Ajax_Alert_Message_RequestError)';
+    Env.Localization.GUI_PhoneContact_ChooseAnotherPhone = '@(Resources.GUI_PhoneContact_ChooseAnotherPhone)';
+    Env.Localization.PhoneCalling_Dialog_Button_Call = '@(Resources.PhoneCalling_Dialog_Button_Call)';
+
+    Env.Localization.GUI_Button_Close = '@(Resources.GUI_Button_Close)';
+    Env.Localization.GUI_Button_OK = '@(Resources.GUI_Button_OK)';
+    Env.Localization.GUI_Button_FinishCall = '@(Resources.GUI_Button_FinishCall)';
+
+    Env.Localization.Ajax_Alert_Title_ApplicationError = "@(Kesco.Localization.Resources.Ajax_Alert_Title_ApplicationError)";
+    Env.Localization.Ajax_Alert_Message_RequestError = '@(Kesco.Localization.Resources.Ajax_Alert_Message_RequestError)';
 
 
-	Env.Assets = Env.Assets || {};
-	Env.Assets.Image_PhoneOn = '@(WebAssetImage("PhoneOn.gif"))';
-	Env.Assets.Image_PhoneOff = '@(WebAssetImage("PhoneOff.gif"))';
-	Env.Assets.Image_PhoneIncome = '@(WebAssetImage("PhoneIncome.gif"))';
+    Env.Assets = Env.Assets || {};
+    Env.Assets.Image_PhoneOn = '@(WebAssetImage("PhoneOn.gif"))';
+    Env.Assets.Image_PhoneOff = '@(WebAssetImage("PhoneOff.gif"))';
+    Env.Assets.Image_PhoneIncome = '@(WebAssetImage("PhoneIncome.gif"))';
 
-	window.Env = Env;
-})(window, jQuery);
+    window.Env = Env;
+    })(window, jQuery);

@@ -20,8 +20,7 @@ namespace Kesco.Persons.Web.Models.Dossier
 					url = System.Configuration.ConfigurationManager.AppSettings["URI_" + menuItem.FormURL.Replace("@", "")];
 				else
 					url = menuItem.FormURL.ToAbsoluteUrl();
-					//url = System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].Substring(0, System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].LastIndexOf("/") + 1) + menuItem.FormURL;
-			}
+				}
 			else if( menuItem.ID == 9 || menuItem.ID == 10 )
 			{
 				Person person = Repository.Persons.GetInstance(ID);
@@ -33,9 +32,10 @@ namespace Kesco.Persons.Web.Models.Dossier
 			else
 			{
 				Person person = Repository.Persons.GetInstance(ID);
-				url = System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].Substring(0, System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].LastIndexOf("/"))
-					+ ( menuItem.FormURL != "aspect.aspx" ? "/Form/Edit/" : "/" ) + menuItem.DialogForm + "?idClient=" + ID + "&type=" + person.PersonType + "&title=" + menuItem.Title;
+				url = "";
 			}
+
+            if (string.IsNullOrEmpty(url)) return "";
 
 			if (menuItem.URLParameters != null)
 			{

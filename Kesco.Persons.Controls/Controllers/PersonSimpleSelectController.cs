@@ -103,8 +103,7 @@ namespace Kesco.Persons.Controls.Controllers
 		{
 			string script = String.Format(@"(function() {{ // closure/замыкание
 				    var $lookup = $('#{0}');
-				    var item = $lookup.selectBox('getValue');
-				    if (window.console) console.log('{0}:CreateJuridical', item);
+				    var item = $lookup.selectBox('getValue');				    
 					openPopupWindow('{1}?id='+item.value, null, null, 'wnd_PersonCreateJuridical_{0}', 800, 600);
 				}})();
                 ",
@@ -123,8 +122,7 @@ namespace Kesco.Persons.Controls.Controllers
 		{
 			string script = String.Format(@"(function() {{ // closure/замыкание
 				    var $lookup = $('#{0}');
-				    var item = $lookup.selectBox('getValue');
-				    if (window.console) console.log('{0}:CreateNatural', item);
+				    var item = $lookup.selectBox('getValue');				    
 					openPopupWindow('{1}?id='+item.value, null, null, 'wnd_PersonCreateNatural_{0}', 800, 600);
 				}})();
                 ",

@@ -380,6 +380,10 @@ namespace Kesco.Persons.BusinessLogic.DataAccess
 
             [MapField("Изменено")]
             public DateTime? Changed { get; set; }
+
+            [MapField("Icon")]
+            public string Icon { get; set; }
+
         }
 
 

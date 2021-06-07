@@ -37,6 +37,7 @@
                 ajax: {
                     url: uri,
                     global: true,
+                    crossDomain: true,
                     beforeSend: function () {
                         $element.css('cursor', "wait !important");
                         this.set('content.text', "&nbsp;");
@@ -46,7 +47,7 @@
                         var container = $("#dialogContentPane");
                         var width = Math.floor(container.width() / 10) * 6;
                         var height = Math.floor(container.height() / 10) * 8;
-                        var content = "<div style='overflow: auto; min-width: 200px; max-width2: " + width + "px; max-height:" + height + "px;'>" + data + "</div>";
+                        var content = "<div style='overflow: auto; min-width: 200px; max-width: " + width + "px; max-height:" + height + "px;'>" + data + "</div>";
                         //content = data;
                         this.set('content.text', content);
                     },

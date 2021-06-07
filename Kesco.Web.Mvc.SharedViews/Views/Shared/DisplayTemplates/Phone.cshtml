@@ -1,41 +1,58 @@
 ﻿@inherits Kesco.Web.Mvc.SharedViews.SharedViewPage<string>
 @{
-	ModelMetadata metadata = ViewData.ModelMetadata;
-	string icon = (ViewData["PhoneIcon"] ?? ViewData["contactIcon"] ?? (metadata.AdditionalValues.ContainsKey("PhoneIcon") ? metadata.AdditionalValues["PhoneIcon"] : String.Empty)).ToString();
-	string phoneType = (ViewData["PhoneType"] ?? 
-			(metadata.AdditionalValues.ContainsKey("PhoneType") ? metadata.AdditionalValues["PhoneType"] : "")).ToString();
-	string phoneNumber = (ViewData["PhoneNumber"] ??
-			(metadata.AdditionalValues.ContainsKey("PhoneNumber") ? metadata.AdditionalValues["PhoneNumber"] : Model)).ToString();
-	string cssClass = (ViewData["CssClass"] ??
-			(metadata.AdditionalValues.ContainsKey("CssClass") ? metadata.AdditionalValues["CssClass"] : String.Empty)).ToString();
+    ModelMetadata metadata = ViewData.ModelMetadata;
+    string icon = (ViewData["PhoneIcon"] ?? ViewData["contactIcon"] ?? (metadata.AdditionalValues.ContainsKey("PhoneIcon") ? metadata.AdditionalValues["PhoneIcon"] : String.Empty)).ToString();
+    string phoneType = (ViewData["PhoneType"] ??
+            (metadata.AdditionalValues.ContainsKey("PhoneType") ? metadata.AdditionalValues["PhoneType"] : "")).ToString();
+    string phoneNumber = (ViewData["PhoneNumber"] ??
+            (metadata.AdditionalValues.ContainsKey("PhoneNumber") ? metadata.AdditionalValues["PhoneNumber"] : Model)).ToString();
+    string cssClass = (ViewData["CssClass"] ??
+            (metadata.AdditionalValues.ContainsKey("CssClass") ? metadata.AdditionalValues["CssClass"] : String.Empty)).ToString();
+    string CID = "0";
+
+    string CType = (ViewData["CType"] ??
+            (metadata.AdditionalValues.ContainsKey("CType") ? metadata.AdditionalValues["CType"] : "0")).ToString();
 }
-@if (String.IsNullOrEmpty(Model)) {
-	@: @ViewData.ModelMetadata.NullDisplayText
-} else {
-	if (!String.IsNullOrWhiteSpace(phoneNumber)) {
-		if (icon != String.Empty) {
-	@: <span class="phoneContact @(cssClass)">
-	@: <img src="@WebAssetImage(icon)" 
-	@:		title="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
-	@:		alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)" 
-	@:		onclick="ViewModel.makeCall('@(HttpUtility.UrlEncode(Model.Replace(" ", "")))', '@(Model.Replace(" ", "").Replace("+", "").Replace("(", "").Replace(")", "").Replace(".", "+"))', '@(System.Globalization.CultureInfo.CurrentUICulture.ToString())')"
-	@:	/>
-		}
-        //#XXX
-	@:<a href="#" class="phoneContactLink @((icon == String.Empty)?cssClass:String.Empty)"
-         	@: onclick="ViewModel.makeCall('@(HttpUtility.UrlEncode(Model.Replace(" ", "")))', '@(HttpUtility.UrlEncode(phoneNumber))', '@(System.Globalization.CultureInfo.CurrentUICulture.ToString())'); return false;"
-      	@: title=" @(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact) "
-         	@: alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)"
-         	@:>
-	}
-    @(Model)
+
+@if (ViewData["PersonID"] != null && (ViewData["PersonID"]).ToString() != "0") {
+    CID = ViewData["PersonID"].ToString();
+}
+else if (ViewData["CID"] != null && (ViewData["CID"]).ToString() != "0") {
+    CID = ViewData["CID"].ToString();
+}
+
+@if (String.IsNullOrEmpty(Model))
+{
+    @: @ViewData.ModelMetadata.NullDisplayText
+}
+else
+{
     if (!String.IsNullOrWhiteSpace(phoneNumber))
     {
-</a>
         if (icon != String.Empty)
         {
-            @:
-</span>
-		}
-	}
+            @: <span class="phoneContact @(cssClass)">
+                @: <img src="@WebAssetImage(icon)"
+                         @: title="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)"
+                         @: alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)"
+                         @: onclick="ViewModel.makeCall('@(HttpUtility.UrlEncode(Model))', '@(Model.Replace(" ", "").Replace("+", "").Replace("(", "").Replace(")", "").Replace(".", "+"))', @(CID), @(CType), '@(icon)');"
+                         @: />
+            }
+
+            @:<a href="#" class="phoneContactLink @((icon == String.Empty)?cssClass:String.Empty)"
+                  @: onclick="ViewModel.makeCall('@(HttpUtility.UrlEncode(Model))', '@(Model.Replace(" ", "").Replace("+", "").Replace("(", "").Replace(")", "").Replace(".", "+"))', @(CID), @(CType), '@(icon)'); return false;"
+                  @: title=" @(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact) "
+                  @: alt="@(Kesco.Web.Mvc.SharedViews.Localization.Resources.ContactControl_CommunicateWithContact)"
+                  @:>
+            }
+            @(Model)
+            if (!String.IsNullOrWhiteSpace(phoneNumber))
+            {
+            </a>
+            if (icon != String.Empty)
+            {
+                @:
+            </span>
+        }
+    }
 }

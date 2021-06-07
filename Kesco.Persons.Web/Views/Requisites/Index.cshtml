@@ -207,12 +207,7 @@
 		@* Задаем селектор для установки фокуса на соответствующий элемент ввода после загрузки всех свойств страницы *@
 		ViewModel.ControlNameToFocus='#Model_ShortNameRus';
 
-		ViewModel.prevVersionUrl = function() {
-			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
-			var value = url.substring(0, url.lastIndexOf('/') + 1);
-
-			return value + "Form/Edit/clientCardOrg.aspx?id=@(Model.Model.ID)&idClient=@(Model.Model.PersonID)";
-		}
+        ViewModel.prevVersionUrl = "";
 
 		window.ViewModel.TerritoryIsRussia = window.ko.computed(function () {
 			return window.ViewModel.Model.TerritoryID() == @(Kesco.Territories.ObjectModel.Territory.Russia);

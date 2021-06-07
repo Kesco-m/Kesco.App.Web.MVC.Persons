@@ -56,11 +56,8 @@
 
 		@* Расширим модель представления *@
 		(function(window, undefined) {
-
-			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
-			var value = url.substring(0, url.lastIndexOf('/') + 1);
-
-			ViewModel.prevVersionUrl = value + "contact.aspx?id=@(Html.Raw(Model.Model.Contact.ID + Request.Url.Query.Replace("?", "&")))";
+            			
+			ViewModel.prevVersionUrl = "";
 
 			ViewModel.ContactIsAddressBased = ko.computed(function () {
 				var contactType = parseInt(window.ViewModel.Model.Contact.ContactTypeID());

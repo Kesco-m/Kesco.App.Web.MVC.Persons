@@ -188,7 +188,7 @@
                             </td>
                             <td>
                                 <a href="javascript: void(0);" onclick="addBanks(ViewModel.Model.Card.BIK());">
-                                    <img style="cursor: pointer; border: 0px;" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles)store.gif" 
+                                    <img style="cursor: pointer; border: 0px;" src="@Url.Content(AppStyles.URI_Styles)store.gif" 
 							/></a>
                             </td>
                             <td>
@@ -524,23 +524,7 @@ $(window).load(function() { ViewModel.Model.PersonTypes.PersonTypeIDs.subscribe(
 		@* Задаем селектор для установки фокуса на соответствующий элемент ввода после загрузки всех свойств страницы *@
 		ViewModel.ControlNameToFocus='#Model_Card_Nickname';
 
-		ViewModel.prevVersionUrl = function() {
-			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
-			var value = url.substring(0, url.lastIndexOf('/') + 1);
-			@if (Model.Model.Card.PersonID != null)
-   {
-			@: value += "Form/Edit/client.aspx?idClient=@(Model.Model.Card.PersonID)";
-			}
-   else
-   {
-			@: value += "Form/Edit/clientAdd.aspx?clr=1";
-			}
-		     setCountryFildEmpty();
-		    setBuissnesFieldEmpty();
-			return value;
-		    
-
-		}
+        ViewModel.prevVersionUrl = "";
 
         	    window.ViewModel.ChooseEmpls = function (responsibleIDs) {
 			$.ajax({
@@ -593,7 +577,7 @@ $(window).load(function() { ViewModel.Model.PersonTypes.PersonTypeIDs.subscribe(
 			url = $.validator.format(url, callbackUrl, title);
 
 			openPopupWindow(url, null, function(result) {
-				if ($.isArray(result)) {
+			    if ($.isArray(result)) {
 					ViewModel.Model.ResponsibleEmployees.removeAll();
 					for(var i=0; i<result.length; i++)
 						ViewModel.Model.ResponsibleEmployees.push({ID: ko.observable(result[i].ID), FullName: ko.observable(result[i].Name) });

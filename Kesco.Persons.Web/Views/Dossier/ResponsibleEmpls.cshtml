@@ -18,7 +18,7 @@
 <tr class="hoverable dsl@(sectionID)">
 	<td colspan="2">
 		&nbsp;
-		@if (accessLevel >= 2 && currentAccess > 0) {
+		@if (accessLevel >= 2 ) {
 		<a id="Dossier_Responsible_Personal_@(item.ID)" 
 				href="javascript: void(0);" 
 				class="personality @((item.Order == 0) ? "" : "ui-hover-visible")" 
@@ -28,10 +28,12 @@
 				data-personality="@(item.Order)"
 				title="@(Resources.Dossier_PrivatePerson_SetRemoveSignPrivate)"
 			><span class="ui-icon ui-icon-flag text-ui-icon" ></span></a>
-		} else {
-		<a id="Dossier_Responsible_Personal_@(item.ID)" 
-			href="javascript: void(0);" class="@((item.Order == 0) ? "" : "ui-hover-visible")"><span class="ui-icon ui-icon-flag text-ui-icon" ></span></a>
-		}
+  }
+  else
+  {
+    <a id="Dossier_Responsible_Personal_@(item.ID)"
+       href="javascript: void(0);" class="@((item.Order == 0) ? "" : "ui-hover-visible")"><span class="ui-icon ui-icon-flag text-ui-icon"></span></a>
+  }
 		@Html.DisplayFor(m => item.ID, "EmployeeStatic", new {
 			TooltipPositionMy = "middle left",
 			TooltipPositionAt = "middle right",

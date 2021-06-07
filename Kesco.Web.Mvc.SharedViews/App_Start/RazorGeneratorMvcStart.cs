@@ -3,9 +3,9 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using RazorGenerator.Mvc;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Kesco.Web.Mvc.SharedViews.App_Start.RazorGeneratorMvcStart), "Start")]
+[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Kesco.Web.Mvc.SharedViews.RazorGeneratorMvcStart), "Start")]
 
-namespace Kesco.Web.Mvc.SharedViews.App_Start {
+namespace Kesco.Web.Mvc.SharedViews {
     public static class RazorGeneratorMvcStart {
         public static void Start() {
             var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly) {

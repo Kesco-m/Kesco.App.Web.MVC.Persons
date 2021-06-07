@@ -3,9 +3,9 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using RazorGenerator.Mvc;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Kesco.BusinessProjects.Controls.App_Start.RazorGeneratorMvcStart), "Start")]
+[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Kesco.BusinessProjects.Controls.RazorGeneratorMvcStart), "Start")]
 
-namespace Kesco.BusinessProjects.Controls.App_Start {
+namespace Kesco.BusinessProjects.Controls {
     public static class RazorGeneratorMvcStart {
         public static void Start() {
             var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly) {

@@ -81,7 +81,7 @@ namespace Kesco.Persons.Controls.Controllers
 								var resultAr = [];
 
 								for (var i = 0; i < result.length; i++) resultAr.push(result[i].value);
-                                if (window.console) console.log(resultAr.join(','));
+                                
 							    if (result.length > 0)
 									window.ViewModel.checkPersonThemesFromModal(resultAr.join(','));
                                if (result.length == 0){{

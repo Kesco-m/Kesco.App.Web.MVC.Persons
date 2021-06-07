@@ -40,17 +40,29 @@ namespace Kesco.Web.Mvc
 		/// <returns>URL веб-скрипта.</returns>
 		public string WebAssetScript(string filePath)
 		{
-			return Url.Content(Configuration<TSettings>.AppSettings.URI_Styles_Scripts + filePath);
+			return Url.Content(AppStyles.URI_Styles_Scripts + filePath);
 		}
 
-		/// <summary>
-		/// Возвращает URL к файлу со стилями, расположенный в общих веб-ресурсах (скрипты, файлы со стилями, медиа-файлы, такие как картинки, видео, аудио).
+        /// <summary>
+		/// Возвращает URL к скрипту, расположенный в общих веб-ресурсах (скрипты, файлы со стилями, медиа-файлы, такие как картинки, видео, аудио).
 		/// </summary>
-		/// <param name="filePath">Относительный путь к файлу, относительно папки со стилями из общими.</param>
+		/// <param name="filePath">Относительный путь к файлу, относительно папки со скриптами из общими.</param>
 		/// <returns>URL веб-скрипта.</returns>
-		public string WebAssetCssStyle(string filePath)
+		public string WebAssetCommonScript(string filePath)
+        {
+            var _url = Url.Content(Configuration<TSettings>.AppSettings.URI_styles_js + filePath);
+           // _url = _url + (_url.Contains("?") ? "&" : "?") + "v=" + Configuration<TSettings>.AppSettings.URI_styles_cache;
+            return _url;
+        }
+
+        /// <summary>
+        /// Возвращает URL к файлу со стилями, расположенный в общих веб-ресурсах (скрипты, файлы со стилями, медиа-файлы, такие как картинки, видео, аудио).
+        /// </summary>
+        /// <param name="filePath">Относительный путь к файлу, относительно папки со стилями из общими.</param>
+        /// <returns>URL веб-скрипта.</returns>
+        public string WebAssetCssStyle(string filePath)
 		{
-			return Url.Content(Configuration<TSettings>.AppSettings.URI_Styles_Css + filePath);
+			return Url.Content(AppStyles.URI_Styles_Css + filePath);
 		}
 
 		/// <summary>
@@ -60,7 +72,7 @@ namespace Kesco.Web.Mvc
 		/// <returns>URL веб-скрипта.</returns>
 		public string WebAssetImage(string filePath)
 		{
-			return Url.Content(Configuration<TSettings>.AppSettings.URI_Styles + filePath);
+			return Url.Content(AppStyles.URI_Styles + filePath);
 		}
 
 		public string WebAssetClientHubProxy(string filePath)

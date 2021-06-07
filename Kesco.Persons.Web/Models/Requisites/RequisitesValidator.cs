@@ -13,90 +13,90 @@ namespace Kesco.Persons.Web.Models.Requisites
 		{
 			//RuleFor(r => r.From).Cascade(CascadeMode.StopOnFirstFailure)
 			//    .Must(DatesAreValid)
-			//        .WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+			//        .WithMessage( Kesco.Persons.Web.Localization.Resources
 			//            .Validation_Requisites_DateRange_must_be_valid);
 			RuleFor(r => r.ShortNameRus).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(OneOfTheShortNamesIsProvided)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_Requisites_SomeShortNames_must_be_specified)
 				.Must(ShortNameRusIsValid)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_Requisites_ShortNameRus_must_be_correct)
 				.Length(0, 200)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_ShortNameRus_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 	
 			RuleFor(r => r.ShortNameLat).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 200)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_ShortNameLat_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded)
 				.Must(StringHasOnlyLatinChars)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_ShortNameLat_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_StringField_OnlyLatinChars)
 				;
 
 			RuleFor(r => r.FullName).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(FullNameIsValid)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_Requisites_FullName_is_invalid)
 				.Length(0, 300)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_FullName_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 
 			RuleFor(r => r.OKONH).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 5)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_OKONH_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 
 			RuleFor(r => r.OKVED).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 8)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_OKVED_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 
 			RuleFor(r => r.KPP).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 20)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_KPP_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 
 			RuleFor(r => r.RwID).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 35)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_RwID_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 
 			RuleFor(r => r.AddressLegal).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 300)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_AddressLegal_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded)
 				;
 
 			RuleFor(r => r.AddressLegalLat).Cascade(CascadeMode.StopOnFirstFailure)
 				.Length(0, 300)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_AddressLegalLat_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded)
 				.Must(StringHasOnlyLatinChars)
-					.WithLocalizedName(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Models_JuridicalPersonCard_AddressLegalLat_Name)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_StringField_OnlyLatinChars)
 				;
 

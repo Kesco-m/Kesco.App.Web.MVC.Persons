@@ -25,8 +25,8 @@
 		</td>
 		} else {
 			if (!String.IsNullOrEmpty(item.Caption)){
-			<td nowrap="nowrap" class="ui-label" style="padding-left: 20px;">@Html.Raw(Html.GetInfoLocalizedString(item.Caption, item.ID)):</td>
-			<td style="width: 90%;">&nbsp;@Html.Raw(HL(item.Label))</td>
+			<td nowrap="nowrap" class="ui-label" style="padding-left: 20px;vertical-align:top;">@Html.Raw(Html.GetInfoLocalizedString(item.Caption, item.ID)):</td>
+			<td style="width: 90%;">@Html.Raw(HL(item.Label))</td>
 			} else{
 			<td colspan="2" style="padding-left: 20px;">@Html.Raw(HL(Html.GetInfoLocalizedString(item.Label)))</td>
 			}

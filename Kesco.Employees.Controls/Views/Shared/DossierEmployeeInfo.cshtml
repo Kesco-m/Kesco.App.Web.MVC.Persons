@@ -6,6 +6,7 @@
 @using Kesco.Employees.Controls
 @using Kesco.Employees.Controls.Localization
 @using Kesco.Web.Mvc
+@using Kesco.Web.Mvc.UI
 
 @{ 
 	string id = ViewData.TemplateInfo.GetFullHtmlFieldId("");
@@ -34,14 +35,14 @@
             });
 
             setTimeout(function() {
-                if (window.console) console.log('employeeControl starting...'+new Date());
+               
                 $('.employeeControl').each(function(index, item) {
                     $(this).employee({
                         container: $(document.body),
                         value: $(this).data('employee-id')
                     });
                 });
-                if (window.console) console.log('employeeControl finished. '+new Date());
+               
             }, 10);
         });
 
@@ -122,18 +123,10 @@
         });
     }
 
-    function RoleOpen(id, title) {
-        var t = screen.availHeight / 2 - 200;
-        var l = screen.availWidth / 2 - 300;
+    function RoleOpen(id, title) {      
         var url = "@(Configuration.AppSettings.URI_role_form)?id=" + id + "&title=" + title;
-
-        var w = window.open(url,
-            '_blank',
-            'scrollbars = yes,height=600,width=400,resizable = yes,toolbar=no,menubar=no,location=no,top=' +
-            t +
-            ',left=' +
-            l);
-        w.focus();
+        Kesco.windowOpen(url);       
+        
         }
 
 
@@ -151,15 +144,8 @@
             var l = screen.availWidth / 2 - 300;
             var title = encodeURIComponent("@(Resources.DossierEmployeeInfo_ExtFields)");
             var url = "@(Configuration.AppSettings.URI_user_extFields)?clid=77&id=" + id + "&title=" + title;
-            /*DialogPageOpen(url, 'dialogHeight:500px;dialogWidth:690px;center:yes;status:no;help:no;resizable:yes;');
-            window.location.reload();*/
 
-            window.open(url,
-                'person_'+id,
-                'scrollbars = yes,height=535,width=610,resizable = yes,toolbar=no,menubar=no,location=no,top=' +
-                t +
-                ',left=' +
-                l);
+            Kesco.windowOpen(url,'person_'+id);
         }
 
         function AddLocWithoutWorkPlaces() {
@@ -212,25 +198,40 @@
     }
 
 	function OpenLoc(idLoc) {
-			var id = '@(Model.EmployeeID)';
+		var id = '@(Model.EmployeeID)';
         var loc = "";
         if (idLoc)
             loc = "&idLoc=" + idLoc;
+                              
+	    var callbackUrl = encodeURIComponent('@(Url.FullPathAction("DialogResult", "Default"))');
+	    var title = '123';
+	    var url;
+	    url = '@(Configuration.AppSettings.URI_user_workplace)?&callbackKey=c1&callbackurl={0}&id=' + id + loc;
+	    url = $.validator.format(url, callbackUrl, title);
 
-        var url = "@(Configuration.AppSettings.URI_user_workplace)?id=" + id + loc;
+	    openPopupWindow(url, {
+	        type: 'GET'
+	    }, function(result) {
+	        if ($.isArray(result)) {
+	            UpdateUserProxy();
+	            window.location.href = window.location.href;
+            }
+	    }, "WorkPlaceDialog", 650, 200);
 
-        var res = window.showModalDialog(url, "",
-            "dialogHeight: 120px; dialogWidth: 650px;resizable: Yes; status: No;edge: Raised;help: No;");
 
+	    //w.focus();
+	    //UpdateUserProxy();
+    }
+
+    function OpenLocCallback()
+    {
         UpdateUserProxy();
+        window.location.href = window.location.href;
     }
 
     function RoleOpen(id, title) {
-        var t = screen.availHeight / 2 - 200;
-        var l = screen.availWidth / 2 - 300;
         var url = "@(Configuration.AppSettings.URI_role_form)?id=" + id + "&title=" + title;
-
-        window.open(url, '_blank', 'scrollbars = yes,height=600,width=650,resizable = yes,toolbar=no,menubar=no,location=no,top=' + t + ',left=' + l);
+        Kesco.windowOpen(url);
     }
 
         function deleteAllReplacement()
@@ -358,6 +359,8 @@
                            contactIcon = c.Icon ?? GetControlIconByContactType(c.ContactType),
                            PhoneType = c.Type,
                            PhoneNumber = c.PhoneNumber,
+                           CID = Model.Employee.ID,
+                           CType = 2,
                            CssClass = (c.InDictionary ? "" : "clGrayTrans")
                        })
                }
@@ -411,7 +414,7 @@ else
                 @if (Model.CanChangeWorkPlace)
                 {
                     /*AddLocWithoutWorkPlaces();*/
-                    <a style="color: dimgray" href="javascript: void(0);" onclick=" OpenLoc(); ">
+                    <a style="color: dimgray" href="javascript: void(0);" onclick=" OpenLoc();">
                         @(Resources.DossierEmployeeInfo_WorkPlace)
                     </a>@: :
                 }
@@ -429,16 +432,21 @@ else
                 foreach (var workPlace in Model.WorkPlaces)
                 {
                     <div>
-
-
                         @if (workPlace.WorkPlacePar == "1")
                         {
-                            <img src="@(Configuration.AppSettings.URI_Styles)\Notebook.GIF" height="10px" width="10px"/>
+                            @if (workPlace.OrgWorkPlace)
+                            {
+                                <img src="@(AppStyles.URI_Styles)\Notebook.GIF" height="10px" width="10px" title="Компьютеризированное рабочее место - работа организована" />
+                            }
+                            else
+                            {
+                                <img src="@(AppStyles.URI_Styles)\NotebookGrayed.GIF" height="10px" width="10px" title="Компьютеризированное рабочее место - работа не организована" />
+                            }
                         }
 
                         @if (Model.CanChangeWorkPlace)
                         {
-                            <a href="javascript: void(0);" title="@(Resources.DoisserEmployeeInfo_OfiiceWorkPlace)" alt="@(workPlace.Path)" onclick=" OpenLoc((@workPlace.WorkPlaceID)) ">
+                            <a href="javascript: void(0);" title="@(Resources.DoisserEmployeeInfo_OfiiceWorkPlace)" alt="@(workPlace.Path)" onclick=" OpenLoc(@workPlace.WorkPlaceID); return false;">
                                 @(workPlace.Path)
                             </a>
                         }

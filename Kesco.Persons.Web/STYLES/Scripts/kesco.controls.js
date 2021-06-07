@@ -129,7 +129,7 @@ $.widget( "kesco.dynamicLink", {
 		var e = this.element;
 		var o = this.options;
 		this._initSource();
-		if (window.console) { console.log('dynamicLink: #' + e.attr('id') + ' - '+o.value); }
+		
 		this.setValue({
 			value: o.value,
 			label: e.html()

@@ -596,12 +596,12 @@ ko.bindingHandlers.jqOptions = {
 	init: function (element, valueAccessor, allBindingsAccessor, context) {
 		var value = allBindingsAccessor().value;
 		var $element = $(element);
-		if (window.console) console.log("jqOptions.init", allBindingsAccessor());
+		
 		//ko.bindingHandlers.options.init(element, valueAccessor, allBindingsAccessor, context);						
 		
 		$(element).selectmenu({
 			change: function(ev, ui) { 
-				if (window.console) console.log("jqOptions.selectmenu.change", ui);
+				
 				value(ui.value);
 			}
 		});
@@ -615,11 +615,11 @@ ko.bindingHandlers.jqOptions = {
 		
 		if (value() && allBindingsAccessor().optionsCaptionClear)
 			allBindingsAccessor().optionsCaption = null;
-		if (window.console) console.log("jqOptions.update", value() == $(element).val());
+		
 		
 		ko.bindingHandlers.options.update(element, valueAccessor, allBindingsAccessor, context);
 		ko.bindingHandlers.value.update(element, value, allBindingsAccessor, context);
-		//if (window.console) console.log("jqOptions.update.selectmenu", valueAccessor());
+		
 		$(element).selectmenu();
 
 		var val = value();

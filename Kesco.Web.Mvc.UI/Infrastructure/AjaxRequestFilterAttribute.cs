@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Kesco.Web.Mvc
@@ -23,7 +24,7 @@ namespace Kesco.Web.Mvc
 			ControllerEx controller = filterContext.Controller as ControllerEx;
 			if (controller != null) {
 				string ajaxRequestHeader = filterContext.HttpContext.Request.Headers["X-Requested-With"];
-				if (!String.IsNullOrEmpty(ajaxRequestHeader) && ajaxRequestHeader == "XMLHttpRequest") {
+                if (!String.IsNullOrEmpty(ajaxRequestHeader) && ajaxRequestHeader == "XMLHttpRequest") {
 					controller.IsAjaxRequest = true;
 				} else {
 					controller.IsAjaxRequest = false;

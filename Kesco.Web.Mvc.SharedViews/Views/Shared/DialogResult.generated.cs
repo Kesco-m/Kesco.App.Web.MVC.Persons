@@ -183,7 +183,8 @@ WriteLiteral(@");
 	                
 	            }
 	        } catch(e) {
-	            alert(e.Description);
+                if (e.Description != undefined)
+    	            alert(e.Description);
 	        }
 	        if (!wHost.closed) {
 	                wHost.close();

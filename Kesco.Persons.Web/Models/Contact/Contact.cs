@@ -19,7 +19,7 @@ namespace Kesco.Persons.Web.Models.Contact
 			)]
 		public override int ID { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// КодЛица
 		/// </summary>
 		[Display(ResourceType = typeof(Kesco.Persons.ObjectModel.Localization.Resources),
@@ -60,7 +60,7 @@ namespace Kesco.Persons.Web.Models.Contact
 		/// <summary>
 		/// Контакт
 		/// </summary>
-		[UIHint("TwoLinesTextBox")]
+		[UIHint("TextBox")]
 		[Display(ResourceType = typeof(Kesco.Persons.ObjectModel.Localization.Resources),
 				Name = "Kesco_Persons_MDL_357",
 				ShortName = "Kesco_Persons_MDL_358",
@@ -147,7 +147,7 @@ namespace Kesco.Persons.Web.Models.Contact
 		/// <summary>
 		/// Адрес
 		/// </summary>
-		[UIHint("TwoLinesTextBox")]
+		[UIHint("TextBox")]
 		[Display(ResourceType = typeof(Kesco.Persons.ObjectModel.Localization.Resources),
 				Name = "Kesco_Persons_MDL_385",
 				ShortName = "Kesco_Persons_MDL_386",
@@ -223,7 +223,7 @@ namespace Kesco.Persons.Web.Models.Contact
 		/// <summary>
 		/// ДругойКонтакт
 		/// </summary>
-		[UIHint("TwoLinesTextBox")]
+		[UIHint("TextBox")]
 		[Display(ResourceType = typeof(Kesco.Persons.ObjectModel.Localization.Resources),
 				Name = "Kesco_Persons_MDL_409",
 				ShortName = "Kesco_Persons_MDL_410",
@@ -249,5 +249,10 @@ namespace Kesco.Persons.Web.Models.Contact
 		{
 			return ContactText ?? System.String.Format("#{0}", ID);
 		}
+
+        public int value { get { return ID; } }
+        public bool isAddress { get { return true; } }
+
+
 	}
 }

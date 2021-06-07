@@ -135,14 +135,15 @@ namespace Kesco.Web.Mvc.SharedViews
 		public abstract string URI_resource_search { get; protected internal set; }
 		public abstract string URI_resource_form { get; protected internal set; }
         public abstract string URI_phones { get; protected internal set; }
+        public abstract string URI_contacts_caller { get; protected internal set; }
 
-		/// <summary>
-		/// Возвращает или устанавливает URI логотипа лица.
-		/// </summary>
-		/// <value>
-		/// URI логотипа лица
-		/// </value>
-		public abstract string URI_person_logo { get; protected internal set; }
+        /// <summary>
+        /// Возвращает или устанавливает URI логотипа лица.
+        /// </summary>
+        /// <value>
+        /// URI логотипа лица
+        /// </value>
+        public abstract string URI_person_logo { get; protected internal set; }
 		public abstract string URI_resources_export1S { get; protected internal set; }
 	}
 
@@ -222,7 +223,7 @@ namespace Kesco.Web.Mvc.SharedViews
 			//set the build version, so all composite resource requests include build
 			//will invalite cache when no build is deployed
 			Version v = Assembly.GetExecutingAssembly().GetName(false).Version;
-			string version = string.Format("{0}{1}{2}{3}", v.Major, v.Minor, v.Build, v.Revision);
+            string version = Configuration.AppSettings.URI_styles_cache;// string.Format("{0}{1}{2}{3}", v.Major, v.Minor, v.Build, v.Revision);
 			CompositeResourceSettings.Version = version;
 
 			// Устанавливаем собственный провайдер метаданных

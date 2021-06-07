@@ -119,7 +119,7 @@ namespace Kesco.Persons.Controls.Controllers
 			string script = String.Format(@"(function() {{ // closure/замыкание
 				    var $lookup = $('#{0}');
 				    var item = $lookup.selectBox('getValue');
-				    if (window.console) console.log('{0}:CreateJuridical', item);
+				    
 					openPopupWindow('{1}?text='+encodeURIComponent(item.label), null, null, 'wnd_PersonCreateJuridical_{0}', 800, 600);
 				}})();
                 ",
@@ -139,7 +139,7 @@ namespace Kesco.Persons.Controls.Controllers
 			string script = String.Format(@"(function() {{ // closure/замыкание
 				    var $lookup = $('#{0}');
 				    var item = $lookup.selectBox('getValue');
-				    if (window.console) console.log('{0}:CreateNatural', item);
+				    
 					openPopupWindow('{1}?text='+encodeURIComponent(item.label), null, null, 'wnd_PersonCreateNatural_{0}', 800, 600);
 				}})();
                 ",
@@ -168,7 +168,15 @@ namespace Kesco.Persons.Controls.Controllers
         {
             var rq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
             rq.Method = "GET";
-            rq.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            var authHeader = HttpContext.Request.Headers["Authorization"];
+            if (authHeader != null && authHeader.StartsWith("Basic"))
+            {
+                rq.Headers.Add("Authorization", authHeader);
+            }
+            else
+                rq.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
             System.Net.WebResponse rs = rq.GetResponse();
             System.IO.Stream stream = rs.GetResponseStream();
             if (stream != null)
@@ -188,8 +196,43 @@ namespace Kesco.Persons.Controls.Controllers
 		public virtual string PersonInfo(int id)
         {
             
-            string[] computerName = System.Net.Dns.GetHostEntry(Request.ServerVariables["remote_addr"]).HostName.Split(new Char[] { '.' });
-            string url = String.Format(@"{0}?lang={3}&id={1}&computerName={2}#", Configuration.URI_contacts, id, computerName[0], System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower());
+            //string[] computerName = System.Net.Dns.GetHostEntry(Request.ServerVariables["remote_addr"]).HostName.Split(new Char[] { '.' });
+            //string url = String.Format(@"{0}?lang={3}&id={1}&computerName={2}#", Configuration.URI_contacts, id, computerName[0], System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower());
+
+            var sb = new System.Text.StringBuilder();
+
+            sb.Append(Configuration.URI_contacts);            
+            sb.Append($"?cid={id}");
+            sb.Append($"&ctype=3");
+            //sb.Append($"&jq=1");
+
+            try
+            {
+                string[] computerName = null;
+                var hostName = Request.ServerVariables["remote_addr"];
+
+                if (string.IsNullOrEmpty(hostName))
+                {
+                    hostName = Request.UserHostName;
+                    if (string.IsNullOrEmpty(hostName))
+                        sb.Append($"&computerName=");
+                    else
+                        computerName = hostName.Split(new Char[] { '.' }); ;
+                }
+                else
+                    computerName = System.Net.Dns.GetHostEntry(hostName).HostName.Split(new Char[] { '.' });
+
+                if (computerName != null && computerName.Length > 0)
+                    sb.Append($"&computerName={computerName[0]}");
+
+            }
+            catch
+            {
+                sb.Append($"&computerName=");
+            }
+
+
+            var url = sb.ToString();
             string result = Proxy(url);
             string htmlResult = new Regex("<!--CSSBLOCK.+([^;])+ENDCSSBLOCK-->").Replace(result, "");
             htmlResult += String.Format(@"<script>$('a.phoneLink').click(function(event) {{ViewModel.showPhoneList($(this)[0].href);event.preventDefault();}});</script>");

@@ -17,16 +17,16 @@ namespace Kesco.Persons.Web.Models.Juridicals
 
 			RuleFor(r => r.Nickname).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(PersonWithTheSameNicknameDoesNotExist)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_NaturalPerson_PersonWithTheSameNicknameDoesNotExist);
 			//RuleFor(r => r.TerritoryID).Cascade(CascadeMode.StopOnFirstFailure)
 			//    .NotNull()
-			//        .WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+			//        .WithMessage( Kesco.Persons.Web.Localization.Resources
 			//            .Validation_JuridicalPerson_RegistrationCountryMustBeSpecified);
 			if (checkRequisites)
 				RuleFor(r => r.Requisites.ShortNameRus).Cascade(CascadeMode.StopOnFirstFailure)
 					.Must(RequisitesMustBeSpecified)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_JuridicalPerson_RequisitesMustBeSpecified);
 		}
 

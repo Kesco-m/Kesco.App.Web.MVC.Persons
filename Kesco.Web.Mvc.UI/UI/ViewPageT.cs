@@ -40,7 +40,7 @@ namespace Kesco.Web.Mvc
 		/// <returns>URL веб-скрипта.</returns>
 		public string WebAssetScript(string filePath)
 		{
-			return ResolveUrl(Configuration<TSettings>.AppSettings.URI_Styles_Scripts + filePath);
+			return ResolveUrl(AppStyles.URI_Styles_Scripts + filePath);
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace Kesco.Web.Mvc
 		/// <returns>URL веб-скрипта.</returns>
 		public string WebAssetCssStyle(string filePath)
 		{
-			return ResolveUrl(Configuration<TSettings>.AppSettings.URI_Styles_Css + filePath);
+			return ResolveUrl(AppStyles.URI_Styles_Css + filePath);
 		}
 
 		/// <summary>
@@ -60,7 +60,7 @@ namespace Kesco.Web.Mvc
 		/// <returns>URL веб-скрипта.</returns>
 		public string WebAssetImage(string filePath)
 		{
-			return ResolveUrl(Configuration<TSettings>.AppSettings.URI_Styles + filePath);
+			return ResolveUrl(AppStyles.URI_Styles + filePath);
 		}
 
 

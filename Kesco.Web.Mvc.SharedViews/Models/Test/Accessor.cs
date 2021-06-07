@@ -36,7 +36,7 @@ namespace Kesco.Web.Mvc.SharedViews.Models.Test
 		/// Кличка
 		/// </summary>
 		[MapField("Кличка")]
-		[MaxLength(50)]
+		[BLToolkit.Validation.MaxLength(50)]
 		[BLToolkit.Validation.Required]
 		public string Nickname { get; set; }
 
@@ -44,7 +44,7 @@ namespace Kesco.Web.Mvc.SharedViews.Models.Test
 		/// ИНН
 		/// </summary>
 		[MapField("ИНН")]
-		[MaxLength(20)]
+		[BLToolkit.Validation.MaxLength(20)]
 		[BLToolkit.Validation.Required]
 		public string INN { get; set; }
 
@@ -85,7 +85,7 @@ namespace Kesco.Web.Mvc.SharedViews.Models.Test
 
 			CascadeMode = CascadeMode.Continue;
 
-			RuleFor(r => r.PersonID).NotEmpty().WithLocalizedMessage(() => "Найдено пустое значение в поле PersonID");
+            RuleFor(r => r.PersonID).NotEmpty().WithMessage("Найдено пустое значение в поле PersonID");
 		}
 	}
 
@@ -97,7 +97,7 @@ namespace Kesco.Web.Mvc.SharedViews.Models.Test
 			CascadeMode = CascadeMode.Continue;
 
 
-			RuleFor(r => r.EmployeeID).NotEmpty().WithLocalizedMessage(() => "Найдено пустое значение в поле EmployeeID"); ;
+			RuleFor(r => r.EmployeeID).NotEmpty().WithMessage("Найдено пустое значение в поле EmployeeID"); 
 		}
 	}
 
@@ -108,8 +108,8 @@ namespace Kesco.Web.Mvc.SharedViews.Models.Test
 
 			CascadeMode = CascadeMode.Continue;
 
-			RuleFor(r => r.PersonID).NotEmpty().WithLocalizedMessage(() => "Найдено пустое значение в поле PersonID");
-			RuleFor(r => r.EmployeeID).NotEmpty().WithLocalizedMessage(() => "Найдено пустое значение в поле EmployeeID"); ;
+			RuleFor(r => r.PersonID).NotEmpty().WithMessage("Найдено пустое значение в поле PersonID");
+			RuleFor(r => r.EmployeeID).NotEmpty().WithMessage("Найдено пустое значение в поле EmployeeID"); ;
 		}
 	}
 

@@ -59,8 +59,9 @@
 	                
 	                
 	            }
-	        } catch(e) {
-	            alert(e.Description);
+            } catch (e) {
+                if (e.Description != undefined)
+	                alert(e.Description);
 	        }
 	        if (!wHost.closed) {
 	                wHost.close();

@@ -74,7 +74,8 @@ namespace Kesco.Persons.Web.Models.Dossier
 		public int? ChangedBy { get; set; }
 		public string ChangedByFIO { get; set; }
 		public string ChangedDate { get; set; }
-	}
+        public string Icon { get; set; }
+    }
 
 	/// <summary>
 	/// Сгруппированные по названию данные о лице
@@ -503,12 +504,15 @@ namespace Kesco.Persons.Web.Models.Dossier
 					Model.PersonID
 				);
 
-			return LoadDataUsingCache<PersonAccessLevel>(cacheKey,
-					() => {
-						return Repository.Persons.GetPersonAccessLevel(Model.PersonID);
-					}, true);
+            var accessLevel = LoadDataUsingCache<PersonAccessLevel>(cacheKey,
+                () =>
+                {
+                    return Repository.Persons.GetPersonAccessLevel(Model.PersonID);
+                }, true);
 
-		}
+            return accessLevel;
+
+        }
 
 		/// <summary>
 		/// Инициализация свойств лица на основании общего контекста досье
@@ -566,25 +570,25 @@ namespace Kesco.Persons.Web.Models.Dossier
 				}).OrderBy(c => c.LinkText + c.Label).ToList();
 
 			// загрузка контактов связанных лиц
-			if (LinkedUsersUnder != null) {
-				List<PersonLinkedContact> linkedContacts = LoadLinkedContacts(ids);
-				LinkedUsersUnder
-					.GroupBy(u => u.LinkText)
-					.SelectMany(gr => {
-						var l = new List<EmployeeContextItem>();
-						l.Add(gr.LastOrDefault());
-						return l;
-					}).ToList()
-					.ForEach(ec => {
-						ec.Contacts = linkedContacts.Where(c => c.PersonID == ec.LinkID || c.LinkedPersonParentID == ec.LinkID)
-									.GroupBy(c => c.ContactTypeDesc)
-									.OrderBy(gr => gr.First().ContactTypeID)
-									.Select(g => new PersonContactGroup {
-										Caption = g.Key,
-										Items = g.Select(c => c).ToList()
-									}).ToList();
-					});
-			}
+			//if (LinkedUsersUnder != null) {
+			//	List<PersonLinkedContact> linkedContacts = LoadLinkedContacts(ids);
+			//	LinkedUsersUnder
+			//		.GroupBy(u => u.LinkText)
+			//		.SelectMany(gr => {
+			//			var l = new List<EmployeeContextItem>();
+			//			l.Add(gr.LastOrDefault());
+			//			return l;
+			//		}).ToList()
+			//		.ForEach(ec => {
+			//			ec.Contacts = linkedContacts.Where(c => c.PersonID == ec.LinkID || c.LinkedPersonParentID == ec.LinkID)
+			//						.GroupBy(c => c.ContactTypeDesc)
+			//						.OrderBy(gr => gr.First().ContactTypeID)
+			//						.Select(g => new PersonContactGroup {
+			//							Caption = g.Key,
+			//							Items = g.Select(c => c).ToList()
+			//						}).ToList();
+			//		});
+			//}
 
 			#endregion
 		}
@@ -611,7 +615,8 @@ namespace Kesco.Persons.Web.Models.Dossier
 									LinkID = k.Link,
 									LinkText = k.LinkText,
 									Order = k.Order,
-									ChangedBy = k.ChangedBy,
+                                    Icon = k.Icon,
+                                    ChangedBy = k.ChangedBy,
 									ChangedByFIO = k.ChangedByFIO,
 									ChangedDate = (k.Changed.HasValue ? (k.Changed.Value.FromUtcToClient().ToString("F")) : "---")
 								};
@@ -638,7 +643,8 @@ namespace Kesco.Persons.Web.Models.Dossier
 								LinkID = k.Link,
 								LinkText = k.LinkText,
 								Order = k.Order,
-								ChangedBy = k.ChangedBy,
+                                Icon = k.Icon,
+                                ChangedBy = k.ChangedBy,
 								ChangedByFIO = k.ChangedByFIO,
 								ChangedDate = (k.Changed.HasValue ? (k.Changed.Value.FromUtcToClient().ToString("F")) : "---")
 							}).ToList();
@@ -667,6 +673,7 @@ namespace Kesco.Persons.Web.Models.Dossier
 									LinkID = k.Link,
 									LinkText = k.LinkText,
 									Order = k.Order,
+                                    Icon = k.Icon,
 									ChangedBy = k.ChangedBy,
 									ChangedByFIO = k.ChangedByFIO,
 									ChangedDate = (k.Changed.HasValue ? (k.Changed.Value.FromUtcToClient().ToString("F")) : "---")
@@ -814,7 +821,7 @@ namespace Kesco.Persons.Web.Models.Dossier
         {
             htmlHelper.RegisterCommonScriptCode("dossierOpenStore_" + sectionName, String.Format(@"
 					function dossierOpenStore_{0}(id, sectionId, hideOldVer) {{
-						var url = '{1}&id='+id+'&sectionId='+{0}+'&hideOldVer='+hideOldVer+'&mvc=1';
+						var url = '{1}&id='+id+'&sectionId='+{0}+'&mvc=1';
                         url = url + '&callbackUrl='+ encodeURIComponent(getDefaultFullPathAction());
 						openPopupWindow(url, null,  function (value) {{ window.location.href = window.location.href; window.focus(); }},
                         'wndEditStore_{0}_'+id, 850, 600);
@@ -833,7 +840,7 @@ namespace Kesco.Persons.Web.Models.Dossier
 		{
 			htmlHelper.RegisterCommonScriptCode("dossierEditLink_" + sectionName, String.Format(@"
 					function dossierEditLink_{0}(id, sectionId, hideOldVer) {{
-						var url = '{1}&id='+id+'&sectionId='+sectionId+'&hideOldVer='+hideOldVer;
+						var url = '{1}&id='+id+'&sectionId='+sectionId;
 						openPopupWindow(url, null, 
 							function (result) {{
 								if ($.isArray(result)) 

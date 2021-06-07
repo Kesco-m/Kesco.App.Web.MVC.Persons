@@ -20,15 +20,15 @@ namespace Kesco.Persons.Web.Models.Dossier
 					url = System.Configuration.ConfigurationManager.AppSettings["URI_" + section.FormURL.Replace("@", "")];
 				else
 					url = section.FormURL.ToAbsoluteUrl();
-					//url = System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].Substring(0, System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].LastIndexOf("/") + 1) + section.FormURL;
-			}
+				}
 			else
 			{
 				Person person = Repository.Persons.GetInstance(PersonID);
-				url = System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].Substring(0, System.Configuration.ConfigurationManager.AppSettings["URI_person_search_old"].LastIndexOf("/"))
-					+ "/Form/Edit/" + section.EditForm;
-				urlParams = "idClient=" + PersonID + "&type=" + person.PersonType;
-			}
+				url = "";
+                urlParams = "idClient=" + PersonID + "&type=" + person.PersonType;
+            }
+
+            if (string.IsNullOrEmpty(url)) return "";
 
 			if (section.URLParameters != null)
 			{

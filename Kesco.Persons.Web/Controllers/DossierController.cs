@@ -52,7 +52,7 @@ namespace Kesco.Persons.Web.Controllers
             {
                 return Redirect("Employee.aspx?employeeId=" + employeeId);
             }
-            return Redirect("dossier.aspx?id=" + personID + "&hideOldVer=false");
+            return Redirect("dossier.aspx?id=" + personID);
         }
 
 
@@ -516,7 +516,7 @@ namespace Kesco.Persons.Web.Controllers
                     background-color: #EEEEEE;
                 }}
             </style>
-", Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css, sectionID, isNatural);
+", AppStyles.URI_Styles_Css, sectionID, isNatural);
             w +=
                 String.Format(
                     @"<div class='DivFixTable'>
@@ -640,52 +640,6 @@ namespace Kesco.Persons.Web.Controllers
 
             return JavaScript(script);
         }
-        /// <summary>
-        /// Проверка выбранных тем лиц.
-        /// </summary>
-        /// <param name="control">The control.</param>
-        /// <param name="model">Модель.</param>
-        /// <returns></returns>
-//        public ActionResult CheckPersonThemes(string control, PersonDossierModel model)
-//        {
-//            // 1. Необходимо проверить если хотя бы одна тема в нескольких каталогах
-//            string themes = model.PersonThemes ?? "";
-//            var ids = themes.ToArray<int>(new char[] { ',' }, s => Int32.Parse(s));
-//            var list = Repository.PersonTypes.GetTypeIDsByThemeIDs(model.PersonThemes);
-
-//            var needToClarify = list.Count != ids.Length;
-
-//            string script = String.Format(@"(function() {{
-//					var arr = {0};
-//					var selected = '{1}';
-//					var url = '{2}' + '?ids=' + selected+'&IdClient={4}';
-//
-//					if ({3}) {{
-//						window.self.focus();
-//						window.showModalDialog(url, '', 'dialogHeight:300px;dialogWidth:500px;resizable:yes;scroll:yes;');
-//						var r2 = $.cookie('RetVal');
-//
-//						if( !r2 || r2 == 'false' ) return;
-//						if( !r2 || r2 == 'true' ) {{ // сохранение каталогов сделали в старом приложении - просто передергиваем страницу
-//							ViewModel.Processing(true);
-//							window.location.href = window.location.href;
-//							return;
-//						}}
-//						arr = r2.split(',');
-//					}}
-//
-//					window.ViewModel.Model.PersonTypes(arr.join(','));
-//					ViewModel.dispatchModelCommand('SaveTypes');
-//				}})()",
-//                Kesco.Web.Mvc.Json.Serialize(list, true),
-//                themes,
-//                Configuration.AppSettings.URI_person_catalogs,
-//                Kesco.Web.Mvc.Json.Serialize(needToClarify),
-//                model.PersonID
-//            );
-
-//            return JavaScript(script);
-//        }
 
 
 		/// <summary>
@@ -791,7 +745,7 @@ namespace Kesco.Persons.Web.Controllers
 							type: 'POST',
 							Duplicates: duplicates
 						}}, function (result) {{
-							if (window.console) console.log(result);
+							
 							ViewModel.Model.Confirmed(false);
 							if ($.isArray(result)) {{
 								var person = result[0];
@@ -848,14 +802,29 @@ namespace Kesco.Persons.Web.Controllers
 		/// <param name="id">Id сотрудника - нужно для совместимости с подгружаемыми скриптами приложения "Пользователи"</param>
 		public ActionResult UserProxy(int id)
 		{
-			System.Net.HttpWebRequest rq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(Configuration.AppSettings.URI_user_form_simple + "?id=" + id);
+                              
+
+            System.Net.HttpWebRequest rq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(Configuration.AppSettings.URI_user_form_simple + "?id=" + id);
 			if (rq.CookieContainer == null) {
 				rq.CookieContainer = new CookieContainer();
 			}
 			rq.CookieContainer.Add(new Cookie("tz", UserContext.ClientTimeZoneOffset.ToString(), "/", Configuration.AppSettings.Domain));
 			rq.Method = "GET";
-			rq.Credentials = System.Net.CredentialCache.DefaultCredentials;
-			System.Net.WebResponse rs = rq.GetResponse();
+
+            var authHeader = HttpContext.Request.Headers["Authorization"];
+            if (authHeader != null && authHeader.StartsWith("Basic"))
+            {
+                //var encodedUsernamePassword = authHeader.Substring("Basic ".Length).Trim();
+                //var encoding = System.Text.Encoding.GetEncoding("iso-8859-1");
+                //string usernamePassword = encoding.GetString(Convert.FromBase64String(encodedUsernamePassword));
+                //String encoded = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(username + ":" + password));
+                rq.Headers.Add("Authorization", authHeader);
+
+            }
+            else
+                rq.Credentials = System.Net.CredentialCache.DefaultCredentials;
+           
+            System.Net.WebResponse rs = rq.GetResponse();
 			System.IO.Stream stream = rs.GetResponseStream();
 			StreamReader readStream = new StreamReader(stream, System.Text.Encoding.UTF8);
 			string s = readStream.ReadToEnd();
@@ -885,19 +854,7 @@ namespace Kesco.Persons.Web.Controllers
 		/// <param name="userId">Id сотрудника</param>
         public ActionResult SyncUser(string personId, string userId)
         {
-            string script = String.Format(@"
-				(function() {{
-                    	var url = '{0}';
-			            var value = url.substring(0, url.lastIndexOf('/') + 1);
-			            value += 'personSynchronize.aspx?idPerson={1}&idEmployee={2}&date={3}';
-			            DialogPageOpen(value, '', function () {{ window.location.href = window.location.href; }});
-				}})();",
-                 Configuration.AppSettings.URI_person_search_old,
-                personId,
-                userId,
-                DateTime.Now.Millisecond.ToString(CultureInfo.InvariantCulture) + DateTime.Now.Second.ToString(CultureInfo.InvariantCulture) + DateTime.Now.Minute.ToString(CultureInfo.InvariantCulture)
-            );
-            return JavaScript(script);
+            return null;
         }
 
 		private string replaceURL(Match m)

@@ -14,8 +14,7 @@
 <html>
 <head >
     <title>@ViewBag.Title</title>
-	<link rel="icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" />
-	<link rel="shortcut icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" /> 
+    <link rel="icon" href="data:," />
 	
 	@* Определим скрипты и CSS стили *@
 	@Html.Partial("PageHeadSection", (object) Model)
@@ -83,9 +82,9 @@
 	    $(document).ready(function () {
 	        $("input").attr("autocomplete", "off");
 	        ViewModel.PageLoaded(true);
-	        if (window.console) console.log("Binding starting...", new Date());
+	       
 	        ko.applyBindings(ViewModel);
-	        if (window.console) console.log("Binding stopped.", new Date());
+	       
 	        if (ViewModel.ControlNameToFocus && $(ViewModel.ControlNameToFocus).filter(":visible").get(0))
 	            $(ViewModel.ControlNameToFocus).filter(":visible").get(0).focus();
 	        setTimeout(function () {

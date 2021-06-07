@@ -247,7 +247,7 @@ namespace Kesco.Persons.Web.Controllers
 							type: 'POST',
 							Duplicates: duplicates
 						}}, function (result) {{
-							if (window.console) console.log(result);
+							
 							ViewModel.Model.Confirmed(false);
 							if ($.isArray(result)) {{
 								var person = result[0];

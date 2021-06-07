@@ -36,7 +36,7 @@ namespace Kesco.Web.Mvc.Test.Models.SelectBox
 		/// Кличка
 		/// </summary>
 		[MapField("Кличка")]
-		[MaxLength(50)]
+		[BLToolkit.Validation.MaxLength(50)]
 		[BLToolkit.Validation.Required]
 		public string Nickname { get; set; }
 
@@ -44,7 +44,7 @@ namespace Kesco.Web.Mvc.Test.Models.SelectBox
 		/// ИНН
 		/// </summary>
 		[MapField("ИНН")]
-		[MaxLength(20)]
+		[BLToolkit.Validation.MaxLength(20)]
 		[BLToolkit.Validation.Required]
 		public string INN { get; set; }
 

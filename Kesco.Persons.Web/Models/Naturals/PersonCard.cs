@@ -210,11 +210,6 @@ namespace Kesco.Persons.Web.Models.Naturals
 				Description = "Models_JuridicalPersonCard_TerritoryID_Description",
 				Prompt = "Models_JuridicalPersonCard_TerritoryID_Prompt"
 		    )]
-        [Required(
-                ErrorMessageResourceType = typeof(Kesco.Persons.Web.Localization.Resources),
-                ErrorMessageResourceName = "Models_JuridicalPersonCard_TerritoryID_Required",
-                AllowEmptyStrings = false
-            )]
 		[TerritorySelect]
 		[TerritorySelectSearchParameters(CLID = 66, TAreaID=2, Limit=9)]
 		public int? TerritoryID { get; set; }

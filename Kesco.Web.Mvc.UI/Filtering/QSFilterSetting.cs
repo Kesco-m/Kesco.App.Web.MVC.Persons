@@ -17,9 +17,10 @@ namespace Kesco.Web.Mvc.Filtering
 		/// <returns>Настройки группы фильтрации</returns>
 		public virtual T InitFromQueryString(string qsParamName, object defaultValue)
 		{
-			Editable = HttpContext.Current.Request[qsParamName] == null;
-			Enable = HttpContext.Current.Request[qsParamName] != null;
-			DefaultValue = HttpContext.Current.Request["_" + qsParamName] ?? defaultValue;
+            Editable = HttpContext.Current.Request[qsParamName] == null || HttpContext.Current.Request[qsParamName] == "";
+            Enable = HttpContext.Current.Request[qsParamName] != null && HttpContext.Current.Request[qsParamName] != "";
+            DefaultValue = defaultValue ?? HttpContext.Current.Request["_" + qsParamName];
+            
 			return SetValue(HttpContext.Current.Request[qsParamName]);
 		}
 	}

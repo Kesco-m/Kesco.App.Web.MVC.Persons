@@ -9,45 +9,56 @@
 }
 
 @section Header {
-<style type="text/css">
-    #DossierContainer {
-        overflow: auto;
-    }
-    table.dossier td {
-        padding: 1px;
-    }
-    .changed {
-        font-size:xx-small;
-        vertical-align:top;
-        width:250px;
-        white-space: nowrap;
-    }
-    .contact {
-        font-size:xx-small;
-        /*vertical-align:top;*/
-    }
-    a.resourceRef { cursor: pointer; }
+    <style type="text/css">
+        #DossierContainer {
+            overflow: auto;
+        }
 
-    #dialogContentPane, #DossierContainer{
-        overflow: auto;
-        /*height:auto !important;*/
-        width: auto;
-        
-    }
-</style>
+        table.dossier td {
+            padding: 1px;
+        }
+
+        .changed {
+            font-size: xx-small;
+            vertical-align: top;
+            width: 250px;
+            white-space: nowrap;
+        }
+
+        .contact {
+            font-size: xx-small;
+            /*vertical-align:top;*/
+        }
+
+        a.resourceRef {
+            cursor: pointer;
+        }
+
+        #dialogContentPane, #DossierContainer {
+            overflow: auto;
+            /*height:auto !important;*/
+            width: auto;
+        }
+    </style>
 }
 
-@section Footer {  
-<style>
-    a.ui-hover-visible { visibility: hidden; opacity: 0.5; }
-    
-    .ui-state-hover a.ui-hover-visible:hover { opacity: 1; }
-</style>
+@section Footer {
+    <style>
+        a.ui-hover-visible {
+            visibility: hidden;
+            opacity: 0.5;
+        }
+
+        .ui-state-hover a.ui-hover-visible:hover {
+            opacity: 1;
+        }
+    </style>
 }
 
 @using (Html.BeginForm())
 {
     <div id="EmployeeInfo"></div>
+    
 }
 
 
@@ -63,7 +74,7 @@
              }).employee("option", "value", value);
          });
      }
-     
+
      	function AddLoc() {
 		var path = '@(Configuration.AppSettings.URI_location_search)&WorkPlace=1&return=1';
 		try { $.removeCookie("RetVal"); } catch(e) {}
@@ -84,6 +95,6 @@
 		}
 
      (function () { UpdateUserProxy();
-         document.title = '@( ViewBag.titleInfo)' })(); 
+         document.title = '@( ViewBag.titleInfo)' })();
 
 </script>)

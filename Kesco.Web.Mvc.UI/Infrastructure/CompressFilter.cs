@@ -15,7 +15,8 @@ namespace Kesco.Web.Mvc
 	{
 		public override void OnActionExecuting(ActionExecutingContext filterContext)
 		{
-			HttpRequestBase request = filterContext.HttpContext.Request;
+			
+            HttpRequestBase request = filterContext.HttpContext.Request;
 			string acceptEncoding = request.Headers["Accept-Encoding"];
 			if (string.IsNullOrEmpty(acceptEncoding)) return;
 

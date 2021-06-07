@@ -16,15 +16,15 @@ namespace Kesco.Persons.Web.Models.Naturals
 
             RuleFor(r => r.PersonTypes.PersonTypeIDs).Cascade(CascadeMode.StopOnFirstFailure)
                 .Must(PersonTypesSpecified)
-                    .WithLocalizedMessage(() => Localization.Resources.Validation_JuridicalPerson_MustSpecifyAtLeastOnePersonType);
+                    .WithMessage( Localization.Resources.Validation_JuridicalPerson_MustSpecifyAtLeastOnePersonType);
 
             RuleFor(r => r.ResponsibleEmployees).Cascade(CascadeMode.StopOnFirstFailure)
                 .Must(ResponsibleEmployeesSpecified)
-                    .WithLocalizedMessage(() => Localization.Resources.Views_NaturalPerson_Validation_Responsible);
+                    .WithMessage( Localization.Resources.Views_NaturalPerson_Validation_Responsible);
 
             RuleFor(r => r.Card.FirstNameRus).Cascade(CascadeMode.StopOnFirstFailure)
                 .Must(AllNamesFieldsMustHaveTranslate)
-                    .WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+                    .WithMessage( Kesco.Persons.Web.Localization.Resources
                         .Validation_NaturalPerson_NaturalFIOMustBeOnEnglish);
 		}
 

@@ -28,11 +28,8 @@
 @<script>
  
 	@* Расширим модель представления *@
-	(function(window, undefined) {
-		var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
-		var value = url.substring(0, url.lastIndexOf('/') + 1);
-
-		ViewModel.prevVersionUrl  = value + "person.aspx@(Html.Raw(Request.Url.Query))";
+	(function(window, undefined) {		
+		ViewModel.prevVersionUrl  = "";
 	})(this);
 
     $(document).ready(function() {
@@ -41,9 +38,7 @@
             switch (cmd) {
             case 'printRequisites':
                 var url = "@(Configuration.AppSettings.URI_store_person)?personId=@(PersonID)";
-                window.open(url,
-                    "_storePerson@(PersonID)",
-                    "scrollbars = yes,height=450,width=650,resizable = yes,toolbar=no,menubar=no,location=no");
+                Kesco.windowOpen(url, "_storePerson@(PersonID)");
                 break;
             case 'createJuridical':
                 openPopupWindow('@Url.Action("Index", "Juridical")',
@@ -53,7 +48,7 @@
                             var personID = $.isArray(result) ? result[0].value : result;
                             if (personID)
                                 openPopupWindow(
-                                    '@(Url.Action("Index", "Dossier"))?id=' + personID + '&hideOldVer=@(hideOldVer)',
+                                    '@(Url.Action("Index", "Dossier"))?id=' + personID,
                                     null,
                                     null,
                                     "wndPerson" + personID,
@@ -75,7 +70,7 @@
                             var personID = $.isArray(result) ? result[0].value : result;
                             if (personID)
                                 openPopupWindow(
-                                    '@(Url.Action("Index", "Dossier"))?id=' + personID + '&hideOldVer=@(hideOldVer)',
+                                    '@(Url.Action("Index", "Dossier"))?id=' + personID,
                                     null,
                                     null,
                                     "wndPerson" + personID,
@@ -113,9 +108,7 @@
                             if (personID)
                                 window.location.href = '@(Url.Action("Index", "Dossier"))' +
                                     "?id=" +
-                                    personID +
-                                    "&hideOldVer=" +
-                                    '@(hideOldVer)';
+                                    personID;
                             else closeDialog();
                         }
                     },
@@ -126,19 +119,28 @@
                 break;
 
             case 'addToPerson':
-                var w = 800, h = 600;
-                var isOldApp = ui.item.data('url').indexOf('/MVC/') == -1;
-                var callback = function() { window.location.href = window.location.href; };
-                if (ui.item.data('url').indexOf('Store.aspx') != -1) {
+                    var w = 800, h = 600;
+                    var _url = ui.item.data('url').toLowerCase();
+
+                var isOldApp = _url.indexOf('/mvc/') == -1;
+
+                var callback = function () {window.location.href = window.location.href; };
+
+                if (_url.indexOf('store.aspx') != -1) {
+                  
+                    _url = _url + (_url.indexOf('?')!=-1?'&':'?') + 'mvc=1';
+                    _url = _url + '&callbackUrl='+ encodeURIComponent('@(Url.FullPathAction("DialogResult"))');
+                    openPopupWindow(_url, null,  function (value) { window.location.href = window.location.href; window.focus(); },
+                    'wndNewStore', null, null);
+
+                    break;
+                }
+
+                if (_url.indexOf('link.aspx') != -1) {
                     w = 520;
                     h = 300;
-                    isOldApp = true;
                 }
-                if (ui.item.data('url').indexOf('Link.aspx') != -1) {
-                    w = 520;
-                    h = 300;
-                }
-                if (ui.item.data('url').indexOf('Card.aspx') != -1) {
+                if (_url.indexOf('card.aspx') != -1) {
                     w = 500;
                     h = 250;
                     callback = function(result) {
@@ -161,11 +163,11 @@
                 }
 
                 if (isOldApp)
-                    DialogPageOpen(ui.item.data('url'),
+                    DialogPageOpen(_url,
                         $.validator.format('center:yes;status:no;help:no;resizable:yes;width:{0};height:{1};', w, h),
                         callback);
                 else
-                    openPopupWindow(ui.item.data('url'), null, callback, "wndPersonAdd", w, h);
+                    openPopupWindow(_url, null, callback, "wndPersonAdd", w, h);
                 break;
 
             case 'toggleChangedBy':
@@ -178,14 +180,14 @@
                     var x = window.ViewModel.Params.PersonDateOld();
                     window.ViewModel.Params.PersonDateOld((x == 1) ? 0 : 1);
                     ev.stopImmediatePropagation();
-                    window.location = '@Url.Action("Index")?id=@(PersonID)&hideOldVer=@(hideOldVer)';
+                    window.location = '@Url.Action("Index")?id=@(PersonID)';
                 return false;
                 break;
                 case 'toggleStoreOldProps':
                     var x = window.ViewModel.Params.PersonDateOld();
                     window.ViewModel.Params.PersonDateOld((x == 2) ? 0 : 2);
                     ev.stopImmediatePropagation();
-                    window.location = '@Url.Action("Index")?id=@(PersonID)&hideOldVer=@(hideOldVer)';
+                    window.location = '@Url.Action("Index")?id=@(PersonID)';
                     return false;
                 break;
             default:

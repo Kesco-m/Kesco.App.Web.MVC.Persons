@@ -194,8 +194,19 @@ namespace Kesco.Web.Mvc
 			var commonScripts = htmlHelper.ViewContext.HttpContext.Items["CommonScripts"] as OrderedDictionary;
 			var externalScripts = htmlHelper.ViewContext.HttpContext.Items["ExternalScripts"] as OrderedDictionary;
 
-			if (scripts != null || commonScripts != null || externalScripts != null) {
-				var builder = new StringBuilder();
+            var builder = new StringBuilder();
+
+            builder.AppendLine("<script type='text/javascript'>");
+            builder.AppendLine("// Сохранение положения форм.");
+
+            builder.AppendLine(string.Format("try {{Kesco.globals.settingsFormLocation = '{0}';}} catch(e){{}}", System.Configuration.ConfigurationManager.AppSettings["URI_settings_form_location"]));
+            builder.AppendLine(string.Format("try {{Kesco.globals.settingsFormLocationAdv = '{0}';}} catch(e){{}}", System.Configuration.ConfigurationManager.AppSettings["URI_settings_form_location_adv"]));
+            builder.AppendLine(string.Format("try {{Kesco.globals.version = '{0}';}} catch(e){{}}", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()));
+
+            builder.AppendLine("</script>");
+
+            if (scripts != null || commonScripts != null || externalScripts != null) {
+				
 
 				if (externalScripts != null) {
 					builder.AppendLine();
@@ -206,11 +217,18 @@ namespace Kesco.Web.Mvc
 
 				builder.AppendLine("<script type='text/javascript'>");
 				builder.AppendLine("// Вывод скриптов сохраненных в контексте.");
-				if (commonScripts != null) {
+
+                builder.AppendLine(string.Format("try {{Kesco.globals.settingsFormLocation = '{0}';}} catch(e){{}}", System.Configuration.ConfigurationManager.AppSettings["URI_settings_form_location"]));
+                builder.AppendLine(string.Format("try {{Kesco.globals.settingsFormLocationAdv = '{0}';}} catch(e){{}}", System.Configuration.ConfigurationManager.AppSettings["URI_settings_form_location_adv"]));
+                builder.AppendLine(string.Format("try {{Kesco.globals.version = '{0}';}} catch(e){{}}", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()));
+
+
+                if (commonScripts != null) {
 					foreach (var script in commonScripts.Values) {
 						builder.AppendLine((string) script);
 					}
 				}
+
 				if (scripts != null) {
 					builder.AppendLine("\t$(document).ready(function() {");
 					foreach (var script in scripts) {
@@ -222,7 +240,7 @@ namespace Kesco.Web.Mvc
 
 				return new MvcHtmlString(builder.ToString());
 			}
-			return null;
+			return new MvcHtmlString(builder.ToString()); 
 		}
 
 		#endregion

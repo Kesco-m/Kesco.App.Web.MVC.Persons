@@ -50,6 +50,7 @@
                     }
 
                     function UpdateUserProxy() {
+                       
                         $('#ifrUser').html("...").load('@(Url.Action("UserProxy"))?id=@( Model.Model.EmployeeID)', function(responseText, status, xhr) {
                             //ko.applyBindings(ViewModel, document.getElementById("ifrUser"));
 						
@@ -59,7 +60,7 @@
                                 container: $(document.body)
                             }).employee("option", "value", value);
 
-                        });
+                        });                       
                     }
 
                     (function() { UpdateUserProxy(); })();
@@ -86,7 +87,9 @@
 		using (Html.BeginForm("Dossier", "Dossier", FormMethod.Post, new { id = "PersonDossierForm", name = "PersonDossierForm", onsubmit = "return false;" })) {
 			Html.ValidationSummary(true);
 		}
-		<table class="dossier" style="overflow: auto; width:100%;" cellspacing="0">
+        
+       
+		<table class="dossier" style="overflow: auto; width:100%;" cellspacing="1">
 		<tbody>
 			<tr>
 				<td colspan="3">
@@ -124,7 +127,6 @@
 								<span data-bind="text: CheckedDate"></span>
 							</td>
 						</tr>
-                       
 					</table>
                     <tr>
                      <td>
@@ -270,9 +272,7 @@
             function showPersonStores(idPerson) {
 
                 var url = "@(Configuration.AppSettings.URI_store_person)?personId=" + idPerson;
-                 window.open(url,
-                     "_storePerson" + idPerson,
-                     "scrollbars = yes,height=450,width=650,resizable = yes,toolbar=no,menubar=no,location=no");
+                Kesco.windowOpen(url, "_storePerson" + idPerson);
 
              }
 

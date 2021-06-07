@@ -20,7 +20,7 @@
 	var firstCallState;
 	
 	function srv4js_onreadystatechange () {
-		if (window.console) console.log("DocViewCaller readyState:"+element.readyState);
+		
 		if (element.readyState != 4) return;
 		setTimeout(function() { srv4js_call(firstCallState) }, 10);
 		

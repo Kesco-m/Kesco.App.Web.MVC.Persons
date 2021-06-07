@@ -90,9 +90,9 @@
        string[] strArr = text.Split(new char[] { (char)31 });
        text = strArr[0];
        phone = strArr[1];
-      // @Html.Raw("["  + text + "->" + phone + "]")
+      
    }
-		@: @Html.DisplayFor(m => text, GetControlNameByContactType(item.Order), new { PhoneNumber = phone, })
+		@: @Html.DisplayFor(m => text, GetControlNameByContactType(item.Order), new { PhoneNumber = phone, PhoneIcon = item.Icon, PersonID = personID, CType = 3 })
 		@Html.Raw(HL(item.Label))
 }
 		</td>

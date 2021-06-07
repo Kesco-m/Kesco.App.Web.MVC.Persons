@@ -192,7 +192,7 @@ namespace Kesco.Persons.Web.Controllers
             string script = String.Format(@"
 					//(function() {{
 						var phoneInfo = {0};
-						if (window.console) console.log('phoneInfo', phoneInfo);
+						
 						ViewModel.Model.Contact.CountryPhoneCode(phoneInfo.CountryPhoneCode);
 						ViewModel.Model.Contact.CityPhoneCode(phoneInfo.CityPhoneCode);
 						ViewModel.Model.Contact.PhoneNumber(phoneInfo.PhoneNumber);
@@ -261,7 +261,7 @@ namespace Kesco.Persons.Web.Controllers
                 PhoneNumberCorporative = string.Empty,
 
                 OtherContact = String.Empty,
-                Comment = model.Contact.Comment ?? string.Empty
+                Comment = model.Contact.Comment ?? string.Empty,
             };
 
             if (model.Contact.ContactTypeID.Value < 20)

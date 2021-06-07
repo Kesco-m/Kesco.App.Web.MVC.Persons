@@ -103,7 +103,7 @@
                	<td style="width: 10px;">
                      <span data-bind="visible: (Model.Card.LastNameLat() || Model.Card.LastNameRus() && !LastNameRusIsInLat()) && Model.Card.LastNameLat() != Model.Card.LastNameRus() ">
 						<a href="javascript: translateName('lastName');" 
-                            ><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/right.png"/></a>
+                            ><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(AppStyles.URI_Styles_Css)images/right.png"/></a>
                             </span>
 					</td>
 			<td style="width: 160px; ">
@@ -131,7 +131,7 @@
               	<td style="width: 10px;">
                     <span data-bind="visible: (Model.Card.FirstNameLat() || Model.Card.FirstNameRus() && !FirstNameRusIsInLat()) && Model.Card.FirstNameLat() != Model.Card.FirstNameRus() ">
 						<a href="javascript: translateName('firstName');" 
-						><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/right.png" 
+						><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(AppStyles.URI_Styles_Css)images/right.png" 
 							/></a>
                             </span>
 					</td>
@@ -160,7 +160,7 @@
                	<td style="width: 10px;">
                     <span data-bind="visible: (Model.Card.MiddleNameLat() || Model.Card.MiddleNameRus() && !MiddleNameRusIsInLat()) && Model.Card.MiddleNameLat() != Model.Card.MiddleNameRus() ">
 						<a href="javascript: translateName('middleName');" 
-						><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(Kesco.Persons.Web.Configuration.AppSettings.URI_Styles_Css)images/right.png" 
+						><img style="cursor: pointer; border: 0px;" title="@(Kesco.Persons.Web.Localization.Resources.Views_NaturalPerson_Tooltip_TranslateName)" src="@Url.Content(AppStyles.URI_Styles_Css)images/right.png" 
 							/></a>
                             </span>
 					</td>
@@ -719,21 +719,7 @@
 		@* Задаем селектор для установки фокуса на соответствующий элемент ввода после загрузки всех свойств страницы *@
 		ViewModel.ControlNameToFocus = '@(Model.ShowPersonData ? "#Model_Card_TerritoryID___Autocomplete" : "#Model_Card_LastNameRus")';
 
-		ViewModel.prevVersionUrl = function() {
-			var url = "@(Kesco.Persons.Web.Configuration.AppSettings.URI_person_search_old)";
-			var value = url.substring(0, url.lastIndexOf('/') + 1);
-			@if (Model.Model.Card.PersonID != null)
-   {
-			    @: value += "Form/Edit/clientPerson.aspx?idClient=@(Model.Model.Card.PersonID)";
-			    }
-   else
-   {
-			    @: value += "Form/Edit/clientPersonAdd.aspx?clr=1";
-			    }
-
-			    return value;
-		    
-		    }
+        ViewModel.prevVersionUrl = "";
 
         
 		$("#NaturalPersonForm").submit(function () {

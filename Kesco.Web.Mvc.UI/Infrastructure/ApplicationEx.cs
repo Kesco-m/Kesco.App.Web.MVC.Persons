@@ -127,7 +127,7 @@ namespace Kesco.Web.Mvc
 
 		public string GetWebAssetThemeCssStylePath(string theme)
 		{
-			return Configuration<S>.AppSettings.URI_Styles_Css + Configuration<S>.Themes[theme] + "jquery-ui.css";
+			return AppStyles.URI_Styles_Css + Configuration<S>.Themes[theme] + "jquery-ui.css";
 		}
 
 		#region Члены Themable

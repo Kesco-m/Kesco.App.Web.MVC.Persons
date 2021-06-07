@@ -213,7 +213,7 @@ namespace Kesco.Web.Mvc.UI.Infrastructure
 				string script = String.Format(@"
 						(function() {{ // closure/замыкание
 							var suggestions = {1};
-							if (window.console) console.log('{0}:selectbox.suggest', suggestions);
+							
 							var $lookup = $('#{0}');
 							$lookup.selectBox('suggest', suggestions);
 						}})();
@@ -249,7 +249,7 @@ namespace Kesco.Web.Mvc.UI.Infrastructure
 				    var $lookup = $('#{0}');
 				    var item = $lookup.selectBox('getValue');
 				    var callbackUrl = encodeURIComponent('{1}');
-				    if (window.console) console.log('{0}:AdvSearch', item);
+				    
 				    var url = '{2}';
 				    url = $.validator.format(url, callbackUrl, encodeURIComponent(item.label));
                     KescoLookup_AdvSearch('#{0}', url);
@@ -276,7 +276,7 @@ namespace Kesco.Web.Mvc.UI.Infrastructure
 			string script = String.Format(@"(function() {{ // closure/замыкание
 				    var $control = $('#{0}');
 				    var item = $control.{2}('getValue');
-				    if (window.console) console.log('{0}:Details', item);
+				    
 					openPopupWindow('{1}?id='+item.value, null, null, 'wnd_Details_{0}', 800, 600, {{ close: false }});
 				}})();
                 ",

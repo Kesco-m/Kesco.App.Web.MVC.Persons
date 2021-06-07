@@ -26,7 +26,7 @@ namespace Kesco.Persons.Web.Controllers
 					var photo = Repository.Logotypes.GetPersonLogotype(id, phId);
 
 					if (photo == null)
-						return Redirect(Configuration.AppSettings.URI_Styles + "AlfNoPhoto.jpg");
+						return Redirect(AppStyles.URI_Styles + "AlfNoPhoto.jpg");
 
 					var eTag = String.Format("logo-{0}-{1}-{2}",
 							phId.HasValue ? "phid" : "pid",
@@ -63,11 +63,11 @@ namespace Kesco.Persons.Web.Controllers
 					}
 
 				} else {
-					return Redirect(Configuration.AppSettings.URI_Styles + "AlfNoPhoto.jpg");
+					return Redirect(AppStyles.URI_Styles + "AlfNoPhoto.jpg");
 				}
 			} catch (Exception ex) {
 				Logger.WriteEx(new DetailedException("Возникла ошибка во время получения логотипа сотрудника.", ex));
-				return Redirect(Configuration.AppSettings.URI_Styles + "AlfNoPhoto.jpg");
+				return Redirect(AppStyles.URI_Styles + "AlfNoPhoto.jpg");
 			}
 		}
 

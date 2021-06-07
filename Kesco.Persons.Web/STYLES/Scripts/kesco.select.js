@@ -424,7 +424,7 @@ $.widget( "kesco.autocompleteEx", {
 	},
 
 	search: function( value, event ) {
-		if (window.console) console.log("kesco.autocompleteEx.search", arguments);
+		
 		$('.qtip:visible').qtip('hide');
 		value = value != null ? value : this._value();
 
@@ -554,7 +554,7 @@ $.widget( "kesco.autocompleteEx", {
 	},
 
 	_select: function(ev, item) {
-		if (window.console) console.log("_select", arguments);
+		
 		if (item) {
 			if (item.value == "__command__") {
 				this._trigger( "command", ev, { item: item } );
@@ -825,7 +825,7 @@ $.widget( "kesco.selectBox", {
 							// double check: FF doesn't focus the input 
 							// while transition of blur
 							clearTimeout(focusing);
-							if (window.console) console.log("blue::_clearFocusing: "+_clearFocusing+" ae:"+document.activeElement.id);
+							
 							if (document.activeElement != self.autocomplete.get(0) 
 								&& !$(".ui-dialog:visible").length) {
 								self.autocomplete.focus();
@@ -904,7 +904,7 @@ $.widget( "kesco.selectBox", {
 		clearFocusing: function(clear) {
 			function _TRUE(undefined) { return clear == undefined || !!clear; }
 			_clearFocusing = _TRUE();
-			if (window.console) console.log("_clearFocusing: "+_clearFocusing);
+			
 		},
 		
 		_setOption: function( key, value ) {
@@ -956,7 +956,7 @@ $.widget( "kesco.selectBox", {
 
 		setValue: function (item) {
 			$('.qtip:visible').qtip('hide');
-			if (window.console) console.log("kesco.selectBox.setValue", item);
+			
 			this.autocomplete.val(item.label);
 			this._change(item.value);			
 			this.autocomplete.data("kesco-autocompleteEx").selectedItem = item.value?item:null;
@@ -967,7 +967,7 @@ $.widget( "kesco.selectBox", {
 		},
 		
 		suggest: function(content) {
-			if (window.console) console.log("kesco.selectBox.suggest", arguments);
+			
 			this.autocomplete.autocompleteEx("suggest", content);
 		},
 		

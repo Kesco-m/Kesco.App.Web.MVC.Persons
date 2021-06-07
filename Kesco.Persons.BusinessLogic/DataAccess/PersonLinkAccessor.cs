@@ -143,12 +143,22 @@ namespace Kesco.Persons.BusinessLogic.DataAccess
 			public int? Параметр;
 		}
 
-		public override List<PersonLink> Search(SearchParameters criteria)
-		{
-			return SearchExtended<PersonLinkExtended>(criteria).Select(l => { return l as PersonLink; }).ToList();
-		}
+        public override List<PersonLink> Search(SearchParameters criteria)
+        {
+            if (criteria.ChildIDs != null && criteria.ChildIDs.Split(',').Length > 0)
+            {
+                return SearchExtendedChildID<PersonLinkExtended>(criteria).Select(l => { return l as PersonLink; }).ToList();
+            }
 
-		public virtual List<TResult> Search<TResult>(SearchParameters criteria)
+            if (criteria.ParentIDs != null && criteria.ParentIDs.Split(',').Length > 0)
+            {
+                return SearchExtendedParentID<PersonLinkExtended>(criteria).Select(l => { return l as PersonLink; }).ToList();
+            }
+
+            return SearchExtended<PersonLinkExtended>(criteria).Select(l => { return l as PersonLink; }).ToList();
+        }
+
+        public virtual List<TResult> Search<TResult>(SearchParameters criteria)
 			where TResult: PersonLink
 		{
 			return SearchExtended<TResult>(criteria);
@@ -200,10 +210,9 @@ namespace Kesco.Persons.BusinessLogic.DataAccess
 				INNER JOIN vwЛица Р (nolock) ON СЛ.КодЛицаРодителя = Р.КодЛица
 				INNER JOIN vwЛица П (nolock) ON СЛ.КодЛицаПотомка = П.КодЛица
 			WHERE	(@СтрокаПоиска = '' OR @СтрокаПоиска <> '' AND (SELECT COUNT(*) FROM @СписокСловДляПоиска WHERE 
-																			' '+Инвентаризация.dbo.fn_ReplaceRusLat(СЛ.[Описание]) LIKE '%'+Слово+'%'
-																		OR	' '+Р.КличкаRL LIKE '%'+Слово+'%'
-																		OR	' '+П.КличкаRL LIKE '%'+Слово+'%'
-																		) = @КоличествоСлов)
+									                                                            ' '+Р.КличкаRL LIKE '%'+Слово+'%'
+									                                                            OR	' '+П.КличкаRL LIKE '%'+Слово+'%'
+									                                                            ) = @КоличествоСлов)
 				AND	(@СписокКодов = '' OR @СписокКодов <> '' AND СЛ.КодСвязиЛиц IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодов)))
 				AND	(@СписокКодовТиповСвязейЛиц = '' OR @СписокКодовТиповСвязейЛиц <> '' AND СЛ.КодТипаСвязиЛиц IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодовТиповСвязейЛиц)))
 				AND	(@СписокКодовЛицРодителей = '' OR @СписокКодовЛицРодителей <> '' AND Р.КодЛица IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодовЛицРодителей)))
@@ -223,7 +232,142 @@ namespace Kesco.Persons.BusinessLogic.DataAccess
 		protected abstract List<TResult> SearchExtended<TResult>(SearchParameters parameters)
 			where TResult : PersonLink;
 
-		[SqlQuery("SELECT * FROM vwСвязиЛиц WHERE КодЛицаРодителя = @personID")]
+        [SqlQuery(@"
+			DECLARE @I int, @S varchar(200), @W varchar(200), @WRL varchar(200)
+			DECLARE @СписокСловДляПоиска TABLE(Слово varchar(200)) DECLARE @КоличествоСлов int
+	
+			SET @МаксимальноеКоличествоЗаписей = ISNULL(@МаксимальноеКоличествоЗаписей, 0)
+			IF @МаксимальноеКоличествоЗаписей < 0 SET @МаксимальноеКоличествоЗаписей = 0
+
+			SET @ВернутьНачинаяСПорядковогоНомера = ISNULL(@ВернутьНачинаяСПорядковогоНомера, 1)
+			IF @ВернутьНачинаяСПорядковогоНомера <= 0 SET @ВернутьНачинаяСПорядковогоНомера = 1
+	
+ 			SET @СписокКодов = LTRIM(RTRIM(COALESCE(@СписокКодов, '')))
+ 			SET @СписокКодовТиповСвязейЛиц = LTRIM(RTRIM(COALESCE(@СписокКодовТиповСвязейЛиц, '')))
+ 			SET @СписокКодовЛицПотомков = LTRIM(RTRIM(COALESCE(@СписокКодовЛицПотомков, '')))
+
+			-- Обработка и разбивка строки поиска
+			SET @СтрокаПоиска = RTRIM(LTRIM(ISNULL(@СтрокаПоиска,'')))
+			IF @СтрокаПоиска <> '' 
+			BEGIN
+				SET @СтрокаПоиска = Инвентаризация.dbo.fn_SplitWords(Инвентаризация.dbo.fn_ReplaceKeySymbols(@СтрокаПоиска))
+				SET @СтрокаПоиска = RTRIM(LTRIM(@СтрокаПоиска))
+				WHILE CHARINDEX('  ', @СтрокаПоиска) > 0 SET @СтрокаПоиска = REPLACE(@СтрокаПоиска,'  ',' ')
+
+				SET @S = @СтрокаПоиска
+				WHILE LEN(@S) > 0 
+				BEGIN
+				SET @I = CHARINDEX(' ', @S + ' ') 
+				SET @W = LEFT(@S, @I-1)	SET @S = SUBSTRING(@S, @I + 1, 100)
+				SET @WRL = Инвентаризация.dbo.fn_ReplaceRusLat(@W) 	
+				IF (@ГдеИскать = 1) SET @WRL = ' ' + @WRL
+				INSERT @СписокСловДляПоиска SELECT @WRL
+				END			
+
+				-- Подсчёт слов
+				SET @КоличествоСлов = (SELECT COUNT(*) FROM @СписокСловДляПоиска)
+			END
+
+			-- Выполним поиск	
+			DECLARE @РезультатПоиска TABLE(Код INT, Порядок BIGINT IDENTITY(1,1))
+			INSERT INTO @РезультатПоиска(Код)
+			SELECT 
+				СЛ.КодСвязиЛиц
+			FROM Справочники..vwСвязиЛиц СЛ (nolock)
+				INNER JOIN vwЛица Р (nolock) ON СЛ.КодЛицаРодителя = Р.КодЛица
+				INNER JOIN vwЛица П (nolock) ON СЛ.КодЛицаПотомка = П.КодЛица
+			WHERE	(@СтрокаПоиска = '' OR @СтрокаПоиска <> '' AND (SELECT COUNT(*) FROM @СписокСловДляПоиска WHERE 
+									                                                            ' '+Р.КличкаRL LIKE '%'+Слово+'%'
+									                                                            OR	' '+П.КличкаRL LIKE '%'+Слово+'%'
+									                                                            ) = @КоличествоСлов)
+				AND	(@СписокКодов = '' OR @СписокКодов <> '' AND СЛ.КодСвязиЛиц IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодов)))
+				AND	(@СписокКодовТиповСвязейЛиц = '' OR @СписокКодовТиповСвязейЛиц <> '' AND СЛ.КодТипаСвязиЛиц IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодовТиповСвязейЛиц)))
+				AND	(@СписокКодовЛицПотомков = '' OR @СписокКодовЛицПотомков <> '' AND П.КодЛица IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодовЛицПотомков)))
+	
+			-- Вернём результат
+			SELECT 
+				СЛ.*, Р.Кличка Родитель, П.Кличка Потомок
+			FROM @РезультатПоиска РП INNER JOIN Справочники..vwСвязиЛиц СЛ (nolock) on СЛ.КодСвязиЛиц = РП.Код
+				INNER JOIN vwЛица Р (nolock) ON СЛ.КодЛицаРодителя = Р.КодЛица
+				INNER JOIN vwЛица П (nolock) ON СЛ.КодЛицаПотомка = П.КодЛица
+			WHERE	РП.Порядок >= @ВернутьНачинаяСПорядковогоНомера
+				AND (@МаксимальноеКоличествоЗаписей = 0 OR	@МаксимальноеКоличествоЗаписей <> 0 
+								AND РП.Порядок < @ВернутьНачинаяСПорядковогоНомера+@МаксимальноеКоличествоЗаписей)
+			ORDER BY РП.Порядок
+		")]
+        protected abstract List<TResult> SearchExtendedChildID<TResult>(SearchParameters parameters)
+            where TResult : PersonLink;
+
+        [SqlQuery(@"
+			DECLARE @I int, @S varchar(200), @W varchar(200), @WRL varchar(200)
+			DECLARE @СписокСловДляПоиска TABLE(Слово varchar(200)) DECLARE @КоличествоСлов int
+	
+			SET @МаксимальноеКоличествоЗаписей = ISNULL(@МаксимальноеКоличествоЗаписей, 0)
+			IF @МаксимальноеКоличествоЗаписей < 0 SET @МаксимальноеКоличествоЗаписей = 0
+
+			SET @ВернутьНачинаяСПорядковогоНомера = ISNULL(@ВернутьНачинаяСПорядковогоНомера, 1)
+			IF @ВернутьНачинаяСПорядковогоНомера <= 0 SET @ВернутьНачинаяСПорядковогоНомера = 1
+	
+ 			SET @СписокКодов = LTRIM(RTRIM(COALESCE(@СписокКодов, '')))
+ 			SET @СписокКодовТиповСвязейЛиц = LTRIM(RTRIM(COALESCE(@СписокКодовТиповСвязейЛиц, '')))
+ 			SET @СписокКодовЛицРодителей = LTRIM(RTRIM(COALESCE(@СписокКодовЛицРодителей, '')))
+
+			-- Обработка и разбивка строки поиска
+			SET @СтрокаПоиска = RTRIM(LTRIM(ISNULL(@СтрокаПоиска,'')))
+			IF @СтрокаПоиска <> '' 
+			BEGIN
+				SET @СтрокаПоиска = Инвентаризация.dbo.fn_SplitWords(Инвентаризация.dbo.fn_ReplaceKeySymbols(@СтрокаПоиска))
+				SET @СтрокаПоиска = RTRIM(LTRIM(@СтрокаПоиска))
+				WHILE CHARINDEX('  ', @СтрокаПоиска) > 0 SET @СтрокаПоиска = REPLACE(@СтрокаПоиска,'  ',' ')
+
+				SET @S = @СтрокаПоиска
+				WHILE LEN(@S) > 0 
+				BEGIN
+				SET @I = CHARINDEX(' ', @S + ' ') 
+				SET @W = LEFT(@S, @I-1)	SET @S = SUBSTRING(@S, @I + 1, 100)
+				SET @WRL = Инвентаризация.dbo.fn_ReplaceRusLat(@W) 	
+				IF (@ГдеИскать = 1) SET @WRL = ' ' + @WRL
+				INSERT @СписокСловДляПоиска SELECT @WRL
+				END			
+
+				-- Подсчёт слов
+				SET @КоличествоСлов = (SELECT COUNT(*) FROM @СписокСловДляПоиска)
+			END
+
+			-- Выполним поиск	
+			DECLARE @РезультатПоиска TABLE(Код INT, Порядок BIGINT IDENTITY(1,1))
+			INSERT INTO @РезультатПоиска(Код)
+			SELECT 
+				СЛ.КодСвязиЛиц
+			FROM Справочники..vwСвязиЛиц СЛ (nolock)
+				INNER JOIN vwЛица Р (nolock) ON СЛ.КодЛицаРодителя = Р.КодЛица
+				INNER JOIN vwЛица П (nolock) ON СЛ.КодЛицаПотомка = П.КодЛица
+			WHERE	(@СтрокаПоиска = '' OR @СтрокаПоиска <> '' AND (SELECT COUNT(*) FROM @СписокСловДляПоиска WHERE 
+									                                                            ' '+Р.КличкаRL LIKE '%'+Слово+'%'
+									                                                            OR	' '+П.КличкаRL LIKE '%'+Слово+'%'
+									                                                            ) = @КоличествоСлов)
+				AND	(@СписокКодов = '' OR @СписокКодов <> '' AND СЛ.КодСвязиЛиц IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодов)))
+				AND	(@СписокКодовТиповСвязейЛиц = '' OR @СписокКодовТиповСвязейЛиц <> '' AND СЛ.КодТипаСвязиЛиц IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодовТиповСвязейЛиц)))
+				AND	(@СписокКодовЛицРодителей = '' OR @СписокКодовЛицРодителей <> '' AND Р.КодЛица IN (SELECT * FROM Инвентаризация..[fn_SplitInts](@СписокКодовЛицРодителей)))
+	
+			-- Вернём результат
+			SELECT 
+				СЛ.*, Р.Кличка Родитель, П.Кличка Потомок
+			FROM @РезультатПоиска РП INNER JOIN Справочники..vwСвязиЛиц СЛ (nolock) on СЛ.КодСвязиЛиц = РП.Код
+				INNER JOIN vwЛица Р (nolock) ON СЛ.КодЛицаРодителя = Р.КодЛица
+				INNER JOIN vwЛица П (nolock) ON СЛ.КодЛицаПотомка = П.КодЛица
+			WHERE	РП.Порядок >= @ВернутьНачинаяСПорядковогоНомера
+				AND (@МаксимальноеКоличествоЗаписей = 0 OR	@МаксимальноеКоличествоЗаписей <> 0 
+								AND РП.Порядок < @ВернутьНачинаяСПорядковогоНомера+@МаксимальноеКоличествоЗаписей)
+			ORDER BY РП.Порядок
+		")]
+        protected abstract List<TResult> SearchExtendedParentID<TResult>(SearchParameters parameters)
+            where TResult : PersonLink;
+
+        [SqlQuery("SELECT ТипЛица FROM vwЛица WHERE @personID = КодЛица")]
+        public abstract int GetPersonTypeByID(int personID);
+
+        [SqlQuery("SELECT * FROM vwСвязиЛиц WHERE КодЛицаРодителя = @personID")]
 		public abstract List<PersonLink> GetPersonChildsByID(string personID);
 
 		[SqlQuery("SELECT * FROM vwСвязиЛиц WHERE КодТипаСвязиЛиц=1 AND @personID IN(КодЛицаРодителя, КодЛицаПотомка)")]

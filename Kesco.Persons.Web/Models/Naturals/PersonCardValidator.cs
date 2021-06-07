@@ -14,41 +14,41 @@ namespace Kesco.Persons.Web.Models.Naturals
 		{
 			//RuleFor(r => r.From).Cascade(CascadeMode.StopOnFirstFailure)
 			//    .Must(DatesAreValid)
-			//        .WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+			//        .WithMessage( Kesco.Persons.Web.Localization.Resources
 			//            .Validation_Requisites_DateRange_must_be_valid);
 
             //RuleFor(r => r.OGRN).Cascade(CascadeMode.StopOnFirstFailure)
             //    .Must(ValidateOGRNLenght)
-            //        .WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+            //        .WithMessage( Kesco.Persons.Web.Localization.Resources
             //            .Validation_NaturalPerson_SexMustBeSpecified);
 
 			RuleFor(r => r.Sex).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(SexIsSpecified)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_NaturalPerson_SexMustBeSpecified);
 
 			RuleFor(r => r.FirstNameRus).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(OneOfTheNamesMustBeProvided)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_NaturalPerson_AtLeastTheNameMustBeSpecified);
 
 			RuleFor(r => r.FirstNameLat).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(StringHasOnlyLatinChars)
-					.WithLocalizedMessage(
-							() => Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_NameHasNoCyrillicChars,
-							Kesco.Persons.ObjectModel.Localization.Resources.Kesco_Persons_MDL_269
+					.WithMessage(
+							Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_NameHasNoCyrillicChars + " " +
+                            Kesco.Persons.ObjectModel.Localization.Resources.Kesco_Persons_MDL_269
 						);
 
 			RuleFor(r => r.LastNameLat).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(StringHasOnlyLatinChars)
-					.WithLocalizedMessage(
-							() => Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_NameHasNoCyrillicChars,
+					.WithMessage(
+							Kesco.Persons.Web.Localization.Resources.Validation_NaturalPerson_NameHasNoCyrillicChars + " " + 
 							Kesco.Persons.ObjectModel.Localization.Resources.Kesco_Persons_MDL_265
 						);
 
 			RuleFor(r => r.Nickname).Cascade(CascadeMode.StopOnFirstFailure)
 					.Must(PersonWithTheSameNicknameDoesNotExist)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_NaturalPerson_PersonWithTheSameNicknameDoesNotExist);
 		}
 

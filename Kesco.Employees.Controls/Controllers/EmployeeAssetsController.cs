@@ -43,7 +43,7 @@ namespace Kesco.Employees.Controls.Controllers
 					var photo = Repository.Employees.GetEmployeePhoto(id, phId, mini == 1);
 
 					if (photo == null)
-						return Redirect(Configuration.AppSettings.URI_Styles + ((mini == 1) ? "Empty.jpg" : "AlfNoPhoto.jpg"));
+						return Redirect(AppStyles.URI_Styles + ((mini == 1) ? "Empty.jpg" : "AlfNoPhoto.jpg"));
 
 					var eTag = String.Format("{0}-{1}-{2}-{3}",
 							mini == 1 ? "thumb" : "img",
@@ -76,11 +76,11 @@ namespace Kesco.Employees.Controls.Controllers
 					}
 
 				} else {
-					return Redirect(Configuration.AppSettings.URI_Styles + "AlfNoPhoto.jpg");
+					return Redirect(AppStyles.URI_Styles + "AlfNoPhoto.jpg");
 				}
 			} catch (Exception ex) {
 				Logger.WriteEx(new DetailedException("Возникла ошибка во время получения фотографии сотрудника.", ex));
-				return Redirect(Configuration.AppSettings.URI_Styles + "AlfNoPhoto.jpg");
+				return Redirect(AppStyles.URI_Styles + "AlfNoPhoto.jpg");
 			}
         }
 

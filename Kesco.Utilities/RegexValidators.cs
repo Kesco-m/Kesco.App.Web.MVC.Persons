@@ -10,33 +10,47 @@ namespace Kesco.Utilities
 
 	   public static bool ValidateEmail(string email)
 	   {
-		   bool invalid = false;
-		   if (String.IsNullOrEmpty(email))
-			  return false;
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
-		   // Use IdnMapping class to convert Unicode domain names.
-		   email = Regex.Replace(email, @"(@)(.+)$", (match) => {
-			   // IdnMapping class with default property values.
-			   IdnMapping idn = new IdnMapping();
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
 
-			   string domainName = match.Groups[2].Value;
-			   try {
-				   domainName = idn.GetAscii(domainName);
-			   } catch (ArgumentException) {
-				   invalid = true;
-			   }
-			   return match.Groups[1].Value + domainName;
-		   });
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
 
-		   if (invalid)
-			   return false;
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    string domainName = idn.GetAscii(match.Groups[2].Value);
 
-		   // Return true if strIn is in valid e-mail format.
-		   return Regex.IsMatch(email,
-				  @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-				  @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$",
-				  RegexOptions.IgnoreCase);
-	   }
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
 
 	   public static bool ValidateUrl(string url)
 	   {

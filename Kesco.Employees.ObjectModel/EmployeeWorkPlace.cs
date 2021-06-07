@@ -17,7 +17,10 @@ namespace Kesco.Employees.ObjectModel
         [MapField("РабочееМесто")]
         public string WorkPlacePar { get; set; }
 
-		[MapIgnore]
+        [MapField("ОрганизованноеРабочееМесто")]
+        public bool OrgWorkPlace { get; set; }
+        
+        [MapIgnore]
 		public List<EmployeeCoWorker> CoWorkers { get; set; }
 	}
 }

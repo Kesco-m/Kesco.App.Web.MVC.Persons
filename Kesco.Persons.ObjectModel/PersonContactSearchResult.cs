@@ -84,19 +84,29 @@ namespace Kesco.Persons.ObjectModel
 
 		[MapField("КодСвязиЛиц")]
 		public int PersonLinkID { get; set; }
+
 		[MapField("КодЛицаСвязи")]
 		public int LinkedPersonParentID { get; set; }
-		[MapField("НадписьЛица")]
+		
+        [MapField("НадписьЛица")]
 		public string LinkedPersonText { get; set; }
-		[MapField("КодЛицаСвязанный")]
+		
+        [MapField("КодЛицаСвязанный")]
 		public int LinkedPersonChildID { get; set; }
-		[MapField("ПоКлиенту")]
+		
+        [MapField("ПоКлиенту")]
 		public int ByClient { get; set; }
 
-		/// <summary>
-		/// КодТипаКонтакта
+        /// <summary>
+		/// Иконка
 		/// </summary>
-		[MapField("КодТипаКонтакта")]
+		[MapField("Icon")]
+        public string Icon { get; set; }
+
+        /// <summary>
+        /// КодТипаКонтакта
+        /// </summary>
+        [MapField("КодТипаКонтакта")]
 		public int ContactTypeID { get; set; }
 
 		/// <summary>

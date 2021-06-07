@@ -22,14 +22,14 @@
 	Html.RegisterCommonScriptCode("employeeControl", @"
 		$(document).ready(function () {
 			setTimeout(function() {
-				if (window.console) console.log('employeeControl starting...'+new Date());
+				
 				$('.employeeControl').each(function(index, item) {
 					$(this).employee({
 							container: $(document.body),
 							value: $(this).data('employee-id')
 						});
 				});
-				if (window.console) console.log('employeeControl finished. '+new Date());
+				
 			}, 10);
 		});
 	");

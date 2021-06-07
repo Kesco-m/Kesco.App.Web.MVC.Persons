@@ -35,19 +35,17 @@ namespace Kesco.Persons.Web.Models.PersonLink
 
 			RuleFor(r => r.From)
 				.Must(DatesAreValid)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources.Validation_Requisites_DateRange_must_be_valid);
+					.WithMessage( Kesco.Persons.Web.Localization.Resources.Validation_Requisites_DateRange_must_be_valid);
 
 			RuleFor(r => r.ParentPersonID).NotNull()
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
-						.Validation_Specify_Field_Name, parentLabel);
+					.WithMessage( Kesco.Persons.Web.Localization.Resources.Validation_Specify_Field_Name + " " + parentLabel);
 
 			RuleFor(r => r.ChildPersonID).NotNull()
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
-						.Validation_Specify_Field_Name, childLabel);
+					.WithMessage( Kesco.Persons.Web.Localization.Resources.Validation_Specify_Field_Name  + " " +  childLabel);
 
 			RuleFor(r => r.Description)
 				.Length(0, 300)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources.Validation_String_LengthExceeded);
+					.WithMessage( Kesco.Persons.Web.Localization.Resources.Validation_String_LengthExceeded);
 		}
 
 		protected bool DatesAreValid(PersonLink instance, DateTime? from)

@@ -48,6 +48,8 @@
 					contactIcon = GetControlIconByContactType(c.ContactType),
 					PhoneType = c.Type,
 					PhoneNumber = c.PhoneNumber,
+                    CID = Model.Employee.ID,
+                    CType = 2,
 					CssClass = (c.InDictionary ? "" : "clGrayTrans")
 				}) 
 				@if (!String.IsNullOrEmpty(c.Note)) {

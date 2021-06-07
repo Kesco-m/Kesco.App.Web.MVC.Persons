@@ -20,29 +20,29 @@ namespace Kesco.Persons.Web.Models.Contact
 			CascadeMode = CascadeMode.StopOnFirstFailure;
 
 			RuleFor(r => r.ContactTypeID).NotNull()
-				.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+				.WithMessage( Kesco.Persons.Web.Localization.Resources
 					.Validation_Contact_SpecifyContactType);
 
 			// Контакт типа 'Адрес' должен содержать хотя бы название страны
 			When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value < 20, () => {
 				RuleFor(r => r.CountryID).NotNull()
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_Contact_SpecifyCountryAtLeast);
 				RuleFor(r => r.Zip)
 					.Length(0, 6)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 				RuleFor(r => r.Region)
 					.Length(0, 50)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 				RuleFor(r => r.CityName)
 					.Length(0, 50)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 				RuleFor(r => r.Address)
 					.Length(0, 300)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 			});
 
@@ -51,93 +51,109 @@ namespace Kesco.Persons.Web.Models.Contact
 
 				RuleFor(r => r.CountryPhoneCode)
 					.NotEmpty()
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_Contact_SpecifyCountryPhoneCode)
 					.Length(0, 6)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 
 				RuleFor(r => r.CityPhoneCode)
 					.Length(0, 6)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 
 				RuleFor(r => r.PhoneNumber)
 					.NotEmpty()
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_Contact_SpecifyCountryPhoneCode)
 					.Length(0, 40)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 
 				RuleFor(r => r.PhoneNumberAdd)
 					.Length(0, 10)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 
 			});
 
-			// Для общих контактов должнен быть указан текст контакта
-			When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value >= 40 && c.ContactTypeID.Value < 54, () => {
+            
+            // Для общих контактов должнен быть указан текст контакта
+            When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value >= 40 && c.ContactTypeID.Value < 54, () => {
 				RuleFor(r => r.ContactText)
 					.NotEmpty()
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
-								.Validation_Specify_Field_Name,
-								ReturnContactCaption
-							)
+						.WithMessage(Kesco.Persons.Web.Localization.Resources.Validation_Specify_Field_Name)//,ReturnContactCaption)
 					.Length(0,300)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
-								.Validation_String_LengthExceeded2,
-								ReturnContactCaption
+						.WithMessage( Kesco.Persons.Web.Localization.Resources.Validation_String_LengthExceeded2//,ReturnContactCaption
 							)
 					;
 			});
 
-			// проверка формата электронного адреса
-			When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value == 40, () => {
-				Custom(с => {
-					var valid = EmailAddressMustBeValid(с, с.ContactText);
-					return valid ? null
-						: new ValidationFailure(
-							Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Email,
-							String.Format(
-								Kesco.Persons.Web.Localization.Resources.Validation_EmailAddressInvalid,
-								Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Email,
-								String.Join("; ", lastInvalidEmails
-							)
-					));
-			   });
-			});
+            // проверка формата электронного адреса
+            When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value == 40, () => {
+                RuleFor(r => r.ContactText).Must(EmailAddressMustBeValid).WithMessage(
+                                    String.Format(
+                                        Kesco.Persons.Web.Localization.Resources.Validation_EmailAddressInvalid,
+                                        Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Email,
+                                        String.Join("; ", lastInvalidEmails)
+                                    ).Replace("[","").Replace("]","").Trim()
+                    );
+            });
 
-			// проверка формата Url-адреса.
+			//	Custom(с => {
+			//		var valid = EmailAddressMustBeValid(с, с.ContactText);
+			//		return valid ? null
+			//			: new ValidationFailure(
+			//				Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Email,
+			//				String.Format(
+			//					Kesco.Persons.Web.Localization.Resources.Validation_EmailAddressInvalid,
+			//					Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Email,
+			//					String.Join("; ", lastInvalidEmails
+			//				)
+			//		));
+			//   });
+			//});
+
+
+
+			//// проверка формата Url-адреса.
 			When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value == 50, () => {
-				Custom(с => {
-					var valid = UrlMustBeValid(с, с.ContactText);
-					return valid ? null
-						: new ValidationFailure(
-								Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Http,
-								String.Format(
-									Kesco.Persons.Web.Localization.Resources.Validation_UrlAddressInvalid,
-									Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Http
-								)
-						);
-				});
-			});
+                RuleFor(r => r.ContactText).Must(UrlMustBeValid).WithMessage(
 
-			// Для контакта - Другой контакт - должен быть указан текст другого контакта
-			When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value == 54, () => {
+                                        String.Format(
+                                            Kesco.Persons.Web.Localization.Resources.Validation_UrlAddressInvalid,
+                                            Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Http
+                                        )
+
+                    );
+            });
+            //	Custom(с => {
+            //		var valid = UrlMustBeValid(с, с.ContactText);
+            //		return valid ? null
+            //			: new ValidationFailure(
+            //					Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Http,
+            //					String.Format(
+            //						Kesco.Persons.Web.Localization.Resources.Validation_UrlAddressInvalid,
+            //						Kesco.Persons.Web.Localization.Resources.Views_Contact_ContactText_Http
+            //					)
+            //			);
+            //	});
+            //});
+
+            // Для контакта - Другой контакт - должен быть указан текст другого контакта
+            When(c => c.ContactTypeID.HasValue && c.ContactTypeID.Value == 54, () => {
 				RuleFor(r => r.OtherContact).NotEmpty()
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_Contact_SpecifyOtherContact
 						)
 					.Length(0, 120)
-						.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+						.WithMessage( Kesco.Persons.Web.Localization.Resources
 							.Validation_String_LengthExceeded);
 			});
 
 			RuleFor(r => r.Comment)
 				.Length(0, 300)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_String_LengthExceeded);
 		}
 

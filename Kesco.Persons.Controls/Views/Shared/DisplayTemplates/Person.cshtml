@@ -23,14 +23,14 @@
 	Html.RegisterCommonScriptCode("personControl", @"
 		$(document).ready(function (){
 			setTimeout(function() {
-				if (window.console) console.log('personControl starting...'+new Date());
+				
 				$('.personControl').each(function(index, item) {
 					$(this).person({
 							container: $(document.body),
 							value: $(this).data('person-id')
 						});
 				});
-				if (window.console) console.log('personControl stopped. '+new Date());
+				
 			}, 10);
 		});
 	");	

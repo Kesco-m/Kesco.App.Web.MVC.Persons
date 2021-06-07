@@ -17,7 +17,7 @@ namespace Kesco.Persons.Web.Models.Card
 
 			RuleFor(r => r.From).Cascade(CascadeMode.StopOnFirstFailure)
 				.Must(DatesAreValid)
-					.WithLocalizedMessage(() => Kesco.Persons.Web.Localization.Resources
+					.WithMessage( Kesco.Persons.Web.Localization.Resources
 						.Validation_Card_DateRange_must_be_valid);
 
 		}

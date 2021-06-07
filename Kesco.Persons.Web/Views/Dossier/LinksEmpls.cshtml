@@ -69,7 +69,10 @@
 					><span class="ui-icon ui-icon-pencil text-ui-icon"></span></a>
 				}
 				@Html.DisplayFor(m => contact.ContactText, GetControlNameByContactType(contact.ContactTypeID), new {
-					PhoneNumber = contact.PhoneNumber
+					PhoneNumber = contact.PhoneNumber,
+                    CID = contact.PersonID,
+                    CType = 3,
+                    PhoneIcon= contact.Icon
 				})
 				@if(contact.Comment.Length > 0){@Html.Raw("(") @(contact.Comment) @Html.Raw(")")}
 				@if(contact.LinkedPersonText.Length > 0){

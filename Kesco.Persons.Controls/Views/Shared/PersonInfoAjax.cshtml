@@ -27,6 +27,8 @@
 						contactIcon = GetControlIconByContactType(c.ContactType),
 						PhoneType = c.Type,
 						PhoneNumber = c.PhoneNumber,
+                        CID = Model.PersonID,
+                        CType = 3,
 						CssClass = (c.InDictionary ? "" : "clGrayTrans")
 					})
 					if (!String.IsNullOrEmpty(c.Note)) {

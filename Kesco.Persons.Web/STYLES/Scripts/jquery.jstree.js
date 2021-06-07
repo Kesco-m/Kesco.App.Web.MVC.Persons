@@ -542,8 +542,7 @@
 			},
 			// deal with focus
 			set_focus	: function () { 
-				if (document.activeElement && document.activeElement != document.body) {
-					if (window.console) console.log(document.activeElement.nodeName);
+				if (document.activeElement && document.activeElement != document.body) {				
 					document.activeElement.blur();
 				}
 				if(this.is_focused()) { return; }

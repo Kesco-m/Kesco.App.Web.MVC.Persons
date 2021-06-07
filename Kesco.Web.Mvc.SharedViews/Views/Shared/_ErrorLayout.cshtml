@@ -7,8 +7,7 @@
 <html>
 <head >
     <title>@ViewBag.Title</title>
-	<link rel="icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" />
-	<link rel="shortcut icon" href='@Url.Content("~/favicon.ico")' type="image/x-icon" /> 
+	<link rel="icon" href="data:," />
 	
 	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetCssStyle(GetUserThemeFolder()+"jquery-ui.css")))
 	@Html.Raw(Html.CompositeScriptResource_RenderScriptTag(WebAssetScript("jquery.js")))

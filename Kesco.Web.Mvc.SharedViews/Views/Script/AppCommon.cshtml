@@ -22,7 +22,7 @@
 		// TODO: what to do???
 	}
 	var Env = window.Env;
-	if (window.console) console.log("ClientSideVM: запуск "+new Date());
+	
 	var ViewModel = {
 		_garbage: ko.observable(0),
 		AppName: Env.AppName,
@@ -72,11 +72,11 @@
 		},
 
 		showUser: function (id) {
-			openPopupWindow(Env.URI_user_form+'?id='+id+'&hideOldVer='+@(hideOldVer), null, null, "wnd_ViewUser_"+id, 800, 600, { close: false, centerScreen:0 });
+			openPopupWindow(Env.URI_user_form+'?id='+id, null, null, "wnd_ViewUser_"+id, 800, 600, { close: false, centerScreen:0 });
 		},
 
 		showPerson: function (id) {
-			openPopupWindow(Env.URI_person_form+'?id='+id+'&hideOldVer='+@(hideOldVer), null, null, "wnd_ViewPerson_"+id, 800, 600, { close: false, centerScreen:0 });
+			openPopupWindow(Env.URI_person_form+'?id='+id, null, null, "wnd_ViewPerson_"+id, 800, 600, { close: false, centerScreen:0 });
 		},
 
 		showResource: function (id) {
@@ -158,7 +158,7 @@
 				alert(Env.Localization.ClientSideViewModel_IncorrectEmail);
 				return;
 			}
-			window.open('mailto:'+email);
+			Kesco.windowOpen('mailto:'+email);
 		},
 
 		openMessengerChat: function (contact)
@@ -343,8 +343,8 @@
             $("#PhoneCalling_Dialog").dialog("close");
         },
 
-        makeCall: function (contact, intlPhoneNumber, lang)
-		{
+        makeCall: function (contact, intlPhoneNumber, cid, ctype, icon)
+		{            
 			var self = this;
 			if (!intlPhoneNumber) {
 				RegisterClientError("Неправильно указан телефон(КонтактRL)");
@@ -352,26 +352,50 @@
 			}
 
 			function doMakeCall() {
+                if (icon==null) icon="";
+                var _paramsURI = "";
+                    _paramsURI += "cid=" + cid;
+                    _paramsURI += "&ctype=" + ctype;
+                    _paramsURI += "&cicon=" + encodeURIComponent(icon);
+                    _paramsURI += "&number=" + contact;
+                    _paramsURI += "&internumber=" + intlPhoneNumber.replace(" ", "");
+                    _paramsURI += "&computerName=" + ViewModel.ClientName;
 
-				@*self.CallStation.TargetPhone(intlPhoneNumber);
-				self.CallStation.TargetPhoneDisplay(contact);
-				self.CallStation.Message("");*@
-
-                var urlPhone = Env.URI_phones+'?number='+contact.replace(" ", "")+'&inter='+intlPhoneNumber.replace(" ", "") +'&computerName='+ViewModel.ClientName+'&lang='+lang;
-                ViewModel.showPhoneList(urlPhone);
-				@*$("#PhoneCalling_Dialog").dialog("open");*@
+                Kesco.makeCall(Env.URI_phones, Env.URI_contacts_caller, _paramsURI, contact);               
 			}
 
-			if (self.ClientName || (ViewModel.ClientName != "" && ViewModel.ClientName != null)) doMakeCall();
-			else 
-				$.srv4js("GETCLIENTNAME", {
-					callback: function(state) {
-                        if(ViewModel.ClientName == "" || ViewModel.ClientName == null){
-						    ViewModel.ClientName = state.value;
-						    doMakeCall();
-                        }
-					}			
-				});
+            var isCall = false;
+			if (self.ClientName || (ViewModel.ClientName != "" && ViewModel.ClientName != null)) {
+                isCall = true;
+                doMakeCall();
+            }
+			else {
+                try{
+				    $.srv4js("GETCLIENTNAME", {
+					    callback: function(state) {
+                            if(ViewModel.ClientName == "" || ViewModel.ClientName == null){
+						        ViewModel.ClientName = state.value;
+                                if (!isCall){
+                                    isCall = true;
+						            doMakeCall();
+                                }
+                            }
+					    }			
+				    });
+                } catch(e){
+                    if (!isCall){
+                        isCall = true;
+                        doMakeCall();
+                    }        
+                }
+            }
+            setTimeout(function(){
+                if (!isCall) {
+                                isCall = true;
+                                doMakeCall();
+                            }
+            },1000);
+            
 			return;
 		}
 
@@ -509,8 +533,7 @@
 
 	}
 
-	function makeCall() {
-		if (window.console) console.log("makeCall", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
+	function makeCall() {        
 		var phone = ViewModel.CallStation.Phone().split("/");
 		var xhr = $.ajax({
 				timeout: 15000,
@@ -567,7 +590,6 @@
 	}
 
 	function checkCall() {
-		if (window.console) console.log("checkCall", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
 		var phone = ViewModel.CallStation.Phone().split("/");
 		var xhr = $.ajax({
 				timeout: 15000,
@@ -613,7 +635,6 @@
 	}
 
 	function cancelCall() {
-		if (window.console) console.log("cancelCall", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
 		var phone = ViewModel.CallStation.Phone().split("/");
 		if (!ViewModel.CallStation.CallInfo) {
 			return;
@@ -687,7 +708,6 @@
 		},
 		open: function() {
 			$phoneDialog_BeforeOpenActiveElement = $( document.activeElement );
-			if (window.console) console.log($phoneDialog_BeforeOpenActiveElement);
 			var qtip = $('.qtip:visible');
 			if (qtip.length) qtip.qtip('hide');
 
@@ -712,7 +732,6 @@
 	@* Функция перехода в состояние выбора телефона *@
 	function doChoosePhone() {
 		ViewModel.CallStation.Mode(1);
-		if (window.console) console.log("doChoosePhone", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
 		@* Загрузить доступные телефоны *@
 		$.when($phoneDialogTask = getEmployeePhones())
 			.done(function () {
@@ -723,8 +742,7 @@
 	}
 		
 	function doExit() { 
-		if (window.console) console.log("doExit", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
-		$phoneDialog.dialog("close");
+			$phoneDialog.dialog("close");
 	}
 
 	function doCheckCall() {
@@ -760,8 +778,7 @@
 		}
 
 		function intervalCheck() {
-			if (window.console) console.log("intervalCheck", ViewModel.CallStation.Mode(), ViewModel.CallStation.Phone(),ViewModel.CallStation.TargetPhone());
-			if (!ViewModel.CallStation.Calling()) {
+				if (!ViewModel.CallStation.Calling()) {
 				ViewModel.CallStation.CallInfo = null; 
 				if ($.isFunction($phoneDialog.data("OnCallEndHandler"))) 
 					$phoneDialog.data("OnCallEndHandler").apply(this);
@@ -858,8 +875,7 @@
 
 		$("input,button,select").focusin(function (e) {
 			$activeElement$ = e.target;
-			if (window.console) console.log("focusin: " + $activeElement$.id);
-			setActiveTreeUnfocused();
+		    setActiveTreeUnfocused();
 		}).focusout(function (e) {
 			$activeElement$ = null;
 		})
@@ -1051,9 +1067,9 @@
 		var data = $.extend({}, settings, { clid: ViewModel.CLID() });
 
 		//alert(JSON.stringify(data));
-
+    
 		return $.ajax({
-			async: false,
+			async: true,
 			type: 'POST',
 			url: Env.URI_Default_SaveApplicationSettings,
 			traditional: false,
@@ -1062,6 +1078,7 @@
 			success: function( data ) {},
 			complete: function() {}
 		});
+    
 	}
 
 	function openPopupWindow(url, context, callback, windowName, width, height, replaceOptions) {
@@ -1127,10 +1144,11 @@
 		if (params == null) params = 'center:yes;status:no;help:no;resizable:yes;';
 
 		window.showModalDialog(url, null, params);
-
+        
 		// сохраняем данные из cookie
 		var result = null;
 		var dlgRez = $.cookie("DlgRez");
+        
 		if (dlgRez == 1) {
 			result = $.cookie("RetVal", {raw: true});
 			if (callback && $.isFunction(callback))
